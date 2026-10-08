@@ -24,7 +24,7 @@
   nav a:hover { color: var(--tx); border-color: var(--line); }
   nav a.on { color: var(--cyan); border-color: rgba(63,193,224,.4); background: rgba(63,193,224,.08); }
 
-  main { max-width: 760px; margin: 0 auto; padding: 30px 16px 20px; }
+  main { max-width: 1180px; margin: 0 auto; padding: 30px 16px 20px; }
   .hero { text-align: center; margin-bottom: 22px; }
   h1 { display: inline-flex; align-items: center; gap: 18px; margin: 0; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: clamp(1.9rem, 6vw, 3rem); letter-spacing: .05em;
        background: linear-gradient(#fff3c4, var(--gold) 45%, var(--gold-d)); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 8px rgba(0,0,0,.8)); }
@@ -33,7 +33,7 @@
   .sub { margin: 8px 0 0; color: #c9d3e4; font-size: 1.1rem; font-weight: 500; }
 
   /* Carte de jeu */
-  .game { padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,21,38,.86); box-shadow: 0 16px 44px rgba(0,0,0,.6); }
+  .game { display: grid; grid-template-columns: minmax(330px, 400px) minmax(0, 1fr); gap: 22px; align-items: start; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,21,38,.86); box-shadow: 0 16px 44px rgba(0,0,0,.6); }
   .bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
   .plates { display: flex; gap: 8px; }
   .plate { display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
@@ -49,7 +49,17 @@
   .frame.revealed { border-color: var(--cyan); box-shadow: 0 0 0 1px var(--cyan), 0 0 36px rgba(63,193,224,.3); }
   .frame.revealed.lost { border-color: var(--ko); box-shadow: 0 0 0 1px var(--ko), 0 0 30px rgba(255,107,107,.25); }
   .loading { position: absolute; inset: 0; display: grid; place-items: center; background: #0b1020; color: var(--mu); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-  .hint { margin: 10px 2px 14px; color: var(--mu); font-size: .9rem; text-align: center; }
+  .panel { padding-top: 56px; min-width: 0; }      /* aligne la recherche avec le haut de l'image */
+  .stage { min-width: 0; }
+  .bar { margin-bottom: 14px; }
+  .hint { margin: 0 2px 12px; color: var(--mu); font-size: .92rem; }
+  .tools { margin-top: 10px; }
+  button.alt { width: 100%; padding: 11px 16px; font-size: .98rem; background: rgba(14,21,38,.85); color: var(--tx); border: 1px solid var(--line); font-weight: 600; }
+  button.alt:hover:not(:disabled) { border-color: var(--cyan); filter: none; }
+  .tools small { display: block; margin-top: 6px; color: var(--mu); font-size: .8rem; text-align: center; }
+  .guess.note { border-color: var(--line); background: rgba(63,193,224,.07); }
+  .guess.note .tag { color: var(--cyan); }
+  .guess.note .ico { border-color: var(--cyan); color: var(--cyan); font-size: 1.1rem; }
 
   /* Zone de recherche + liste de suggestions */
   .row { display: flex; gap: 10px; }
@@ -91,6 +101,7 @@
   .note { margin: 14px 0 0; text-align: center; color: #66738c; font-size: .8rem; }
   footer { max-width: 980px; margin: 14px auto 0; padding: 22px 18px 34px; color: #66738c; font-size: .8rem; text-align: center; border-top: 1px solid rgba(36,49,73,.7); }
   [hidden] { display: none !important; }
+  @media (max-width: 900px) { .game { grid-template-columns: 1fr; } .stage { order: -1; } .panel { padding-top: 0; } }
   @media (max-width: 560px) { .suggest { grid-template-columns: 1fr; } nav a { padding: 7px 10px; } .row button { padding: 13px 16px; } }
 </style>
 </head>
@@ -117,37 +128,47 @@
   </section>
 
   <section class="game">
-    <div class="bar">
-      <div class="plates">
-        <span class="plate">Série <b id="streak">0</b></span>
-        <span class="plate">Record <b id="best">0</b></span>
-      </div>
-      <div class="dots" id="dots" aria-label="Essais"></div>
-    </div>
+    <!-- Colonne gauche : recherche et essais -->
+    <div class="panel">
+      <p class="hint" id="hint">Chaque erreur dézoome un peu l'image.</p>
 
-    <div class="frame noanim" id="frame">
-      <img id="art" alt="Artwork à deviner">
-      <div class="loading" id="loading">Chargement des images…</div>
-    </div>
-    <p class="hint" id="hint">Chaque erreur dézoome un peu l'image.</p>
-
-    <div id="play">
-      <div class="row search">
-        <div class="combo">
-          <input id="answer" placeholder="Tape le nom d'un champion…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="suggest" disabled>
-          <ul class="suggest" id="suggest" role="listbox" hidden></ul>
+      <div id="play">
+        <div class="row search">
+          <div class="combo">
+            <input id="answer" placeholder="Tape le nom d'un champion…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="suggest" disabled>
+            <ul class="suggest" id="suggest" role="listbox" hidden></ul>
+          </div>
+          <button id="submit" disabled>Valider</button>
         </div>
-        <button id="submit" disabled>Valider</button>
+        <div class="flash" id="flash" role="status"></div>
+        <div class="tools">
+          <button class="alt" id="dezoom" disabled>Dézoomer · −1 essai</button>
+          <small id="dezoom-note"></small>
+        </div>
       </div>
-      <div class="flash" id="flash" role="status"></div>
+
+      <div class="result" id="result" hidden>
+        <div class="msg" id="msg"></div>
+        <button id="next">Personnage suivant →</button>
+      </div>
+
+      <ul class="guesses" id="guesses"></ul>
     </div>
 
-    <div class="result" id="result" hidden>
-      <div class="msg" id="msg"></div>
-      <button id="next">Personnage suivant →</button>
+    <!-- Colonne droite : image -->
+    <div class="stage">
+      <div class="bar">
+        <div class="plates">
+          <span class="plate">Série <b id="streak">0</b></span>
+          <span class="plate">Record <b id="best">0</b></span>
+        </div>
+        <div class="dots" id="dots" aria-label="Essais"></div>
+      </div>
+      <div class="frame noanim" id="frame">
+        <img id="art" alt="Artwork à deviner">
+        <div class="loading" id="loading">Chargement des images…</div>
+      </div>
     </div>
-
-    <ul class="guesses" id="guesses"></ul>
   </section>
   <p class="note" id="lib-note"></p>
 </main>
@@ -304,7 +325,7 @@ function newRound() {
   tries = 0; over = false; guessed = [];
   $("guesses").innerHTML = ""; $("result").hidden = true; $("play").hidden = false; $("flash").textContent = "";
   $("hint").textContent = "Chaque erreur dézoome un peu l'image.";
-  $("answer").value = ""; $("answer").disabled = $("submit").disabled = false; hideSuggestions();
+  $("answer").value = ""; $("answer").disabled = $("submit").disabled = false; hideSuggestions(); updateTools();
 
   const frame = $("frame"), art = $("art");
   frame.classList.add("noanim"); frame.classList.remove("revealed", "lost");   /* zoom immédiat, sans animation, jamais d'aperçu */
@@ -336,7 +357,7 @@ function endRound(win) {
   const n = win ? tries + 1 : MAX_TRIES;
   $("msg").className = "msg " + (win ? "ok" : "ko");
   $("msg").innerHTML = win ? `Bravo, c'était ${cur.name} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${cur.name}.`;
-  renderDots(win); render();
+  renderDots(win); render(); updateTools();
   $("next").focus();
 }
 
@@ -353,7 +374,23 @@ function submit(value) {
   guessed.push(name); $("answer").value = ""; hideSuggestions();
   if (name === cur.name) { addGuess(name, true); endRound(true); return; }
   addGuess(name, false); tries++;
-  if (tries >= MAX_TRIES) endRound(false); else { render(); renderDots(); $("answer").focus(); }
+  if (tries >= MAX_TRIES) endRound(false); else { render(); renderDots(); updateTools(); $("answer").focus(); }
+}
+
+/* Dézoom volontaire : l'image se dévoile d'un cran, au prix d'un essai (jamais possible sur le dernier essai) */
+function updateTools() {
+  const last = tries >= MAX_TRIES - 1;
+  $("dezoom").disabled = over || !cur || last;
+  $("dezoom-note").textContent = over || !cur ? "" : last ? "Indisponible sur le dernier essai." : `Il te reste ${MAX_TRIES - tries} essais.`;
+}
+function dezoom() {
+  if (over || !cur || tries >= MAX_TRIES - 1) return;
+  const li = document.createElement("li"); li.className = "guess note";
+  const ico = document.createElement("div"); ico.className = "ico"; ico.textContent = "⤢";
+  const nm = document.createElement("span"); nm.className = "nm"; nm.textContent = "Dézoom utilisé";
+  const tag = document.createElement("span"); tag.className = "tag"; tag.textContent = "−1 essai";
+  li.append(ico, nm, tag); $("guesses").prepend(li);
+  tries++; render(); renderDots(); updateTools(); $("answer").focus();
 }
 
 /* ============================================================
@@ -409,6 +446,7 @@ $("answer").onkeydown = e => {
 };
 $("submit").onclick = () => submit();
 $("next").onclick = newRound;
+$("dezoom").onclick = dezoom;
 
 /* ============================================================
    5. DÉMARRAGE
