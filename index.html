@@ -20,6 +20,8 @@
   .stats { display:flex; justify-content:space-between; color:var(--mu); font-size:.9rem; margin-bottom:6px; }
   .frame { aspect-ratio:16/9; overflow:hidden; border-radius:14px; border:1px solid var(--bd); background:#000; }
   .frame img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s ease; }
+  .frame.revealed img { transform:scale(1) !important; }   /* artwork entier (victoire, défaite, abandon) */
+  .frame.revealed { border-color:var(--ac); }
   .stage { display:flex; gap:10px; align-items:flex-start; }
   .stage .frame { flex:1; min-width:0; }
   .side { width:92px; flex-shrink:0; display:flex; flex-direction:column; gap:4px; }
@@ -133,13 +135,15 @@ function shuffle(a) {
 function current() { return order[index]; }
 
 function render() {
-  $("art").style.transform = `scale(${ZOOM[Math.min(tries, MAX_TRIES - 1)]})`;
+  const zoom = finished ? 1 : ZOOM[Math.min(tries, MAX_TRIES - 1)];
+  $("art").style.transform = `scale(${zoom})`;
   $("tries-label").textContent = finished ? "" : `Essai ${tries + 1}/${MAX_TRIES}`;
   $("score-label").textContent = `Score ${score} · Record ${best}`;
 }
 
 function loadRound() {
   tries = 0; finished = false; wrong = [];
+  $("frame").classList.remove("revealed");
   refreshSuggestions();
   $("art").onload = () => {   /* le cadre prend le format de l'image : elle s'affiche entière à la fin */
     $("frame").style.aspectRatio = $("art").naturalWidth + " / " + $("art").naturalHeight;
@@ -157,7 +161,7 @@ function loadRound() {
 
 function endRound(won) {
   finished = true;
-  $("art").style.transform = "scale(1)";
+  $("frame").classList.add("revealed");   /* dévoile l'artwork entier dans tous les cas */
   $("answer").disabled = $("submit").disabled = $("giveup").disabled = true;
   $("next").style.display = "";
   $("msg").className = "msg " + (won ? "ok" : "ko");
