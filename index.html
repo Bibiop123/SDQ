@@ -3,75 +3,174 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Salle de Quiz</title>
+<title>Salle de Quiz – Mini-jeux League of Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --gold:#e6c36a; --gold-d:#a67c2a; --teal:#1fb5c4; --ink:#0d1117; }
-  * { box-sizing: border-box; }
-  html, body { height: 100%; margin: 0; }
-  body {
-    color: #eee; font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
-    background: var(--ink); position: relative; overflow-x: hidden;
+  :root {
+    --bg:#070b16; --panel:#0e1526; --line:#243149; --tx:#e9eef7; --mu:#8d9ab2;
+    --cyan:#3fc1e0; --gold:#e6c36a; --gold-d:#a67c2a;
   }
-  /* Fond : artwork flouté et assombri */
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    min-height: 100vh; color: var(--tx); background: var(--bg); position: relative; overflow-x: hidden;
+    font-family: Barlow, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  /* Fond : artwork flouté + dégradé marine (ambiance LoLdle / Lolix) */
   body::before {
     content: ""; position: fixed; inset: -20px; z-index: -2;
-    background: url("images/briar.jpg") center / cover no-repeat;
-    filter: blur(14px) brightness(.35) saturate(1.1);
+    background: url("images/briar.jpg") center / cover no-repeat; filter: blur(16px) brightness(.3) saturate(1.2);
   }
   body::after {
     content: ""; position: fixed; inset: 0; z-index: -1;
-    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.65) 100%);
+    background: radial-gradient(ellipse at 50% 0%, rgba(63,193,224,.12), transparent 55%), linear-gradient(rgba(7,11,22,.55), var(--bg) 95%);
   }
-  main {
-    min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 22px; padding: 28px 16px;
-  }
-  h1 {
-    margin: 0; font-family: Cinzel, Georgia, "Times New Roman", serif; font-weight: 800;
-    font-size: clamp(2rem, 7vw, 3.4rem); letter-spacing: .04em; text-align: center;
-    background: linear-gradient(#fff3c4, var(--gold) 45%, var(--gold-d));
-    -webkit-background-clip: text; background-clip: text; color: transparent;
-    filter: drop-shadow(0 2px 6px rgba(0,0,0,.7));
-  }
-  .tagline { margin: -10px 0 0; color: #cfd6df; text-align: center; }
 
-  /* Cadre central cliquable */
+  /* Barre du haut (style Lolix / Gamedle) */
+  .top { position: sticky; top: 0; z-index: 10; background: rgba(7,11,22,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top-in { max-width: 1100px; margin: 0 auto; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--tx); text-decoration: none; font-family: Cinzel, Georgia, serif; font-weight: 800; letter-spacing: .08em; font-size: 1.05rem; }
+  .brand svg { width: 26px; height: 26px; }
+  nav { display: flex; gap: 6px; }
+  nav a { padding: 7px 14px; border-radius: 10px; color: var(--mu); text-decoration: none; font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; border: 1px solid transparent; }
+  nav a:hover { color: var(--tx); border-color: var(--line); }
+  nav a.on { color: var(--cyan); border-color: rgba(63,193,224,.4); background: rgba(63,193,224,.08); }
+
+  main { max-width: 1100px; margin: 0 auto; padding: 38px 18px 30px; }
+
+  /* Titre doré orné (style LoLdle) */
+  .hero { text-align: center; margin-bottom: 34px; }
+  h1 {
+    display: inline-flex; align-items: center; gap: 18px; margin: 0;
+    font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: clamp(2rem, 6.5vw, 3.4rem); letter-spacing: .05em;
+    background: linear-gradient(#fff3c4, var(--gold) 45%, var(--gold-d)); -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,.8));
+  }
+  h1::before, h1::after { content: ""; width: clamp(24px, 8vw, 90px); height: 2px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  h1::after { transform: scaleX(-1); }
+  .tag { margin: 10px 0 0; color: #c9d3e4; font-size: 1.1rem; font-weight: 500; }
+
+  .sec { display: flex; align-items: baseline; justify-content: space-between; margin: 0 4px 14px; }
+  .sec h2 { margin: 0; font-size: 1.05rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--tx); }
+  .sec span { color: var(--mu); font-size: .85rem; }
+
+  /* Grille de cartes : grande carte à gauche (le plus récent), petites à droite */
+  .grid { display: grid; grid-template-columns: 1.55fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; }
   .card {
-    display: block; width: min(560px, 100%); text-decoration: none; color: inherit;
-    border: 3px solid var(--gold); border-radius: 14px; overflow: hidden;
-    background: #11161d;
-    box-shadow: 0 0 0 2px #000, 0 0 0 5px rgba(31,181,196,.55), 0 18px 50px rgba(0,0,0,.7);
-    transition: transform .25s ease, box-shadow .25s ease;
+    position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; padding: 22px;
+    border: 1px solid var(--line); border-radius: 18px; overflow: hidden; isolation: isolate;
+    background: var(--panel); color: inherit; text-decoration: none; min-height: 190px;
+    transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
   }
-  .card:hover, .card:focus-visible {
-    transform: translateY(-4px) scale(1.015); outline: none;
-    box-shadow: 0 0 0 2px #000, 0 0 0 5px var(--teal), 0 0 40px rgba(31,181,196,.45), 0 22px 60px rgba(0,0,0,.75);
+  .card .bg { position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; transition: transform .7s ease; }
+  .card::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(to top, rgba(7,11,22,.97) 6%, rgba(7,11,22,.55) 50%, rgba(7,11,22,.15)); }
+  a.card:hover, a.card:focus-visible { transform: translateY(-4px); border-color: var(--cyan); box-shadow: 0 0 0 1px var(--cyan), 0 16px 44px rgba(0,0,0,.6), 0 0 36px rgba(63,193,224,.25); outline: none; }
+  a.card:hover .bg { transform: scale(1.06); }
+  .big { grid-row: span 2; min-height: 430px; }
+
+  /* Pastille ronde à anneau doré (clin d'œil LoLdle) */
+  .ico { position: absolute; top: 18px; left: 18px; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
+         background: radial-gradient(circle at 50% 35%, #1d2740, #0b1020); border: 2px solid var(--gold); box-shadow: 0 0 0 2px #000, 0 0 14px rgba(230,195,106,.35); }
+  .ico svg { width: 24px; height: 24px; stroke: var(--gold); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+  /* Bandeau diagonal « Nouveau » (clin d'œil LoLdle) */
+  .ribbon { position: absolute; top: 24px; right: -46px; width: 180px; padding: 5px 0; text-align: center; transform: rotate(45deg);
+            background: linear-gradient(#f3d98a, #c99a35); color: #1a1305; font-weight: 800; font-size: .72rem; letter-spacing: .16em;
+            box-shadow: 0 3px 10px rgba(0,0,0,.55); }
+
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+  .chip { padding: 3px 10px; border-radius: 99px; font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+          background: rgba(20,28,46,.85); border: 1px solid #34425f; color: #c9d3e4; }
+  .chip.lvl { border-color: rgba(230,195,106,.5); color: var(--gold); }
+  .card h3 { margin: 0; font-size: 2rem; line-height: 1.05; font-weight: 700; }
+  .small h3 { font-size: 1.35rem; }
+  .card p { margin: 0; color: #c0cbdd; font-size: .98rem; line-height: 1.4; max-width: 46ch; }
+  .meta { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-top: 6px; }
+  .cta { display: inline-flex; align-items: center; gap: 8px; padding: 10px 22px; border-radius: 10px; background: var(--cyan); color: #04202a; font-weight: 700; font-size: 1rem; }
+  .played { color: var(--mu); font-size: .8rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+  .played b { color: var(--tx); font-size: 1.05rem; letter-spacing: 0; }
+
+  /* Cartes « bientôt » */
+  .soon { cursor: default; background: linear-gradient(135deg, #131b30, #1a1432); }
+  .soon .bg-ico { position: absolute; right: -10px; top: 50%; transform: translateY(-50%); z-index: -1; width: 130px; height: 130px; opacity: .1; stroke: #fff; fill: none; stroke-width: 1.2; }
+  .soon h3, .soon p { opacity: .75; }
+
+  footer { max-width: 1100px; margin: 0 auto; padding: 22px 18px 34px; color: #66738c; font-size: .8rem; text-align: center; border-top: 1px solid rgba(36,49,73,.7); }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; grid-template-rows: none; }
+    .big { grid-row: auto; min-height: 340px; }
+    .card h3 { font-size: 1.7rem; }
+    nav a { padding: 7px 10px; }
   }
-  .card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .6s ease; }
-  .card:hover img { transform: scale(1.05); }
-  .card .img-wrap { overflow: hidden; }
-  .card .label { padding: 14px 18px 16px; border-top: 2px solid var(--gold-d); background: linear-gradient(#1b232d, #11161d); }
-  .card .label strong { display: block; font-family: Cinzel, Georgia, serif; font-size: 1.35rem; color: var(--gold); }
-  .card .label span { color: #aeb8c4; font-size: .92rem; }
-  .soon { color: #8b95a3; font-size: .85rem; }
 </style>
 </head>
 <body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l12 8v12l-12 8L4 22V10z" fill="none" stroke="#e6c36a" stroke-width="2"/><path d="M16 9l6 4v6l-6 4-6-4v-6z" fill="#3fc1e0"/></svg>
+      SALLE DE QUIZ
+    </a>
+    <nav>
+      <a class="on" href="index.html">Accueil</a>
+      <a href="#jeux">Mini-jeux</a>
+    </nav>
+  </div>
+</header>
+
 <main>
-  <h1>Salle de Quiz</h1>
-  <p class="tagline">Devine des champions de League of Legends</p>
+  <section class="hero">
+    <h1>Salle de Quiz</h1>
+    <p class="tag">Devine des champions de League of Legends</p>
+  </section>
 
-  <a class="card" href="artwork.html">
-    <div class="img-wrap"><img src="images/lillia.jpg" alt="Artwork de League of Legends"></div>
-    <div class="label">
-      <strong>Artwork</strong>
-      <span>Devine le champion à partir d'un morceau d'artwork</span>
+  <div class="sec" id="jeux"><h2>Mini-jeux</h2><span>1 disponible · 2 à venir</span></div>
+
+  <div class="grid">
+    <!-- Jeu le plus récent : grande carte + bandeau Nouveau -->
+    <a class="card big" href="artwork.html">
+      <img class="bg" src="images/lillia.jpg" alt="">
+      <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="9" cy="9" r="1.4"/></svg></span>
+      <span class="ribbon">NOUVEAU</span>
+      <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span></div>
+      <h3>Artwork</h3>
+      <p>Devine le champion à partir d'un morceau d'artwork. 6 essais : l'image se dévoile à chaque erreur.</p>
+      <div class="meta">
+        <span class="cta">Jouer <span aria-hidden="true">›</span></span>
+        <span class="played" id="played">Jamais joué</span>
+      </div>
+    </a>
+
+    <!-- Jeux à venir -->
+    <div class="card small soon">
+      <svg class="bg-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/></svg>
+      <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8z"/></svg></span>
+      <div class="chips"><span class="chip">Solo</span><span class="chip">Bientôt</span></div>
+      <h3>Silhouette</h3>
+      <p>Reconnais le champion à sa silhouette.</p>
     </div>
-  </a>
 
-  <p class="soon">D'autres jeux arrivent bientôt…</p>
+    <div class="card small soon">
+      <svg class="bg-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span>
+      <div class="chips"><span class="chip">Solo</span><span class="chip">Bientôt</span></div>
+      <h3>Musique</h3>
+      <p>Devine le thème à l'écoute d'un extrait.</p>
+    </div>
+  </div>
 </main>
+
+<footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
+
+<script>
+  /* Affiche le record du joueur sur la carte Artwork (enregistré par la page du jeu) */
+  try {
+    var best = Number(localStorage.getItem("sdq_best")) || 0;
+    if (best > 0) document.getElementById("played").innerHTML = "Record <b>" + best + "</b>";
+  } catch (e) {}
+</script>
 </body>
 </html>
