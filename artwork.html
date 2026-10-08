@@ -16,7 +16,7 @@
     background:url("images/briar.jpg") center / cover no-repeat; filter:blur(14px) brightness(.35) saturate(1.1); }
   body::after { content:""; position:fixed; inset:0; z-index:-1;
     background:radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.65) 100%); }
-  main { max-width:760px; margin:0 auto; padding:20px 16px 40px; }
+  main { max-width:1080px; margin:0 auto; padding:20px 16px 40px; }
 
   .home { display:inline-flex; align-items:center; gap:8px; margin-bottom:12px; padding:7px 16px; text-decoration:none;
           color:var(--gold); font-weight:600; font-size:.9rem; border:2px solid var(--gold-d); border-radius:10px;
@@ -75,10 +75,17 @@
   .frame.revealed img { transform:scale(1) !important; }   /* artwork entier (victoire, défaite, abandon) */
   .frame.revealed { box-shadow:0 0 0 2px #000, 0 0 0 5px var(--teal), 0 0 40px rgba(31,181,196,.45), 0 18px 50px rgba(0,0,0,.7); }
 
-  /* Noms ratés : à gauche de l'image (grand écran), sous l'image (petit écran) */
-  .side { position:absolute; right:calc(100% + 14px); top:0; width:92px; display:flex; flex-direction:column; gap:4px; }
-  @media (max-width: 999px) {
-    .side { position:static; order:2; width:auto; flex-direction:row; flex-wrap:wrap; margin-top:10px; }
+  /* Mise en page : recherche à gauche, artwork à droite (empilés sur petit écran) */
+  .layout { display:grid; grid-template-columns:minmax(300px,380px) 1fr; gap:24px; align-items:start; }
+  .panel { display:flex; flex-direction:column; gap:12px; }
+  .panel .row { margin:0; }
+  .panel .msg { margin-top:2px; min-height:30px; }
+  .search { position:relative; }          /* la liste se déroule sur toute la largeur de la colonne */
+  /* Noms ratés : petites pastilles sous les boutons */
+  .side { display:flex; flex-wrap:wrap; gap:6px; }
+  @media (max-width: 860px) {
+    .layout { grid-template-columns:1fr; }
+    .stage { order:-1; }
   }
   .t { padding:2px 8px; border-radius:6px; background:rgba(255,107,107,.15); border:1px solid var(--ko); color:#ffc2c2;
        font-size:.72rem; line-height:1.4; overflow-wrap:anywhere; }
@@ -98,7 +105,7 @@
   #giveup, #next { flex:1; }
 
   /* Liste de suggestions : une petite carte encadrée par champion */
-  .combo { position:relative; flex:1; min-width:0; }
+  .combo { flex:1; min-width:0; }
   .combo input { width:100%; }
   .suggest { position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:30; margin:0; padding:6px; list-style:none;
              display:grid; grid-template-columns:1fr 1fr; gap:6px;   /* 2 colonnes : 2 fois plus de champions visibles */
@@ -143,31 +150,37 @@
 
   <div id="game" hidden>
   <div class="stats"><span id="tries-label" class="plate"></span><span id="score-label"></span></div>
-  <div class="stage">
-    <div class="side" id="tries-list"></div>
-    <div class="frame" id="frame">
-      <img id="art" alt="Artwork à deviner">
-      <div class="countdown" id="countdown" hidden>
-        <div class="cd-badge">
-          <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="34"/><circle class="fg" cx="40" cy="40" r="34"/></svg>
-          <span class="cd-num" id="cd-num">5</span>
+  <div class="layout">
+    <!-- Colonne gauche : zone de recherche -->
+    <div class="panel">
+      <div class="row search">
+        <div class="combo">
+          <input id="answer" placeholder="Nom du champion…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="suggest">
+          <ul class="suggest" id="suggest" role="listbox" hidden></ul>
         </div>
-        <button id="cd-next">Suivant →</button>
+        <button id="submit">Valider</button>
+      </div>
+      <div class="row">
+        <button class="alt" id="giveup">Abandonner</button>
+        <button class="alt" id="next" style="display:none">Suivant →</button>
+      </div>
+      <div class="side" id="tries-list"></div>
+      <div class="msg" id="msg"></div>
+    </div>
+
+    <!-- Colonne droite : artwork -->
+    <div class="stage">
+      <div class="frame" id="frame">
+        <img id="art" alt="Artwork à deviner">
+        <div class="countdown" id="countdown" hidden>
+          <div class="cd-badge">
+            <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="34"/><circle class="fg" cx="40" cy="40" r="34"/></svg>
+            <span class="cd-num" id="cd-num">5</span>
+          </div>
+          <button id="cd-next">Suivant →</button>
+        </div>
       </div>
     </div>
-  </div>
-  <div class="msg" id="msg"></div>
-
-  <div class="row">
-    <div class="combo">
-      <input id="answer" placeholder="Nom du champion…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="suggest">
-      <ul class="suggest" id="suggest" role="listbox" hidden></ul>
-    </div>
-    <button id="submit">Valider</button>
-  </div>
-  <div class="row">
-    <button class="alt" id="giveup">Abandonner</button>
-    <button class="alt" id="next" style="display:none">Suivant →</button>
   </div>
   </div>
 </main>
