@@ -58,6 +58,15 @@
   button.alt { background:rgba(20,27,36,.85); color:var(--gold); border:2px solid var(--gold-d); font-weight:600; }
   button:disabled { opacity:.45; cursor:default; }
   #giveup, #next { flex:1; }
+
+  /* Écran de démarrage */
+  .start { margin:10px auto 0; max-width:560px; text-align:center; padding:28px 22px 30px; border-radius:14px;
+           border:3px solid var(--gold); background:linear-gradient(#1b232d,#11161d);
+           box-shadow:0 0 0 2px #000, 0 0 0 5px rgba(31,181,196,.55), 0 18px 50px rgba(0,0,0,.7); }
+  .start h2 { margin:0 0 8px; font-family:Cinzel,Georgia,serif; color:var(--gold); font-size:1.5rem; }
+  .start p { margin:0 0 20px; color:#cfd6df; }
+  #start { font-family:Cinzel,Georgia,serif; font-size:1.3rem; letter-spacing:.08em; padding:14px 46px; }
+  [hidden] { display:none !important; }
 </style>
 </head>
 <body>
@@ -72,6 +81,13 @@
     <span class="tab">Musique (bientôt)</span>
   </div>
 
+  <section class="start" id="start-screen">
+    <h2>Prêt à jouer ?</h2>
+    <p>Un morceau d'artwork va apparaître. Tu as <span id="max-tries"></span> essais : à chaque erreur, l'image se dévoile un peu plus.</p>
+    <button id="start">Start</button>
+  </section>
+
+  <div id="game" hidden>
   <div class="stats"><span id="tries-label"></span><span id="score-label"></span></div>
   <div class="stage">
     <div class="side" id="tries-list"></div>
@@ -86,6 +102,7 @@
   <div class="row">
     <button class="alt" id="giveup">Abandonner</button>
     <button class="alt" id="next" style="display:none">Suivant →</button>
+  </div>
   </div>
   <datalist id="names"></datalist>
 </main>
@@ -232,8 +249,14 @@ $("next").onclick = () => {
   loadRound();
 };
 
-order = shuffle(ROUNDS.slice());
-loadRound();
+$("max-tries").textContent = MAX_TRIES;
+$("start").onclick = () => {
+  order = shuffle(ROUNDS.slice());
+  index = 0; score = 0;
+  $("start-screen").hidden = true;
+  $("game").hidden = false;
+  loadRound();
+};
 </script>
 </body>
 </html>
