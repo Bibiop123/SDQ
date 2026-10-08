@@ -47,7 +47,7 @@
   <div class="stats"><span id="tries-label"></span><span id="score-label"></span></div>
   <div class="stage">
     <div class="side" id="tries-list"></div>
-    <div class="frame"><img id="art" alt="Artwork à deviner"></div>
+    <div class="frame" id="frame"><img id="art" alt="Artwork à deviner"></div>
   </div>
   <div class="msg" id="msg"></div>
 
@@ -64,12 +64,14 @@
 
 <script>
 /* ===== CONFIGURATION : ajoute tes questions ici =====
-   name  : bonne réponse
-   img   : chemin de l'image
-   focus : point sur lequel on zoome (x% y%)            */
+   name : bonne réponse
+   img  : chemin de l'image
+   face : zone du visage à éviter, en % de l'image
+          (x, y = centre ; rx, ry = demi-largeur / demi-hauteur)
+   Le point de zoom est tiré au hasard à chaque manche, loin de cette zone. */
 const ROUNDS = [
-  { name: "Lillia", img: "images/lillia.jpg", focus: "50% 45%" },
-  { name: "Briar",  img: "images/briar.jpg",  focus: "50% 40%" }
+  { name: "Lillia", img: "images/lillia.jpg", face: { x: 0.51, y: 0.22, rx: 0.09, ry: 0.13 } },
+  { name: "Briar",  img: "images/briar.jpg",  face: { x: 0.64, y: 0.29, rx: 0.10, ry: 0.17 } }
 ];
 
 /* Liste des suggestions du champ de saisie */
@@ -94,6 +96,32 @@ function refreshSuggestions() {
 }
 try { best = Number(localStorage.getItem("sdq_best")) || 0; } catch (e) {}
 
+/* Zone visible à un niveau de zoom z quand on zoome autour du point (ox, oy) */
+function windowAt(ox, oy, z) {
+  return { x0: ox - ox / z, x1: ox + (1 - ox) / z, y0: oy - oy / z, y1: oy + (1 - oy) / z };
+}
+
+/* Tire un point de zoom au hasard en évitant le visage le plus longtemps possible :
+   on garde les points pour lesquels le visage reste hors cadre sur le plus de niveaux de zoom. */
+function pickFocus(face) {
+  let best = -1, pool = [];
+  for (let i = 0; i < 400; i++) {
+    const ox = 0.05 + Math.random() * 0.9, oy = 0.05 + Math.random() * 0.9;
+    let score = 0;
+    for (let k = 0; k < ZOOM.length - 1; k++) {
+      const w = windowAt(ox, oy, ZOOM[k]);
+      const hit = w.x0 < face.x + face.rx && w.x1 > face.x - face.rx &&
+                  w.y0 < face.y + face.ry && w.y1 > face.y - face.ry;
+      if (hit) break;
+      score++;
+    }
+    if (score > best) { best = score; pool = []; }
+    if (score === best) pool.push([ox, oy]);
+  }
+  const [x, y] = pool[Math.floor(Math.random() * pool.length)];
+  return `${(x * 100).toFixed(1)}% ${(y * 100).toFixed(1)}%`;
+}
+
 function shuffle(a) {
   for (let i = a.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -113,8 +141,11 @@ function render() {
 function loadRound() {
   tries = 0; finished = false; wrong = [];
   refreshSuggestions();
+  $("art").onload = () => {   /* le cadre prend le format de l'image : elle s'affiche entière à la fin */
+    $("frame").style.aspectRatio = $("art").naturalWidth + " / " + $("art").naturalHeight;
+  };
+  $("art").style.transformOrigin = pickFocus(current().face);
   $("art").src = current().img;
-  $("art").style.transformOrigin = current().focus;
   $("tries-list").innerHTML = "";
   $("msg").textContent = ""; $("msg").className = "msg";
   $("next").style.display = "none";
