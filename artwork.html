@@ -16,7 +16,7 @@
     background:url("images/briar.jpg") center / cover no-repeat; filter:blur(14px) brightness(.35) saturate(1.1); }
   body::after { content:""; position:fixed; inset:0; z-index:-1;
     background:radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.65) 100%); }
-  main { max-width:1080px; margin:0 auto; padding:20px 16px 40px; }
+  main { max-width:1300px; margin:0 auto; padding:20px 16px 40px; }
 
   .home { display:inline-flex; align-items:center; gap:8px; margin-bottom:12px; padding:7px 16px; text-decoration:none;
           color:var(--gold); font-weight:600; font-size:.9rem; border:2px solid var(--gold-d); border-radius:10px;
@@ -33,7 +33,7 @@
   .tab { padding:6px 14px; border-radius:99px; border:1px solid #2c3948; background:rgba(20,27,36,.8); font-size:.85rem; color:var(--mu); }
   .tab.on { background:linear-gradient(#f3d98a,var(--gold-d)); color:#1a1305; border-color:var(--gold); font-weight:700; }
 
-  .stats { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; margin-bottom:12px; }
+  .stats { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px; margin-bottom:12px; }
   .plate { display:inline-flex; align-items:baseline; gap:8px; padding:6px 14px; border:2px solid var(--gold-d); border-radius:10px;
            background:linear-gradient(#1b232d,#141b24); box-shadow:0 0 0 1px #000, 0 4px 14px rgba(0,0,0,.5);
            color:var(--mu); font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
@@ -76,13 +76,15 @@
   .frame.revealed { box-shadow:0 0 0 2px #000, 0 0 0 5px var(--teal), 0 0 40px rgba(31,181,196,.45), 0 18px 50px rgba(0,0,0,.7); }
 
   /* Mise en page : recherche à gauche, artwork à droite (empilés sur petit écran) */
-  .layout { display:grid; grid-template-columns:minmax(300px,380px) 1fr; gap:24px; align-items:start; }
+  .layout { display:grid; grid-template-columns:minmax(300px,380px) 1fr; gap:24px; align-items:center; }   /* bloc de recherche centré verticalement par rapport à l'artwork */
   .panel { display:flex; flex-direction:column; gap:12px; }
   .panel .row { margin:0; }
   .panel .msg { margin-top:2px; min-height:30px; }
   .search { position:relative; }          /* la liste se déroule sur toute la largeur de la colonne */
   /* Noms ratés : petites pastilles sous les boutons */
-  .side { display:flex; flex-wrap:wrap; gap:6px; }
+  .side { display:flex; flex-wrap:wrap; align-content:flex-start; gap:6px; min-height:88px; }   /* hauteur réservée : le bloc ne bouge pas */
+  #tries-label { align-self:flex-start; align-items:center; min-height:40px; }
+  #tries-label:empty { display:inline-flex; visibility:hidden; }
   @media (max-width: 860px) {
     .layout { grid-template-columns:1fr; }
     .stage { order:-1; }
@@ -149,10 +151,11 @@
   </section>
 
   <div id="game" hidden>
-  <div class="stats"><span id="tries-label" class="plate"></span><span id="score-label"></span></div>
+  <div class="stats"><span id="score-label"></span></div>
   <div class="layout">
     <!-- Colonne gauche : zone de recherche -->
     <div class="panel">
+      <span id="tries-label" class="plate"></span>
       <div class="row search">
         <div class="combo">
           <input id="answer" placeholder="Nom du champion…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="suggest">
