@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Salle de Quiz – Devine le champion</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
   :root { --gold:#e6c36a; --gold-d:#a67c2a; --teal:#1fb5c4; --ink:#0d1117; --panel:#141b24; --tx:#eee; --mu:#9aa6b4; --ok:#4ade80; --ko:#ff6b6b; }
   * { box-sizing: border-box; }
@@ -41,17 +41,28 @@
   .plate:empty { display:none; }                        /* pas de plaque vide (essais cachés en fin de manche) */
   #score-label:not(.record) { display:flex; gap:8px; }
   #score-label { color:var(--gold); }
-  /* Record battu : texte de score agrandi + bulle de BD */
-  #score-label.record { flex:1 1 100%; order:-1; display:flex; flex-direction:column; align-items:center; gap:2px; margin-bottom:10px; }
-  .burst-wrap { filter:drop-shadow(3px 3px 0 #000) drop-shadow(0 0 14px rgba(255,200,40,.55)); }
-  .burst { display:grid; place-items:center; min-width:min(86vw,360px); padding:46px 38px; text-align:center;
-           background:radial-gradient(circle at 50% 40%, #fff27a, #ffc21a 70%, #ff8f1a);
-           clip-path:polygon(50.0% 0.0%,54.7% 14.3%,62.9% 1.7%,65.3% 13.0%,75.0% 6.7%,71.9% 21.4%,85.4% 14.6%,81.7% 25.6%,93.3% 25.0%,83.3% 36.2%,98.3% 37.1%,89.7% 44.8%,100.0% 50.0%,85.7% 54.7%,98.3% 62.9%,87.0% 65.3%,93.3% 75.0%,78.6% 71.9%,85.4% 85.4%,74.4% 81.7%,75.0% 93.3%,63.8% 83.3%,62.9% 98.3%,55.2% 89.7%,50.0% 100.0%,45.3% 85.7%,37.1% 98.3%,34.7% 87.0%,25.0% 93.3%,28.1% 78.6%,14.6% 85.4%,18.3% 74.4%,6.7% 75.0%,16.7% 63.8%,1.7% 62.9%,10.3% 55.2%,0.0% 50.0%,14.3% 45.3%,1.7% 37.1%,13.0% 34.7%,6.7% 25.0%,21.4% 28.1%,14.6% 14.6%,25.6% 18.3%,25.0% 6.7%,36.2% 16.7%,37.1% 1.7%,44.8% 10.3%);
-           font-family:Fredoka,"Arial Rounded MT Bold","Hiragino Maru Gothic ProN",system-ui,sans-serif; font-weight:700; font-size:clamp(1.5rem,7vw,2.3rem); letter-spacing:.02em; line-height:1.05;
-           color:#d62828; text-shadow:2px 2px 0 #fff, 4px 4px 0 rgba(0,0,0,.35); }
-  .rec-score { font-family:Fredoka,"Arial Rounded MT Bold",system-ui,sans-serif; font-weight:700; font-size:clamp(1.5rem,6vw,2.1rem); letter-spacing:.03em; color:var(--gold); text-shadow:2px 2px 0 #000; }
-  .pop { animation:pop .65s cubic-bezier(.2,1.6,.4,1) both; }
-  @keyframes pop { 0% { transform:scale(.2) rotate(-12deg); opacity:0; } 60% { transform:scale(1.18) rotate(3deg); opacity:1; } 100% { transform:scale(1) rotate(-2deg); } }
+  /* Record battu : cadre arcade pixel, lettres cyan/violet, guirlande, étincelles (+ confettis en JS) */
+  #score-label.record { flex:1 1 100%; order:-1; display:flex; flex-direction:column; align-items:center; margin-bottom:16px; }
+  .hs-wrap { --np:polygon(8px 0,calc(100% - 8px) 0,calc(100% - 8px) 4px,calc(100% - 4px) 4px,calc(100% - 4px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 4px) calc(100% - 8px),calc(100% - 4px) calc(100% - 4px),calc(100% - 8px) calc(100% - 4px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 4px),4px calc(100% - 4px),4px calc(100% - 8px),0 calc(100% - 8px),0 8px,4px 8px,4px 4px,8px 4px);
+             position:relative; margin:10px 14px; transform:rotate(-1.5deg); filter:drop-shadow(5px 5px 0 #3a0c52) drop-shadow(0 0 16px rgba(69,228,244,.5)); }
+  .hs { padding:4px; clip-path:var(--np); background:linear-gradient(135deg,#45e4f4,#c02be0 55%,#ffe14d); }
+  .hs-in { position:relative; clip-path:var(--np); min-width:min(84vw,400px); padding:26px 34px 20px; text-align:center;
+           background:radial-gradient(rgba(255,255,255,.35) 0 1px,transparent 1.5px) 0 0/24px 24px, radial-gradient(circle at 50% 0,#2b1766,#120a2e 70%); }
+  .hs-in::before, .hs-in::after { content:""; position:absolute; left:16px; right:16px; height:8px;
+           background:radial-gradient(circle,#ffe14d 0 2.5px,transparent 3px) 0 50%/16px 8px repeat-x; animation:blink 1s steps(1) infinite; }
+  .hs-in::before { top:7px; } .hs-in::after { bottom:7px; animation-delay:.5s; }
+  @keyframes blink { 50% { opacity:.2; } }
+  .hs-text { margin:4px 0 12px; font-family:'Press Start 2P',monospace; font-size:clamp(1.05rem,4.6vw,1.85rem); line-height:1.35;
+             background:linear-gradient(#45e4f4 0 50%,#1da6c8 50% 100%); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
+             filter:drop-shadow(2px 2px 0 #c02be0) drop-shadow(4px 4px 0 #5a1073) drop-shadow(5px 5px 0 #000); }
+  .hs-sub { font-family:'Press Start 2P',monospace; font-size:clamp(.7rem,2.8vw,.95rem); letter-spacing:.06em; color:#ffe14d; text-shadow:2px 2px 0 #000; }
+  .sp { position:absolute; width:24px; height:24px; background:#fff6a8; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:twinkle 1.4s ease-in-out infinite; }
+  .s1 { top:-12px; left:-12px; } .s2 { top:-14px; right:-10px; animation-delay:.35s; } .s3 { bottom:-12px; left:-8px; animation-delay:.7s; } .s4 { bottom:-12px; right:-12px; animation-delay:1s; }
+  @keyframes twinkle { 0%,100% { transform:scale(.4) rotate(0); opacity:.5; } 50% { transform:scale(1.1) rotate(45deg); opacity:1; } }
+  .hs-wrap.pop { animation:pop .7s cubic-bezier(.2,1.6,.4,1) both; }
+  @keyframes pop { 0% { transform:scale(.2) rotate(-14deg); opacity:0; } 60% { transform:scale(1.1) rotate(2deg); opacity:1; } 100% { transform:scale(1) rotate(-1.5deg); } }
+  .confetti { position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:1000; }
+  @media (prefers-reduced-motion: reduce) { .hs-wrap, .hs-in::before, .hs-in::after, .sp { animation:none !important; } }
 
   /* L'artwork prend toute la largeur, alignée avec le champ de saisie et les boutons */
   .stage { position:relative; display:flex; flex-direction:column; }
@@ -300,6 +311,41 @@ function shuffle(a) {
 
 function current() { return order[index]; }
 
+/* Découpe la phrase sur deux lignes : "NEW HIGH SCORE !" -> "NEW HIGH" / "SCORE !" */
+function hsText(p) {
+  const t = p.split(" ");
+  return t.length > 2 ? t.slice(0, -2).join(" ") + "<br>" + t.slice(-2).join(" ") : p;
+}
+
+/* Confettis carrés (pixels) : explosion depuis le cadre + pluie depuis le haut de l'écran */
+function launchConfetti(target) {
+  if (!target || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const old = document.querySelector(".confetti"); if (old) old.remove();
+  const cv = document.createElement("canvas"); cv.className = "confetti";
+  const dpr = window.devicePixelRatio || 1, W = window.innerWidth, H = window.innerHeight;
+  cv.width = W * dpr; cv.height = H * dpr; document.body.appendChild(cv);
+  const ctx = cv.getContext("2d"); ctx.scale(dpr, dpr);
+  const r = target.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+  const COLORS = ["#45e4f4", "#c02be0", "#ffe14d", "#ff5fa2", "#ffffff", "#7cff6b"];
+  const ps = [];
+  const add = (x, y, vx, vy) => ps.push({ x, y, vx, vy, s: 5 + Math.random() * 6, rot: Math.random() * 6.3, vr: (Math.random() - .5) * .4, c: COLORS[Math.floor(Math.random() * COLORS.length)] });
+  for (let i = 0; i < 120; i++) { const a = Math.random() * Math.PI * 2, v = 4 + Math.random() * 9; add(cx, cy, Math.cos(a) * v, Math.sin(a) * v - 5); }
+  let t0 = null;
+  function frame(ts) {
+    if (t0 === null) t0 = ts;
+    const el = ts - t0;
+    if (el < 1400) for (let i = 0; i < 3; i++) add(Math.random() * W, -10, (Math.random() - .5) * 2, 2 + Math.random() * 3);
+    ctx.clearRect(0, 0, W, H);
+    for (const p of ps) {
+      p.vy += .22; p.vx *= .992; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
+      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.c; ctx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s); ctx.restore();
+    }
+    for (let i = ps.length - 1; i >= 0; i--) if (ps[i].y > H + 20) ps.splice(i, 1);
+    if (el < 5000 && (ps.length || el < 1400)) requestAnimationFrame(frame); else cv.remove();
+  }
+  requestAnimationFrame(frame);
+}
+
 function render() {
   const zoom = finished ? 1 : ZOOM[Math.min(tries, MAX_TRIES - 1)];
   $("art").style.transform = `scale(${zoom})`;
@@ -307,9 +353,11 @@ function render() {
   const sl = $("score-label");
   if (recordRun) {
     sl.className = "record";
-    sl.innerHTML = `<div class="burst-wrap${popPending ? " pop" : ""}"><div class="burst">${recordPhrase}</div></div>` +
-                   `<span class="rec-score">Score ${score}</span>`;
-    popPending = false;   /* l'animation ne se rejoue pas à chaque rafraîchissement */
+    const fresh = popPending;   /* animation et confettis seulement à l'apparition, pas à chaque rafraîchissement */
+    sl.innerHTML = `<div class="hs-wrap${fresh ? " pop" : ""}"><i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i><i class="sp s4"></i>` +
+                   `<div class="hs"><div class="hs-in"><div class="hs-text">${hsText(recordPhrase)}</div><div class="hs-sub">SCORE ${score}</div></div></div></div>`;
+    popPending = false;
+    if (fresh) requestAnimationFrame(() => launchConfetti(sl.querySelector(".hs-wrap")));
   } else {
     sl.className = "";
     sl.innerHTML = `<span class="plate">Score <b>${score}</b></span><span class="plate">Record <b>${best}</b></span>`;
