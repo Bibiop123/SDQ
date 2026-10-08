@@ -4,44 +4,67 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Salle de Quiz – Devine le champion</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#f4f1ea; --card:#fff; --tx:#1d1b18; --mu:#7a746a; --ac:#6d4aff; --ok:#1f9d55; --ko:#d23f3f; --bd:#e2ddd2; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg:#15141a; --card:#201f28; --tx:#f0eee8; --mu:#9a96a6; --bd:#33313e; }
-  }
+  :root { --gold:#e6c36a; --gold-d:#a67c2a; --teal:#1fb5c4; --ink:#0d1117; --panel:#141b24; --tx:#eee; --mu:#9aa6b4; --ok:#4ade80; --ko:#ff6b6b; }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--tx); font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif; }
-  main { max-width:720px; margin:0 auto; padding:20px 16px 40px; }
-  .home { display:inline-block; margin-bottom:10px; color:var(--mu); text-decoration:none; font-size:.9rem; }
-  .home:hover { color:var(--ac); }
-  h1 { font-size:1.5rem; margin:0; }
-  .sub { color:var(--mu); margin:2px 0 16px; }
-  .tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
-  .tab { padding:6px 12px; border-radius:99px; border:1px solid var(--bd); background:var(--card); font-size:.85rem; color:var(--mu); }
-  .tab.on { background:var(--ac); color:#fff; border-color:var(--ac); }
-  .stats { display:flex; justify-content:space-between; color:var(--mu); font-size:.9rem; margin-bottom:6px; }
-  .frame { aspect-ratio:16/9; overflow:hidden; border-radius:14px; border:1px solid var(--bd); background:#000; }
+  body { margin:0; min-height:100vh; color:var(--tx); background:var(--ink); position:relative; overflow-x:hidden;
+         font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+  /* Fond : artwork flouté et assombri, comme l'accueil */
+  body::before { content:""; position:fixed; inset:-20px; z-index:-2;
+    background:url("images/briar.jpg") center / cover no-repeat; filter:blur(14px) brightness(.35) saturate(1.1); }
+  body::after { content:""; position:fixed; inset:0; z-index:-1;
+    background:radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.65) 100%); }
+  main { max-width:760px; margin:0 auto; padding:20px 16px 40px; }
+
+  .home { display:inline-block; margin-bottom:6px; color:var(--mu); text-decoration:none; font-size:.9rem; }
+  .home:hover { color:var(--gold); }
+  h1 { margin:0; text-align:center; font-family:Cinzel,Georgia,"Times New Roman",serif; font-weight:800;
+       font-size:clamp(1.8rem,6vw,2.6rem); letter-spacing:.04em;
+       background:linear-gradient(#fff3c4,var(--gold) 45%,var(--gold-d)); -webkit-background-clip:text; background-clip:text; color:transparent;
+       filter:drop-shadow(0 2px 6px rgba(0,0,0,.7)); }
+  .sub { text-align:center; color:#cfd6df; margin:2px 0 18px; }
+
+  .tabs { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:18px; }
+  .tab { padding:6px 14px; border-radius:99px; border:1px solid #2c3948; background:rgba(20,27,36,.8); font-size:.85rem; color:var(--mu); }
+  .tab.on { background:linear-gradient(#f3d98a,var(--gold-d)); color:#1a1305; border-color:var(--gold); font-weight:700; }
+
+  .stats { display:flex; justify-content:space-between; color:var(--mu); font-size:.9rem; margin-bottom:8px; padding:0 4px; }
+  #score-label { color:var(--gold); }
+
+  .stage { display:flex; gap:12px; align-items:flex-start; }
+  .stage .frame { flex:1; min-width:0; }
+  .frame { aspect-ratio:16/9; overflow:hidden; border-radius:14px; border:3px solid var(--gold); background:#000;
+           box-shadow:0 0 0 2px #000, 0 0 0 5px rgba(31,181,196,.55), 0 18px 50px rgba(0,0,0,.7); transition:box-shadow .4s ease; }
   .frame img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s ease; }
   .frame.revealed img { transform:scale(1) !important; }   /* artwork entier (victoire, défaite, abandon) */
-  .frame.revealed { border-color:var(--ac); }
-  .stage { display:flex; gap:10px; align-items:flex-start; }
-  .stage .frame { flex:1; min-width:0; }
+  .frame.revealed { box-shadow:0 0 0 2px #000, 0 0 0 5px var(--teal), 0 0 40px rgba(31,181,196,.45), 0 18px 50px rgba(0,0,0,.7); }
+
   .side { width:92px; flex-shrink:0; display:flex; flex-direction:column; gap:4px; }
-  .t { padding:2px 8px; border-radius:6px; background:var(--ko); color:#fff; font-size:.72rem; line-height:1.4; overflow-wrap:anywhere; }
-  .msg { min-height:28px; font-weight:600; }
+  .t { padding:2px 8px; border-radius:6px; background:rgba(255,107,107,.15); border:1px solid var(--ko); color:#ffc2c2;
+       font-size:.72rem; line-height:1.4; overflow-wrap:anywhere; }
+
+  .msg { min-height:30px; margin-top:14px; font-weight:700; text-align:center; font-family:Cinzel,Georgia,serif; font-size:1.1rem; }
   .msg.ok { color:var(--ok); } .msg.ko { color:var(--ko); }
-  .row { display:flex; gap:8px; margin:14px 0; }
-  input { flex:1; min-width:0; padding:12px; border-radius:10px; border:1px solid var(--bd); background:var(--card); color:var(--tx); font-size:1rem; }
-  button { padding:12px 16px; border:0; border-radius:10px; background:var(--ac); color:#fff; font-size:1rem; cursor:pointer; }
-  button.alt { background:var(--card); color:var(--tx); border:1px solid var(--bd); }
-  button:disabled { opacity:.5; cursor:default; }
+
+  .row { display:flex; gap:10px; margin:12px 0; }
+  input { flex:1; min-width:0; padding:13px 14px; border-radius:10px; border:2px solid #24707a; background:rgba(13,17,23,.85); color:var(--tx); font-size:1rem; }
+  input:focus { outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(31,181,196,.25); }
+  input::placeholder { color:#6f7b89; }
+  button { padding:13px 18px; border:0; border-radius:10px; font-size:1rem; font-weight:700; cursor:pointer; transition:transform .15s ease, filter .15s ease;
+           background:linear-gradient(#f3d98a,var(--gold-d)); color:#1a1305; }
+  button:hover:not(:disabled) { transform:translateY(-1px); filter:brightness(1.08); }
+  button.alt { background:rgba(20,27,36,.85); color:var(--gold); border:2px solid var(--gold-d); font-weight:600; }
+  button:disabled { opacity:.45; cursor:default; }
+  #giveup, #next { flex:1; }
 </style>
 </head>
 <body>
 <main>
   <a class="home" href="index.html">← Accueil</a>
   <h1>Salle de Quiz</h1>
-  <p class="sub">Mini-jeux d'images, de sons et de visuels</p>
+  <p class="sub">Devine le champion à partir d'un morceau d'artwork</p>
 
   <div class="tabs">
     <span class="tab on">Artwork</span>
