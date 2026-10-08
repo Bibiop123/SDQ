@@ -18,8 +18,11 @@
     background:radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.65) 100%); }
   main { max-width:760px; margin:0 auto; padding:20px 16px 40px; }
 
-  .home { display:inline-block; margin-bottom:6px; color:var(--mu); text-decoration:none; font-size:.9rem; }
-  .home:hover { color:var(--gold); }
+  .home { display:inline-flex; align-items:center; gap:8px; margin-bottom:12px; padding:7px 16px; text-decoration:none;
+          color:var(--gold); font-weight:600; font-size:.9rem; border:2px solid var(--gold-d); border-radius:10px;
+          background:linear-gradient(#1b232d,#141b24); box-shadow:0 0 0 1px #000, 0 4px 14px rgba(0,0,0,.5);
+          transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
+  .home:hover { border-color:var(--teal); transform:translateX(-2px); box-shadow:0 0 0 1px #000, 0 0 16px rgba(31,181,196,.4); }
   h1 { margin:0; text-align:center; font-family:Cinzel,Georgia,"Times New Roman",serif; font-weight:800;
        font-size:clamp(1.8rem,6vw,2.6rem); letter-spacing:.04em;
        background:linear-gradient(#fff3c4,var(--gold) 45%,var(--gold-d)); -webkit-background-clip:text; background-clip:text; color:transparent;
@@ -30,7 +33,13 @@
   .tab { padding:6px 14px; border-radius:99px; border:1px solid #2c3948; background:rgba(20,27,36,.8); font-size:.85rem; color:var(--mu); }
   .tab.on { background:linear-gradient(#f3d98a,var(--gold-d)); color:#1a1305; border-color:var(--gold); font-weight:700; }
 
-  .stats { display:flex; flex-wrap:wrap; justify-content:space-between; color:var(--mu); font-size:.9rem; margin-bottom:8px; padding:0 4px; }
+  .stats { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px; margin-bottom:12px; }
+  .plate { display:inline-flex; align-items:baseline; gap:8px; padding:6px 14px; border:2px solid var(--gold-d); border-radius:10px;
+           background:linear-gradient(#1b232d,#141b24); box-shadow:0 0 0 1px #000, 0 4px 14px rgba(0,0,0,.5);
+           color:var(--mu); font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
+  .plate b { font-family:Cinzel,Georgia,serif; font-size:1.15rem; font-weight:800; letter-spacing:.02em; color:var(--gold); text-transform:none; }
+  .plate:empty { display:none; }                        /* pas de plaque vide (essais cachés en fin de manche) */
+  #score-label:not(.record) { display:flex; gap:8px; }
   #score-label { color:var(--gold); }
   /* Record battu : texte de score agrandi + bulle de BD */
   #score-label.record { flex:1 1 100%; order:-1; display:flex; flex-direction:column; align-items:center; gap:2px; margin-bottom:10px; }
@@ -44,8 +53,9 @@
   .pop { animation:pop .65s cubic-bezier(.2,1.6,.4,1) both; }
   @keyframes pop { 0% { transform:scale(.2) rotate(-12deg); opacity:0; } 60% { transform:scale(1.18) rotate(3deg); opacity:1; } 100% { transform:scale(1) rotate(-2deg); } }
 
-  .stage { display:flex; gap:12px; align-items:flex-start; }
-  .stage .frame { flex:1; min-width:0; }
+  /* L'artwork prend toute la largeur, alignée avec le champ de saisie et les boutons */
+  .stage { position:relative; display:flex; flex-direction:column; }
+  .stage .frame { width:100%; }
   .frame { aspect-ratio:16/9; overflow:hidden; border-radius:14px; border:3px solid var(--gold); background:#000;
            box-shadow:0 0 0 2px #000, 0 0 0 5px rgba(31,181,196,.55), 0 18px 50px rgba(0,0,0,.7); transition:box-shadow .4s ease; }
   .frame img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s ease; }
@@ -65,7 +75,11 @@
   .frame.revealed img { transform:scale(1) !important; }   /* artwork entier (victoire, défaite, abandon) */
   .frame.revealed { box-shadow:0 0 0 2px #000, 0 0 0 5px var(--teal), 0 0 40px rgba(31,181,196,.45), 0 18px 50px rgba(0,0,0,.7); }
 
-  .side { width:92px; flex-shrink:0; display:flex; flex-direction:column; gap:4px; }
+  /* Noms ratés : à gauche de l'image (grand écran), sous l'image (petit écran) */
+  .side { position:absolute; right:calc(100% + 14px); top:0; width:92px; display:flex; flex-direction:column; gap:4px; }
+  @media (max-width: 999px) {
+    .side { position:static; order:2; width:auto; flex-direction:row; flex-wrap:wrap; margin-top:10px; }
+  }
   .t { padding:2px 8px; border-radius:6px; background:rgba(255,107,107,.15); border:1px solid var(--ko); color:#ffc2c2;
        font-size:.72rem; line-height:1.4; overflow-wrap:anywhere; }
 
@@ -128,7 +142,7 @@
   </section>
 
   <div id="game" hidden>
-  <div class="stats"><span id="tries-label"></span><span id="score-label"></span></div>
+  <div class="stats"><span id="tries-label" class="plate"></span><span id="score-label"></span></div>
   <div class="stage">
     <div class="side" id="tries-list"></div>
     <div class="frame" id="frame">
@@ -273,7 +287,7 @@ function current() { return order[index]; }
 function render() {
   const zoom = finished ? 1 : ZOOM[Math.min(tries, MAX_TRIES - 1)];
   $("art").style.transform = `scale(${zoom})`;
-  $("tries-label").textContent = finished ? "" : `Essai ${tries + 1}/${MAX_TRIES}`;
+  $("tries-label").innerHTML = finished ? "" : `Essai <b>${tries + 1}/${MAX_TRIES}</b>`;
   const sl = $("score-label");
   if (recordRun) {
     sl.className = "record";
@@ -282,7 +296,7 @@ function render() {
     popPending = false;   /* l'animation ne se rejoue pas à chaque rafraîchissement */
   } else {
     sl.className = "";
-    sl.textContent = `Score ${score} · Record ${best}`;
+    sl.innerHTML = `<span class="plate">Score <b>${score}</b></span><span class="plate">Record <b>${best}</b></span>`;
   }
 }
 
