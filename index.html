@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Salle de Quiz – Mini-jeux League of Legends</title>
+<title>Le Bonfire – Mini-jeux League of Legends</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
 <style>
@@ -31,7 +32,7 @@
   .top { position: sticky; top: 0; z-index: 10; background: rgba(7,11,22,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .top-in { max-width: 1100px; margin: 0 auto; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--tx); text-decoration: none; font-family: Cinzel, Georgia, serif; font-weight: 800; letter-spacing: .08em; font-size: 1.05rem; }
-  .brand svg { width: 26px; height: 26px; }
+  .brand .mark { width: 30px; height: 30px; }
   nav { display: flex; gap: 6px; }
   nav a { padding: 7px 14px; border-radius: 10px; color: var(--mu); text-decoration: none; font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; border: 1px solid transparent; }
   nav a:hover { color: var(--tx); border-color: var(--line); }
@@ -49,6 +50,7 @@
   }
   h1::before, h1::after { content: ""; width: clamp(24px, 8vw, 90px); height: 2px; background: linear-gradient(90deg, transparent, var(--gold)); }
   h1::after { transform: scaleX(-1); }
+  .hero-logo { display: block; margin: 0 auto 10px; width: 112px; height: 112px; filter: drop-shadow(0 6px 18px rgba(255,140,40,.35)); }
   .tag { margin: 10px 0 0; color: #c9d3e4; font-size: 1.1rem; font-weight: 500; }
 
   .sec { display: flex; align-items: baseline; justify-content: space-between; margin: 0 4px 14px; }
@@ -111,8 +113,8 @@
 <header class="top">
   <div class="top-in">
     <a class="brand" href="index.html">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l12 8v12l-12 8L4 22V10z" fill="none" stroke="#e6c36a" stroke-width="2"/><path d="M16 9l6 4v6l-6 4-6-4v-6z" fill="#3fc1e0"/></svg>
-      SALLE DE QUIZ
+      <img class="mark" src="logo.svg" alt="" width="30" height="30">
+      LE BONFIRE
     </a>
     <nav>
       <a class="on" href="index.html">Accueil</a>
@@ -123,7 +125,8 @@
 
 <main>
   <section class="hero">
-    <h1>Salle de Quiz</h1>
+    <img class="hero-logo" src="logo.svg" alt="Logo Le Bonfire" width="112" height="112">
+    <h1>Le Bonfire</h1>
     <p class="tag">Devine des champions de League of Legends</p>
   </section>
 

@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Artwork – Salle de Quiz</title>
+<title>Artwork – Le Bonfire</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
 <style>
@@ -18,7 +19,7 @@
   .top { position: sticky; top: 0; z-index: 40; background: rgba(7,11,22,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
   .top-in { max-width: 980px; margin: 0 auto; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
   .brand { display: flex; align-items: center; gap: 10px; color: var(--tx); text-decoration: none; font-family: Cinzel, Georgia, serif; font-weight: 800; letter-spacing: .08em; font-size: 1.05rem; }
-  .brand svg { width: 26px; height: 26px; }
+  .brand .mark { width: 30px; height: 30px; }
   nav { display: flex; gap: 6px; }
   nav a { padding: 7px 14px; border-radius: 10px; color: var(--mu); text-decoration: none; font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; border: 1px solid transparent; }
   nav a:hover { color: var(--tx); border-color: var(--line); }
@@ -110,8 +111,8 @@
 <header class="top">
   <div class="top-in">
     <a class="brand" href="index.html">
-      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l12 8v12l-12 8L4 22V10z" fill="none" stroke="#e6c36a" stroke-width="2"/><path d="M16 9l6 4v6l-6 4-6-4v-6z" fill="#3fc1e0"/></svg>
-      SALLE DE QUIZ
+      <img class="mark" src="logo.svg" alt="" width="30" height="30">
+      LE BONFIRE
     </a>
     <nav>
       <a href="index.html">Accueil</a>
@@ -184,10 +185,11 @@ const MAX_TRIES = ZOOM.length;
 
 /* Dépôt GitHub contenant les images (toutes les images du dossier « dir », sous-dossiers compris) */
 const REPO = { user: "Bibiop123", repo: "SDQ", branch: "main" };
-/* Dossiers d'images utilisés : tout dossier de premier niveau dont le nom commence par « images »
-   (images, images2, images_2, images-artwork…) + ceux que tu ajoutes ici par leur nom exact. */
-const EXTRA_DIRS = [];
-const isImageDir = top => /^images/i.test(top) || EXTRA_DIRS.includes(top);
+/* Dossiers d'images : TOUS les dossiers du dépôt (images, images2, images3, ou n'importe quel nom).
+   Seules les images dont un nom de champion est reconnu sont utilisées, le reste est ignoré.
+   Pour exclure un dossier entier, ajoute son nom exact ici. */
+const EXCLUDE_DIRS = [];
+const isImageDir = top => !/^[._]/.test(top) && !EXCLUDE_DIRS.includes(top) && !["node_modules", "docs"].includes(top);
 
 /* Zone du visage à éviter (en % de l'image) : x, y = centre ; rx, ry = demi-largeur / demi-hauteur */
 const DEFAULT_FACE = { x: 0.5, y: 0.3, rx: 0.16, ry: 0.22 };
@@ -251,7 +253,7 @@ function imageUrl(path) {
 }
 async function repoImagePaths() {
   try {
-    const c = JSON.parse(sessionStorage.getItem("sdq_tree_v3") || "null");
+    const c = JSON.parse(sessionStorage.getItem("sdq_tree_v4") || "null");
     if (c && Date.now() - c.t < 10 * 60 * 1000) return c.paths;
   } catch (e) {}
   const r = await fetch(`https://api.github.com/repos/${REPO.user}/${REPO.repo}/git/trees/${REPO.branch}?recursive=1`);
@@ -259,7 +261,7 @@ async function repoImagePaths() {
   const json = await r.json();
   const paths = json.tree.filter(f => f.type === "blob" && f.path.includes("/") && isImageDir(f.path.split("/")[0]) && IMG_EXT.test(f.path))
                          .map(f => f.path).filter(p => !p.split("/").some(s => s.startsWith("_") || s.startsWith(".")));
-  try { sessionStorage.setItem("sdq_tree_v3", JSON.stringify({ t: Date.now(), paths })); } catch (e) {}
+  try { sessionStorage.setItem("sdq_tree_v4", JSON.stringify({ t: Date.now(), paths })); } catch (e) {}
   return paths;
 }
 let ROUNDS = [];
@@ -273,7 +275,7 @@ async function loadLibrary() {
       if (!groups.has(who)) groups.set(who, []);
       groups.get(who).push(imageUrl(p));
     });
-    if (!groups.size) throw new Error("aucune image reconnue dans les dossiers « images… »");
+    if (!groups.size) throw new Error("aucune image reconnue dans le dépôt");
     ROUNDS = [...groups].map(([name, imgs]) => ({ name, imgs, face: DEFAULT_FACE }));
     if (unknown.length) console.warn(unknown.length + " image(s) sans nom de champion reconnu :", unknown);
     $("lib-note").textContent = `${paths.length - unknown.length} images · ${groups.size} champions`
