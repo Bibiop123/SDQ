@@ -3,211 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Salle de Quiz – Devine le champion</title>
+<title>Salle de Quiz</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
 <style>
-  :root { --bg:#f4f1ea; --card:#fff; --tx:#1d1b18; --mu:#7a746a; --ac:#6d4aff; --ok:#1f9d55; --ko:#d23f3f; --bd:#e2ddd2; }
-  @media (prefers-color-scheme: dark) {
-    :root { --bg:#15141a; --card:#201f28; --tx:#f0eee8; --mu:#9a96a6; --bd:#33313e; }
-  }
+  :root { --gold:#e6c36a; --gold-d:#a67c2a; --teal:#1fb5c4; --ink:#0d1117; }
   * { box-sizing: border-box; }
-  body { margin:0; background:var(--bg); color:var(--tx); font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif; }
-  main { max-width:720px; margin:0 auto; padding:20px 16px 40px; }
-  h1 { font-size:1.5rem; margin:0; }
-  .sub { color:var(--mu); margin:2px 0 16px; }
-  .tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:16px; }
-  .tab { padding:6px 12px; border-radius:99px; border:1px solid var(--bd); background:var(--card); font-size:.85rem; color:var(--mu); }
-  .tab.on { background:var(--ac); color:#fff; border-color:var(--ac); }
-  .stats { display:flex; justify-content:space-between; color:var(--mu); font-size:.9rem; margin-bottom:6px; }
-  .frame { aspect-ratio:16/9; overflow:hidden; border-radius:14px; border:1px solid var(--bd); background:#000; }
-  .frame img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s ease; }
-  .frame.revealed img { transform:scale(1) !important; }   /* artwork entier (victoire, défaite, abandon) */
-  .frame.revealed { border-color:var(--ac); }
-  .stage { display:flex; gap:10px; align-items:flex-start; }
-  .stage .frame { flex:1; min-width:0; }
-  .side { width:92px; flex-shrink:0; display:flex; flex-direction:column; gap:4px; }
-  .t { padding:2px 8px; border-radius:6px; background:var(--ko); color:#fff; font-size:.72rem; line-height:1.4; overflow-wrap:anywhere; }
-  .msg { min-height:28px; font-weight:600; }
-  .msg.ok { color:var(--ok); } .msg.ko { color:var(--ko); }
-  .row { display:flex; gap:8px; margin:14px 0; }
-  input { flex:1; min-width:0; padding:12px; border-radius:10px; border:1px solid var(--bd); background:var(--card); color:var(--tx); font-size:1rem; }
-  button { padding:12px 16px; border:0; border-radius:10px; background:var(--ac); color:#fff; font-size:1rem; cursor:pointer; }
-  button.alt { background:var(--card); color:var(--tx); border:1px solid var(--bd); }
-  button:disabled { opacity:.5; cursor:default; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    color: #eee; font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+    background: var(--ink); position: relative; overflow-x: hidden;
+  }
+  /* Fond : artwork flouté et assombri */
+  body::before {
+    content: ""; position: fixed; inset: -20px; z-index: -2;
+    background: url("images/briar.jpg") center / cover no-repeat;
+    filter: blur(14px) brightness(.35) saturate(1.1);
+  }
+  body::after {
+    content: ""; position: fixed; inset: 0; z-index: -1;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.65) 100%);
+  }
+  main {
+    min-height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 22px; padding: 28px 16px;
+  }
+  h1 {
+    margin: 0; font-family: Cinzel, Georgia, "Times New Roman", serif; font-weight: 800;
+    font-size: clamp(2rem, 7vw, 3.4rem); letter-spacing: .04em; text-align: center;
+    background: linear-gradient(#fff3c4, var(--gold) 45%, var(--gold-d));
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+    filter: drop-shadow(0 2px 6px rgba(0,0,0,.7));
+  }
+  .tagline { margin: -10px 0 0; color: #cfd6df; text-align: center; }
+
+  /* Cadre central cliquable */
+  .card {
+    display: block; width: min(560px, 100%); text-decoration: none; color: inherit;
+    border: 3px solid var(--gold); border-radius: 14px; overflow: hidden;
+    background: #11161d;
+    box-shadow: 0 0 0 2px #000, 0 0 0 5px rgba(31,181,196,.55), 0 18px 50px rgba(0,0,0,.7);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .card:hover, .card:focus-visible {
+    transform: translateY(-4px) scale(1.015); outline: none;
+    box-shadow: 0 0 0 2px #000, 0 0 0 5px var(--teal), 0 0 40px rgba(31,181,196,.45), 0 22px 60px rgba(0,0,0,.75);
+  }
+  .card img { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .6s ease; }
+  .card:hover img { transform: scale(1.05); }
+  .card .img-wrap { overflow: hidden; }
+  .card .label { padding: 14px 18px 16px; border-top: 2px solid var(--gold-d); background: linear-gradient(#1b232d, #11161d); }
+  .card .label strong { display: block; font-family: Cinzel, Georgia, serif; font-size: 1.35rem; color: var(--gold); }
+  .card .label span { color: #aeb8c4; font-size: .92rem; }
+  .soon { color: #8b95a3; font-size: .85rem; }
 </style>
 </head>
 <body>
 <main>
   <h1>Salle de Quiz</h1>
-  <p class="sub">Mini-jeux d'images, de sons et de visuels</p>
+  <p class="tagline">Devine des champions de League of Legends</p>
 
-  <div class="tabs">
-    <span class="tab on">Artwork</span>
-    <span class="tab">Silhouette (bientôt)</span>
-    <span class="tab">Musique (bientôt)</span>
-  </div>
+  <a class="card" href="artwork.html">
+    <div class="img-wrap"><img src="images/lillia.jpg" alt="Artwork de League of Legends"></div>
+    <div class="label">
+      <strong>Artwork</strong>
+      <span>Devine le champion à partir d'un morceau d'artwork</span>
+    </div>
+  </a>
 
-  <div class="stats"><span id="tries-label"></span><span id="score-label"></span></div>
-  <div class="stage">
-    <div class="side" id="tries-list"></div>
-    <div class="frame" id="frame"><img id="art" alt="Artwork à deviner"></div>
-  </div>
-  <div class="msg" id="msg"></div>
-
-  <div class="row">
-    <input id="answer" list="names" placeholder="Nom du champion…" autocomplete="off">
-    <button id="submit">Valider</button>
-  </div>
-  <div class="row">
-    <button class="alt" id="giveup">Abandonner</button>
-    <button class="alt" id="next" style="display:none">Suivant →</button>
-  </div>
-  <datalist id="names"></datalist>
+  <p class="soon">D'autres jeux arrivent bientôt…</p>
 </main>
-
-<script>
-/* ===== CONFIGURATION : ajoute tes questions ici =====
-   name : bonne réponse
-   img  : chemin de l'image
-   face : zone du visage à éviter, en % de l'image
-          (x, y = centre ; rx, ry = demi-largeur / demi-hauteur)
-   Le point de zoom est tiré au hasard à chaque manche, loin de cette zone. */
-const ROUNDS = [
-  { name: "Lillia", img: "images/lillia.jpg", face: { x: 0.51, y: 0.22, rx: 0.09, ry: 0.13 } },
-  { name: "Briar",  img: "images/briar.jpg",  face: { x: 0.64, y: 0.29, rx: 0.10, ry: 0.17 } }
-];
-
-/* Liste des suggestions du champ de saisie */
-const NAMES = ["Aatrox","Ahri","Akali","Alistar","Amumu","Annie","Ashe","Briar","Caitlyn","Darius","Diana","Draven","Ekko","Evelynn","Ezreal","Fiora","Garen","Gwen","Illaoi","Irelia","Jax","Jhin","Jinx","Kai'Sa","Katarina","Kayn","Lee Sin","Leona","Lillia","Lucian","Lulu","Lux","Master Yi","Miss Fortune","Morgana","Nami","Nasus","Nautilus","Nidalee","Orianna","Pyke","Rell","Renata Glasc","Samira","Senna","Seraphine","Sett","Shen","Singed","Sona","Soraka","Teemo","Thresh","Tristana","Vayne","Vel'Koz","Vi","Viego","Xayah","Yasuo","Yone","Zed","Zeri","Ziggs","Zoe","Zyra"];
-
-/* Niveaux de zoom : un par essai (le dernier = image entière) */
-const ZOOM = [7, 4.5, 3, 2, 1.4, 1];
-const MAX_TRIES = ZOOM.length;
-
-/* ===== LOGIQUE DU JEU ===== */
-const $ = id => document.getElementById(id);
-const normalize = s => s.normalize("NFD").replace(/[\u0300-\u036f'’\s-]/g, "").toLowerCase();
-
-let order = [], index = 0, tries = 0, finished = false, score = 0, best = 0;
-let wrong = [];  /* noms déjà essayés pendant la manche */
-
-function refreshSuggestions() {
-  const banned = wrong.map(normalize);
-  $("names").innerHTML = NAMES
-    .filter(n => !banned.includes(normalize(n)))
-    .map(n => `<option value="${n}">`).join("");
-}
-try { best = Number(localStorage.getItem("sdq_best")) || 0; } catch (e) {}
-
-/* Zone visible à un niveau de zoom z quand on zoome autour du point (ox, oy) */
-function windowAt(ox, oy, z) {
-  return { x0: ox - ox / z, x1: ox + (1 - ox) / z, y0: oy - oy / z, y1: oy + (1 - oy) / z };
-}
-
-/* Tire un point de zoom au hasard en évitant le visage le plus longtemps possible :
-   on garde les points pour lesquels le visage reste hors cadre sur le plus de niveaux de zoom. */
-function pickFocus(face) {
-  let best = -1, pool = [];
-  for (let i = 0; i < 400; i++) {
-    const ox = 0.05 + Math.random() * 0.9, oy = 0.05 + Math.random() * 0.9;
-    let score = 0;
-    for (let k = 0; k < ZOOM.length - 1; k++) {
-      const w = windowAt(ox, oy, ZOOM[k]);
-      const hit = w.x0 < face.x + face.rx && w.x1 > face.x - face.rx &&
-                  w.y0 < face.y + face.ry && w.y1 > face.y - face.ry;
-      if (hit) break;
-      score++;
-    }
-    if (score > best) { best = score; pool = []; }
-    if (score === best) pool.push([ox, oy]);
-  }
-  const [x, y] = pool[Math.floor(Math.random() * pool.length)];
-  return `${(x * 100).toFixed(1)}% ${(y * 100).toFixed(1)}%`;
-}
-
-function shuffle(a) {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function current() { return order[index]; }
-
-function render() {
-  const zoom = finished ? 1 : ZOOM[Math.min(tries, MAX_TRIES - 1)];
-  $("art").style.transform = `scale(${zoom})`;
-  $("tries-label").textContent = finished ? "" : `Essai ${tries + 1}/${MAX_TRIES}`;
-  $("score-label").textContent = `Score ${score} · Record ${best}`;
-}
-
-function loadRound() {
-  tries = 0; finished = false; wrong = [];
-  $("frame").classList.remove("revealed");
-  refreshSuggestions();
-  $("art").onload = () => {   /* le cadre prend le format de l'image : elle s'affiche entière à la fin */
-    $("frame").style.aspectRatio = $("art").naturalWidth + " / " + $("art").naturalHeight;
-  };
-  $("art").style.transformOrigin = pickFocus(current().face);
-  $("art").src = current().img;
-  $("tries-list").innerHTML = "";
-  $("msg").textContent = ""; $("msg").className = "msg";
-  $("next").style.display = "none";
-  $("answer").value = "";
-  $("answer").disabled = $("submit").disabled = $("giveup").disabled = false;
-  $("answer").focus();
-  render();
-}
-
-function endRound(won) {
-  finished = true;
-  $("frame").classList.add("revealed");   /* dévoile l'artwork entier dans tous les cas */
-  $("answer").disabled = $("submit").disabled = $("giveup").disabled = true;
-  $("next").style.display = "";
-  $("msg").className = "msg " + (won ? "ok" : "ko");
-  $("msg").textContent = won ? `Bravo, c'était ${current().name} !` : `Perdu… c'était ${current().name}.`;
-  if (won) {
-    score++;
-    if (score > best) { best = score; try { localStorage.setItem("sdq_best", best); } catch (e) {} }
-  } else {
-    score = 0;
-  }
-  render();
-}
-
-function guess() {
-  if (finished) return;
-  const value = $("answer").value.trim();
-  if (!value) return;
-  if (normalize(value) === normalize(current().name)) return endRound(true);
-  if (wrong.map(normalize).includes(normalize(value))) {   /* déjà essayé : on ne compte pas */
-    $("answer").value = "";
-    return;
-  }
-
-  tries++;
-  wrong.push(value);
-  refreshSuggestions();
-  const chip = document.createElement("span");
-  chip.className = "t"; chip.textContent = value;
-  $("tries-list").appendChild(chip);
-  $("answer").value = "";
-
-  if (tries >= MAX_TRIES) endRound(false);
-  else { $("msg").className = "msg ko"; $("msg").textContent = "Raté, l'image se dévoile…"; render(); }
-}
-
-$("submit").onclick = guess;
-$("answer").onkeydown = e => { if (e.key === "Enter") guess(); };
-$("giveup").onclick = () => endRound(false);
-$("next").onclick = () => {
-  index++;
-  if (index >= order.length) { order = shuffle(ROUNDS.slice()); index = 0; }
-  loadRound();
-};
-
-order = shuffle(ROUNDS.slice());
-loadRound();
-</script>
 </body>
 </html>
