@@ -183,7 +183,11 @@ const ZOOM = [3.1, 2.5, 2, 1.65, 1.35, 1.15];     /* un niveau de zoom par essai
 const MAX_TRIES = ZOOM.length;
 
 /* Dépôt GitHub contenant les images (toutes les images du dossier « dir », sous-dossiers compris) */
-const REPO = { user: "Bibiop123", repo: "SDQ", branch: "main", dir: "images" };
+const REPO = { user: "Bibiop123", repo: "SDQ", branch: "main" };
+/* Dossiers d'images utilisés : tout dossier de premier niveau dont le nom commence par « images »
+   (images, images2, images_2, images-artwork…) + ceux que tu ajoutes ici par leur nom exact. */
+const EXTRA_DIRS = [];
+const isImageDir = top => /^images/i.test(top) || EXTRA_DIRS.includes(top);
 
 /* Zone du visage à éviter (en % de l'image) : x, y = centre ; rx, ry = demi-largeur / demi-hauteur */
 const DEFAULT_FACE = { x: 0.5, y: 0.3, rx: 0.16, ry: 0.22 };
@@ -247,15 +251,15 @@ function imageUrl(path) {
 }
 async function repoImagePaths() {
   try {
-    const c = JSON.parse(sessionStorage.getItem("sdq_tree_v2") || "null");
+    const c = JSON.parse(sessionStorage.getItem("sdq_tree_v3") || "null");
     if (c && Date.now() - c.t < 10 * 60 * 1000) return c.paths;
   } catch (e) {}
   const r = await fetch(`https://api.github.com/repos/${REPO.user}/${REPO.repo}/git/trees/${REPO.branch}?recursive=1`);
   if (!r.ok) throw new Error("GitHub a répondu " + r.status);
   const json = await r.json();
-  const paths = json.tree.filter(f => f.type === "blob" && f.path.startsWith(REPO.dir + "/") && IMG_EXT.test(f.path))
+  const paths = json.tree.filter(f => f.type === "blob" && f.path.includes("/") && isImageDir(f.path.split("/")[0]) && IMG_EXT.test(f.path))
                          .map(f => f.path).filter(p => !p.split("/").some(s => s.startsWith("_") || s.startsWith(".")));
-  try { sessionStorage.setItem("sdq_tree_v2", JSON.stringify({ t: Date.now(), paths })); } catch (e) {}
+  try { sessionStorage.setItem("sdq_tree_v3", JSON.stringify({ t: Date.now(), paths })); } catch (e) {}
   return paths;
 }
 let ROUNDS = [];
@@ -269,7 +273,7 @@ async function loadLibrary() {
       if (!groups.has(who)) groups.set(who, []);
       groups.get(who).push(imageUrl(p));
     });
-    if (!groups.size) throw new Error("aucune image reconnue dans " + REPO.dir + "/");
+    if (!groups.size) throw new Error("aucune image reconnue dans les dossiers « images… »");
     ROUNDS = [...groups].map(([name, imgs]) => ({ name, imgs, face: DEFAULT_FACE }));
     if (unknown.length) console.warn(unknown.length + " image(s) sans nom de champion reconnu :", unknown);
     $("lib-note").textContent = `${paths.length - unknown.length} images · ${groups.size} champions`
