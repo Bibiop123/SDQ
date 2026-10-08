@@ -36,8 +36,18 @@
   /* Carte de jeu */
   .game { display: grid; grid-template-columns: minmax(330px, 400px) minmax(0, 1fr); gap: 22px; align-items: start; padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,21,38,.86); box-shadow: 0 16px 44px rgba(0,0,0,.6); }
   .bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
-  .plates { display: flex; gap: 8px; }
+  .plates { display: flex; gap: 22px; }
   .plate { display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
+  /* Record battu : aura rouge discrète + points d'exclamation */
+  .plate { position: relative; transition: border-color .3s, box-shadow .3s; }
+  .plate.broken { border-color: #ff4a4a; color: #ffd9d9; animation: aura 2.2s ease-in-out infinite; }
+  .plate.broken b { color: #ff6b6b; }
+  .plate.broken::before, .plate.broken::after { content: "!"; position: absolute; top: 50%; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 1.35rem; line-height: 1; color: #ff3b3b; text-shadow: 0 0 8px rgba(255,59,59,.8); animation: bang .6s cubic-bezier(.2,1.6,.4,1) both; }
+  .plate.broken::before { left: -15px; transform: translateY(-50%) rotate(-14deg); }
+  .plate.broken::after { right: -15px; transform: translateY(-50%) rotate(14deg); }
+  @keyframes aura { 0%,100% { box-shadow: 0 0 6px 1px rgba(255,59,59,.45), 0 0 16px 3px rgba(255,59,59,.2); } 50% { box-shadow: 0 0 10px 3px rgba(255,59,59,.7), 0 0 26px 7px rgba(255,59,59,.3); } }
+  @keyframes bang { from { opacity: 0; scale: .2; } to { opacity: 1; scale: 1; } }
+  @media (prefers-reduced-motion: reduce) { .plate.broken { animation: none; box-shadow: 0 0 12px 3px rgba(255,59,59,.55); } .plate.broken::before, .plate.broken::after { animation: none; } }
   .plate b { font-size: 1.2rem; font-weight: 700; letter-spacing: 0; color: var(--gold); text-transform: none; }
   .dots { display: flex; gap: 6px; }
   .dots i { width: 22px; height: 6px; border-radius: 4px; background: #24314a; transition: background .3s; }
@@ -161,7 +171,7 @@
       <div class="bar">
         <div class="plates">
           <span class="plate">Série <b id="streak">0</b></span>
-          <span class="plate">Record <b id="best">0</b></span>
+          <span class="plate" id="recordPlate">Record <b id="best">0</b></span>
         </div>
         <div class="dots" id="dots" aria-label="Essais"></div>
       </div>
@@ -291,7 +301,7 @@ async function loadLibrary() {
    3. LOGIQUE DU JEU
    ============================================================ */
 let deck = [], cur = null, tries = 0, over = false, guessed = [];
-let streak = 0, best = 0;
+let streak = 0, best = 0, recordBroken = false;
 try { best = Number(localStorage.getItem("sdq_best")) || 0; } catch (e) {}
 
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -322,6 +332,7 @@ function renderDots(win) {
 function render() {
   $("art").style.transform = `scale(${over ? 1 : ZOOM[Math.min(tries, MAX_TRIES - 1)]})`;
   $("streak").textContent = streak; $("best").textContent = best;
+  $("recordPlate").classList.toggle("broken", recordBroken);
 }
 
 function newRound() {
@@ -359,7 +370,7 @@ function endRound(win) {
   over = true;
   $("frame").classList.add("revealed"); if (!win) $("frame").classList.add("lost");
   $("play").hidden = true; hideSuggestions(); $("result").hidden = false; $("hint").textContent = "";
-  if (win) { streak++; if (streak > best) { best = streak; try { localStorage.setItem("sdq_best", best); } catch (e) {} } } else streak = 0;
+  if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best", best); } catch (e) {} } } else { streak = 0; recordBroken = false; }
   const n = win ? tries + 1 : MAX_TRIES;
   $("msg").className = "msg " + (win ? "ok" : "ko");
   $("msg").innerHTML = win ? `Bravo, c'était ${cur.name} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${cur.name}.`;
