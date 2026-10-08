@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Salle de Quiz – Devine le champion</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
 <style>
   :root { --gold:#e6c36a; --gold-d:#a67c2a; --teal:#1fb5c4; --ink:#0d1117; --panel:#141b24; --tx:#eee; --mu:#9aa6b4; --ok:#4ade80; --ko:#ff6b6b; }
   * { box-sizing: border-box; }
@@ -38,9 +38,9 @@
   .burst { display:grid; place-items:center; min-width:min(86vw,360px); padding:46px 38px; text-align:center;
            background:radial-gradient(circle at 50% 40%, #fff27a, #ffc21a 70%, #ff8f1a);
            clip-path:polygon(50.0% 0.0%,54.7% 14.3%,62.9% 1.7%,65.3% 13.0%,75.0% 6.7%,71.9% 21.4%,85.4% 14.6%,81.7% 25.6%,93.3% 25.0%,83.3% 36.2%,98.3% 37.1%,89.7% 44.8%,100.0% 50.0%,85.7% 54.7%,98.3% 62.9%,87.0% 65.3%,93.3% 75.0%,78.6% 71.9%,85.4% 85.4%,74.4% 81.7%,75.0% 93.3%,63.8% 83.3%,62.9% 98.3%,55.2% 89.7%,50.0% 100.0%,45.3% 85.7%,37.1% 98.3%,34.7% 87.0%,25.0% 93.3%,28.1% 78.6%,14.6% 85.4%,18.3% 74.4%,6.7% 75.0%,16.7% 63.8%,1.7% 62.9%,10.3% 55.2%,0.0% 50.0%,14.3% 45.3%,1.7% 37.1%,13.0% 34.7%,6.7% 25.0%,21.4% 28.1%,14.6% 14.6%,25.6% 18.3%,25.0% 6.7%,36.2% 16.7%,37.1% 1.7%,44.8% 10.3%);
-           font-family:Bangers,Impact,"Arial Narrow Bold",sans-serif; font-size:clamp(1.9rem,8vw,2.9rem); letter-spacing:.04em; line-height:1;
+           font-family:Fredoka,"Arial Rounded MT Bold","Hiragino Maru Gothic ProN",system-ui,sans-serif; font-weight:700; font-size:clamp(1.5rem,7vw,2.3rem); letter-spacing:.02em; line-height:1.05;
            color:#d62828; text-shadow:2px 2px 0 #fff, 4px 4px 0 rgba(0,0,0,.35); }
-  .rec-score { font-family:Bangers,Impact,sans-serif; font-size:clamp(1.6rem,6vw,2.2rem); letter-spacing:.06em; color:var(--gold); text-shadow:2px 2px 0 #000; }
+  .rec-score { font-family:Fredoka,"Arial Rounded MT Bold",system-ui,sans-serif; font-weight:700; font-size:clamp(1.5rem,6vw,2.1rem); letter-spacing:.03em; color:var(--gold); text-shadow:2px 2px 0 #000; }
   .pop { animation:pop .65s cubic-bezier(.2,1.6,.4,1) both; }
   @keyframes pop { 0% { transform:scale(.2) rotate(-12deg); opacity:0; } 60% { transform:scale(1.18) rotate(3deg); opacity:1; } 100% { transform:scale(1) rotate(-2deg); } }
 
@@ -82,6 +82,22 @@
   button.alt { background:rgba(20,27,36,.85); color:var(--gold); border:2px solid var(--gold-d); font-weight:600; }
   button:disabled { opacity:.45; cursor:default; }
   #giveup, #next { flex:1; }
+
+  /* Liste de suggestions : une petite carte encadrée par champion */
+  .combo { position:relative; flex:1; min-width:0; }
+  .combo input { width:100%; }
+  .suggest { position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:30; margin:0; padding:6px; list-style:none;
+             max-height:300px; overflow-y:auto; background:rgba(13,17,23,.97); border:2px solid var(--gold-d); border-radius:12px;
+             box-shadow:0 14px 40px rgba(0,0,0,.75); scrollbar-width:thin; scrollbar-color:var(--gold-d) #1a222c; }
+  .suggest li { display:flex; align-items:center; gap:12px; margin:0 0 6px; padding:6px 12px 6px 6px; cursor:pointer;
+                border:1px solid #2c3948; border-radius:10px; background:linear-gradient(#1b232d,#141b24);
+                transition:border-color .12s ease, background .12s ease; }
+  .suggest li:last-child { margin-bottom:0; }
+  .suggest li:hover, .suggest li.sel { border-color:var(--teal); background:linear-gradient(#22313e,#18222c); }
+  .ico { width:42px; height:42px; flex-shrink:0; border-radius:8px; border:2px solid var(--gold-d); overflow:hidden; background:#0b0f14;
+         display:grid; place-items:center; font-family:Cinzel,Georgia,serif; font-weight:800; color:var(--gold); }
+  .ico img { width:100%; height:100%; object-fit:cover; object-position:50% 12%; display:block; }
+  .suggest .nm { font-weight:600; }
 
   /* Écran de démarrage */
   .start { margin:10px auto 0; max-width:560px; text-align:center; padding:28px 22px 30px; border-radius:14px;
@@ -129,7 +145,10 @@
   <div class="msg" id="msg"></div>
 
   <div class="row">
-    <input id="answer" list="names" placeholder="Nom du champion…" autocomplete="off">
+    <div class="combo">
+      <input id="answer" placeholder="Nom du champion…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="suggest">
+      <ul class="suggest" id="suggest" role="listbox" hidden></ul>
+    </div>
     <button id="submit">Valider</button>
   </div>
   <div class="row">
@@ -137,7 +156,6 @@
     <button class="alt" id="next" style="display:none">Suivant →</button>
   </div>
   </div>
-  <datalist id="names"></datalist>
 </main>
 
 <script>
@@ -168,12 +186,52 @@ let recordRun = false, recordPhrase = "", popPending = false;   /* record en cou
 const PHRASES = ["NEW HIGH SCORE !", "NOUVEAU RECORD !", "BOOM !", "WOW !", "POW !", "YEAH !", "INCROYABLE !", "BANG !"];
 let wrong = [];  /* noms déjà essayés pendant la manche */
 
-function refreshSuggestions() {
-  const banned = wrong.map(normalize);
-  $("names").innerHTML = NAMES
-    .filter(n => !banned.includes(normalize(n)))
-    .map(n => `<option value="${n}">`).join("");
+/* ===== Liste de suggestions personnalisée ===== */
+let shown = [], sel = -1;
+
+/* Identifiant Data Dragon (Riot) : Kai'Sa -> Kaisa, Master Yi -> MasterYi, etc. */
+const DD_FIX = { "Renata Glasc": "Renata" };
+const ddId = n => DD_FIX[n] || n.replace(/'(.)/g, (_, c) => c.toLowerCase()).replace(/[^A-Za-z0-9]/g, "");
+const iconUrl = n => `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${ddId(n)}_0.jpg`;
+
+function hideSuggestions() {
+  $("suggest").hidden = true; $("answer").setAttribute("aria-expanded", "false"); sel = -1;
 }
+
+function renderSuggestions() {
+  const q = normalize($("answer").value);
+  const banned = wrong.map(normalize);
+  const ok = NAMES.filter(n => !banned.includes(normalize(n)));
+  shown = q ? ok.filter(n => normalize(n).startsWith(q)).concat(ok.filter(n => !normalize(n).startsWith(q) && normalize(n).includes(q))) : [];
+  const ul = $("suggest");
+  ul.innerHTML = ""; sel = -1;
+  if (!shown.length || $("answer").disabled) return hideSuggestions();
+  shown.forEach(name => {
+    const li = document.createElement("li");
+    li.setAttribute("role", "option");
+    const ico = document.createElement("div"); ico.className = "ico";
+    const img = new Image(); img.alt = ""; img.loading = "lazy"; img.src = iconUrl(name);
+    img.onerror = () => { ico.textContent = name[0]; };      /* pas d'image : initiale dans le cadre */
+    ico.appendChild(img);
+    const nm = document.createElement("span"); nm.className = "nm"; nm.textContent = name;
+    li.append(ico, nm);
+    li.onmousedown = e => e.preventDefault();               /* garde le focus sur le champ */
+    li.onclick = () => pick(name);
+    ul.appendChild(li);
+  });
+  ul.hidden = false; $("answer").setAttribute("aria-expanded", "true");
+}
+
+function pick(name) { $("answer").value = name; hideSuggestions(); guess(); }
+
+function moveSel(d) {
+  const items = $("suggest").children; if (!items.length) return;
+  if (sel >= 0) items[sel].classList.remove("sel");
+  sel = (sel + d + items.length) % items.length;
+  items[sel].classList.add("sel"); items[sel].scrollIntoView({ block: "nearest" });
+}
+
+function refreshSuggestions() { hideSuggestions(); }
 try { best = Number(localStorage.getItem("sdq_best")) || 0; } catch (e) {}
 
 /* Zone visible à un niveau de zoom z quand on zoome autour du point (ox, oy) */
@@ -333,7 +391,15 @@ function guess() {
 }
 
 $("submit").onclick = guess;
-$("answer").onkeydown = e => { if (e.key === "Enter") guess(); };
+$("answer").oninput = renderSuggestions;
+$("answer").onfocus = renderSuggestions;
+$("answer").onblur = () => setTimeout(hideSuggestions, 150);
+$("answer").onkeydown = e => {
+  if (e.key === "ArrowDown") { e.preventDefault(); if (!$("suggest").hidden) moveSel(1); else renderSuggestions(); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); moveSel(-1); }
+  else if (e.key === "Escape") hideSuggestions();
+  else if (e.key === "Enter") { e.preventDefault(); if (sel >= 0 && shown[sel]) pick(shown[sel]); else { hideSuggestions(); guess(); } }
+};
 $("giveup").onclick = () => endRound(false);
 $("next").onclick = goNext;
 $("cd-next").onclick = goNext;
