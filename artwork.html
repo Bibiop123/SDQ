@@ -3,166 +3,99 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Salle de Quiz – Devine le champion</title>
+<title>Artwork – Salle de Quiz</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Cinzel:wght@700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
 <style>
-  :root { --gold:#e6c36a; --gold-d:#a67c2a; --teal:#3fc1e0; --ink:#070b16; --panel:#0e1526; --line:#243149; --tx:#e9eef7; --mu:#8d9ab2; --ok:#4ade80; --ko:#ff6b6b; }
+  :root { --bg:#070b16; --panel:#0e1526; --line:#243149; --tx:#e9eef7; --mu:#8d9ab2; --cyan:#3fc1e0; --gold:#e6c36a; --gold-d:#a67c2a; --ok:#4ade80; --ko:#ff6b6b; }
   * { box-sizing: border-box; }
-  body { margin:0; min-height:100vh; color:var(--tx); background:var(--ink); position:relative; overflow-x:hidden;
-         font:16px/1.5 Barlow,system-ui,-apple-system,"Segoe UI",sans-serif; }
-  /* Fond : artwork flouté et assombri, comme l'accueil */
-  body::before { content:""; position:fixed; inset:-20px; z-index:-2;
-    background:url("images/briar.jpg") center / cover no-repeat; filter:blur(16px) brightness(.3) saturate(1.2); }
-  body::after { content:""; position:fixed; inset:0; z-index:-1;
-    background:radial-gradient(ellipse at 50% 0%, rgba(63,193,224,.12), transparent 55%), linear-gradient(rgba(7,11,22,.55), var(--ink) 95%); }
-  main { max-width:1300px; margin:0 auto; padding:30px 16px 30px; }
+  html, body { margin: 0; }
+  body { min-height: 100vh; color: var(--tx); background: var(--bg); position: relative; overflow-x: hidden; font: 16px/1.5 Barlow, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  body::before { content: ""; position: fixed; inset: -20px; z-index: -2; background: url("images/briar.jpg") center / cover no-repeat; filter: blur(16px) brightness(.3) saturate(1.2); }
+  body::after { content: ""; position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 0%, rgba(63,193,224,.12), transparent 55%), linear-gradient(rgba(7,11,22,.55), var(--bg) 95%); }
 
-  /* Barre du haut : identique à l'accueil */
-  .top { position:sticky; top:0; z-index:40; background:rgba(7,11,22,.72); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
-  .top-in { max-width:1300px; margin:0 auto; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
-  .brand { display:flex; align-items:center; gap:10px; color:var(--tx); text-decoration:none; font-family:Cinzel,Georgia,serif; font-weight:800; letter-spacing:.08em; font-size:1.05rem; }
-  .brand svg { width:26px; height:26px; }
-  nav { display:flex; gap:6px; }
-  nav a { padding:7px 14px; border-radius:10px; color:var(--mu); text-decoration:none; font-weight:600; font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid transparent; }
-  nav a:hover { color:var(--tx); border-color:var(--line); }
-  nav a.on { color:var(--teal); border-color:rgba(63,193,224,.4); background:rgba(63,193,224,.08); }
+  /* Barre du haut (identique à l'accueil) */
+  .top { position: sticky; top: 0; z-index: 40; background: rgba(7,11,22,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top-in { max-width: 980px; margin: 0 auto; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--tx); text-decoration: none; font-family: Cinzel, Georgia, serif; font-weight: 800; letter-spacing: .08em; font-size: 1.05rem; }
+  .brand svg { width: 26px; height: 26px; }
+  nav { display: flex; gap: 6px; }
+  nav a { padding: 7px 14px; border-radius: 10px; color: var(--mu); text-decoration: none; font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; border: 1px solid transparent; }
+  nav a:hover { color: var(--tx); border-color: var(--line); }
+  nav a.on { color: var(--cyan); border-color: rgba(63,193,224,.4); background: rgba(63,193,224,.08); }
 
-  /* Titre doré orné */
-  .hero { text-align:center; margin-bottom:26px; }
-  h1 { display:inline-flex; align-items:center; gap:18px; margin:0; font-family:Cinzel,Georgia,serif; font-weight:800; font-size:clamp(1.9rem,6vw,3rem); letter-spacing:.05em;
-       background:linear-gradient(#fff3c4,var(--gold) 45%,var(--gold-d)); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 2px 8px rgba(0,0,0,.8)); }
-  h1::before, h1::after { content:""; width:clamp(24px,8vw,90px); height:2px; background:linear-gradient(90deg,transparent,var(--gold)); }
-  h1::after { transform:scaleX(-1); }
-  .sub { margin:10px 0 12px; color:#c9d3e4; font-size:1.1rem; font-weight:500; }
-  .chips { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
-  .chip { padding:3px 10px; border-radius:99px; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:rgba(20,28,46,.85); border:1px solid #34425f; color:#c9d3e4; }
-  .chip.lvl { border-color:rgba(230,195,106,.5); color:var(--gold); }
+  main { max-width: 760px; margin: 0 auto; padding: 30px 16px 20px; }
+  .hero { text-align: center; margin-bottom: 22px; }
+  h1 { display: inline-flex; align-items: center; gap: 18px; margin: 0; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: clamp(1.9rem, 6vw, 3rem); letter-spacing: .05em;
+       background: linear-gradient(#fff3c4, var(--gold) 45%, var(--gold-d)); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 8px rgba(0,0,0,.8)); }
+  h1::before, h1::after { content: ""; width: clamp(24px, 8vw, 90px); height: 2px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  h1::after { transform: scaleX(-1); }
+  .sub { margin: 8px 0 0; color: #c9d3e4; font-size: 1.1rem; font-weight: 500; }
 
-  .stats { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px; margin-bottom:12px; }
-  .plate { display:inline-flex; align-items:baseline; gap:8px; padding:6px 14px; border:1px solid var(--line); border-radius:12px;
-           background:rgba(14,21,38,.85); box-shadow:0 4px 14px rgba(0,0,0,.4);
-           color:var(--mu); font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:.1em; }
-  .plate b { font-family:Barlow,sans-serif; font-size:1.2rem; font-weight:700; letter-spacing:0; color:var(--gold); text-transform:none; }
-  .plate:empty { display:none; }                        /* pas de plaque vide (essais cachés en fin de manche) */
-  #score-label:not(.record) { display:flex; gap:8px; }
-  #score-label { color:var(--gold); }
-  /* Record battu : cadre arcade pixel, lettres cyan/violet, guirlande, étincelles (+ confettis en JS) */
-  #score-label.record { flex:1 1 100%; order:-1; display:flex; flex-direction:column; align-items:center; margin-bottom:16px; }
-  .hs-wrap { --np:polygon(8px 0,calc(100% - 8px) 0,calc(100% - 8px) 4px,calc(100% - 4px) 4px,calc(100% - 4px) 8px,100% 8px,100% calc(100% - 8px),calc(100% - 4px) calc(100% - 8px),calc(100% - 4px) calc(100% - 4px),calc(100% - 8px) calc(100% - 4px),calc(100% - 8px) 100%,8px 100%,8px calc(100% - 4px),4px calc(100% - 4px),4px calc(100% - 8px),0 calc(100% - 8px),0 8px,4px 8px,4px 4px,8px 4px);
-             position:relative; margin:10px 14px; transform:rotate(-1.5deg); filter:drop-shadow(5px 5px 0 #3a0c52) drop-shadow(0 0 16px rgba(69,228,244,.5)); }
-  .hs { padding:4px; clip-path:var(--np); background:linear-gradient(135deg,#45e4f4,#c02be0 55%,#ffe14d); }
-  .hs-in { position:relative; clip-path:var(--np); min-width:min(84vw,400px); padding:26px 34px 20px; text-align:center;
-           background:radial-gradient(rgba(255,255,255,.35) 0 1px,transparent 1.5px) 0 0/24px 24px, radial-gradient(circle at 50% 0,#2b1766,#120a2e 70%); }
-  .hs-in::before, .hs-in::after { content:""; position:absolute; left:16px; right:16px; height:8px;
-           background:radial-gradient(circle,#ffe14d 0 2.5px,transparent 3px) 0 50%/16px 8px repeat-x; animation:blink 1s steps(1) infinite; }
-  .hs-in::before { top:7px; } .hs-in::after { bottom:7px; animation-delay:.5s; }
-  @keyframes blink { 50% { opacity:.2; } }
-  .hs-text { margin:4px 0 12px; font-family:'Press Start 2P',monospace; font-size:clamp(1.05rem,4.6vw,1.85rem); line-height:1.35;
-             background:linear-gradient(#45e4f4 0 50%,#1da6c8 50% 100%); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent;
-             filter:drop-shadow(2px 2px 0 #c02be0) drop-shadow(4px 4px 0 #5a1073) drop-shadow(5px 5px 0 #000); }
-  .hs-sub { font-family:'Press Start 2P',monospace; font-size:clamp(.7rem,2.8vw,.95rem); letter-spacing:.06em; color:#ffe14d; text-shadow:2px 2px 0 #000; }
-  .sp { position:absolute; width:24px; height:24px; background:#fff6a8; clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); animation:twinkle 1.4s ease-in-out infinite; }
-  .s1 { top:-12px; left:-12px; } .s2 { top:-14px; right:-10px; animation-delay:.35s; } .s3 { bottom:-12px; left:-8px; animation-delay:.7s; } .s4 { bottom:-12px; right:-12px; animation-delay:1s; }
-  @keyframes twinkle { 0%,100% { transform:scale(.4) rotate(0); opacity:.5; } 50% { transform:scale(1.1) rotate(45deg); opacity:1; } }
-  .hs-wrap.pop { animation:pop .7s cubic-bezier(.2,1.6,.4,1) both; }
-  @keyframes pop { 0% { transform:scale(.2) rotate(-14deg); opacity:0; } 60% { transform:scale(1.1) rotate(2deg); opacity:1; } 100% { transform:scale(1) rotate(-1.5deg); } }
-  .confetti { position:fixed; inset:0; width:100%; height:100%; pointer-events:none; z-index:1000; }
-  @media (prefers-reduced-motion: reduce) { .hs-wrap, .hs-in::before, .hs-in::after, .sp { animation:none !important; } }
+  /* Carte de jeu */
+  .game { padding: 18px; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,21,38,.86); box-shadow: 0 16px 44px rgba(0,0,0,.6); }
+  .bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .plates { display: flex; gap: 8px; }
+  .plate { display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
+  .plate b { font-size: 1.2rem; font-weight: 700; letter-spacing: 0; color: var(--gold); text-transform: none; }
+  .dots { display: flex; gap: 6px; }
+  .dots i { width: 22px; height: 6px; border-radius: 4px; background: #24314a; transition: background .3s; }
+  .dots i.used { background: var(--ko); } .dots i.now { background: var(--cyan); } .dots i.win { background: var(--ok); }
 
-  /* L'artwork prend toute la largeur, alignée avec le champ de saisie et les boutons */
-  .stage { position:relative; display:flex; flex-direction:column; }
-  .stage .frame { width:100%; }
-  .frame { aspect-ratio:16/9; overflow:hidden; border-radius:18px; border:1px solid var(--line); background:#000;
-           box-shadow:0 16px 44px rgba(0,0,0,.6); transition:box-shadow .4s ease, border-color .4s ease; }
-  .frame img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s ease; }
-  .frame { position:relative; }
-  /* Filigrane de compte à rebours au centre de l'artwork */
-  .countdown { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; pointer-events:none; }
-  .cd-badge { position:relative; width:84px; height:84px; border-radius:50%; display:grid; place-items:center;
-              background:rgba(8,12,18,.45); backdrop-filter:blur(3px); -webkit-backdrop-filter:blur(3px); opacity:.85; }
-  .cd-badge svg { position:absolute; inset:0; width:100%; height:100%; transform:rotate(-90deg); }
-  .cd-badge circle { fill:none; stroke-width:4; }
-  .cd-badge .bg { stroke:rgba(255,255,255,.2); }
-  .cd-badge .fg { stroke:var(--gold); stroke-linecap:round; stroke-dasharray:213.6; stroke-dashoffset:0; animation:cdring var(--cd,5s) linear forwards; }
-  @keyframes cdring { to { stroke-dashoffset:213.6; } }
-  .cd-num { font-family:Barlow,sans-serif; font-weight:700; font-size:2rem; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.8); }
-  #cd-next { pointer-events:auto; padding:7px 16px; font-size:.9rem; opacity:.9; }
-  .frame.noanim img { transition:none !important; }   /* début de manche : zoom immédiat, sans animation */
-  .frame.revealed img { transform:scale(1) !important; }   /* artwork entier (victoire, défaite, abandon) */
-  .frame.revealed { border-color:var(--teal); box-shadow:0 0 0 1px var(--teal), 0 16px 44px rgba(0,0,0,.6), 0 0 36px rgba(63,193,224,.3); }
+  .frame { position: relative; aspect-ratio: 16/9; max-height: 68vh; width: 100%; overflow: hidden; border-radius: 14px; border: 1px solid var(--line); background: #000; transition: box-shadow .4s, border-color .4s; }
+  .frame img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .8s ease; }
+  .frame.noanim img { transition: none !important; }
+  .frame.revealed img { transform: scale(1) !important; }
+  .frame.revealed { border-color: var(--cyan); box-shadow: 0 0 0 1px var(--cyan), 0 0 36px rgba(63,193,224,.3); }
+  .frame.revealed.lost { border-color: var(--ko); box-shadow: 0 0 0 1px var(--ko), 0 0 30px rgba(255,107,107,.25); }
+  .loading { position: absolute; inset: 0; display: grid; place-items: center; background: #0b1020; color: var(--mu); font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+  .hint { margin: 10px 2px 14px; color: var(--mu); font-size: .9rem; text-align: center; }
 
-  /* Mise en page : recherche à gauche, artwork à droite (empilés sur petit écran) */
-  .layout { display:grid; grid-template-columns:minmax(300px,380px) 1fr; gap:24px; align-items:center; }   /* bloc de recherche centré verticalement par rapport à l'artwork */
-  .panel { display:flex; flex-direction:column; gap:12px; }
-  .panel .row { margin:0; }
-  .panel .msg { margin-top:2px; min-height:30px; }
-  .search { position:relative; }          /* la liste se déroule sur toute la largeur de la colonne */
-  /* Noms ratés : petites pastilles sous les boutons */
-  .side { display:flex; flex-wrap:wrap; align-content:flex-start; gap:6px; min-height:88px; }   /* hauteur réservée : le bloc ne bouge pas */
-  #tries-label { align-self:flex-start; align-items:center; min-height:40px; }
-  #tries-label:empty { display:inline-flex; visibility:hidden; }
-  @media (max-width: 860px) {
-    .layout { grid-template-columns:1fr; }
-    .stage { order:-1; }
-  }
-  .t { padding:2px 8px; border-radius:6px; background:rgba(255,107,107,.15); border:1px solid var(--ko); color:#ffc2c2;
-       font-size:.72rem; line-height:1.4; overflow-wrap:anywhere; }
+  /* Zone de recherche + liste de suggestions */
+  .row { display: flex; gap: 10px; }
+  .search { position: relative; }
+  .combo { flex: 1; min-width: 0; }
+  input { width: 100%; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(7,11,22,.8); color: var(--tx); font: inherit; font-size: 1.05rem; }
+  input:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(63,193,224,.2); }
+  input::placeholder { color: #5f6c85; }
+  input.shake { animation: shake .3s; border-color: var(--ko); }
+  @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  button { padding: 13px 22px; border: 0; border-radius: 10px; font: inherit; font-size: 1.05rem; font-weight: 700; cursor: pointer; background: var(--cyan); color: #04202a; transition: transform .15s, filter .15s; }
+  button:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.1); }
+  button:disabled { opacity: .45; cursor: default; }
+  .flash { min-height: 22px; margin: 8px 2px 0; color: var(--ko); font-size: .9rem; font-weight: 600; }
 
-  .msg { min-height:30px; margin-top:14px; font-weight:700; text-align:center; font-size:1.2rem; letter-spacing:.02em; }
-  .msg.ok { color:var(--ok); } .msg.ko { color:var(--ko); }
+  .suggest { position: absolute; left: 0; right: 0; top: calc(100% + 6px); z-index: 30; margin: 0; padding: 6px; list-style: none; display: grid; grid-template-columns: 1fr 1fr; gap: 6px;
+             max-height: 300px; overflow-y: auto; background: rgba(9,14,27,.98); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 18px 44px rgba(0,0,0,.75); scrollbar-width: thin; scrollbar-color: #34425f #0e1526; }
+  .suggest li { display: flex; align-items: center; gap: 10px; min-width: 0; padding: 5px 10px 5px 5px; cursor: pointer; border: 1px solid var(--line); border-radius: 12px; background: rgba(20,29,50,.9); transition: border-color .12s, background .12s; }
+  .suggest li:hover, .suggest li.sel { border-color: var(--cyan); background: rgba(28,42,70,.95); box-shadow: 0 0 14px rgba(63,193,224,.2); }
+  .ico { width: 38px; height: 38px; flex-shrink: 0; border-radius: 8px; border: 2px solid var(--gold); overflow: hidden; background: #0b0f14; display: grid; place-items: center; font-family: Cinzel, Georgia, serif; font-weight: 800; color: var(--gold); }
+  .ico img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 12%; display: block; }
+  .nm { min-width: 0; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-  .row { display:flex; gap:10px; margin:12px 0; }
-  input { flex:1; min-width:0; padding:13px 14px; border-radius:12px; border:1px solid var(--line); background:rgba(14,21,38,.9); color:var(--tx); font:inherit; font-size:1.05rem; }
-  input:focus { outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(63,193,224,.2); }
-  input::placeholder { color:#5f6c85; }
-  button { padding:13px 22px; border:0; border-radius:10px; font:inherit; font-size:1.05rem; font-weight:700; cursor:pointer; transition:transform .15s ease, filter .15s ease, border-color .15s ease;
-           background:var(--teal); color:#04202a; }
-  button:hover:not(:disabled) { transform:translateY(-1px); filter:brightness(1.1); }
-  button.alt { background:rgba(14,21,38,.85); color:var(--tx); border:1px solid var(--line); font-weight:600; }
-  button.alt:hover:not(:disabled) { border-color:var(--teal); filter:none; }
-  button:disabled { opacity:.45; cursor:default; }
-  #giveup, #next { flex:1; }
+  /* Historique des essais (style LoLdle) */
+  .guesses { list-style: none; margin: 14px 0 0; padding: 0; display: flex; flex-direction: column; gap: 8px; }
+  .guess { display: flex; align-items: center; gap: 12px; padding: 7px 14px 7px 7px; border: 1px solid rgba(255,107,107,.55); border-radius: 12px; background: rgba(255,107,107,.1); animation: slide .3s ease both; }
+  .guess.ok { border-color: rgba(74,222,128,.7); background: rgba(74,222,128,.12); }
+  .guess .nm { flex: 1; font-size: 1.05rem; }
+  .guess .tag { font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ko); }
+  .guess.ok .tag { color: var(--ok); }
+  @keyframes slide { from { opacity: 0; transform: translateY(-8px); } }
 
-  /* Liste de suggestions : une petite carte encadrée par champion */
-  .combo { flex:1; min-width:0; }
-  .combo input { width:100%; }
-  .suggest { position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:30; margin:0; padding:6px; list-style:none;
-             display:grid; grid-template-columns:1fr 1fr; gap:6px;   /* 2 colonnes : 2 fois plus de champions visibles */
-             max-height:300px; overflow-y:auto; background:rgba(13,17,23,.97); border:2px solid var(--gold-d); border-radius:12px;
-             box-shadow:0 14px 40px rgba(0,0,0,.75); scrollbar-width:thin; scrollbar-color:var(--gold-d) #1a222c; }
-  .suggest li { display:flex; align-items:center; gap:10px; min-width:0; margin:0; padding:5px 10px 5px 5px; cursor:pointer;
-                border:1px solid #2c3948; border-radius:10px; background:linear-gradient(#1b232d,#141b24);
-                transition:border-color .12s ease, background .12s ease; }
-  .suggest li:hover, .suggest li.sel { border-color:var(--teal); background:linear-gradient(#22313e,#18222c); }
-  .ico { width:38px; height:38px; flex-shrink:0; border-radius:8px; border:2px solid var(--gold-d); overflow:hidden; background:#0b0f14;
-         display:grid; place-items:center; font-family:Cinzel,Georgia,serif; font-weight:800; color:var(--gold); }
-  .ico img { width:100%; height:100%; object-fit:cover; object-position:50% 12%; display:block; }
-  .suggest .nm { min-width:0; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  /* Résultat */
+  .result { text-align: center; padding: 6px 0 2px; }
+  .msg { font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; }
+  .msg.ok { color: var(--ok); } .msg.ko { color: var(--ko); }
+  .msg small { display: block; margin-top: 2px; color: var(--mu); font-size: .9rem; font-weight: 500; }
 
-  /* Écran de démarrage */
-  .start { margin:10px auto 0; max-width:560px; text-align:center; padding:28px 22px 30px; border-radius:14px;
-           border:3px solid var(--gold); background:linear-gradient(#1b232d,#11161d);
-           box-shadow:0 0 0 2px #000, 0 0 0 5px rgba(31,181,196,.55), 0 18px 50px rgba(0,0,0,.7); }
-  .start h2 { margin:0 0 8px; font-family:Cinzel,Georgia,serif; color:var(--gold); font-size:1.5rem; }
-  .start p { margin:0 0 20px; color:#cfd6df; }
-  #start { font-family:Cinzel,Georgia,serif; font-size:1.3rem; letter-spacing:.08em; padding:14px 46px; }
-  [hidden] { display:none !important; }
-
-  /* Liste de suggestions et écran de démarrage : même matière que les cartes de l'accueil */
-  .suggest { background:rgba(9,14,27,.98); border:1px solid var(--line); border-radius:14px; box-shadow:0 18px 44px rgba(0,0,0,.75); scrollbar-color:#34425f #0e1526; }
-  .suggest li { border:1px solid var(--line); border-radius:12px; background:rgba(20,29,50,.9); }
-  .suggest li:hover, .suggest li.sel { border-color:var(--teal); background:rgba(28,42,70,.95); box-shadow:0 0 14px rgba(63,193,224,.2); }
-  .ico { border:2px solid var(--gold); background:radial-gradient(circle at 50% 35%,#1d2740,#0b1020); box-shadow:0 0 0 1px #000; }
-  .start { border:1px solid var(--line); border-radius:18px; background:rgba(14,21,38,.88); box-shadow:0 16px 44px rgba(0,0,0,.6); }
-  .start h2 { font-family:Barlow,sans-serif; font-weight:700; font-size:1.7rem; letter-spacing:.04em; color:var(--gold); }
-  .start p { font-size:1.05rem; }
-  #start { font-family:Barlow,sans-serif; font-size:1.25rem; letter-spacing:.1em; text-transform:uppercase; padding:14px 48px; }
-  footer { max-width:1300px; margin:0 auto; padding:22px 18px 34px; color:#66738c; font-size:.8rem; text-align:center; border-top:1px solid rgba(36,49,73,.7); }
-  @media (max-width: 860px) { nav a { padding:7px 10px; } }
+  .note { margin: 14px 0 0; text-align: center; color: #66738c; font-size: .8rem; }
+  footer { max-width: 980px; margin: 14px auto 0; padding: 22px 18px 34px; color: #66738c; font-size: .8rem; text-align: center; border-top: 1px solid rgba(36,49,73,.7); }
+  [hidden] { display: none !important; }
+  @media (max-width: 560px) { .suggest { grid-template-columns: 1fr; } nav a { padding: 7px 10px; } .row button { padding: 13px 16px; } }
 </style>
 </head>
 <body>
+
 <header class="top">
   <div class="top-in">
     <a class="brand" href="index.html">
@@ -180,122 +113,278 @@
 <main>
   <section class="hero">
     <h1>Artwork</h1>
-    <p class="sub">Devine le champion à partir d'un morceau d'artwork</p>
-    <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span></div>
+    <p class="sub">À quel champion appartient cet artwork ?</p>
   </section>
 
-  <section class="start" id="start-screen">
-    <h2>Prêt à jouer ?</h2>
-    <p>Un morceau d'artwork va apparaître. Tu as <span id="max-tries"></span> essais : à chaque erreur, l'image se dévoile un peu plus.</p>
-    <button id="start">Start</button>
-  </section>
+  <section class="game">
+    <div class="bar">
+      <div class="plates">
+        <span class="plate">Série <b id="streak">0</b></span>
+        <span class="plate">Record <b id="best">0</b></span>
+      </div>
+      <div class="dots" id="dots" aria-label="Essais"></div>
+    </div>
 
-  <div id="game" hidden>
-  <div class="stats"><span id="score-label"></span></div>
-  <div class="layout">
-    <!-- Colonne gauche : zone de recherche -->
-    <div class="panel">
-      <span id="tries-label" class="plate"></span>
+    <div class="frame noanim" id="frame">
+      <img id="art" alt="Artwork à deviner">
+      <div class="loading" id="loading">Chargement des images…</div>
+    </div>
+    <p class="hint" id="hint">Chaque erreur dézoome un peu l'image.</p>
+
+    <div id="play">
       <div class="row search">
         <div class="combo">
-          <input id="answer" placeholder="Nom du champion…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="suggest">
+          <input id="answer" placeholder="Tape le nom d'un champion…" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="suggest" disabled>
           <ul class="suggest" id="suggest" role="listbox" hidden></ul>
         </div>
-        <button id="submit">Valider</button>
+        <button id="submit" disabled>Valider</button>
       </div>
-      <div class="row">
-        <button class="alt" id="giveup">Abandonner</button>
-        <button class="alt" id="next" style="display:none">Suivant →</button>
-      </div>
-      <div class="side" id="tries-list"></div>
-      <div class="msg" id="msg"></div>
+      <div class="flash" id="flash" role="status"></div>
     </div>
 
-    <!-- Colonne droite : artwork -->
-    <div class="stage">
-      <div class="frame" id="frame">
-        <img id="art" alt="Artwork à deviner">
-        <div class="countdown" id="countdown" hidden>
-          <div class="cd-badge">
-            <svg viewBox="0 0 80 80"><circle class="bg" cx="40" cy="40" r="34"/><circle class="fg" cx="40" cy="40" r="34"/></svg>
-            <span class="cd-num" id="cd-num">5</span>
-          </div>
-          <button id="cd-next">Suivant →</button>
-        </div>
-      </div>
+    <div class="result" id="result" hidden>
+      <div class="msg" id="msg"></div>
+      <button id="next">Personnage suivant →</button>
     </div>
-  </div>
-  </div>
+
+    <ul class="guesses" id="guesses"></ul>
+  </section>
+  <p class="note" id="lib-note"></p>
 </main>
 
 <footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
 
 <script>
-/* ===== CONFIGURATION : ajoute tes questions ici =====
-   name : bonne réponse
-   img  : chemin de l'image
-   face : zone du visage à éviter, en % de l'image
-          (x, y = centre ; rx, ry = demi-largeur / demi-hauteur)
-   Le point de zoom est tiré au hasard à chaque manche, loin de cette zone. */
-const ROUNDS = [
-  { name: "Lillia", img: "images/lillia.jpg", face: { x: 0.51, y: 0.22, rx: 0.09, ry: 0.13 } },
-  { name: "Briar",  img: "images/briar.jpg",  face: { x: 0.64, y: 0.29, rx: 0.10, ry: 0.17 } }
-];
-
-/* Liste des suggestions du champ de saisie */
-const NAMES = ["Aatrox","Ahri","Akali","Alistar","Amumu","Annie","Ashe","Briar","Caitlyn","Darius","Diana","Draven","Ekko","Evelynn","Ezreal","Fiora","Garen","Gwen","Illaoi","Irelia","Jax","Jhin","Jinx","Kai'Sa","Katarina","Kayn","Lee Sin","Leona","Lillia","Lucian","Lulu","Lux","Master Yi","Miss Fortune","Morgana","Nami","Nasus","Nautilus","Nidalee","Orianna","Pyke","Rell","Renata Glasc","Samira","Senna","Seraphine","Sett","Shen","Singed","Sona","Soraka","Teemo","Thresh","Tristana","Vayne","Vel'Koz","Vi","Viego","Xayah","Yasuo","Yone","Zed","Zeri","Ziggs","Zoe","Zyra"];
-
-/* Niveaux de zoom : un par essai (le dernier = image entière) */
-const ZOOM = [7, 4.5, 3, 2, 1.4, 1];
+/* ============================================================
+   1. CONFIGURATION
+   ============================================================ */
+const ZOOM = [9, 6.5, 4.5, 3, 2, 1.4];     /* un niveau de zoom par essai : à la fin, l'image est révélée */
 const MAX_TRIES = ZOOM.length;
 
-/* ===== LOGIQUE DU JEU ===== */
+/* Dépôt GitHub contenant les images (toutes les images du dossier « dir », sous-dossiers compris) */
+const REPO = { user: "Bibiop123", repo: "SDQ", branch: "main", dir: "images" };
+
+/* Zone du visage à éviter (en % de l'image) : x, y = centre ; rx, ry = demi-largeur / demi-hauteur */
+const DEFAULT_FACE = { x: 0.5, y: 0.3, rx: 0.16, ry: 0.22 };
+
+/* Manches de secours si le dépôt GitHub est illisible */
+const DEMO = [
+  { name: "Lillia", imgs: ["images/lillia.jpg"], face: { x: 0.51, y: 0.22, rx: 0.09, ry: 0.13 } },
+  { name: "Briar",  imgs: ["images/briar.jpg"],  face: { x: 0.64, y: 0.29, rx: 0.10, ry: 0.17 } }
+];
+
+/* Liste des champions (suggestions + reconnaissance dans les noms de fichiers).
+   Nouveau champion ? Ajoute son nom dans EXTRA_NAMES. */
+const NAMES = ["Aatrox","Ahri","Akali","Akshan","Alistar","Ambessa","Amumu","Anivia","Annie","Aphelios","Ashe","Aurelion Sol","Aurora","Azir","Bard","Bel'Veth","Blitzcrank","Brand","Braum","Briar","Caitlyn","Camille","Cassiopeia","Cho'Gath","Corki","Darius","Diana","Dr. Mundo","Draven","Ekko","Elise","Evelynn","Ezreal","Fiddlesticks","Fiora","Fizz","Galio","Gangplank","Garen","Gnar","Gragas","Graves","Gwen","Hecarim","Heimerdinger","Hwei","Illaoi","Irelia","Ivern","Janna","Jarvan IV","Jax","Jayce","Jhin","Jinx","K'Sante","Kai'Sa","Kalista","Karma","Karthus","Kassadin","Katarina","Kayle","Kayn","Kennen","Kha'Zix","Kindred","Kled","Kog'Maw","LeBlanc","Lee Sin","Leona","Lillia","Lissandra","Lucian","Lulu","Lux","Malphite","Malzahar","Maokai","Master Yi","Mel","Milio","Miss Fortune","Mordekaiser","Morgana","Naafiri","Nami","Nasus","Nautilus","Neeko","Nidalee","Nilah","Nocturne","Nunu & Willump","Olaf","Orianna","Ornn","Pantheon","Poppy","Pyke","Qiyana","Quinn","Rakan","Rammus","Rek'Sai","Rell","Renata Glasc","Renekton","Rengar","Riven","Rumble","Ryze","Samira","Sejuani","Senna","Seraphine","Sett","Shaco","Shen","Shyvana","Singed","Sion","Sivir","Skarner","Smolder","Sona","Soraka","Swain","Sylas","Syndra","Tahm Kench","Taliyah","Talon","Taric","Teemo","Thresh","Tristana","Trundle","Tryndamere","Twisted Fate","Twitch","Udyr","Urgot","Varus","Vayne","Veigar","Vel'Koz","Vex","Vi","Viego","Viktor","Vladimir","Volibear","Warwick","Wukong","Xayah","Xerath","Xin Zhao","Yasuo","Yone","Yorick","Yunara","Yuumi","Zaahen","Zac","Zed","Zeri","Ziggs","Zilean","Zoe","Zyra"];
+const EXTRA_NAMES = [];
+EXTRA_NAMES.forEach(n => NAMES.push(n));
+NAMES.sort((a, b) => a.localeCompare(b));
+
+/* Autres façons d'écrire un champion dans un nom de fichier */
+const ALIASES = { nunu: "Nunu & Willump", willump: "Nunu & Willump", renata: "Renata Glasc", monkeyking: "Wukong", mundo: "Dr. Mundo",
+                  jarvan: "Jarvan IV", tahm: "Tahm Kench", aurelion: "Aurelion Sol", twistedfate: "Twisted Fate", missfortune: "Miss Fortune" };
+
+/* Identifiants des icônes Riot (Data Dragon) quand ils diffèrent du nom */
+const DD_FIX = { "Renata Glasc": "Renata", "Nunu & Willump": "Nunu", "Wukong": "MonkeyKing", "Kog'Maw": "KogMaw", "Rek'Sai": "RekSai", "K'Sante": "KSante", "LeBlanc": "Leblanc", "Dr. Mundo": "DrMundo", "Bel'Veth": "Belveth", "Cho'Gath": "Chogath", "Kha'Zix": "Khazix", "Vel'Koz": "Velkoz", "Kai'Sa": "Kaisa" };
+const iconUrl = n => `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${DD_FIX[n] || n.replace(/[^A-Za-z0-9]/g, "")}_0.jpg`;
+
+/* ============================================================
+   2. BIBLIOTHÈQUE D'IMAGES : le champion = le nom présent dans le NOM DU FICHIER
+      (ex. « Ahri_001.jpg », « Spirit Blossom Ahri.png », « LeeSin 12.webp »),
+      à défaut dans le nom d'un de ses dossiers.
+   ============================================================ */
 const $ = id => document.getElementById(id);
-const normalize = s => s.normalize("NFD").replace(/[\u0300-\u036f'’\s-]/g, "").toLowerCase();
+const keyOf = t => t.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const NAME_KEYS = new Map();
+NAMES.forEach(n => NAME_KEYS.set(keyOf(n), n));
+Object.keys(ALIASES).forEach(k => NAME_KEYS.set(k, ALIASES[k]));
+const IMG_EXT = /\.(jpe?g|png|webp)$/i;
 
-let order = [], index = 0, tries = 0, finished = false, score = 0, best = 0;
-let recordRun = false, recordPhrase = "", popPending = false;   /* record en cours de battement */
-const PHRASES = ["NEW HIGH SCORE !", "NOUVEAU RECORD !", "BOOM !", "WOW !", "POW !", "YEAH !", "INCROYABLE !", "BANG !"];
-let wrong = [];  /* noms déjà essayés pendant la manche */
-
-/* ===== Liste de suggestions personnalisée ===== */
-let shown = [], sel = -1;
-
-/* Identifiant Data Dragon (Riot) : Kai'Sa -> Kaisa, Master Yi -> MasterYi, etc. */
-const DD_FIX = { "Renata Glasc": "Renata" };
-const ddId = n => DD_FIX[n] || n.replace(/'(.)/g, (_, c) => c.toLowerCase()).replace(/[^A-Za-z0-9]/g, "");
-const iconUrl = n => `https://ddragon.leagueoflegends.com/cdn/img/champion/loading/${ddId(n)}_0.jpg`;
-
-function hideSuggestions() {
-  $("suggest").hidden = true; $("answer").setAttribute("aria-expanded", "false"); sel = -1;
+function tokens(text) {
+  return text.normalize("NFD").replace(/[̀-ͯ]/g, "")
+    .replace(/([a-z])([A-Z])/g, "$1 $2").replace(/([A-Za-z])(\d)/g, "$1 $2").replace(/(\d)([A-Za-z])/g, "$1 $2")
+    .split(/[^A-Za-z0-9]+/).filter(Boolean).map(t => t.toLowerCase());
+}
+function matchName(text) {                       /* premier champion cité (groupes de 1 à 4 mots : « lee sin », « miss fortune »…) */
+  const t = tokens(text);
+  for (let i = 0; i < t.length; i++) {
+    let joined = "", found = null;
+    for (let L = 1; L <= 4 && i + L <= t.length; L++) { joined += t[i + L - 1]; if (NAME_KEYS.has(joined)) found = NAME_KEYS.get(joined); }
+    if (found) return found;
+  }
+  return null;
+}
+function championOfPath(path) {
+  const parts = path.split("/");
+  let n = matchName(parts[parts.length - 1].replace(/\.[^.]+$/, ""));      /* 1) nom du fichier */
+  for (let i = parts.length - 2; !n && i >= 0; i--) n = matchName(parts[i]); /* 2) sinon ses dossiers */
+  return n;
+}
+function imageUrl(path) {
+  const enc = path.split("/").map(encodeURIComponent).join("/");
+  return /\.github\.io$/.test(location.hostname) ? enc : `https://raw.githubusercontent.com/${REPO.user}/${REPO.repo}/${REPO.branch}/${enc}`;
+}
+async function repoImagePaths() {
+  try {
+    const c = JSON.parse(sessionStorage.getItem("sdq_tree_v2") || "null");
+    if (c && Date.now() - c.t < 10 * 60 * 1000) return c.paths;
+  } catch (e) {}
+  const r = await fetch(`https://api.github.com/repos/${REPO.user}/${REPO.repo}/git/trees/${REPO.branch}?recursive=1`);
+  if (!r.ok) throw new Error("GitHub a répondu " + r.status);
+  const json = await r.json();
+  const paths = json.tree.filter(f => f.type === "blob" && f.path.startsWith(REPO.dir + "/") && IMG_EXT.test(f.path))
+                         .map(f => f.path).filter(p => !p.split("/").some(s => s.startsWith("_") || s.startsWith(".")));
+  try { sessionStorage.setItem("sdq_tree_v2", JSON.stringify({ t: Date.now(), paths })); } catch (e) {}
+  return paths;
+}
+let ROUNDS = [];
+async function loadLibrary() {
+  try {
+    const paths = await repoImagePaths();
+    const groups = new Map(), unknown = [];
+    paths.forEach(p => {
+      const who = championOfPath(p);
+      if (!who) return unknown.push(p);
+      if (!groups.has(who)) groups.set(who, []);
+      groups.get(who).push(imageUrl(p));
+    });
+    if (!groups.size) throw new Error("aucune image reconnue dans " + REPO.dir + "/");
+    ROUNDS = [...groups].map(([name, imgs]) => ({ name, imgs, face: DEFAULT_FACE }));
+    if (unknown.length) console.warn(unknown.length + " image(s) sans nom de champion reconnu :", unknown);
+    $("lib-note").textContent = `${paths.length - unknown.length} images · ${groups.size} champions`
+      + (unknown.length ? ` · ${unknown.length} ignorées (nom de champion non reconnu)` : "");
+  } catch (e) {
+    console.warn("Dossier d'images illisible, mode démo :", e);
+    ROUNDS = DEMO.slice();
+    $("lib-note").textContent = "Dossier d'images illisible (" + e.message + ") : mode démo avec 2 images.";
+  }
 }
 
+/* ============================================================
+   3. LOGIQUE DU JEU
+   ============================================================ */
+let deck = [], cur = null, tries = 0, over = false, guessed = [];
+let streak = 0, best = 0;
+try { best = Number(localStorage.getItem("sdq_best")) || 0; } catch (e) {}
+
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+/* Point de zoom au hasard, choisi pour garder le visage hors cadre le plus longtemps possible */
+function pickFocus(face) {
+  let bestScore = -1, pool = [];
+  for (let i = 0; i < 400; i++) {
+    const ox = 0.05 + Math.random() * 0.9, oy = 0.05 + Math.random() * 0.9;
+    let score = 0;
+    for (let k = 0; k < ZOOM.length; k++) {
+      const z = ZOOM[k];
+      const x0 = ox - ox / z, x1 = ox + (1 - ox) / z, y0 = oy - oy / z, y1 = oy + (1 - oy) / z;
+      if (x0 < face.x + face.rx && x1 > face.x - face.rx && y0 < face.y + face.ry && y1 > face.y - face.ry) break;
+      score++;
+    }
+    if (score > bestScore) { bestScore = score; pool = []; }
+    if (score === bestScore) pool.push([ox, oy]);
+  }
+  const [x, y] = pool[Math.floor(Math.random() * pool.length)];
+  return `${(x * 100).toFixed(1)}% ${(y * 100).toFixed(1)}%`;
+}
+
+function renderDots(win) {
+  $("dots").innerHTML = Array.from({ length: MAX_TRIES }, (_, i) =>
+    `<i class="${win && i === tries ? "win" : i < tries ? "used" : (!over && i === tries ? "now" : "")}"></i>`).join("");
+}
+function render() {
+  $("art").style.transform = `scale(${over ? 1 : ZOOM[Math.min(tries, MAX_TRIES - 1)]})`;
+  $("streak").textContent = streak; $("best").textContent = best;
+}
+
+function newRound() {
+  if (!deck.length) deck = shuffle(ROUNDS.slice());
+  const r = deck.pop();
+  cur = { name: r.name, img: r.imgs[Math.floor(Math.random() * r.imgs.length)], face: r.face || DEFAULT_FACE };
+  tries = 0; over = false; guessed = [];
+  $("guesses").innerHTML = ""; $("result").hidden = true; $("play").hidden = false; $("flash").textContent = "";
+  $("hint").textContent = "Chaque erreur dézoome un peu l'image.";
+  $("answer").value = ""; $("answer").disabled = $("submit").disabled = false; hideSuggestions();
+
+  const frame = $("frame"), art = $("art");
+  frame.classList.add("noanim"); frame.classList.remove("revealed", "lost");   /* zoom immédiat, sans animation, jamais d'aperçu */
+  art.style.visibility = "hidden";
+  art.style.transformOrigin = pickFocus(cur.face);
+  render(); renderDots();
+  const show = () => { $("loading").hidden = true; art.style.visibility = "visible"; void art.offsetWidth; frame.classList.remove("noanim"); };
+  art.onload = () => { frame.style.aspectRatio = art.naturalWidth + " / " + art.naturalHeight; show(); };
+  art.onerror = () => { console.warn("Image introuvable :", cur.img); if (ROUNDS.length > 1) newRound(); else show(); };
+  art.src = cur.img;
+  $("answer").focus();
+}
+
+function addGuess(name, ok) {
+  const li = document.createElement("li");
+  li.className = "guess" + (ok ? " ok" : "");
+  li.append(makeIcon(name));
+  const nm = document.createElement("span"); nm.className = "nm"; nm.textContent = name;
+  const tag = document.createElement("span"); tag.className = "tag"; tag.textContent = ok ? "✓ Bonne réponse" : "✗ Raté";
+  li.append(nm, tag);
+  $("guesses").prepend(li);
+}
+
+function endRound(win) {
+  over = true;
+  $("frame").classList.add("revealed"); if (!win) $("frame").classList.add("lost");
+  $("play").hidden = true; hideSuggestions(); $("result").hidden = false; $("hint").textContent = "";
+  if (win) { streak++; if (streak > best) { best = streak; try { localStorage.setItem("sdq_best", best); } catch (e) {} } } else streak = 0;
+  const n = win ? tries + 1 : MAX_TRIES;
+  $("msg").className = "msg " + (win ? "ok" : "ko");
+  $("msg").innerHTML = win ? `Bravo, c'était ${cur.name} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${cur.name}.`;
+  renderDots(win); render();
+  $("next").focus();
+}
+
+function flash(msg) { $("flash").textContent = msg; clearTimeout(flash.t); flash.t = setTimeout(() => { $("flash").textContent = ""; }, 2200); }
+function shakeInput() { const i = $("answer"); i.classList.remove("shake"); void i.offsetWidth; i.classList.add("shake"); }
+
+function submit(value) {
+  if (over || !cur) return;
+  const text = (value ?? $("answer").value).trim();
+  if (!text) return;
+  const name = NAMES.find(n => keyOf(n) === keyOf(text));
+  if (!name) { shakeInput(); flash("Choisis un champion dans la liste."); return; }
+  if (guessed.includes(name)) { shakeInput(); flash("Tu as déjà essayé ce champion."); return; }
+  guessed.push(name); $("answer").value = ""; hideSuggestions();
+  if (name === cur.name) { addGuess(name, true); endRound(true); return; }
+  addGuess(name, false); tries++;
+  if (tries >= MAX_TRIES) endRound(false); else { render(); renderDots(); $("answer").focus(); }
+}
+
+/* ============================================================
+   4. LISTE DE SUGGESTIONS (zone de texte)
+   ============================================================ */
+let shown = [], sel = -1;
+
+function makeIcon(name) {
+  const ico = document.createElement("div"); ico.className = "ico";
+  const img = new Image(); img.alt = ""; img.loading = "lazy"; img.src = iconUrl(name);
+  img.onerror = () => { img.remove(); ico.textContent = name[0]; };
+  ico.appendChild(img);
+  return ico;
+}
+function hideSuggestions() { $("suggest").hidden = true; $("answer").setAttribute("aria-expanded", "false"); sel = -1; }
 function renderSuggestions() {
-  const q = normalize($("answer").value);
-  const banned = wrong.map(normalize);
-  const ok = NAMES.filter(n => !banned.includes(normalize(n)));
-  shown = q ? ok.filter(n => normalize(n).startsWith(q)).concat(ok.filter(n => !normalize(n).startsWith(q) && normalize(n).includes(q))) : [];
-  const ul = $("suggest");
-  ul.innerHTML = ""; sel = -1;
+  const q = keyOf($("answer").value);
+  const ok = NAMES.filter(n => !guessed.includes(n));
+  shown = q ? ok.filter(n => keyOf(n).startsWith(q)).concat(ok.filter(n => !keyOf(n).startsWith(q) && keyOf(n).includes(q))) : [];
+  const ul = $("suggest"); ul.innerHTML = ""; sel = -1;
   if (!shown.length || $("answer").disabled) return hideSuggestions();
   shown.forEach(name => {
-    const li = document.createElement("li");
-    li.setAttribute("role", "option");
-    const ico = document.createElement("div"); ico.className = "ico";
-    const img = new Image(); img.alt = ""; img.loading = "lazy"; img.src = iconUrl(name);
-    img.onerror = () => { ico.textContent = name[0]; };      /* pas d'image : initiale dans le cadre */
-    ico.appendChild(img);
+    const li = document.createElement("li"); li.setAttribute("role", "option");
     const nm = document.createElement("span"); nm.className = "nm"; nm.textContent = name;
-    li.append(ico, nm);
-    li.onmousedown = e => e.preventDefault();               /* garde le focus sur le champ */
-    li.onclick = () => pick(name);
+    li.append(makeIcon(name), nm);
+    li.onmousedown = e => e.preventDefault();          /* garde le focus sur le champ */
+    li.onclick = () => submit(name);
     ul.appendChild(li);
   });
   ul.hidden = false; $("answer").setAttribute("aria-expanded", "true");
 }
-
-function pick(name) { $("answer").value = name; hideSuggestions(); guess(); }
-
 function moveSel(d) {
   const items = $("suggest").children; if (!items.length) return;
   if (sel >= 0) items[sel].classList.remove("sel");
@@ -303,225 +392,32 @@ function moveSel(d) {
   items[sel].classList.add("sel"); items[sel].scrollIntoView({ block: "nearest" });
 }
 
-function refreshSuggestions() { hideSuggestions(); }
-try { best = Number(localStorage.getItem("sdq_best")) || 0; } catch (e) {}
-
-/* Zone visible à un niveau de zoom z quand on zoome autour du point (ox, oy) */
-function windowAt(ox, oy, z) {
-  return { x0: ox - ox / z, x1: ox + (1 - ox) / z, y0: oy - oy / z, y1: oy + (1 - oy) / z };
-}
-
-/* Tire un point de zoom au hasard en évitant le visage le plus longtemps possible :
-   on garde les points pour lesquels le visage reste hors cadre sur le plus de niveaux de zoom. */
-function pickFocus(face) {
-  let best = -1, pool = [];
-  for (let i = 0; i < 400; i++) {
-    const ox = 0.05 + Math.random() * 0.9, oy = 0.05 + Math.random() * 0.9;
-    let score = 0;
-    for (let k = 0; k < ZOOM.length - 1; k++) {
-      const w = windowAt(ox, oy, ZOOM[k]);
-      const hit = w.x0 < face.x + face.rx && w.x1 > face.x - face.rx &&
-                  w.y0 < face.y + face.ry && w.y1 > face.y - face.ry;
-      if (hit) break;
-      score++;
-    }
-    if (score > best) { best = score; pool = []; }
-    if (score === best) pool.push([ox, oy]);
-  }
-  const [x, y] = pool[Math.floor(Math.random() * pool.length)];
-  return `${(x * 100).toFixed(1)}% ${(y * 100).toFixed(1)}%`;
-}
-
-function shuffle(a) {
-  for (let i = a.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [a[i], a[j]] = [a[j], a[i]];
-  }
-  return a;
-}
-
-function current() { return order[index]; }
-
-/* Découpe la phrase sur deux lignes : "NEW HIGH SCORE !" -> "NEW HIGH" / "SCORE !" */
-function hsText(p) {
-  const t = p.split(" ");
-  return t.length > 2 ? t.slice(0, -2).join(" ") + "<br>" + t.slice(-2).join(" ") : p;
-}
-
-/* Confettis carrés (pixels) : explosion depuis le cadre + pluie depuis le haut de l'écran */
-function launchConfetti(target) {
-  if (!target || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-  const old = document.querySelector(".confetti"); if (old) old.remove();
-  const cv = document.createElement("canvas"); cv.className = "confetti";
-  const dpr = window.devicePixelRatio || 1, W = window.innerWidth, H = window.innerHeight;
-  cv.width = W * dpr; cv.height = H * dpr; document.body.appendChild(cv);
-  const ctx = cv.getContext("2d"); ctx.scale(dpr, dpr);
-  const r = target.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-  const COLORS = ["#45e4f4", "#c02be0", "#ffe14d", "#ff5fa2", "#ffffff", "#7cff6b"];
-  const ps = [];
-  const add = (x, y, vx, vy) => ps.push({ x, y, vx, vy, s: 5 + Math.random() * 6, rot: Math.random() * 6.3, vr: (Math.random() - .5) * .4, c: COLORS[Math.floor(Math.random() * COLORS.length)] });
-  for (let i = 0; i < 120; i++) { const a = Math.random() * Math.PI * 2, v = 4 + Math.random() * 9; add(cx, cy, Math.cos(a) * v, Math.sin(a) * v - 5); }
-  let t0 = null;
-  function frame(ts) {
-    if (t0 === null) t0 = ts;
-    const el = ts - t0;
-    if (el < 1400) for (let i = 0; i < 3; i++) add(Math.random() * W, -10, (Math.random() - .5) * 2, 2 + Math.random() * 3);
-    ctx.clearRect(0, 0, W, H);
-    for (const p of ps) {
-      p.vy += .22; p.vx *= .992; p.x += p.vx; p.y += p.vy; p.rot += p.vr;
-      ctx.save(); ctx.translate(p.x, p.y); ctx.rotate(p.rot); ctx.fillStyle = p.c; ctx.fillRect(-p.s / 2, -p.s / 2, p.s, p.s); ctx.restore();
-    }
-    for (let i = ps.length - 1; i >= 0; i--) if (ps[i].y > H + 20) ps.splice(i, 1);
-    if (el < 5000 && (ps.length || el < 1400)) requestAnimationFrame(frame); else cv.remove();
-  }
-  requestAnimationFrame(frame);
-}
-
-function render() {
-  const zoom = finished ? 1 : ZOOM[Math.min(tries, MAX_TRIES - 1)];
-  $("art").style.transform = `scale(${zoom})`;
-  $("tries-label").innerHTML = finished ? "" : `Essai <b>${tries + 1}/${MAX_TRIES}</b>`;
-  const sl = $("score-label");
-  if (recordRun) {
-    sl.className = "record";
-    const fresh = popPending;   /* animation et confettis seulement à l'apparition, pas à chaque rafraîchissement */
-    sl.innerHTML = `<div class="hs-wrap${fresh ? " pop" : ""}"><i class="sp s1"></i><i class="sp s2"></i><i class="sp s3"></i><i class="sp s4"></i>` +
-                   `<div class="hs"><div class="hs-in"><div class="hs-text">${hsText(recordPhrase)}</div><div class="hs-sub">SCORE ${score}</div></div></div></div>`;
-    popPending = false;
-    if (fresh) requestAnimationFrame(() => launchConfetti(sl.querySelector(".hs-wrap")));
-  } else {
-    sl.className = "";
-    sl.innerHTML = `<span class="plate">Score <b>${score}</b></span><span class="plate">Record <b>${best}</b></span>`;
-  }
-}
-
-function loadRound() {
-  clearCountdown();
-  tries = 0; finished = false; wrong = [];
-  /* L'image reste cachée et sans animation tant qu'elle n'est pas chargée ET déjà zoomée */
-  $("frame").classList.add("noanim");
-  $("frame").classList.remove("revealed");
-  $("art").style.visibility = "hidden";
-  refreshSuggestions();
-  const show = () => {
-    $("art").style.visibility = "visible";
-    void $("art").offsetWidth;                       /* applique le zoom avant de rétablir les animations */
-    $("frame").classList.remove("noanim");
-  };
-  $("art").onload = () => {   /* le cadre prend le format de l'image : elle s'affiche entière à la fin */
-    $("frame").style.aspectRatio = $("art").naturalWidth + " / " + $("art").naturalHeight;
-    show();
-  };
-  $("art").onerror = show;
-  $("art").style.transformOrigin = pickFocus(current().face);
-  render();                                          /* zoom initial appliqué tout de suite */
-  $("art").src = current().img;
-  $("tries-list").innerHTML = "";
-  $("msg").textContent = ""; $("msg").className = "msg";
-  $("next").style.display = "none";
-  $("answer").value = "";
-  $("answer").disabled = $("submit").disabled = $("giveup").disabled = false;
-  $("answer").focus();
-  render();
-}
-
-function endRound(won) {
-  finished = true;
-  $("frame").classList.add("revealed");   /* dévoile l'artwork entier dans tous les cas */
-  $("answer").disabled = $("submit").disabled = $("giveup").disabled = true;
-  $("next").style.display = won ? "none" : "";   /* après une victoire, le bouton est dans le compte à rebours */
-  $("msg").className = "msg " + (won ? "ok" : "ko");
-  $("msg").textContent = won ? `Bravo, c'était ${current().name} !` : `Perdu… c'était ${current().name}.`;
-  if (won) {
-    score++;
-    if (score > best) {
-      best = score; try { localStorage.setItem("sdq_best", best); } catch (e) {}
-      let next;
-      if (!recordRun) next = PHRASES[0];                      /* premier dépassement : NEW HIGH SCORE ! */
-      else do { next = PHRASES[Math.floor(Math.random() * PHRASES.length)]; } while (next === recordPhrase);
-      recordRun = true; recordPhrase = next; popPending = true;
-    }
-  } else {
-    score = 0; recordRun = false;
-  }
-  render();
-  if (won) startCountdown();
-}
-
-/* ===== Compte à rebours après une bonne réponse ===== */
-const COUNTDOWN = 5;   /* secondes avant le personnage suivant */
-let cdTimer = null;
-
-function clearCountdown() {
-  clearInterval(cdTimer); cdTimer = null;
-  $("countdown").hidden = true;
-}
-
-function startCountdown() {
-  clearCountdown();
-  let left = COUNTDOWN;
-  $("cd-num").textContent = left;
-  $("countdown").style.setProperty("--cd", COUNTDOWN + "s");
-  $("countdown").hidden = false;      /* ré-affiché => l'anneau repart de zéro */
-  cdTimer = setInterval(() => {
-    left--;
-    $("cd-num").textContent = Math.max(left, 0);
-    if (left <= 0) goNext();
-  }, 1000);
-}
-
-function goNext() {
-  clearCountdown();
-  index++;
-  if (index >= order.length) { order = shuffle(ROUNDS.slice()); index = 0; }
-  loadRound();
-}
-
-function guess() {
-  if (finished) return;
-  const value = $("answer").value.trim();
-  if (!value) return;
-  if (normalize(value) === normalize(current().name)) return endRound(true);
-  if (wrong.map(normalize).includes(normalize(value))) {   /* déjà essayé : on ne compte pas */
-    $("answer").value = "";
-    return;
-  }
-
-  tries++;
-  wrong.push(value);
-  refreshSuggestions();
-  const chip = document.createElement("span");
-  chip.className = "t"; chip.textContent = value;
-  $("tries-list").appendChild(chip);
-  $("answer").value = "";
-
-  if (tries >= MAX_TRIES) endRound(false);
-  else { $("msg").className = "msg ko"; $("msg").textContent = "Raté, l'image se dévoile…"; render(); }
-}
-
-$("submit").onclick = guess;
 $("answer").oninput = renderSuggestions;
 $("answer").onfocus = renderSuggestions;
 $("answer").onblur = () => setTimeout(hideSuggestions, 150);
 $("answer").onkeydown = e => {
-  if (e.key === "ArrowDown") { e.preventDefault(); if (!$("suggest").hidden) moveSel(2); else renderSuggestions(); }   /* une ligne plus bas */
-  else if (e.key === "ArrowUp") { e.preventDefault(); moveSel(-2); }
+  if (e.key === "ArrowDown") { e.preventDefault(); if (!$("suggest").hidden) moveSel(window.innerWidth > 560 ? 2 : 1); else renderSuggestions(); }
+  else if (e.key === "ArrowUp") { e.preventDefault(); moveSel(window.innerWidth > 560 ? -2 : -1); }
   else if ((e.key === "ArrowRight" || e.key === "ArrowLeft") && sel >= 0) { e.preventDefault(); moveSel(e.key === "ArrowRight" ? 1 : -1); }
   else if (e.key === "Escape") hideSuggestions();
-  else if (e.key === "Enter") { e.preventDefault(); if (sel >= 0 && shown[sel]) pick(shown[sel]); else { hideSuggestions(); guess(); } }
+  else if (e.key === "Enter") {
+    e.preventDefault();
+    if (sel >= 0 && shown[sel]) submit(shown[sel]);
+    else if (shown.length === 1) submit(shown[0]);
+    else submit();
+  }
 };
-$("giveup").onclick = () => endRound(false);
-$("next").onclick = goNext;
-$("cd-next").onclick = goNext;
+$("submit").onclick = () => submit();
+$("next").onclick = newRound;
 
-$("max-tries").textContent = MAX_TRIES;
-$("start").onclick = () => {
-  order = shuffle(ROUNDS.slice());
-  index = 0; score = 0; recordRun = false;
-  $("start-screen").hidden = true;
-  $("game").hidden = false;
-  loadRound();
-};
+/* ============================================================
+   5. DÉMARRAGE
+   ============================================================ */
+(async function init() {
+  render(); renderDots();
+  await loadLibrary();
+  newRound();
+})();
 </script>
 </body>
 </html>
