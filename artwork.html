@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Salle de Quiz – Devine le champion</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Cinzel:wght@600;800&display=swap" rel="stylesheet">
 <style>
   :root { --gold:#e6c36a; --gold-d:#a67c2a; --teal:#1fb5c4; --ink:#0d1117; --panel:#141b24; --tx:#eee; --mu:#9aa6b4; --ok:#4ade80; --ko:#ff6b6b; }
   * { box-sizing: border-box; }
@@ -30,8 +30,19 @@
   .tab { padding:6px 14px; border-radius:99px; border:1px solid #2c3948; background:rgba(20,27,36,.8); font-size:.85rem; color:var(--mu); }
   .tab.on { background:linear-gradient(#f3d98a,var(--gold-d)); color:#1a1305; border-color:var(--gold); font-weight:700; }
 
-  .stats { display:flex; justify-content:space-between; color:var(--mu); font-size:.9rem; margin-bottom:8px; padding:0 4px; }
+  .stats { display:flex; flex-wrap:wrap; justify-content:space-between; color:var(--mu); font-size:.9rem; margin-bottom:8px; padding:0 4px; }
   #score-label { color:var(--gold); }
+  /* Record battu : texte de score agrandi + bulle de BD */
+  #score-label.record { flex:1 1 100%; order:-1; display:flex; flex-direction:column; align-items:center; gap:2px; margin-bottom:10px; }
+  .burst-wrap { filter:drop-shadow(3px 3px 0 #000) drop-shadow(0 0 14px rgba(255,200,40,.55)); }
+  .burst { display:grid; place-items:center; min-width:min(86vw,360px); padding:46px 38px; text-align:center;
+           background:radial-gradient(circle at 50% 40%, #fff27a, #ffc21a 70%, #ff8f1a);
+           clip-path:polygon(50.0% 0.0%,54.7% 14.3%,62.9% 1.7%,65.3% 13.0%,75.0% 6.7%,71.9% 21.4%,85.4% 14.6%,81.7% 25.6%,93.3% 25.0%,83.3% 36.2%,98.3% 37.1%,89.7% 44.8%,100.0% 50.0%,85.7% 54.7%,98.3% 62.9%,87.0% 65.3%,93.3% 75.0%,78.6% 71.9%,85.4% 85.4%,74.4% 81.7%,75.0% 93.3%,63.8% 83.3%,62.9% 98.3%,55.2% 89.7%,50.0% 100.0%,45.3% 85.7%,37.1% 98.3%,34.7% 87.0%,25.0% 93.3%,28.1% 78.6%,14.6% 85.4%,18.3% 74.4%,6.7% 75.0%,16.7% 63.8%,1.7% 62.9%,10.3% 55.2%,0.0% 50.0%,14.3% 45.3%,1.7% 37.1%,13.0% 34.7%,6.7% 25.0%,21.4% 28.1%,14.6% 14.6%,25.6% 18.3%,25.0% 6.7%,36.2% 16.7%,37.1% 1.7%,44.8% 10.3%);
+           font-family:Bangers,Impact,"Arial Narrow Bold",sans-serif; font-size:clamp(1.9rem,8vw,2.9rem); letter-spacing:.04em; line-height:1;
+           color:#d62828; text-shadow:2px 2px 0 #fff, 4px 4px 0 rgba(0,0,0,.35); }
+  .rec-score { font-family:Bangers,Impact,sans-serif; font-size:clamp(1.6rem,6vw,2.2rem); letter-spacing:.06em; color:var(--gold); text-shadow:2px 2px 0 #000; }
+  .pop { animation:pop .65s cubic-bezier(.2,1.6,.4,1) both; }
+  @keyframes pop { 0% { transform:scale(.2) rotate(-12deg); opacity:0; } 60% { transform:scale(1.18) rotate(3deg); opacity:1; } 100% { transform:scale(1) rotate(-2deg); } }
 
   .stage { display:flex; gap:12px; align-items:flex-start; }
   .stage .frame { flex:1; min-width:0; }
@@ -153,6 +164,8 @@ const $ = id => document.getElementById(id);
 const normalize = s => s.normalize("NFD").replace(/[\u0300-\u036f'’\s-]/g, "").toLowerCase();
 
 let order = [], index = 0, tries = 0, finished = false, score = 0, best = 0;
+let recordRun = false, recordPhrase = "", popPending = false;   /* record en cours de battement */
+const PHRASES = ["NEW HIGH SCORE !", "NOUVEAU RECORD !", "BOOM !", "WOW !", "POW !", "YEAH !", "INCROYABLE !", "BANG !"];
 let wrong = [];  /* noms déjà essayés pendant la manche */
 
 function refreshSuggestions() {
@@ -203,7 +216,16 @@ function render() {
   const zoom = finished ? 1 : ZOOM[Math.min(tries, MAX_TRIES - 1)];
   $("art").style.transform = `scale(${zoom})`;
   $("tries-label").textContent = finished ? "" : `Essai ${tries + 1}/${MAX_TRIES}`;
-  $("score-label").textContent = `Score ${score} · Record ${best}`;
+  const sl = $("score-label");
+  if (recordRun) {
+    sl.className = "record";
+    sl.innerHTML = `<div class="burst-wrap${popPending ? " pop" : ""}"><div class="burst">${recordPhrase}</div></div>` +
+                   `<span class="rec-score">Score ${score}</span>`;
+    popPending = false;   /* l'animation ne se rejoue pas à chaque rafraîchissement */
+  } else {
+    sl.className = "";
+    sl.textContent = `Score ${score} · Record ${best}`;
+  }
 }
 
 function loadRound() {
@@ -245,9 +267,15 @@ function endRound(won) {
   $("msg").textContent = won ? `Bravo, c'était ${current().name} !` : `Perdu… c'était ${current().name}.`;
   if (won) {
     score++;
-    if (score > best) { best = score; try { localStorage.setItem("sdq_best", best); } catch (e) {} }
+    if (score > best) {
+      best = score; try { localStorage.setItem("sdq_best", best); } catch (e) {}
+      let next;
+      if (!recordRun) next = PHRASES[0];                      /* premier dépassement : NEW HIGH SCORE ! */
+      else do { next = PHRASES[Math.floor(Math.random() * PHRASES.length)]; } while (next === recordPhrase);
+      recordRun = true; recordPhrase = next; popPending = true;
+    }
   } else {
-    score = 0;
+    score = 0; recordRun = false;
   }
   render();
   if (won) startCountdown();
@@ -313,7 +341,7 @@ $("cd-next").onclick = goNext;
 $("max-tries").textContent = MAX_TRIES;
 $("start").onclick = () => {
   order = shuffle(ROUNDS.slice());
-  index = 0; score = 0;
+  index = 0; score = 0; recordRun = false;
   $("start-screen").hidden = true;
   $("game").hidden = false;
   loadRound();
