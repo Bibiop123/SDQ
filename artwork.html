@@ -5,39 +5,45 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Salle de Quiz – Devine le champion</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;800&family=Press+Start+2P&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Cinzel:wght@700;800&family=Press+Start+2P&display=swap" rel="stylesheet">
 <style>
-  :root { --gold:#e6c36a; --gold-d:#a67c2a; --teal:#1fb5c4; --ink:#0d1117; --panel:#141b24; --tx:#eee; --mu:#9aa6b4; --ok:#4ade80; --ko:#ff6b6b; }
+  :root { --gold:#e6c36a; --gold-d:#a67c2a; --teal:#3fc1e0; --ink:#070b16; --panel:#0e1526; --line:#243149; --tx:#e9eef7; --mu:#8d9ab2; --ok:#4ade80; --ko:#ff6b6b; }
   * { box-sizing: border-box; }
   body { margin:0; min-height:100vh; color:var(--tx); background:var(--ink); position:relative; overflow-x:hidden;
-         font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; }
+         font:16px/1.5 Barlow,system-ui,-apple-system,"Segoe UI",sans-serif; }
   /* Fond : artwork flouté et assombri, comme l'accueil */
   body::before { content:""; position:fixed; inset:-20px; z-index:-2;
-    background:url("images/briar.jpg") center / cover no-repeat; filter:blur(14px) brightness(.35) saturate(1.1); }
+    background:url("images/briar.jpg") center / cover no-repeat; filter:blur(16px) brightness(.3) saturate(1.2); }
   body::after { content:""; position:fixed; inset:0; z-index:-1;
-    background:radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,.65) 100%); }
-  main { max-width:1300px; margin:0 auto; padding:20px 16px 40px; }
+    background:radial-gradient(ellipse at 50% 0%, rgba(63,193,224,.12), transparent 55%), linear-gradient(rgba(7,11,22,.55), var(--ink) 95%); }
+  main { max-width:1300px; margin:0 auto; padding:30px 16px 30px; }
 
-  .home { display:inline-flex; align-items:center; gap:8px; margin-bottom:12px; padding:7px 16px; text-decoration:none;
-          color:var(--gold); font-weight:600; font-size:.9rem; border:2px solid var(--gold-d); border-radius:10px;
-          background:linear-gradient(#1b232d,#141b24); box-shadow:0 0 0 1px #000, 0 4px 14px rgba(0,0,0,.5);
-          transition:border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
-  .home:hover { border-color:var(--teal); transform:translateX(-2px); box-shadow:0 0 0 1px #000, 0 0 16px rgba(31,181,196,.4); }
-  h1 { margin:0; text-align:center; font-family:Cinzel,Georgia,"Times New Roman",serif; font-weight:800;
-       font-size:clamp(1.8rem,6vw,2.6rem); letter-spacing:.04em;
-       background:linear-gradient(#fff3c4,var(--gold) 45%,var(--gold-d)); -webkit-background-clip:text; background-clip:text; color:transparent;
-       filter:drop-shadow(0 2px 6px rgba(0,0,0,.7)); }
-  .sub { text-align:center; color:#cfd6df; margin:2px 0 18px; }
+  /* Barre du haut : identique à l'accueil */
+  .top { position:sticky; top:0; z-index:40; background:rgba(7,11,22,.72); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+  .top-in { max-width:1300px; margin:0 auto; padding:12px 18px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+  .brand { display:flex; align-items:center; gap:10px; color:var(--tx); text-decoration:none; font-family:Cinzel,Georgia,serif; font-weight:800; letter-spacing:.08em; font-size:1.05rem; }
+  .brand svg { width:26px; height:26px; }
+  nav { display:flex; gap:6px; }
+  nav a { padding:7px 14px; border-radius:10px; color:var(--mu); text-decoration:none; font-weight:600; font-size:.85rem; letter-spacing:.08em; text-transform:uppercase; border:1px solid transparent; }
+  nav a:hover { color:var(--tx); border-color:var(--line); }
+  nav a.on { color:var(--teal); border-color:rgba(63,193,224,.4); background:rgba(63,193,224,.08); }
 
-  .tabs { display:flex; gap:8px; flex-wrap:wrap; justify-content:center; margin-bottom:18px; }
-  .tab { padding:6px 14px; border-radius:99px; border:1px solid #2c3948; background:rgba(20,27,36,.8); font-size:.85rem; color:var(--mu); }
-  .tab.on { background:linear-gradient(#f3d98a,var(--gold-d)); color:#1a1305; border-color:var(--gold); font-weight:700; }
+  /* Titre doré orné */
+  .hero { text-align:center; margin-bottom:26px; }
+  h1 { display:inline-flex; align-items:center; gap:18px; margin:0; font-family:Cinzel,Georgia,serif; font-weight:800; font-size:clamp(1.9rem,6vw,3rem); letter-spacing:.05em;
+       background:linear-gradient(#fff3c4,var(--gold) 45%,var(--gold-d)); -webkit-background-clip:text; background-clip:text; color:transparent; filter:drop-shadow(0 2px 8px rgba(0,0,0,.8)); }
+  h1::before, h1::after { content:""; width:clamp(24px,8vw,90px); height:2px; background:linear-gradient(90deg,transparent,var(--gold)); }
+  h1::after { transform:scaleX(-1); }
+  .sub { margin:10px 0 12px; color:#c9d3e4; font-size:1.1rem; font-weight:500; }
+  .chips { display:flex; gap:8px; justify-content:center; flex-wrap:wrap; }
+  .chip { padding:3px 10px; border-radius:99px; font-size:.68rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; background:rgba(20,28,46,.85); border:1px solid #34425f; color:#c9d3e4; }
+  .chip.lvl { border-color:rgba(230,195,106,.5); color:var(--gold); }
 
   .stats { display:flex; flex-wrap:wrap; align-items:center; justify-content:flex-end; gap:8px; margin-bottom:12px; }
-  .plate { display:inline-flex; align-items:baseline; gap:8px; padding:6px 14px; border:2px solid var(--gold-d); border-radius:10px;
-           background:linear-gradient(#1b232d,#141b24); box-shadow:0 0 0 1px #000, 0 4px 14px rgba(0,0,0,.5);
-           color:var(--mu); font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:.08em; }
-  .plate b { font-family:Cinzel,Georgia,serif; font-size:1.15rem; font-weight:800; letter-spacing:.02em; color:var(--gold); text-transform:none; }
+  .plate { display:inline-flex; align-items:baseline; gap:8px; padding:6px 14px; border:1px solid var(--line); border-radius:12px;
+           background:rgba(14,21,38,.85); box-shadow:0 4px 14px rgba(0,0,0,.4);
+           color:var(--mu); font-size:.78rem; font-weight:600; text-transform:uppercase; letter-spacing:.1em; }
+  .plate b { font-family:Barlow,sans-serif; font-size:1.2rem; font-weight:700; letter-spacing:0; color:var(--gold); text-transform:none; }
   .plate:empty { display:none; }                        /* pas de plaque vide (essais cachés en fin de manche) */
   #score-label:not(.record) { display:flex; gap:8px; }
   #score-label { color:var(--gold); }
@@ -67,8 +73,8 @@
   /* L'artwork prend toute la largeur, alignée avec le champ de saisie et les boutons */
   .stage { position:relative; display:flex; flex-direction:column; }
   .stage .frame { width:100%; }
-  .frame { aspect-ratio:16/9; overflow:hidden; border-radius:14px; border:3px solid var(--gold); background:#000;
-           box-shadow:0 0 0 2px #000, 0 0 0 5px rgba(31,181,196,.55), 0 18px 50px rgba(0,0,0,.7); transition:box-shadow .4s ease; }
+  .frame { aspect-ratio:16/9; overflow:hidden; border-radius:18px; border:1px solid var(--line); background:#000;
+           box-shadow:0 16px 44px rgba(0,0,0,.6); transition:box-shadow .4s ease, border-color .4s ease; }
   .frame img { width:100%; height:100%; object-fit:cover; display:block; transition:transform .7s ease; }
   .frame { position:relative; }
   /* Filigrane de compte à rebours au centre de l'artwork */
@@ -80,11 +86,11 @@
   .cd-badge .bg { stroke:rgba(255,255,255,.2); }
   .cd-badge .fg { stroke:var(--gold); stroke-linecap:round; stroke-dasharray:213.6; stroke-dashoffset:0; animation:cdring var(--cd,5s) linear forwards; }
   @keyframes cdring { to { stroke-dashoffset:213.6; } }
-  .cd-num { font-family:Cinzel,Georgia,serif; font-weight:800; font-size:2rem; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.8); }
+  .cd-num { font-family:Barlow,sans-serif; font-weight:700; font-size:2rem; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.8); }
   #cd-next { pointer-events:auto; padding:7px 16px; font-size:.9rem; opacity:.9; }
   .frame.noanim img { transition:none !important; }   /* début de manche : zoom immédiat, sans animation */
   .frame.revealed img { transform:scale(1) !important; }   /* artwork entier (victoire, défaite, abandon) */
-  .frame.revealed { box-shadow:0 0 0 2px #000, 0 0 0 5px var(--teal), 0 0 40px rgba(31,181,196,.45), 0 18px 50px rgba(0,0,0,.7); }
+  .frame.revealed { border-color:var(--teal); box-shadow:0 0 0 1px var(--teal), 0 16px 44px rgba(0,0,0,.6), 0 0 36px rgba(63,193,224,.3); }
 
   /* Mise en page : recherche à gauche, artwork à droite (empilés sur petit écran) */
   .layout { display:grid; grid-template-columns:minmax(300px,380px) 1fr; gap:24px; align-items:center; }   /* bloc de recherche centré verticalement par rapport à l'artwork */
@@ -103,17 +109,18 @@
   .t { padding:2px 8px; border-radius:6px; background:rgba(255,107,107,.15); border:1px solid var(--ko); color:#ffc2c2;
        font-size:.72rem; line-height:1.4; overflow-wrap:anywhere; }
 
-  .msg { min-height:30px; margin-top:14px; font-weight:700; text-align:center; font-family:Cinzel,Georgia,serif; font-size:1.1rem; }
+  .msg { min-height:30px; margin-top:14px; font-weight:700; text-align:center; font-size:1.2rem; letter-spacing:.02em; }
   .msg.ok { color:var(--ok); } .msg.ko { color:var(--ko); }
 
   .row { display:flex; gap:10px; margin:12px 0; }
-  input { flex:1; min-width:0; padding:13px 14px; border-radius:10px; border:2px solid #24707a; background:rgba(13,17,23,.85); color:var(--tx); font-size:1rem; }
-  input:focus { outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(31,181,196,.25); }
-  input::placeholder { color:#6f7b89; }
-  button { padding:13px 18px; border:0; border-radius:10px; font-size:1rem; font-weight:700; cursor:pointer; transition:transform .15s ease, filter .15s ease;
-           background:linear-gradient(#f3d98a,var(--gold-d)); color:#1a1305; }
-  button:hover:not(:disabled) { transform:translateY(-1px); filter:brightness(1.08); }
-  button.alt { background:rgba(20,27,36,.85); color:var(--gold); border:2px solid var(--gold-d); font-weight:600; }
+  input { flex:1; min-width:0; padding:13px 14px; border-radius:12px; border:1px solid var(--line); background:rgba(14,21,38,.9); color:var(--tx); font:inherit; font-size:1.05rem; }
+  input:focus { outline:none; border-color:var(--teal); box-shadow:0 0 0 3px rgba(63,193,224,.2); }
+  input::placeholder { color:#5f6c85; }
+  button { padding:13px 22px; border:0; border-radius:10px; font:inherit; font-size:1.05rem; font-weight:700; cursor:pointer; transition:transform .15s ease, filter .15s ease, border-color .15s ease;
+           background:var(--teal); color:#04202a; }
+  button:hover:not(:disabled) { transform:translateY(-1px); filter:brightness(1.1); }
+  button.alt { background:rgba(14,21,38,.85); color:var(--tx); border:1px solid var(--line); font-weight:600; }
+  button.alt:hover:not(:disabled) { border-color:var(--teal); filter:none; }
   button:disabled { opacity:.45; cursor:default; }
   #giveup, #next { flex:1; }
 
@@ -141,19 +148,41 @@
   .start p { margin:0 0 20px; color:#cfd6df; }
   #start { font-family:Cinzel,Georgia,serif; font-size:1.3rem; letter-spacing:.08em; padding:14px 46px; }
   [hidden] { display:none !important; }
+
+  /* Liste de suggestions et écran de démarrage : même matière que les cartes de l'accueil */
+  .suggest { background:rgba(9,14,27,.98); border:1px solid var(--line); border-radius:14px; box-shadow:0 18px 44px rgba(0,0,0,.75); scrollbar-color:#34425f #0e1526; }
+  .suggest li { border:1px solid var(--line); border-radius:12px; background:rgba(20,29,50,.9); }
+  .suggest li:hover, .suggest li.sel { border-color:var(--teal); background:rgba(28,42,70,.95); box-shadow:0 0 14px rgba(63,193,224,.2); }
+  .ico { border:2px solid var(--gold); background:radial-gradient(circle at 50% 35%,#1d2740,#0b1020); box-shadow:0 0 0 1px #000; }
+  .start { border:1px solid var(--line); border-radius:18px; background:rgba(14,21,38,.88); box-shadow:0 16px 44px rgba(0,0,0,.6); }
+  .start h2 { font-family:Barlow,sans-serif; font-weight:700; font-size:1.7rem; letter-spacing:.04em; color:var(--gold); }
+  .start p { font-size:1.05rem; }
+  #start { font-family:Barlow,sans-serif; font-size:1.25rem; letter-spacing:.1em; text-transform:uppercase; padding:14px 48px; }
+  footer { max-width:1300px; margin:0 auto; padding:22px 18px 34px; color:#66738c; font-size:.8rem; text-align:center; border-top:1px solid rgba(36,49,73,.7); }
+  @media (max-width: 860px) { nav a { padding:7px 10px; } }
 </style>
 </head>
 <body>
-<main>
-  <a class="home" href="index.html">← Accueil</a>
-  <h1>Salle de Quiz</h1>
-  <p class="sub">Devine le champion à partir d'un morceau d'artwork</p>
-
-  <div class="tabs">
-    <span class="tab on">Artwork</span>
-    <span class="tab">Silhouette (bientôt)</span>
-    <span class="tab">Musique (bientôt)</span>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 2l12 8v12l-12 8L4 22V10z" fill="none" stroke="#e6c36a" stroke-width="2"/><path d="M16 9l6 4v6l-6 4-6-4v-6z" fill="#3fc1e0"/></svg>
+      SALLE DE QUIZ
+    </a>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="index.html#jeux">Mini-jeux</a>
+      <a class="on" href="artwork.html">Artwork</a>
+    </nav>
   </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Artwork</h1>
+    <p class="sub">Devine le champion à partir d'un morceau d'artwork</p>
+    <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span></div>
+  </section>
 
   <section class="start" id="start-screen">
     <h2>Prêt à jouer ?</h2>
@@ -198,6 +227,8 @@
   </div>
   </div>
 </main>
+
+<footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
 
 <script>
 /* ===== CONFIGURATION : ajoute tes questions ici =====
