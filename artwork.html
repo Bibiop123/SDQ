@@ -87,17 +87,17 @@
   .combo { position:relative; flex:1; min-width:0; }
   .combo input { width:100%; }
   .suggest { position:absolute; left:0; right:0; top:calc(100% + 6px); z-index:30; margin:0; padding:6px; list-style:none;
+             display:grid; grid-template-columns:1fr 1fr; gap:6px;   /* 2 colonnes : 2 fois plus de champions visibles */
              max-height:300px; overflow-y:auto; background:rgba(13,17,23,.97); border:2px solid var(--gold-d); border-radius:12px;
              box-shadow:0 14px 40px rgba(0,0,0,.75); scrollbar-width:thin; scrollbar-color:var(--gold-d) #1a222c; }
-  .suggest li { display:flex; align-items:center; gap:12px; margin:0 0 6px; padding:6px 12px 6px 6px; cursor:pointer;
+  .suggest li { display:flex; align-items:center; gap:10px; min-width:0; margin:0; padding:5px 10px 5px 5px; cursor:pointer;
                 border:1px solid #2c3948; border-radius:10px; background:linear-gradient(#1b232d,#141b24);
                 transition:border-color .12s ease, background .12s ease; }
-  .suggest li:last-child { margin-bottom:0; }
   .suggest li:hover, .suggest li.sel { border-color:var(--teal); background:linear-gradient(#22313e,#18222c); }
-  .ico { width:42px; height:42px; flex-shrink:0; border-radius:8px; border:2px solid var(--gold-d); overflow:hidden; background:#0b0f14;
+  .ico { width:38px; height:38px; flex-shrink:0; border-radius:8px; border:2px solid var(--gold-d); overflow:hidden; background:#0b0f14;
          display:grid; place-items:center; font-family:Cinzel,Georgia,serif; font-weight:800; color:var(--gold); }
   .ico img { width:100%; height:100%; object-fit:cover; object-position:50% 12%; display:block; }
-  .suggest .nm { font-weight:600; }
+  .suggest .nm { min-width:0; font-weight:600; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
   /* Écran de démarrage */
   .start { margin:10px auto 0; max-width:560px; text-align:center; padding:28px 22px 30px; border-radius:14px;
@@ -227,7 +227,7 @@ function pick(name) { $("answer").value = name; hideSuggestions(); guess(); }
 function moveSel(d) {
   const items = $("suggest").children; if (!items.length) return;
   if (sel >= 0) items[sel].classList.remove("sel");
-  sel = (sel + d + items.length) % items.length;
+  sel = sel < 0 ? (d > 0 ? 0 : items.length - 1) : Math.min(Math.max(sel + d, 0), items.length - 1);
   items[sel].classList.add("sel"); items[sel].scrollIntoView({ block: "nearest" });
 }
 
@@ -395,8 +395,9 @@ $("answer").oninput = renderSuggestions;
 $("answer").onfocus = renderSuggestions;
 $("answer").onblur = () => setTimeout(hideSuggestions, 150);
 $("answer").onkeydown = e => {
-  if (e.key === "ArrowDown") { e.preventDefault(); if (!$("suggest").hidden) moveSel(1); else renderSuggestions(); }
-  else if (e.key === "ArrowUp") { e.preventDefault(); moveSel(-1); }
+  if (e.key === "ArrowDown") { e.preventDefault(); if (!$("suggest").hidden) moveSel(2); else renderSuggestions(); }   /* une ligne plus bas */
+  else if (e.key === "ArrowUp") { e.preventDefault(); moveSel(-2); }
+  else if ((e.key === "ArrowRight" || e.key === "ArrowLeft") && sel >= 0) { e.preventDefault(); moveSel(e.key === "ArrowRight" ? 1 : -1); }
   else if (e.key === "Escape") hideSuggestions();
   else if (e.key === "Enter") { e.preventDefault(); if (sel >= 0 && shown[sel]) pick(shown[sel]); else { hideSuggestions(); guess(); } }
 };
