@@ -230,6 +230,7 @@
 
 <footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
 
+<script src="images/manifest.js"></script>
 <script>
 /* ===== CONFIGURATION : ajoute tes questions ici =====
    name : bonne réponse
@@ -242,8 +243,25 @@ const ROUNDS = [
   { name: "Briar",  img: "images/briar.jpg",  face: { x: 0.64, y: 0.29, rx: 0.10, ry: 0.17 } }
 ];
 
+/* ===== Dossier d'images : images/<Personnage>/*.jpg =====
+   images/manifest.js est généré par generer_manifest.py (à relancer quand tu ajoutes des images).
+   Une manche = un personnage tiré au hasard, puis un de ses skins tiré au hasard.
+   Sans manifest, le jeu garde les deux manches de démonstration ci-dessus. */
+const DEFAULT_FACE = { x: 0.5, y: 0.3, rx: 0.16, ry: 0.22 };   /* zone du visage par défaut sur un splash art centré */
+const MANIFEST = (window.SDQ_MANIFEST && window.SDQ_MANIFEST.champions) || [];
+const ICONS = {};   /* nom -> miniature locale (si générée) */
+if (MANIFEST.length) {
+  ROUNDS.length = 0;
+  MANIFEST.forEach(c => {
+    if (!c.images || !c.images.length) return;
+    ROUNDS.push({ name: c.name, imgs: c.images, img: c.images[0], face: DEFAULT_FACE });
+    if (c.icon) ICONS[c.name] = c.icon;
+  });
+}
+
 /* Liste des suggestions du champ de saisie */
-const NAMES = ["Aatrox","Ahri","Akali","Alistar","Amumu","Annie","Ashe","Briar","Caitlyn","Darius","Diana","Draven","Ekko","Evelynn","Ezreal","Fiora","Garen","Gwen","Illaoi","Irelia","Jax","Jhin","Jinx","Kai'Sa","Katarina","Kayn","Lee Sin","Leona","Lillia","Lucian","Lulu","Lux","Master Yi","Miss Fortune","Morgana","Nami","Nasus","Nautilus","Nidalee","Orianna","Pyke","Rell","Renata Glasc","Samira","Senna","Seraphine","Sett","Shen","Singed","Sona","Soraka","Teemo","Thresh","Tristana","Vayne","Vel'Koz","Vi","Viego","Xayah","Yasuo","Yone","Zed","Zeri","Ziggs","Zoe","Zyra"];
+const NAMES_DEFAULT = ["Aatrox","Ahri","Akali","Alistar","Amumu","Annie","Ashe","Briar","Caitlyn","Darius","Diana","Draven","Ekko","Evelynn","Ezreal","Fiora","Garen","Gwen","Illaoi","Irelia","Jax","Jhin","Jinx","Kai'Sa","Katarina","Kayn","Lee Sin","Leona","Lillia","Lucian","Lulu","Lux","Master Yi","Miss Fortune","Morgana","Nami","Nasus","Nautilus","Nidalee","Orianna","Pyke","Rell","Renata Glasc","Samira","Senna","Seraphine","Sett","Shen","Singed","Sona","Soraka","Teemo","Thresh","Tristana","Vayne","Vel'Koz","Vi","Viego","Xayah","Yasuo","Yone","Zed","Zeri","Ziggs","Zoe","Zyra"];
+const NAMES = MANIFEST.length ? ROUNDS.map(r => r.name).sort((x, y) => x.localeCompare(y)) : NAMES_DEFAULT;
 
 /* Niveaux de zoom : un par essai (le dernier = image entière) */
 const ZOOM = [7, 4.5, 3, 2, 1.4, 1];
@@ -282,7 +300,7 @@ function renderSuggestions() {
     const li = document.createElement("li");
     li.setAttribute("role", "option");
     const ico = document.createElement("div"); ico.className = "ico";
-    const img = new Image(); img.alt = ""; img.loading = "lazy"; img.src = iconUrl(name);
+    const img = new Image(); img.alt = ""; img.loading = "lazy"; img.src = ICONS[name] || iconUrl(name);
     img.onerror = () => { ico.textContent = name[0]; };      /* pas d'image : initiale dans le cadre */
     ico.appendChild(img);
     const nm = document.createElement("span"); nm.className = "nm"; nm.textContent = name;
@@ -413,9 +431,11 @@ function loadRound() {
     show();
   };
   $("art").onerror = show;
-  $("art").style.transformOrigin = pickFocus(current().face);
+  const cur = current();
+  if (cur.imgs) cur.img = cur.imgs[Math.floor(Math.random() * cur.imgs.length)];   /* skin au hasard */
+  $("art").style.transformOrigin = pickFocus(cur.face);
   render();                                          /* zoom initial appliqué tout de suite */
-  $("art").src = current().img;
+  $("art").src = cur.img;
   $("tries-list").innerHTML = "";
   $("msg").textContent = ""; $("msg").className = "msg";
   $("next").style.display = "none";
