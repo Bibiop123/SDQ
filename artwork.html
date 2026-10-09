@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Artwork – Le Bonfire</title>
+<title>Splash Art – Le Bonfire</title>
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
@@ -42,16 +42,14 @@
   .reset-best:hover, .reset-best:focus-visible { opacity: 1; color: #ff6b6b; border-color: #ff6b6b; outline: none; }
   .plates { display: flex; gap: 22px; }
   .plate { display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
-  /* Record battu : aura rouge discrète + points d'exclamation */
+  /* Record battu : contour rouge + points d'exclamation */
   .plate { position: relative; transition: border-color .3s, box-shadow .3s; }
-  .plate.broken { border-color: #ff4a4a; color: #ffd9d9; animation: aura 2.2s ease-in-out infinite; }
+  .plate.broken { border-color: #ff4a4a; color: #ffd9d9; }
   .plate.broken b { color: #ff6b6b; }
   .plate.broken::before, .plate.broken::after { content: "!"; position: absolute; top: 50%; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 1.35rem; line-height: 1; color: #ff3b3b; text-shadow: 0 0 8px rgba(255,59,59,.8); animation: bang .6s cubic-bezier(.2,1.6,.4,1) both; }
   .plate.broken::before { left: -15px; transform: translateY(-50%) rotate(-14deg); }
   .plate.broken::after { right: -15px; transform: translateY(-50%) rotate(14deg); }
-  @keyframes aura { 0%,100% { box-shadow: 0 0 6px 1px rgba(255,59,59,.45), 0 0 16px 3px rgba(255,59,59,.2); } 50% { box-shadow: 0 0 10px 3px rgba(255,59,59,.7), 0 0 26px 7px rgba(255,59,59,.3); } }
   @keyframes bang { from { opacity: 0; scale: .2; } to { opacity: 1; scale: 1; } }
-  @media (prefers-reduced-motion: reduce) { .plate.broken { animation: none; box-shadow: 0 0 12px 3px rgba(255,59,59,.55); } .plate.broken::before, .plate.broken::after { animation: none; } }
   .plate b { font-size: 1.2rem; font-weight: 700; letter-spacing: 0; color: var(--gold); text-transform: none; }
   .dots { display: flex; gap: 6px; }
   .dots i { width: 22px; height: 6px; border-radius: 4px; background: #24314a; transition: background .3s; }
@@ -131,15 +129,15 @@
     <nav>
       <a href="index.html">Accueil</a>
       <a href="index.html#jeux">Mini-jeux</a>
-      <a class="on" href="artwork.html">Artwork</a>
+      <a class="on" href="artwork.html">Splash Art</a>
     </nav>
   </div>
 </header>
 
 <main>
   <section class="hero">
-    <h1>Artwork</h1>
-    <p class="sub">À quel champion appartient cet artwork ?</p>
+    <h1>Splash Art</h1>
+    <p class="sub">À quel champion appartient ce splash art ?</p>
   </section>
 
   <section class="game">
@@ -181,7 +179,7 @@
         <div class="dots" id="dots" aria-label="Essais"></div>
       </div>
       <div class="frame noanim" id="frame">
-        <img id="art" alt="Artwork à deviner">
+        <img id="art" alt="Splash art à deviner">
         <div class="loading" id="loading">Chargement des images…</div>
       </div>
     </div>
