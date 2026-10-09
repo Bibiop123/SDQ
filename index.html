@@ -71,7 +71,13 @@
   a.card:hover .bg { transform: scale(1.06); }
   .big { grid-row: span 2; min-height: 430px; background: linear-gradient(150deg, #1a1432, #0e1b33 60%, #12263a); }
   /* Cartes-mots : un emblème et le mot en dessous, comme les tuiles du jeu */
-  .deco { position: absolute; right: 46px; top: 66px; display: flex; gap: 12px; z-index: -1; }
+  .big { container-type: inline-size; }
+  .deco { position: absolute; left: 50%; top: 62px; translate: -50% 0; transform-origin: top center; display: flex; gap: 12px; z-index: -1; padding: 22px 20px 20px; border-radius: 18px;
+          border: 1px solid rgba(230,195,106,.28); background: radial-gradient(ellipse at 50% 0%, rgba(63,193,224,.20), transparent 70%), linear-gradient(rgba(10,16,32,.78), rgba(6,10,22,.9)); box-shadow: 0 14px 40px rgba(0,0,0,.55), inset 0 1px 0 rgba(255,255,255,.07); }
+  @container (max-width: 600px) { .deco { scale: .9; } }
+  @container (max-width: 520px) { .deco { scale: .78; } }
+  @container (max-width: 440px) { .deco { scale: .66; } }
+  @container (max-width: 380px) { .deco { scale: .56; } }
   .wcard { width: 96px; padding: 7px 7px 9px; display: flex; flex-direction: column; align-items: center; gap: 7px; border-radius: 10px; border: 1px solid #34425f;
            background: linear-gradient(#1c2744, #0f172b); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 10px 22px rgba(0,0,0,.5); }
   .wcard:nth-child(odd) { transform: rotate(-4deg) translateY(6px); } .wcard:nth-child(even) { transform: rotate(3deg) translateY(-6px); }
@@ -118,7 +124,6 @@
   @media (max-width: 760px) {
     .grid { grid-template-columns: 1fr; grid-template-rows: none; }
     .big { grid-row: auto; min-height: 340px; }
-    .deco { top: 80px; right: 14px; transform: scale(.72); transform-origin: right top; }
     .card h3 { font-size: 1.7rem; }
     nav a { padding: 7px 10px; }
   }
