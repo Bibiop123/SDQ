@@ -71,7 +71,7 @@
   a.card:hover .bg { transform: scale(1.06); }
   .big { grid-row: span 2; min-height: 430px; background: linear-gradient(150deg, #1a1432, #0e1b33 60%, #12263a); }
   /* Cartes-mots : un emblème et le mot en dessous, comme les tuiles du jeu */
-  .deco { position: absolute; right: 26px; top: 70px; display: flex; gap: 12px; z-index: -1; }
+  .deco { position: absolute; right: 46px; top: 66px; display: flex; gap: 12px; z-index: -1; }
   .wcard { width: 96px; padding: 7px 7px 9px; display: flex; flex-direction: column; align-items: center; gap: 7px; border-radius: 10px; border: 1px solid #34425f;
            background: linear-gradient(#1c2744, #0f172b); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 10px 22px rgba(0,0,0,.5); }
   .wcard:nth-child(odd) { transform: rotate(-4deg) translateY(6px); } .wcard:nth-child(even) { transform: rotate(3deg) translateY(-6px); }
@@ -80,7 +80,11 @@
   .wimg img { width: 100%; height: 100%; object-fit: cover; object-position: 68% 30%; display: block; }
   .wimg img.nash { object-position: 50% 30%; }
   .wimg .wini { font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 2rem; color: var(--gold); }
-  .wcard b { font-size: .78rem; font-weight: 700; letter-spacing: .14em; color: #e9eef7; }
+  .wcard { width: 108px; }
+  .scr, .ans { display: flex; justify-content: center; gap: 3px; }
+  .scr i { width: 14px; height: 20px; display: grid; place-items: center; border-radius: 3px; border: 1px solid #3a4a6c; background: linear-gradient(#232f50, #131c34); font-style: normal; font-weight: 700; font-size: .78rem; color: #f3f6fb; }
+  .ans { margin-top: 3px; padding-top: 7px; border-top: 1px dashed rgba(230,195,106,.35); width: 100%; }
+  .ans i { width: 14px; padding-bottom: 1px; border-bottom: 2px solid #4ade80; font-style: normal; font-weight: 700; font-size: .8rem; line-height: 1.25; text-align: center; color: #4ade80; }
 
   /* Pastille ronde à anneau doré (clin d'œil LoLdle) */
   .ico { position: absolute; top: 18px; left: 18px; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center;
@@ -146,10 +150,10 @@
     <!-- Jeu le plus récent : grande carte + bandeau Nouveau -->
     <a class="card big" href="mots.html">
       <div class="deco" aria-hidden="true">
-        <div class="wcard"><div class="wimg"><img class="nash" src="nashor.jpg" alt=""></div><b>NASHOR</b></div>
-        <div class="wcard"><div class="wimg"><img src="images/Jayce_000_Jayce.jpg" alt=""></div><b>JAYCE</b></div>
-        <div class="wcard"><div class="wimg"><svg viewBox="0 0 64 64"><path d="M32 6l22 14v24L32 58 10 44V20z" fill="#2a2208" stroke="#f2d15a" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 32c6-9 12-13 18-13s12 4 18 13c-6 9-12 13-18 13s-12-4-18-13z" fill="#f2d15a"/><circle cx="32" cy="32" r="7" fill="#2a2208"/><circle cx="32" cy="32" r="3" fill="#fff3b0"/></svg></div><b>WARD</b></div>
-        <div class="wcard"><div class="wimg"><img src="flash.jpg" alt=""></div><b>FLASH</b></div>
+        <div class="wcard"><div class="wimg"><img class="nash" src="nashor.jpg" alt=""></div><span class="scr" aria-hidden="true"><i>S</i><i>H</i><i>N</i><i>A</i><i>R</i><i>O</i></span><span class="ans"><i>N</i><i>A</i><i>S</i><i>H</i><i>O</i><i>R</i></span></div>
+        <div class="wcard"><div class="wimg"><img src="images/Jayce_000_Jayce.jpg" alt=""></div><span class="scr" aria-hidden="true"><i>C</i><i>J</i><i>Y</i><i>E</i><i>A</i></span><span class="ans"><i>J</i><i>A</i><i>Y</i><i>C</i><i>E</i></span></div>
+        <div class="wcard"><div class="wimg"><svg viewBox="0 0 64 64"><path d="M32 6l22 14v24L32 58 10 44V20z" fill="#2a2208" stroke="#f2d15a" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 32c6-9 12-13 18-13s12 4 18 13c-6 9-12 13-18 13s-12-4-18-13z" fill="#f2d15a"/><circle cx="32" cy="32" r="7" fill="#2a2208"/><circle cx="32" cy="32" r="3" fill="#fff3b0"/></svg></div><span class="scr" aria-hidden="true"><i>R</i><i>D</i><i>A</i><i>W</i></span><span class="ans"><i>W</i><i>A</i><i>R</i><i>D</i></span></div>
+        <div class="wcard"><div class="wimg"><img src="flash.jpg" alt=""></div><span class="scr" aria-hidden="true"><i>S</i><i>H</i><i>A</i><i>L</i><i>F</i></span><span class="ans"><i>F</i><i>L</i><i>A</i><i>S</i><i>H</i></span></div>
       </div>
       <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 18L9 6l5 12M5.8 14h6.4"/><path d="M16 6h4v12h-4"/></svg></span>
       <span class="ribbon">NOUVEAU</span>
