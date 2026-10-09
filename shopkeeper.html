@@ -286,7 +286,7 @@ function newRound() {
 }
 /* Lit un nombre ou un petit calcul (+ − × ÷, parenthèses) sans utiliser eval. « 1000+500+500 » -> 2000 */
 function parse(v) {
-  const t = String(v).toLowerCase().replace(/[\s\u00a0\u202f]/g, "").replace(/[x×]/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/,/g, ".");
+  const t = String(v).toLowerCase().replace(/[\s\u00a0\u202f]/g, "").replace(/×/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/,/g, ".");
   if (!t || !/^[0-9+\-*/().]+$/.test(t)) return NaN;
   let i = 0;
   const num = () => { const m = /^\d+(\.\d+)?/.exec(t.slice(i)); if (!m) throw 0; i += m[0].length; return parseFloat(m[0]); };
@@ -334,9 +334,10 @@ function endRound(win, g) {
 }
 
 $("answer").oninput = () => {
-  let v = $("answer").value;
+  let v = $("answer").value.replace(/[^0-9+\-*/().,×÷−\s\u00a0\u202f]/g, "");   /* pas de lettres */
+  if (v !== $("answer").value) $("answer").value = v;
   if (/^[0-9\s\u00a0\u202f]*$/.test(v)) { const d = v.replace(/\D/g, ""); v = d ? fmt(Number(d)) : ""; $("answer").value = v; }   /* un simple nombre : on le met en forme */
-  const isCalc = /[+\-*/x×÷()]/i.test(v), r = isCalc ? parse(v) : NaN;
+  const isCalc = /[+\-*/×÷−()]/.test(v), r = isCalc ? parse(v) : NaN;
   $("calc").textContent = isCalc ? (isNaN(r) ? "" : "= " + fmt(r) + " or") : "";
   $("submit").disabled = over || !v.trim();
 };
