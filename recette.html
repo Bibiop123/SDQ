@@ -90,13 +90,18 @@
   .target h2 { margin: 6px 0 0; font-family: Cinzel, Georgia, serif; font-size: 1.35rem; color: var(--gold); text-align: center; letter-spacing: .04em; }
   .target .meta { color: var(--mu); font-size: .92rem; text-align: center; }
   .target .meta b { color: var(--tx); }
-  .rslots { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px 18px; margin: 30px 0 8px; position: relative; }
+  .rslots { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px 24px; margin: 30px 0 8px; position: relative; }
   .rslots::before { content: ""; position: absolute; top: -30px; left: 50%; height: 16px; border-left: 2px solid #3a4866; }
   .rslot { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 84px; cursor: pointer; background: none; border: 0; padding: 0; color: inherit; font-weight: 500; }
-  .rslot::before { content: ""; position: absolute; top: -14px; left: -9px; right: -9px; border-top: 2px solid #3a4866; }
-  .rslot:first-child::before { left: 50%; } .rslot:last-child::before { right: 50%; } .rslot:only-child::before { display: none; }
-  .rslot::after { content: ""; position: absolute; top: -14px; left: 50%; height: 14px; border-left: 2px solid #3a4866; }
-  .rslot:only-child::after { top: -30px; height: 30px; }
+  .col { position: relative; display: flex; flex-direction: column; align-items: center; }
+  .col::before, .subs > .rslot::before { content: ""; position: absolute; top: -14px; left: -9px; right: -9px; border-top: 2px solid #3a4866; }
+  .col:first-child::before, .subs > .rslot:first-child::before { left: 50%; } .col:last-child::before, .subs > .rslot:last-child::before { right: 50%; }
+  .col:only-child::before, .subs > .rslot:only-child::before { display: none; }
+  .col::after, .subs > .rslot::after { content: ""; position: absolute; top: -14px; left: 50%; height: 14px; border-left: 2px solid #3a4866; }
+  .col:only-child::after { top: -30px; height: 30px; }
+  .subs { position: relative; display: flex; gap: 8px; margin-top: 26px; }
+  .subs::before { content: ""; position: absolute; top: -26px; left: 50%; height: 12px; border-left: 2px solid #3a4866; }
+  .rslot.sm { width: 60px; } .rslot.sm .box { width: 46px; height: 46px; border-radius: 9px; } .rslot.sm small { font-size: .62rem; }
   .rslot:hover:not(:disabled) { transform: none; filter: none; }
   .rslot .box { width: 64px; height: 64px; border-radius: 12px; border: 2px dashed #46557a; background: rgba(7,11,22,.6); display: grid; place-items: center; overflow: hidden; }
   .rslot .box img { width: 100%; height: 100%; display: block; }
@@ -106,6 +111,7 @@
   .rslot.ok .box { border-style: solid; border-color: var(--ok); }
   .rslot.ko .box { border-style: solid; border-color: var(--ko); }
   .rslot small { font-size: .72rem; line-height: 1.15; color: #c9d3e4; text-align: center; min-height: 1.7em; }
+  .rslot:disabled { opacity: 1; cursor: default; }
   .rslots.shake { animation: shake .3s; }
   @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
   .hover { min-height: 24px; margin: 6px 0 12px; text-align: center; color: #c9d3e4; font-size: .95rem; }
@@ -124,7 +130,7 @@
   .misses { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
   .misses li { padding: 3px 10px; border-radius: 10px; border: 1px solid rgba(255,107,107,.55); background: rgba(255,107,107,.1); font-size: .8rem; }
   .misses li small { margin-left: 6px; color: var(--ko); text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; }
-  @media (max-width: 700px) { .pools { grid-template-columns: 1fr; } .game { padding: 18px 12px 20px; } .rslot { width: 72px; } .rslot .box { width: 56px; height: 56px; } .it { width: 42px; height: 42px; } nav a { padding: 7px 8px; font-size: .74rem; letter-spacing: .04em; } .brand { font-size: .9rem; } .top-in { padding: 10px 10px; gap: 6px; } .plates { gap: 14px; } }
+  @media (max-width: 700px) { .rslots { gap: 30px 10px; } .subs { gap: 4px; } .rslot.sm { width: 50px; } .rslot.sm .box { width: 40px; height: 40px; } .rslot.sm small { font-size: .56rem; } .pools { grid-template-columns: 1fr; } .game { padding: 18px 12px 20px; } .rslot { width: 72px; } .rslot .box { width: 56px; height: 56px; } .it { width: 42px; height: 42px; } nav a { padding: 7px 8px; font-size: .74rem; letter-spacing: .04em; } .brand { font-size: .9rem; } .top-in { padding: 10px 10px; gap: 6px; } .plates { gap: 14px; } }
   @media (max-width: 480px) { .brand { font-size: 0; gap: 0; } nav { gap: 4px; } nav a { padding: 7px 8px; font-size: .74rem; letter-spacing: .04em; } }
 </style>
 </head>
@@ -199,7 +205,7 @@ const MAX_TRIES = 3;
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
 let ver = "", items = {}, basics = [], epics = [], legend = [], deck = [];
-let cur = null, slots = [], fixed = [], tries = 0, over = false, misses = [];
+let cur = null, slots = [], subs = [], fixed = [], fixedSub = [], tries = 0, over = false, misses = [];
 let streak = 0, best = 0, recordBroken = false;
 try { best = Number(localStorage.getItem("sdq_best_recette")) || 0; } catch (e) {}
 
@@ -233,10 +239,11 @@ async function loadItems() {
   epics = ids.epic.map(i => items[i]).sort(byPrice);
   legend = ids.leg.map(i => items[i]);
 }
+const isBasicId = id => basics.some(b => b.id === id);
 const inPool = id => basics.some(b => b.id === id) || epics.some(e => e.id === id);
 function targets() {
   /* Objets complets (légendaires du wiki) dont tous les composants sont dans les listes de tier 1 et 2 */
-  return legend.filter(i => i.from.length && i.from.length <= 4 && i.from.every(inPool));
+  return legend.filter(i => i.from.length && i.from.length <= 4 && i.from.every(inPool) && i.from.every(id => items[id].from.every(isBasicId)));
 }
 
 /* ============================================================
@@ -259,23 +266,44 @@ function renderPool(el, list) {
   });
 }
 function showInfo(it) { $("hover").innerHTML = `<b>${it.name}</b> <span>· ${it.total} or</span>`; }
-function nextEmpty() { return slots.findIndex((s, i) => !s && !fixed.includes(i)); }
+/* Prochaine case à remplir : d'abord les composants du haut, puis la recette de chaque objet intermédiaire */
+function nextEmpty() {
+  const i = slots.findIndex((s, k) => !s && !fixed.includes(k));
+  if (i >= 0) return [i, -1];
+  for (let a = 0; a < subs.length; a++) if (subs[a]) for (let b = 0; b < subs[a].length; b++) if (!subs[a][b] && !fixedSub.includes(a + "." + b)) return [a, b];
+  return null;
+}
+function slotBtn(id, cls, onclick, disabled) {
+  const b = document.createElement("button"); b.type = "button"; b.className = "rslot " + cls;
+  const bx = document.createElement("span"); bx.className = "box";
+  const cap = document.createElement("small");
+  if (id) { bx.appendChild(img(id, items[id].name)); cap.textContent = items[id].name; b.classList.add("full"); }
+  if (over) b.classList.add(cur.won ? "ok" : "ko");
+  b.disabled = disabled; b.onclick = onclick; b.append(bx, cap);
+  return b;
+}
 function renderSlots() {
   const box = $("rslots"); box.innerHTML = "";
   const ne = nextEmpty();
   slots.forEach((id, i) => {
-    const b = document.createElement("button"); b.type = "button"; b.className = "rslot";
-    const bx = document.createElement("span"); bx.className = "box";
-    const cap = document.createElement("small");
-    if (id) { bx.appendChild(img(id, items[id].name)); cap.textContent = items[id].name; b.classList.add("full"); }
-    if (fixed.includes(i)) b.classList.add("fixed");
-    if (!id && i === ne && !over) b.classList.add("on");
-    if (over) b.classList.add(cur.won ? "ok" : "ko");
-    b.disabled = over || fixed.includes(i);
-    b.onclick = () => { if (over || fixed.includes(i)) return; slots[i] = null; renderSlots(); };
-    b.append(bx, cap); box.appendChild(b);
+    const col = document.createElement("div"); col.className = "col";
+    const fx = fixed.includes(i);
+    const b = slotBtn(id, fx ? "fixed" : "", () => { if (over || fx) return; slots[i] = null; subs[i] = null; renderSlots(); }, over || fx);
+    if (!id && ne && ne[0] === i && ne[1] < 0 && !over) b.classList.add("on");
+    col.appendChild(b);
+    if (subs[i]) {
+      const sb = document.createElement("div"); sb.className = "subs";
+      subs[i].forEach((sid, j) => {
+        const sfx = fixedSub.includes(i + "." + j);
+        const c = slotBtn(sid, "sm" + (sfx ? " fixed" : ""), () => { if (over || sfx) return; subs[i][j] = null; renderSlots(); }, over || sfx);
+        if (!sid && ne && ne[0] === i && ne[1] === j && !over) c.classList.add("on");
+        sb.appendChild(c);
+      });
+      col.appendChild(sb);
+    }
+    box.appendChild(col);
   });
-  $("submit").disabled = over || slots.some(s => !s);
+  $("submit").disabled = over || slots.some(s => !s) || subs.some(a => a && a.some(x => !x));
 }
 function renderDots() {
   $("dots").innerHTML = Array.from({ length: MAX_TRIES }, (_, i) =>
@@ -292,7 +320,7 @@ function newRound() {
   if (!deck.length) deck = shuffle(targets());
   const t = deck.pop();
   cur = { item: t, won: false };
-  slots = t.from.map(() => null); fixed = []; tries = 0; over = false; misses = [];
+  slots = t.from.map(() => null); subs = t.from.map(() => null); fixed = []; fixedSub = []; tries = 0; over = false; misses = [];
   $("result").hidden = true; $("play").hidden = false; $("misses").innerHTML = ""; $("flash").textContent = ""; $("hover").innerHTML = "";
   const recipe = Math.max(0, t.total - t.from.reduce((s, id) => s + items[id].total, 0));
   const tg = $("target"); tg.innerHTML = "";
@@ -303,32 +331,49 @@ function newRound() {
   tg.append(big, h, m);
   renderSlots(); renderDots(); renderBar();
 }
+function setSlot(i, id) { slots[i] = id; subs[i] = items[id].from.length ? items[id].from.map(() => null) : null; }
 function pick(id) {
   if (over) return;
-  const i = nextEmpty(); if (i < 0) return;
-  slots[i] = id; renderSlots();
+  const ne = nextEmpty(); if (!ne) return;
+  if (ne[1] < 0) setSlot(ne[0], id); else subs[ne[0]][ne[1]] = id;
+  renderSlots();
 }
 const key = arr => arr.slice().sort().join(",");
 function loseTry() { tries++; if (tries >= MAX_TRIES) return endRound(false); renderDots(); }
 /* Chaque erreur révèle un composant à sa bonne place */
+const topOk = () => key(slots) === key(cur.item.from);
 function revealOne() {
-  const t = cur.item.from, free = t.map((_, i) => i).filter(i => !fixed.includes(i));
-  if (free.length <= 1) return;
-  const i = free[Math.floor(Math.random() * free.length)];
-  fixed.push(i); slots[i] = t[i];
+  const t = cur.item.from;
+  if (!topOk()) {
+    const free = t.map((_, i) => i).filter(i => !fixed.includes(i));
+    if (free.length <= 1) return;
+    const i = free[Math.floor(Math.random() * free.length)];
+    fixed.push(i); setSlot(i, t[i]);
+  } else {
+    const free = [];
+    slots.forEach((id, a) => { if (subs[a]) subs[a].forEach((_, b) => { if (!fixedSub.includes(a + "." + b)) free.push([a, b]); }); });
+    if (free.length <= 1) return;
+    const [a, b] = free[Math.floor(Math.random() * free.length)];
+    fixedSub.push(a + "." + b); subs[a][b] = items[slots[a]].from[b];
+  }
 }
+const subsOk = () => slots.every((id, a) => !subs[a] || key(subs[a]) === key(items[id].from));
 function submit() {
-  if (over || slots.some(s => !s)) return;
-  if (key(slots) === key(cur.item.from)) { slots = cur.item.from.slice(); return endRound(true); }
-  misses.push(slots.slice());
-  const li = document.createElement("li"); li.innerHTML = slots.map(id => items[id].name).join(" + ") + "<small>raté</small>"; $("misses").prepend(li);
+  if (over || $("submit").disabled) return;
+  if (topOk() && subsOk()) return endRound(true);
+  const nm = id => items[id].name;
+  misses.push(1);
+  const li = document.createElement("li");
+  li.innerHTML = slots.map((id, a) => nm(id) + (subs[a] ? " (" + subs[a].map(nm).join(" + ") + ")" : "")).join(" + ") + "<small>raté</small>"; $("misses").prepend(li);
   shake(); flash("Ce n'est pas la bonne recette, réessaie !");
-  /* on garde les composants révélés, on vide le reste */
-  slots = slots.map((s, i) => fixed.includes(i) ? s : null);
+  const wasTop = topOk();
+  /* on garde ce qui est révélé (et les composants du haut s'ils étaient justes), on vide le reste */
+  if (!wasTop) { slots = slots.map((s, i) => fixed.includes(i) ? s : null); subs = subs.map((a, i) => fixed.includes(i) ? a : null); }
+  subs = subs.map((a, i) => a ? a.map((x, j) => fixedSub.includes(i + "." + j) ? x : null) : a);
   loseTry(); if (!over) { revealOne(); renderSlots(); }
 }
 function endRound(win) {
-  over = true; cur.won = win; slots = cur.item.from.slice();
+  over = true; cur.won = win; slots = cur.item.from.slice(); subs = slots.map(id => items[id].from.length ? items[id].from.slice() : null);
   $("play").hidden = true; $("result").hidden = false;
   if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best_recette", best); } catch (e) {} } }
   else { streak = 0; recordBroken = false; }
@@ -344,14 +389,21 @@ function endRound(win) {
    ============================================================ */
 $("submit").onclick = submit;
 $("next").onclick = newRound;
-$("clear").onclick = () => { if (over) return; slots = slots.map((s, i) => fixed.includes(i) ? s : null); renderSlots(); };
+function clearAll() {
+  slots = slots.map((s, i) => fixed.includes(i) ? s : null);
+  subs = subs.map((a, i) => a && slots[i] ? a.map((x, j) => fixedSub.includes(i + "." + j) ? x : null) : null);
+}
+$("clear").onclick = () => { if (over) return; clearAll(); renderSlots(); };
 $("giveUp").onclick = () => { if (!over) endRound(false); };
 document.addEventListener("keydown", e => {
   if (!cur) return;
   if (e.key === "Escape") { e.preventDefault(); if (!over) endRound(false); else newRound(); }
   else if (e.key === "Enter" && over && document.activeElement !== $("next")) { e.preventDefault(); newRound(); }
   else if (e.key === "Enter" && !over && !$("submit").disabled && document.activeElement.className.indexOf("it") < 0) { e.preventDefault(); submit(); }
-  else if (e.key === "Backspace" && !over) { e.preventDefault(); for (let i = slots.length - 1; i >= 0; i--) if (slots[i] && !fixed.includes(i)) { slots[i] = null; break; } renderSlots(); }
+  else if (e.key === "Backspace" && !over) { e.preventDefault(); let done = false;
+    for (let a = subs.length - 1; a >= 0 && !done; a--) if (subs[a]) for (let b = subs[a].length - 1; b >= 0; b--) if (subs[a][b] && !fixedSub.includes(a + "." + b)) { subs[a][b] = null; done = true; break; }
+    for (let i = slots.length - 1; i >= 0 && !done; i--) if (slots[i] && !fixed.includes(i)) { slots[i] = null; subs[i] = null; done = true; }
+    renderSlots(); }
 });
 $("resetBest").onclick = () => {
   if (!confirm("Remettre le record à 0 ?")) return;
