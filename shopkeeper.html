@@ -231,12 +231,13 @@ async function loadItems() {
   const [en, fr] = await Promise.all([fetch(base + "en_US/item.json"), fetch(base + "fr_FR/item.json")]).then(r => Promise.all(r.map(x => x.json())));
   const byName = {};
   Object.entries(en.data).forEach(([id, it]) => {
-    const k = nk(it.name), sr = it.maps && it.maps["11"] && it.gold && it.gold.purchasable;
-    if (!byName[k] || (sr && !byName[k].sr)) byName[k] = { id, sr };
+    /* Seulement les objets vendus dans la boutique de la Faille de l'invocateur (5v5) : ni ARAM, ni Arena, etc. */
+    const sr = it.maps && it.maps["11"] && it.gold && it.gold.purchasable && it.inStore !== false;
+    if (sr) byName[nk(it.name)] = { id, sr };
   });
   const seen = new Set();
   [...BASIC, ...EPIC, ...LEGENDARY].forEach(n => {
-    const e = byName[nk(n)]; if (!e || seen.has(e.id) || !fr.data[e.id]) return; seen.add(e.id);
+    const e = byName[nk(n)]; if (!e || seen.has(e.id) || !fr.data[e.id] || !(fr.data[e.id].maps && fr.data[e.id].maps["11"])) return; seen.add(e.id);
     const it = fr.data[e.id]; if (it.gold && it.gold.total > 0) pool.push({ id: e.id, name: it.name, price: it.gold.total });
   });
 }

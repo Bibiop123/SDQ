@@ -229,10 +229,11 @@ async function loadItems() {
   /* nom anglais -> identifiant (en préférant l'objet vendu sur la Faille) */
   const byName = {};
   Object.entries(en.data).forEach(([id, it]) => {
-    const k = nk(it.name), sr = it.maps && it.maps["11"] && it.gold && it.gold.purchasable;
-    if (!byName[k] || (sr && !byName[k].sr)) byName[k] = { id, sr };
+    /* Seulement les objets vendus dans la boutique de la Faille de l'invocateur (5v5) : ni ARAM, ni Arena, etc. */
+    const sr = it.maps && it.maps["11"] && it.gold && it.gold.purchasable && it.inStore !== false;
+    if (sr) byName[nk(it.name)] = { id, sr };
   });
-  const make = names => names.map(n => (byName[nk(n)] || {}).id).filter(id => id && fr.data[id]);
+  const make = names => names.map(n => (byName[nk(n)] || {}).id).filter(id => id && fr.data[id] && fr.data[id].maps && fr.data[id].maps["11"]);
   const ids = { basic: make(BASIC), epic: make(EPIC), leg: make(LEGENDARY) };
   [...ids.basic, ...ids.epic, ...ids.leg].forEach(id => {
     const it = fr.data[id]; items[id] = { id, name: it.name, total: it.gold.total, base: it.gold.base, from: (it.from || []).slice() };
