@@ -187,7 +187,7 @@
 <script>
 const $ = id => document.getElementById(id);
 const MAX_TRIES = 3;
-const MARGIN = 100;                     /* écart accepté (en or) pour gagner */
+const MARGIN = 0;                       /* écart accepté (en or) pour gagner : 0 = total exact */
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 const fmt = n => n.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
 
@@ -257,7 +257,7 @@ function newRound() {
   tries = 0; over = false; shown = []; guesses = [];
   $("result").hidden = true; $("play").hidden = false; $("misses").innerHTML = ""; $("flash").textContent = "";
   $("answer").value = ""; $("answer").disabled = false; $("submit").disabled = true;
-  $("bubble").innerHTML = `Voilà ta commande ! Ça fait <b>combien d'or</b> en tout ? <small style="display:block;color:var(--mu);font-size:.8rem;margin-top:2px">À ${MARGIN} or près, ça ira.</small>`;
+  $("bubble").innerHTML = `Voilà ta commande ! Ça fait <b>combien d'or</b> en tout ?${MARGIN ? ` <small style="display:block;color:var(--mu);font-size:.8rem;margin-top:2px">À ${MARGIN} or près, ça ira.</small>` : ""}`;
   renderEq(); renderDots(); renderBar();
   $("answer").focus({ preventScroll: true });
 }
@@ -286,7 +286,7 @@ function endRound(win, g) {
   const n = tries + (win ? 1 : 0);
   $("msg").className = "msg " + (win ? "ok" : "ko");
   const gap = g !== undefined ? Math.abs(g - cur.total) : null;
-  $("msg").innerHTML = win ? `Bravo, c'est ${fmt(cur.total)} or !<small>${gap === 0 ? "Au gold près · " : "À " + fmt(gap) + " or près · "}trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${fmt(cur.total)} or.`;
+  $("msg").innerHTML = win ? `Bravo, c'est ${fmt(cur.total)} or !<small>${gap === 0 ? "" : "À " + fmt(gap) + " or près · "}trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${fmt(cur.total)} or.`;
   $("recap").textContent = cur.items.map(i => i.name + " " + fmt(i.price)).join(" + ") + " = " + fmt(cur.total);
   renderEq(); renderDots(); renderBar();
   $("next").focus();
