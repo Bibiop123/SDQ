@@ -111,6 +111,7 @@
   @keyframes fresh { 0% { transform: scale(.6); box-shadow: 0 0 0 0 rgba(230,195,106,.8); } 40% { transform: scale(1.25); } 100% { transform: scale(1); box-shadow: 0 0 0 14px rgba(230,195,106,0); } }
   .sitem.shown .gold { border-style: solid; border-color: var(--gold); color: var(--gold); background: rgba(230,195,106,.1); }
   .status { text-align: center; color: var(--mu); padding: 30px 0; }
+  .calc { min-height: 20px; margin-top: 8px; text-align: center; color: var(--gold); font-weight: 700; font-size: 1rem; }
   .eq.shake { animation: shake .3s; }
   @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
   .row { display: flex; gap: 10px; max-width: 420px; margin: 26px auto 0; }
@@ -185,12 +186,13 @@
 
       <div id="play">
         <div class="row">
-          <input id="answer" type="text" inputmode="numeric" autocomplete="off" placeholder="Total en or…" aria-label="Total en or">
+          <input id="answer" type="text" inputmode="text" autocomplete="off" placeholder="Total en or… ou un calcul (1000+500)" aria-label="Total en or">
           <button id="submit" disabled>Valider</button>
         </div>
         <div class="tools">
           <button class="alt" id="giveUp" type="button">Abandonner <kbd>Échap</kbd></button>
         </div>
+        <div class="calc" id="calc" aria-live="polite"></div>
         <div class="flash" id="flash" role="status"></div>
       </div>
       <div class="result" id="result" hidden>
@@ -276,13 +278,23 @@ function newRound() {
   const items = [deck.pop(), deck.pop(), deck.pop()];
   cur = { items, total: items.reduce((s, i) => s + i.price, 0), won: false };
   tries = 0; over = false; shown = []; guesses = []; lastShown = -1;
-  $("result").hidden = true; $("play").hidden = false; $("misses").innerHTML = ""; $("flash").textContent = "";
+  $("result").hidden = true; $("play").hidden = false; $("misses").innerHTML = ""; $("flash").textContent = ""; $("calc").textContent = "";
   $("answer").value = ""; $("answer").disabled = false; $("submit").disabled = true;
   $("bubble").innerHTML = `Voilà ta commande ! Ça fait <b>combien d'or</b> en tout ?${MARGIN ? ` <small style="display:block;color:var(--mu);font-size:.8rem;margin-top:2px">À ${MARGIN} or près, ça ira.</small>` : ""}`;
   renderEq(); renderDots(); renderBar();
   $("answer").focus({ preventScroll: true });
 }
-const parse = v => { const d = String(v).replace(/[^0-9]/g, ""); return d ? Number(d) : NaN; };
+/* Lit un nombre ou un petit calcul (+ − × ÷, parenthèses) sans utiliser eval. « 1000+500+500 » -> 2000 */
+function parse(v) {
+  const t = String(v).toLowerCase().replace(/[\s\u00a0\u202f]/g, "").replace(/[x×]/g, "*").replace(/÷/g, "/").replace(/−/g, "-").replace(/,/g, ".");
+  if (!t || !/^[0-9+\-*/().]+$/.test(t)) return NaN;
+  let i = 0;
+  const num = () => { const m = /^\d+(\.\d+)?/.exec(t.slice(i)); if (!m) throw 0; i += m[0].length; return parseFloat(m[0]); };
+  const atom = () => { if (t[i] === "(") { i++; const r = sum(); if (t[i++] !== ")") throw 0; return r; } if (t[i] === "-") { i++; return -atom(); } return num(); };
+  const prod = () => { let r = atom(); while (t[i] === "*" || t[i] === "/") { const o = t[i++]; const b = atom(); r = o === "*" ? r * b : r / b; } return r; };
+  const sum = () => { let r = prod(); while (t[i] === "+" || t[i] === "-") { const o = t[i++]; const b = prod(); r = o === "+" ? r + b : r - b; } return r; };
+  try { const r = sum(); return i === t.length && isFinite(r) ? Math.round(r * 100) / 100 : NaN; } catch (e) { return NaN; }
+}
 /* Le marchand râle quand on se trompe */
 function grr() {
   const g = $("grr"), w = $("faceWrap");
@@ -304,7 +316,7 @@ function submit() {
   const hidden = [0, 1, 2].filter(i => !shown.includes(i));
   lastShown = -1;
   if (hidden.length > 1) { lastShown = hidden[Math.floor(Math.random() * hidden.length)]; shown.push(lastShown); }
-  $("answer").value = ""; $("submit").disabled = true;
+  $("answer").value = ""; $("calc").textContent = ""; $("submit").disabled = true;
   loseTry(); if (!over) renderEq();
 }
 function endRound(win, g) {
@@ -321,7 +333,13 @@ function endRound(win, g) {
   $("next").focus();
 }
 
-$("answer").oninput = () => { const d = $("answer").value.replace(/[^0-9]/g, ""); $("answer").value = d ? fmt(Number(d)) : ""; $("submit").disabled = over || !d; };
+$("answer").oninput = () => {
+  let v = $("answer").value;
+  if (/^[0-9\s\u00a0\u202f]*$/.test(v)) { const d = v.replace(/\D/g, ""); v = d ? fmt(Number(d)) : ""; $("answer").value = v; }   /* un simple nombre : on le met en forme */
+  const isCalc = /[+\-*/x×÷()]/i.test(v), r = isCalc ? parse(v) : NaN;
+  $("calc").textContent = isCalc ? (isNaN(r) ? "" : "= " + fmt(r) + " or") : "";
+  $("submit").disabled = over || !v.trim();
+};
 $("answer").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); submit(); } };
 $("submit").onclick = submit;
 $("next").onclick = newRound;
