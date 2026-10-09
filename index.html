@@ -127,16 +127,17 @@
 
   footer { max-width: 1100px; margin: 0 auto; padding: 22px 18px 34px; color: #66738c; font-size: .8rem; text-align: center; border-top: 1px solid rgba(36,49,73,.7); }
 
-  /* Grand écran : les trois autres jeux en colonne à gauche, Le Shopkeeper en grand à droite */
+  /* Grand écran : les quatre jeux sur la gauche (un grand en haut, trois en dessous), la droite est gardée libre pour un futur classement */
+  .lb { display: none; }
   @media (min-width: 1200px) {
-    main { max-width: 1320px; }
-    .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 16px; align-items: stretch; }
-    .layout .grid { order: 1; grid-template-columns: 1fr; grid-template-rows: none; }
-    .layout .wide { order: 2; margin-bottom: 0; min-height: 0; }
-    .layout .big { grid-row: auto; min-height: 480px; }
-    .layout .wide .bg { object-position: 50% 8% !important; }
-    .layout .grid .small { min-height: 250px; }
-    .layout .wide h3 { font-size: 2.6rem; }
+    main { max-width: 1900px; padding-left: 3vw; padding-right: 3vw; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 28px; align-items: start; }
+    .lb { display: block; }
+    .layout .wide { margin-bottom: 16px; min-height: 300px; }
+    .layout .grid { grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: none; }
+    .layout .big { grid-row: auto; min-height: 470px; }
+    .layout .grid .small { min-height: 470px; }
+    .layout .grid .small p { font-size: .9rem; }
   }
   @media (max-width: 760px) {
     .wide { min-height: 420px; } .wide h3 { font-size: 1.8rem; }
@@ -174,9 +175,10 @@
     <h1>Le Bonfire</h1>
   </section>
 
-  <div class="sec" id="jeux"><h2>Mini-jeux</h2><span>4 disponibles</span></div>
 
   <div class="layout">
+  <div class="games">
+  <div class="sec" id="jeux"><h2>Mini-jeux</h2><span>4 disponibles</span></div>
   <!-- Jeu le plus récent -->
   <a class="card wide" href="shopkeeper.html">
     <img class="bg" src="shopkeeper.jpg" alt="" style="object-position:50% 10%">
@@ -234,6 +236,9 @@
       </div>
     </a>
   </div>
+  </div>
+  <!-- Place réservée pour un futur classement -->
+  <aside class="lb" aria-hidden="true"></aside>
   </div>
 </main>
 
