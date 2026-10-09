@@ -35,6 +35,12 @@
   .game { position: relative; padding: 20px 22px 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,21,38,.86); box-shadow: 0 16px 44px rgba(0,0,0,.6); }
   .bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
   .plates { display: flex; gap: 22px; }
+  .left { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
+  .easy { padding: 6px 12px; font-size: .78rem; letter-spacing: .06em; }
+  .easy b { color: var(--muted, #9fb0cf); font-weight: 700; }
+  .easy[aria-pressed="true"] { border-color: var(--gold, #e6c36a); color: var(--gold, #e6c36a); box-shadow: 0 0 0 1px rgba(230,195,106,.35); }
+  .easy[aria-pressed="true"] b { color: var(--gold, #e6c36a); }
+  .slot.fixed { color: var(--gold, #e6c36a); border-color: var(--gold, #e6c36a); background: rgba(230,195,106,.1); }
   .plate { position: relative; display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
   .plate b { font-size: 1.2rem; font-weight: 700; letter-spacing: 0; color: var(--gold); text-transform: none; }
   .plate.broken { border-color: #ff4a4a; color: #ffd9d9; }
@@ -139,9 +145,12 @@
     <button class="reset-best" id="resetBest" type="button" title="Remettre le record à 0" aria-label="Remettre le record à 0"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
 
     <div class="bar">
-      <div class="plates">
-        <span class="plate">Série <b id="streak">0</b></span>
-        <span class="plate" id="recordPlate">Record <b id="best">0</b></span>
+      <div class="left">
+        <div class="plates">
+          <span class="plate">Série <b id="streak">0</b></span>
+          <span class="plate" id="recordPlate">Record <b id="best">0</b></span>
+        </div>
+        <button class="alt easy" id="easy" type="button" aria-pressed="false" title="Indice offert + une lettre révélée à chaque erreur">Mode facile : <b id="easyState">non</b></button>
       </div>
       <div class="dots" id="dots" aria-label="Essais"></div>
     </div>
@@ -162,7 +171,6 @@
       <div class="tools">
         <button class="alt" id="shuffle" type="button">⟳ Mélanger <kbd>Espace</kbd></button>
         <button class="alt" id="clear" type="button">Effacer</button>
-        <button class="alt" id="hintBtn" type="button">Indice · −1 essai</button>
         <button class="alt" id="giveUp" type="button">Abandonner <kbd>Échap</kbd></button>
       </div>
       <div class="flash" id="flash" role="status"></div>
@@ -193,9 +201,9 @@ const $ = id => document.getElementById(id);
 const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z]/g, "");
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-let deck = [], cur = null, letters = [], picked = [], tries = 0, over = false, hinted = false, misses = [];
+let deck = [], cur = null, letters = [], picked = [], tries = 0, over = false, misses = [], fixedPos = [], easy = false;
 let streak = 0, best = 0, recordBroken = false;
-try { best = Number(localStorage.getItem("sdq_best_mots")) || 0; } catch (e) {}
+try { best = Number(localStorage.getItem("sdq_best_mots")) || 0; easy = localStorage.getItem("sdq_easy_mots") === "1"; } catch (e) {}
 
 
 /* Icônes d'objets : récupérées en ligne sur Data Dragon (site de données de Riot), retrouvées par leur nom français */
@@ -231,27 +239,43 @@ function scrambleOf(word) {
   let out; do { out = shuffle(base.slice()); } while (out.join("") === word);
   return out;
 }
+/* Lettres offertes : position -> index de la case-lettre correspondante */
+function fixedMap() {
+  const m = new Map(), taken = new Set();
+  fixedPos.slice().sort((a, b) => a - b).forEach(pos => {
+    const i = letters.findIndex((l, k) => l === cur.word[pos] && !taken.has(k));
+    if (i >= 0) { taken.add(i); m.set(pos, i); }
+  });
+  return m;
+}
+const freeCount = () => letters.length - fixedPos.length;
 function renderTiles(animate) {
   const t = $("tiles"); t.innerHTML = ""; t.classList.toggle("pop", !!animate);
   letters.forEach((ch, i) => {
     const b = document.createElement("button"); b.type = "button"; b.className = "tile"; b.textContent = ch;
     b.setAttribute("aria-label", "Lettre " + ch);
-    b.onclick = () => { if (over || picked.includes(i)) return; setAnswer($("answer").value + ch); $("answer").focus(); };
+    b.onclick = () => { if (over || picked.includes(i) || [...fixedMap().values()].includes(i)) return; setAnswer($("answer").value + ch); $("answer").focus(); };
     t.appendChild(b);
   });
   syncTiles();
 }
 function syncTiles() {
-  [...$("tiles").children].forEach((b, i) => { b.classList.toggle("used", picked.includes(i)); b.disabled = over || picked.includes(i); });
+  const fx = new Set(fixedMap().values());
+  [...$("tiles").children].forEach((b, i) => { const u = picked.includes(i) || fx.has(i); b.classList.toggle("used", u); b.disabled = over || u; });
 }
 function renderSlots() {
   const s = $("slots"); s.innerHTML = "";
-  let n = 0;
+  let n = 0, k = 0;                                /* n = position dans le mot, k = rang parmi les cases libres */
+  const fm = fixedMap();
   cur.display.split("").forEach(ch => {
     if (ch === " ") { const g = document.createElement("span"); g.className = "wordgap"; s.appendChild(g); return; }
     const d = document.createElement("span"); d.className = "slot";
-    const idx = picked[n]; d.textContent = idx !== undefined ? letters[idx] : "";
-    if (idx === undefined && n === picked.length && !over) d.classList.add("on");
+    if (fm.has(n)) { d.textContent = letters[fm.get(n)]; d.classList.add("fixed"); }
+    else {
+      const idx = picked[k]; d.textContent = idx !== undefined ? letters[idx] : "";
+      if (idx === undefined && k === picked.length && !over) d.classList.add("on");
+      k++;
+    }
     s.appendChild(d); n++;
   });
 }
@@ -268,14 +292,16 @@ function shake() { ["answer", "slots"].forEach(id => { const e = $(id); e.classL
 
 /* La saisie (clavier ou clic sur les lettres) remplit les cases à partir des lettres disponibles. */
 function setAnswer(text) {
-  const wanted = norm(text), used = new Set(); picked = [];
+  const wanted = norm(text), used = new Set(fixedMap().values()); picked = [];
   for (const ch of wanted) {
+    if (picked.length >= freeCount()) break;
     const i = letters.findIndex((l, k) => l === ch && !used.has(k));
     if (i < 0) continue;                       /* lettre absente ou déjà utilisée */
     used.add(i); picked.push(i);
   }
   $("answer").value = picked.map(i => letters[i]).join("");
-  $("submit").disabled = over || picked.length !== letters.length;
+  $("submit").disabled = over || picked.length !== freeCount();
+  $("answer").placeholder = fixedPos.length ? "Tape les lettres qui manquent" : "Tape le mot ou clique sur les lettres";
   renderSlots(); syncTiles();
 }
 
@@ -305,42 +331,50 @@ function newRound() {
   const word0 = norm(display);
   const def = def0 || `Commence par ${word0[0]} et finit par ${word0[word0.length - 1]}.`;
   cur = { cat, display, word: word0, def, hasDef: !!def0, won: false };
-  letters = scrambleOf(cur.word); picked = []; tries = 0; over = false; hinted = false; misses = [];
+  letters = scrambleOf(cur.word); picked = []; tries = 0; over = false; misses = []; fixedPos = [];
   $("result").hidden = true; $("play").hidden = false;
   $("slots").className = "slots"; $("def").textContent = ""; $("clue").hidden = true; $("misses").innerHTML = ""; $("flash").textContent = "";
-  $("hintBtn").disabled = false; $("answer").disabled = false; $("answer").value = "";
+  $("answer").disabled = false; $("answer").value = "";
   const parts = display.split(" ").map(p => p.length);
   $("info").innerHTML = `<b>${cur.word.length} lettres</b>${parts.length > 1 ? " · " + parts.length + " mots" : ""}`;
   $("catrow").innerHTML = `<span class="cat">${cur.cat}</span>`;
-  fitRows(); renderTiles(true); setAnswer(""); renderDots(); renderBar(); showClue(cur);
+  showHint(); fitRows(); renderTiles(true); setAnswer(""); renderDots(); renderBar(); showClue(cur);
   $("answer").focus({ preventScroll: true });
 }
 
+function showHint() { if (!over) $("def").textContent = easy ? "Indice : " + cur.def : ""; }
+function setEasy(v, save) {
+  easy = v; $("easy").setAttribute("aria-pressed", v); $("easyState").textContent = v ? "oui" : "non";
+  if (save) { try { localStorage.setItem("sdq_easy_mots", v ? "1" : "0"); } catch (e) {} }
+  if (cur) showHint();
+}
+/* Mode facile : une erreur révèle une lettre à sa place (au hasard parmi les cases encore vides) */
+function revealLetter() {
+  if (!easy || over) return;
+  const free = []; for (let i = 0; i < letters.length; i++) if (!fixedPos.includes(i)) free.push(i);
+  if (free.length <= 1) return;
+  fixedPos.push(free[Math.floor(Math.random() * free.length)]);
+}
 function loseTry() {
   tries++;
   if (tries >= MAX_TRIES) return endRound(false);
   renderDots();
 }
 function submit() {
-  if (over || picked.length !== letters.length) return;
-  const guess = picked.map(i => letters[i]).join("");
+  if (over || picked.length !== freeCount()) return;
+  const fm = fixedMap(); let k = 0;
+  const guess = cur.word.split("").map((_, pos) => fm.has(pos) ? letters[fm.get(pos)] : letters[picked[k++]]).join("");
   if (guess === cur.word) return endRound(true);
   misses.push(guess);
   const li = document.createElement("li"); li.innerHTML = `${guess}<small>raté</small>`; $("misses").prepend(li);
   shake(); flash("Ce n'est pas ça, réessaie !");
-  setAnswer(""); loseTry();
-}
-function hint() {
-  if (over || hinted) return;
-  hinted = true; $("def").textContent = "Indice : " + cur.def;
-  $("hintBtn").disabled = true; loseTry();
+  loseTry(); revealLetter(); setAnswer("");
 }
 function endRound(win) {
   over = true; cur.won = win;
   /* Affiche le mot dans le bon ordre dans les cases */
-  const order = []; const taken = new Set();
-  cur.word.split("").forEach(ch => { const i = letters.findIndex((l, k) => l === ch && !taken.has(k)); taken.add(i); order.push(i); });
-  picked = order;
+  const fm = fixedMap(), taken = new Set(fm.values()); picked = [];
+  cur.word.split("").forEach((ch, pos) => { if (fm.has(pos)) return; const i = letters.findIndex((l, k) => l === ch && !taken.has(k)); taken.add(i); picked.push(i); });
   $("answer").value = cur.word; $("answer").disabled = true; $("submit").disabled = true;
   $("slots").className = "slots " + (win ? "ok" : "ko");
   $("def").textContent = cur.hasDef ? cur.def : "";
@@ -361,7 +395,8 @@ $("answer").oninput = () => setAnswer($("answer").value);
 $("answer").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); if (!$("submit").disabled) submit(); else if (!over) flash("Utilise toutes les lettres (" + letters.length + ")."); } };
 $("submit").onclick = submit;
 $("next").onclick = newRound;
-$("hintBtn").onclick = hint;
+$("easy").onclick = () => setEasy(!easy, true);
+setEasy(easy, false);
 $("clear").onclick = () => { setAnswer(""); $("answer").focus(); };
 function reshuffle() { if (over) return; const keep = $("answer").value; letters = scrambleOf(cur.word); picked = []; renderTiles(true); setAnswer(keep); }
 $("shuffle").onclick = reshuffle;
