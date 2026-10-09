@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La recette – Le Bonfire</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#070b16; --panel:#0e1526; --line:#243149; --tx:#e9eef7; --mu:#8d9ab2; --cyan:#3fc1e0; --gold:#e6c36a; --gold-d:#a67c2a; --ok:#4ade80; --ko:#ff6b6b; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { min-height: 100vh; color: var(--tx); background: var(--bg); position: relative; overflow-x: hidden; font: 16px/1.5 Barlow, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  body::before { content: ""; position: fixed; inset: -20px; z-index: -2; background: url("images/Irelia_063_Breadsticks-Irelia.jpg") center / cover no-repeat; filter: blur(16px) brightness(.3) saturate(1.2); }
+  body::after { content: ""; position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 0%, rgba(63,193,224,.12), transparent 55%), linear-gradient(rgba(7,11,22,.55), var(--bg) 95%); }
+
+  .top { position: sticky; top: 0; z-index: 40; background: rgba(7,11,22,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top-in { max-width: 980px; margin: 0 auto; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--tx); text-decoration: none; font-family: Cinzel, Georgia, serif; font-weight: 800; letter-spacing: .08em; font-size: 1.05rem; }
+  .brand .mark { width: 30px; height: 30px; }
+  nav { display: flex; gap: 6px; }
+  nav a { padding: 7px 14px; border-radius: 10px; color: var(--mu); text-decoration: none; font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; border: 1px solid transparent; }
+  nav a:hover { color: var(--tx); border-color: var(--line); }
+  nav a.on { color: var(--cyan); border-color: rgba(63,193,224,.4); background: rgba(63,193,224,.08); }
+
+  main { max-width: 860px; margin: 0 auto; padding: 30px 16px 20px; }
+  .hero { text-align: center; margin-bottom: 22px; }
+  h1 { display: inline-flex; align-items: center; gap: 18px; margin: 0; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: clamp(1.7rem, 6vw, 3rem); letter-spacing: .05em;
+       background: linear-gradient(#fff3c4, var(--gold) 45%, var(--gold-d)); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 8px rgba(0,0,0,.8)); }
+  h1::before, h1::after { content: ""; width: clamp(20px, 7vw, 80px); height: 2px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  h1::after { transform: scaleX(-1); }
+  .sub { margin: 8px 0 0; color: #c9d3e4; font-size: 1.1rem; font-weight: 500; }
+
+  .game { position: relative; padding: 20px 22px 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,21,38,.86); box-shadow: 0 16px 44px rgba(0,0,0,.6); }
+  .bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .plates { display: flex; gap: 22px; }
+  .plate { position: relative; display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
+  .plate b { font-size: 1.2rem; font-weight: 700; letter-spacing: 0; color: var(--gold); text-transform: none; }
+  .plate.broken { border-color: #ff4a4a; color: #ffd9d9; }
+  .plate.broken b { color: #ff6b6b; }
+  .plate.broken::before, .plate.broken::after { content: "!"; position: absolute; top: 50%; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 1.35rem; line-height: 1; color: #ff3b3b; text-shadow: 0 0 8px rgba(255,59,59,.8); }
+  .plate.broken::before { left: -15px; transform: translateY(-50%) rotate(-14deg); }
+  .plate.broken::after { right: -15px; transform: translateY(-50%) rotate(14deg); }
+  .dots { display: flex; gap: 6px; }
+  .dots i { width: 28px; height: 6px; border-radius: 3px; background: #243149; }
+  .dots i.used { background: var(--ko); } .dots i.now { background: var(--cyan); } .dots i.win { background: var(--ok); }
+  .reset-best { position: absolute; top: -11px; left: -11px; z-index: 5; width: 26px; height: 26px; padding: 0; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: rgba(7,11,22,.9); color: var(--mu); cursor: pointer; opacity: .55; transition: opacity .2s, color .2s, border-color .2s; }
+  .reset-best svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .reset-best:hover, .reset-best:focus-visible { opacity: 1; color: #ff6b6b; border-color: #ff6b6b; outline: none; transform: none; filter: none; }
+
+
+  /* Cases de réponse (tirets) et lettres mélangées, comme sur la référence */
+          font-family: "Barlow Condensed", Barlow, sans-serif; font-weight: 700; font-size: calc(var(--tw, 62px) * .62); color: #f3f6fb; cursor: pointer; transition: transform .12s, opacity .15s, border-color .15s; }
+
+  @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  button { padding: 13px 22px; border: 0; border-radius: 10px; font: inherit; font-size: 1.05rem; font-weight: 700; cursor: pointer; background: var(--cyan); color: #04202a; transition: transform .15s, filter .15s; }
+  button:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.1); }
+  button:disabled { opacity: .45; cursor: default; }
+  kbd { margin-left: 6px; padding: 1px 6px; border: 1px solid var(--line); border-radius: 5px; font: 600 .68rem Barlow, sans-serif; color: var(--mu); letter-spacing: .05em; text-transform: uppercase; }
+  .tools { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+  button.alt { padding: 9px 16px; font-size: .92rem; background: rgba(14,21,38,.85); color: var(--tx); border: 1px solid var(--line); font-weight: 600; }
+  button.alt:hover:not(:disabled) { border-color: var(--cyan); filter: none; }
+  .flash { min-height: 22px; margin: 10px 2px 0; text-align: center; color: var(--ko); font-size: .9rem; font-weight: 600; }
+
+
+  .result { text-align: center; padding: 6px 0 2px; }
+  .msg { font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; }
+  .msg.ok { color: var(--ok); } .msg.ko { color: var(--ko); }
+  .msg small { display: block; margin-top: 2px; color: var(--mu); font-size: .9rem; font-weight: 500; }
+
+  footer { max-width: 980px; margin: 14px auto 0; padding: 22px 18px 34px; color: #66738c; font-size: .8rem; text-align: center; border-top: 1px solid rgba(36,49,73,.7); }
+  [hidden] { display: none !important; }
+  @media (max-width: 560px) { nav a { padding: 7px 8px; font-size: .78rem; letter-spacing: .05em; } .brand { font-size: .9rem; } .top-in { padding: 10px 12px; gap: 8px; } .game { padding: 18px 12px 20px; } .plates { gap: 18px; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  /* Cadres des boutons et pastilles : plus marqués pour bien ressortir du fond */
+  :root { --frame: #56709c; }
+  .plate:not(.broken), button.alt, nav a:not(.on), .reset-best { border: 1.5px solid var(--frame); background: rgba(24,35,62,.92); box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 3px 10px rgba(0,0,0,.4); }
+  .plate:not(.broken) { color: #aab6cd; }
+  button.alt, nav a:not(.on) { color: #dbe3f1; }
+  button.alt:hover:not(:disabled), nav a:not(.on):hover { border-color: var(--cyan); box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 0 14px rgba(63,193,224,.25); }
+  .reset-best { opacity: .8; }
+
+  .game { max-width: 860px; margin-left: auto; margin-right: auto; }
+  .bar { margin-bottom: 18px; }
+  .target { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .target .big { width: 96px; height: 96px; border-radius: 14px; border: 2px solid var(--gold); background: #0b0f14; box-shadow: 0 0 0 2px #000, 0 0 28px rgba(230,195,106,.35), 0 10px 24px rgba(0,0,0,.6); overflow: hidden; display: grid; place-items: center; }
+  .target .big img { width: 100%; height: 100%; display: block; }
+  .target h2 { margin: 6px 0 0; font-family: Cinzel, Georgia, serif; font-size: 1.35rem; color: var(--gold); text-align: center; letter-spacing: .04em; }
+  .target .meta { color: var(--mu); font-size: .92rem; text-align: center; }
+  .target .meta b { color: var(--tx); }
+  .rslots { display: flex; justify-content: center; flex-wrap: wrap; gap: 14px 18px; margin: 30px 0 8px; position: relative; }
+  .rslots::before { content: ""; position: absolute; top: -30px; left: 50%; height: 16px; border-left: 2px solid #3a4866; }
+  .rslot { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 84px; cursor: pointer; background: none; border: 0; padding: 0; color: inherit; font-weight: 500; }
+  .rslot::before { content: ""; position: absolute; top: -14px; left: -9px; right: -9px; border-top: 2px solid #3a4866; }
+  .rslot:first-child::before { left: 50%; } .rslot:last-child::before { right: 50%; } .rslot:only-child::before { display: none; }
+  .rslot::after { content: ""; position: absolute; top: -14px; left: 50%; height: 14px; border-left: 2px solid #3a4866; }
+  .rslot:only-child::after { top: -30px; height: 30px; }
+  .rslot:hover:not(:disabled) { transform: none; filter: none; }
+  .rslot .box { width: 64px; height: 64px; border-radius: 12px; border: 2px dashed #46557a; background: rgba(7,11,22,.6); display: grid; place-items: center; overflow: hidden; }
+  .rslot .box img { width: 100%; height: 100%; display: block; }
+  .rslot.on .box { border-color: var(--cyan); box-shadow: 0 0 14px rgba(63,193,224,.35); }
+  .rslot.full .box { border-style: solid; border-color: var(--frame); }
+  .rslot.fixed .box { border-style: solid; border-color: var(--gold); box-shadow: 0 0 12px rgba(230,195,106,.35); }
+  .rslot.ok .box { border-style: solid; border-color: var(--ok); }
+  .rslot.ko .box { border-style: solid; border-color: var(--ko); }
+  .rslot small { font-size: .72rem; line-height: 1.15; color: #c9d3e4; text-align: center; min-height: 1.7em; }
+  .rslots.shake { animation: shake .3s; }
+  @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  .hover { min-height: 24px; margin: 6px 0 12px; text-align: center; color: #c9d3e4; font-size: .95rem; }
+  .hover b { color: var(--gold); } .hover span { color: var(--mu); }
+  .pools { display: grid; grid-template-columns: 1fr 1.6fr; gap: 14px; margin-top: 4px; }
+  .pool { padding: 10px 12px 12px; border: 1px solid var(--line); border-radius: 14px; background: rgba(7,11,22,.5); }
+  .pool h3 { margin: 0 0 8px; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mu); font-weight: 700; }
+  .pool h3 b { color: var(--cyan); }
+  .grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .it { width: 44px; height: 44px; padding: 0; border-radius: 8px; border: 1.5px solid #34425f; background: #0b0f14; overflow: hidden; display: grid; place-items: center; cursor: pointer; transition: transform .12s, border-color .15s; }
+  .it img { width: 100%; height: 100%; display: block; }
+  .it:hover:not(:disabled), .it:focus-visible { border-color: var(--cyan); transform: translateY(-2px); filter: none; outline: none; }
+  .it:disabled { opacity: .35; cursor: default; }
+  .it.txt { font-size: .6rem; font-weight: 700; color: #c9d3e4; line-height: 1; }
+  .status { text-align: center; color: var(--mu); padding: 30px 0; }
+  .misses { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .misses li { padding: 3px 10px; border-radius: 10px; border: 1px solid rgba(255,107,107,.55); background: rgba(255,107,107,.1); font-size: .8rem; }
+  .misses li small { margin-left: 6px; color: var(--ko); text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; }
+  @media (max-width: 700px) { .pools { grid-template-columns: 1fr; } .game { padding: 18px 12px 20px; } .rslot { width: 72px; } .rslot .box { width: 56px; height: 56px; } .it { width: 42px; height: 42px; } nav a { padding: 7px 8px; font-size: .74rem; letter-spacing: .04em; } .brand { font-size: .9rem; } .top-in { padding: 10px 10px; gap: 6px; } .plates { gap: 14px; } }
+  @media (max-width: 480px) { .brand { font-size: 0; gap: 0; } nav { gap: 4px; } nav a { padding: 7px 8px; font-size: .74rem; letter-spacing: .04em; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html">
+      <img class="mark" src="logo.svg" alt="" width="30" height="30">
+      LE BONFIRE
+    </a>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="artwork.html">Splash</a>
+      <a href="mots.html">Mots</a>
+      <a class="on" href="recette.html">Recette</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>La recette</h1>
+    <p class="sub">Retrouve les composants qui forment l'objet</p>
+  </section>
+
+  <section class="game">
+    <button class="reset-best" id="resetBest" type="button" title="Remettre le record à 0" aria-label="Remettre le record à 0"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+
+    <div class="bar">
+      <div class="plates">
+        <span class="plate">Série <b id="streak">0</b></span>
+        <span class="plate" id="recordPlate">Record <b id="best">0</b></span>
+      </div>
+      <div class="dots" id="dots" aria-label="Essais"></div>
+    </div>
+
+    <div class="status" id="status">Chargement des objets…</div>
+
+    <div id="board" hidden>
+      <div class="target" id="target"></div>
+      <div class="rslots" id="rslots" aria-label="Composants"></div>
+      <div class="hover" id="hover"></div>
+
+      <div id="play">
+        <div class="tools">
+          <button id="submit" disabled>Valider</button>
+          <button class="alt" id="clear" type="button">Effacer</button>
+          <button class="alt" id="giveUp" type="button">Abandonner <kbd>Échap</kbd></button>
+        </div>
+        <div class="flash" id="flash" role="status"></div>
+      </div>
+      <div class="result" id="result" hidden>
+        <div class="msg" id="msg"></div>
+        <button id="next">Objet suivant →</button>
+      </div>
+      <ul class="misses" id="misses"></ul>
+
+      <div class="pools">
+        <div class="pool"><h3><b>Tier 1</b> · objets de base</h3><div class="grid" id="basics"></div></div>
+        <div class="pool"><h3><b>Tier 2</b> · objets intermédiaires</h3><div class="grid" id="epics"></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
+
+<script>
+const $ = id => document.getElementById(id);
+const MAX_TRIES = 3;
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+let ver = "", items = {}, basics = [], epics = [], deck = [];
+let cur = null, slots = [], fixed = [], tries = 0, over = false, misses = [];
+let streak = 0, best = 0, recordBroken = false;
+try { best = Number(localStorage.getItem("sdq_best_recette")) || 0; } catch (e) {}
+
+/* ============================================================
+   1. DONNÉES : objets du jeu (Data Dragon de Riot, en français)
+   ============================================================ */
+const icon = id => `https://ddragon.leagueoflegends.com/cdn/${ver}/img/item/${id}.png`;
+async function loadItems() {
+  const v = await (await fetch("https://ddragon.leagueoflegends.com/api/versions.json")).json();
+  ver = v[0];
+  const j = await (await fetch(`https://ddragon.leagueoflegends.com/cdn/${ver}/data/fr_FR/item.json`)).json();
+  const ok = it => it.gold && it.gold.purchasable && it.inStore !== false && it.maps && it.maps["11"]
+    && !it.requiredChampion && !it.requiredAlly && !it.requiredBuffCurrencyName && !it.hideFromAll
+    && !(it.tags || []).some(t => ["Consumable", "Trinket", "Jungle", "Lane"].includes(t));
+  Object.entries(j.data).forEach(([id, it]) => { if (ok(it)) items[id] = { id, name: it.name, total: it.gold.total, base: it.gold.base, from: (it.from || []).slice(), into: it.into || [] }; });
+  Object.values(items).forEach(it => { it.from = it.from.filter(f => items[f]); it.into = it.into.filter(f => items[f]); });
+  const all = Object.values(items);
+  basics = all.filter(i => !i.from.length && i.into.length).sort((a, b) => a.total - b.total || a.name.localeCompare(b.name, "fr"));
+  epics = all.filter(i => i.from.length && i.into.length).sort((a, b) => a.total - b.total || a.name.localeCompare(b.name, "fr"));
+}
+const inPool = id => basics.some(b => b.id === id) || epics.some(e => e.id === id);
+function targets() {
+  return Object.values(items).filter(i => i.from.length && !i.into.length && i.total >= 1000
+    && i.from.every(inPool) && i.from.length <= 4);
+}
+
+/* ============================================================
+   2. AFFICHAGE
+   ============================================================ */
+function img(id, name) {
+  const im = new Image(); im.alt = name; im.src = icon(id); im.draggable = false;
+  return im;
+}
+function renderPool(el, list) {
+  el.innerHTML = "";
+  list.forEach(it => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "it"; b.title = it.name + " · " + it.total + " or";
+    b.setAttribute("aria-label", it.name); b.dataset.id = it.id;
+    const im = img(it.id, it.name); im.onerror = () => { b.classList.add("txt"); b.textContent = it.name.slice(0, 6); };
+    b.appendChild(im);
+    b.onclick = () => { pick(it.id); showInfo(it); };
+    b.onpointerenter = () => showInfo(it); b.onfocus = () => showInfo(it);
+    el.appendChild(b);
+  });
+}
+function showInfo(it) { $("hover").innerHTML = `<b>${it.name}</b> <span>· ${it.total} or</span>`; }
+function nextEmpty() { return slots.findIndex((s, i) => !s && !fixed.includes(i)); }
+function renderSlots() {
+  const box = $("rslots"); box.innerHTML = "";
+  const ne = nextEmpty();
+  slots.forEach((id, i) => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "rslot";
+    const bx = document.createElement("span"); bx.className = "box";
+    const cap = document.createElement("small");
+    if (id) { bx.appendChild(img(id, items[id].name)); cap.textContent = items[id].name; b.classList.add("full"); }
+    if (fixed.includes(i)) b.classList.add("fixed");
+    if (!id && i === ne && !over) b.classList.add("on");
+    if (over) b.classList.add(cur.won ? "ok" : "ko");
+    b.disabled = over || fixed.includes(i);
+    b.onclick = () => { if (over || fixed.includes(i)) return; slots[i] = null; renderSlots(); };
+    b.append(bx, cap); box.appendChild(b);
+  });
+  $("submit").disabled = over || slots.some(s => !s);
+}
+function renderDots() {
+  $("dots").innerHTML = Array.from({ length: MAX_TRIES }, (_, i) =>
+    `<i class="${i < tries ? "used" : i === tries ? (over ? (cur.won ? "win" : "") : "now") : ""}"></i>`).join("");
+}
+function renderBar() { $("streak").textContent = streak; $("best").textContent = best; $("recordPlate").classList.toggle("broken", recordBroken); }
+function flash(msg) { $("flash").textContent = msg; clearTimeout(flash.t); flash.t = setTimeout(() => { $("flash").textContent = ""; }, 2200); }
+function shake() { const e = $("rslots"); e.classList.remove("shake"); void e.offsetWidth; e.classList.add("shake"); }
+
+/* ============================================================
+   3. PARTIE
+   ============================================================ */
+function newRound() {
+  if (!deck.length) deck = shuffle(targets());
+  const t = deck.pop();
+  cur = { item: t, won: false };
+  slots = t.from.map(() => null); fixed = []; tries = 0; over = false; misses = [];
+  $("result").hidden = true; $("play").hidden = false; $("misses").innerHTML = ""; $("flash").textContent = ""; $("hover").innerHTML = "";
+  const recipe = Math.max(0, t.total - t.from.reduce((s, id) => s + items[id].total, 0));
+  const tg = $("target"); tg.innerHTML = "";
+  const big = document.createElement("div"); big.className = "big"; big.appendChild(img(t.id, t.name));
+  const h = document.createElement("h2"); h.textContent = t.name;
+  const m = document.createElement("div"); m.className = "meta";
+  m.innerHTML = `<b>${t.total} or</b> · ${t.from.length} composants · assemblage <b>${recipe} or</b>`;
+  tg.append(big, h, m);
+  renderSlots(); renderDots(); renderBar();
+}
+function pick(id) {
+  if (over) return;
+  const i = nextEmpty(); if (i < 0) return;
+  slots[i] = id; renderSlots();
+}
+const key = arr => arr.slice().sort().join(",");
+function loseTry() { tries++; if (tries >= MAX_TRIES) return endRound(false); renderDots(); }
+/* Chaque erreur révèle un composant à sa bonne place */
+function revealOne() {
+  const t = cur.item.from, free = t.map((_, i) => i).filter(i => !fixed.includes(i));
+  if (free.length <= 1) return;
+  const i = free[Math.floor(Math.random() * free.length)];
+  fixed.push(i); slots[i] = t[i];
+}
+function submit() {
+  if (over || slots.some(s => !s)) return;
+  if (key(slots) === key(cur.item.from)) { slots = cur.item.from.slice(); return endRound(true); }
+  misses.push(slots.slice());
+  const li = document.createElement("li"); li.innerHTML = slots.map(id => items[id].name).join(" + ") + "<small>raté</small>"; $("misses").prepend(li);
+  shake(); flash("Ce n'est pas la bonne recette, réessaie !");
+  /* on garde les composants révélés, on vide le reste */
+  slots = slots.map((s, i) => fixed.includes(i) ? s : null);
+  loseTry(); if (!over) { revealOne(); renderSlots(); }
+}
+function endRound(win) {
+  over = true; cur.won = win; slots = cur.item.from.slice();
+  $("play").hidden = true; $("result").hidden = false;
+  if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best_recette", best); } catch (e) {} } }
+  else { streak = 0; recordBroken = false; }
+  const n = tries + (win ? 1 : 0);
+  $("msg").className = "msg " + (win ? "ok" : "ko");
+  $("msg").innerHTML = win ? `Bravo, c'est la bonne recette !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… voilà la recette.`;
+  renderSlots(); renderDots(); renderBar();
+  $("next").focus();
+}
+
+/* ============================================================
+   4. ÉVÉNEMENTS
+   ============================================================ */
+$("submit").onclick = submit;
+$("next").onclick = newRound;
+$("clear").onclick = () => { if (over) return; slots = slots.map((s, i) => fixed.includes(i) ? s : null); renderSlots(); };
+$("giveUp").onclick = () => { if (!over) endRound(false); };
+document.addEventListener("keydown", e => {
+  if (!cur) return;
+  if (e.key === "Escape") { e.preventDefault(); if (!over) endRound(false); else newRound(); }
+  else if (e.key === "Enter" && over && document.activeElement !== $("next")) { e.preventDefault(); newRound(); }
+  else if (e.key === "Enter" && !over && !$("submit").disabled && document.activeElement.className.indexOf("it") < 0) { e.preventDefault(); submit(); }
+  else if (e.key === "Backspace" && !over) { e.preventDefault(); for (let i = slots.length - 1; i >= 0; i--) if (slots[i] && !fixed.includes(i)) { slots[i] = null; break; } renderSlots(); }
+});
+$("resetBest").onclick = () => {
+  if (!confirm("Remettre le record à 0 ?")) return;
+  best = 0; recordBroken = false; try { localStorage.removeItem("sdq_best_recette"); } catch (e) {}
+  renderBar();
+};
+
+loadItems().then(() => {
+  if (!targets().length) throw new Error("vide");
+  renderPool($("basics"), basics); renderPool($("epics"), epics);
+  $("status").hidden = true; $("board").hidden = false;
+  newRound();
+}).catch(() => { $("status").textContent = "Impossible de charger les objets du jeu (Data Dragon). Vérifie ta connexion et recharge la page."; });
+renderBar();
+</script>
+</body>
+</html>
