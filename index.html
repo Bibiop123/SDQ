@@ -58,7 +58,7 @@
   .sec span { color: var(--mu); font-size: .85rem; }
 
   /* Grille de cartes : grande carte à gauche (le plus récent), petites à droite */
-  .grid { display: grid; grid-template-columns: 1.55fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; }
+  .grid { display: grid; grid-template-columns: 1.55fr 1fr; gap: 16px; }
   .card {
     position: relative; display: flex; flex-direction: column; justify-content: flex-end; gap: 10px; padding: 22px;
     border: 1px solid var(--line); border-radius: 18px; overflow: hidden; isolation: isolate;
@@ -73,7 +73,7 @@
   .wide .bg { object-position: 50% 30%; }
   .wide::before { background: linear-gradient(to right, rgba(7,11,22,.94) 8%, rgba(7,11,22,.6) 48%, rgba(7,11,22,.1)), linear-gradient(to top, rgba(7,11,22,.7), transparent 55%); }
   .wide h3 { font-size: 2.3rem; }
-  .big { grid-row: span 2; min-height: 430px; background: linear-gradient(150deg, #1a1432, #0e1b33 60%, #12263a); }
+  .big { min-height: 470px; background: linear-gradient(150deg, #1a1432, #0e1b33 60%, #12263a); }
   /* Cartes-mots : un emblème et le mot en dessous, comme les tuiles du jeu */
   .big { container-type: inline-size; }
   .deco { position: absolute; left: 50%; top: 62px; translate: -50% 0; transform-origin: top center; display: flex; gap: 12px; z-index: -1; padding: 22px 20px 20px; border-radius: 18px;
@@ -163,7 +163,7 @@
     <h1>Le Bonfire</h1>
   </section>
 
-  <div class="sec" id="jeux"><h2>Mini-jeux</h2><span>3 disponibles · 1 à venir</span></div>
+  <div class="sec" id="jeux"><h2>Mini-jeux</h2><span>3 disponibles</span></div>
 
   <!-- Jeu le plus récent -->
   <a class="card wide" href="recette.html">
@@ -209,14 +209,6 @@
         <span class="played" id="played">Jamais joué</span>
       </div>
     </a>
-
-    <div class="card small soon">
-      <svg class="bg-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
-      <span class="ico"><svg viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg></span>
-      <div class="chips"><span class="chip">Solo</span><span class="chip">Bientôt</span></div>
-      <h3>Musique</h3>
-      <p>Devine le thème à l'écoute d'un extrait.</p>
-    </div>
   </div>
 </main>
 
