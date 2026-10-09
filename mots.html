@@ -150,7 +150,7 @@
           <span class="plate">Série <b id="streak">0</b></span>
           <span class="plate" id="recordPlate">Record <b id="best">0</b></span>
         </div>
-        <button class="alt easy" id="easy" type="button" aria-pressed="false" title="Indice offert + une lettre révélée à chaque erreur">Mode facile : <b id="easyState">non</b></button>
+        <button class="alt easy" id="easy" type="button" aria-pressed="false" title="Affiche l'indice gratuitement dès le début">Mode facile : <b id="easyState">non</b></button>
       </div>
       <div class="dots" id="dots" aria-label="Essais"></div>
     </div>
@@ -348,9 +348,9 @@ function setEasy(v, save) {
   if (save) { try { localStorage.setItem("sdq_easy_mots", v ? "1" : "0"); } catch (e) {} }
   if (cur) showHint();
 }
-/* Mode facile : une erreur révèle une lettre à sa place (au hasard parmi les cases encore vides) */
+/* Une erreur révèle une lettre à sa place (au hasard parmi les cases encore vides) */
 function revealLetter() {
-  if (!easy || over) return;
+  if (over) return;
   const free = []; for (let i = 0; i < letters.length; i++) if (!fixedPos.includes(i)) free.push(i);
   if (free.length <= 1) return;
   fixedPos.push(free[Math.floor(Math.random() * free.length)]);
