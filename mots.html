@@ -80,6 +80,7 @@
   button { padding: 13px 22px; border: 0; border-radius: 10px; font: inherit; font-size: 1.05rem; font-weight: 700; cursor: pointer; background: var(--cyan); color: #04202a; transition: transform .15s, filter .15s; }
   button:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.1); }
   button:disabled { opacity: .45; cursor: default; }
+  kbd { margin-left: 6px; padding: 1px 6px; border: 1px solid var(--line); border-radius: 5px; font: 600 .68rem Barlow, sans-serif; color: var(--mu); letter-spacing: .05em; text-transform: uppercase; }
   .tools { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
   button.alt { padding: 9px 16px; font-size: .92rem; background: rgba(14,21,38,.85); color: var(--tx); border: 1px solid var(--line); font-weight: 600; }
   button.alt:hover:not(:disabled) { border-color: var(--cyan); filter: none; }
@@ -145,7 +146,7 @@
         <button id="submit" disabled>Valider</button>
       </div>
       <div class="tools">
-        <button class="alt" id="shuffle" type="button">⟳ Mélanger</button>
+        <button class="alt" id="shuffle" type="button">⟳ Mélanger <kbd>Espace</kbd></button>
         <button class="alt" id="clear" type="button">Effacer</button>
         <button class="alt" id="hintBtn" type="button">Indice · −1 essai</button>
       </div>
@@ -302,7 +303,11 @@ $("submit").onclick = submit;
 $("next").onclick = newRound;
 $("hintBtn").onclick = hint;
 $("clear").onclick = () => { setAnswer(""); $("answer").focus(); };
-$("shuffle").onclick = () => { if (over) return; const keep = $("answer").value; letters = scrambleOf(cur.word); picked = []; renderTiles(true); setAnswer(keep); };
+function reshuffle() { if (over) return; const keep = $("answer").value; letters = scrambleOf(cur.word); picked = []; renderTiles(true); setAnswer(keep); }
+$("shuffle").onclick = reshuffle;
+/* Barre d'espace = mélanger les lettres */
+document.addEventListener("keydown", e => { if ((e.code === "Space" || e.key === " ") && !over && !e.repeat) { e.preventDefault(); reshuffle(); } });
+document.addEventListener("keyup", e => { if ((e.code === "Space" || e.key === " ") && !over) e.preventDefault(); });
 $("resetBest").onclick = () => {
   if (!confirm("Remettre le record à 0 ?")) return;
   best = 0; recordBroken = false; try { localStorage.removeItem("sdq_best_mots"); } catch (e) {}
