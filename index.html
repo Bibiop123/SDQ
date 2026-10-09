@@ -83,7 +83,9 @@
   .wcard:nth-child(odd) { transform: rotate(-4deg) translateY(6px); } .wcard:nth-child(even) { transform: rotate(3deg) translateY(-6px); }
   .wimg { width: 100%; aspect-ratio: 1; border-radius: 7px; overflow: hidden; display: grid; place-items: center; background: #0b1020; border: 1px solid rgba(230,195,106,.45); }
   .wimg svg { width: 84%; height: 84%; }
-  .wimg img { width: 100%; height: 100%; object-fit: cover; object-position: 68% 30%; display: block; }
+  .wimg img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; display: block; }
+  .wimg img.jay { object-position: 50% 20%; }
+  .wimg img.ward { object-fit: contain; padding: 4px; }
   .wimg img.nash { object-position: 50% 30%; }
   .wimg .wini { font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 2rem; color: var(--gold); }
   .wcard { width: 108px; }
@@ -156,8 +158,8 @@
     <a class="card big" href="mots.html">
       <div class="deco" aria-hidden="true">
         <div class="wcard"><div class="wimg"><img class="nash" src="nashor.jpg" alt=""></div><span class="scr" aria-hidden="true"><i>S</i><i>H</i><i>N</i><i>A</i><i>R</i><i>O</i></span><span class="ans"><i>N</i><i>A</i><i>S</i><i>H</i><i>O</i><i>R</i></span></div>
-        <div class="wcard"><div class="wimg"><img src="images/Jayce_000_Jayce.jpg" alt=""></div><span class="scr" aria-hidden="true"><i>C</i><i>J</i><i>Y</i><i>E</i><i>A</i></span><span class="ans"><i>J</i><i>A</i><i>Y</i><i>C</i><i>E</i></span></div>
-        <div class="wcard"><div class="wimg"><svg viewBox="0 0 64 64"><path d="M32 6l22 14v24L32 58 10 44V20z" fill="#2a2208" stroke="#f2d15a" stroke-width="2.2" stroke-linejoin="round"/><path d="M14 32c6-9 12-13 18-13s12 4 18 13c-6 9-12 13-18 13s-12-4-18-13z" fill="#f2d15a"/><circle cx="32" cy="32" r="7" fill="#2a2208"/><circle cx="32" cy="32" r="3" fill="#fff3b0"/></svg></div><span class="scr" aria-hidden="true"><i>R</i><i>D</i><i>A</i><i>W</i></span><span class="ans"><i>W</i><i>A</i><i>R</i><i>D</i></span></div>
+        <div class="wcard"><div class="wimg"><img class="jay" src="images/Jayce_000_Jayce.jpg" alt=""></div><span class="scr" aria-hidden="true"><i>C</i><i>J</i><i>Y</i><i>E</i><i>A</i></span><span class="ans"><i>J</i><i>A</i><i>Y</i><i>C</i><i>E</i></span></div>
+        <div class="wcard"><div class="wimg"><img class="ward" src="ward.png" alt=""></div><span class="scr" aria-hidden="true"><i>R</i><i>D</i><i>A</i><i>W</i></span><span class="ans"><i>W</i><i>A</i><i>R</i><i>D</i></span></div>
         <div class="wcard"><div class="wimg"><img src="flash.jpg" alt=""></div><span class="scr" aria-hidden="true"><i>S</i><i>H</i><i>A</i><i>L</i><i>F</i></span><span class="ans"><i>F</i><i>L</i><i>A</i><i>S</i><i>H</i></span></div>
       </div>
       <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 18L9 6l5 12M5.8 14h6.4"/><path d="M16 6h4v12h-4"/></svg></span>
