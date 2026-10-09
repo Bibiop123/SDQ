@@ -213,15 +213,20 @@ async function loadItems() {
   const j = await (await fetch(`https://ddragon.leagueoflegends.com/cdn/${ver}/data/fr_FR/item.json`)).json();
   const ok = it => it.gold && it.gold.purchasable && it.inStore !== false && it.maps && it.maps["11"]
     && !it.requiredChampion && !it.requiredAlly && !it.requiredBuffCurrencyName && !it.hideFromAll
-    && !(it.tags || []).some(t => ["Consumable", "Trinket", "Jungle", "Lane"].includes(t));
+    && !(it.tags || []).some(t => ["Consumable", "Trinket", "Jungle"].includes(t));
   Object.entries(j.data).forEach(([id, it]) => { if (ok(it)) items[id] = { id, name: it.name, total: it.gold.total, base: it.gold.base, from: (it.from || []).slice(), into: it.into || [] }; });
   Object.values(items).forEach(it => { it.from = it.from.filter(f => items[f]); it.into = it.into.filter(f => items[f]); });
   const all = Object.values(items);
-  basics = all.filter(i => !i.from.length && i.into.length).sort((a, b) => a.total - b.total || a.name.localeCompare(b.name, "fr"));
-  epics = all.filter(i => i.from.length && i.into.length).sort((a, b) => a.total - b.total || a.name.localeCompare(b.name, "fr"));
+  const byPrice = (a, b) => a.total - b.total || a.name.localeCompare(b.name, "fr");
+  /* Tier 1 : objets de base, sans recette, qui servent à en construire d'autres */
+  basics = all.filter(i => !i.from.length && i.into.length).sort(byPrice);
+  const isBasic = id => basics.some(b => b.id === id);
+  /* Tier 2 : construits uniquement avec des objets de tier 1, et qui servent eux-mêmes à des objets complets */
+  epics = all.filter(i => i.from.length && i.into.length && i.from.every(isBasic)).sort(byPrice);
 }
 const inPool = id => basics.some(b => b.id === id) || epics.some(e => e.id === id);
 function targets() {
+  /* Objets complets : construits avec des objets de tier 1 et/ou 2, qui ne servent plus à rien d'autre */
   return Object.values(items).filter(i => i.from.length && !i.into.length && i.total >= 1000
     && i.from.every(inPool) && i.from.length <= 4);
 }
