@@ -40,7 +40,22 @@
   .reset-best { position: absolute; top: -11px; left: -11px; z-index: 5; width: 26px; height: 26px; padding: 0; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: rgba(7,11,22,.9); color: var(--mu); cursor: pointer; opacity: .55; transition: opacity .2s, color .2s, border-color .2s; }
   .reset-best svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
   .reset-best:hover, .reset-best:focus-visible { opacity: 1; color: #ff6b6b; border-color: #ff6b6b; outline: none; }
-  .plates { display: flex; gap: 22px; }
+  .plates { display: flex; gap: 22px; flex-wrap: wrap; row-gap: 8px; }
+  /* Compteur de « first try » d'affilée : gris à 0, de plus en plus enflammé ensuite */
+  .ftry { display: flex; align-items: flex-end; justify-content: center; gap: 4px; height: 74px; margin: 0 0 10px; user-select: none; --c1: #8e96a6; --c2: #5b6272; --glow: transparent; }
+  .ftry .n { font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 4.2rem; line-height: .9; background: linear-gradient(#f4f6fa, var(--c1) 45%, var(--c2)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 1.5px rgba(0,0,0,.55); filter: drop-shadow(0 0 10px var(--glow)) drop-shadow(0 3px 3px rgba(0,0,0,.6)); transition: filter .3s; }
+  .ftry .t { font-family: "Barlow Condensed", Barlow, sans-serif; font-weight: 700; font-style: italic; font-size: 1.5rem; letter-spacing: .06em; text-transform: uppercase; line-height: 1; padding-bottom: 6px; color: #aeb6c6; text-shadow: 0 2px 0 rgba(0,0,0,.65), 0 0 8px var(--glow); transform: rotate(-4deg); }
+  .ftry[data-lvl="1"] { --c1: #ffb347; --c2: #ff7a1a; --glow: rgba(255,150,40,.55); } .ftry[data-lvl="1"] .t { color: #ffd9a0; }
+  .ftry[data-lvl="2"] { --c1: #ff9a2e; --c2: #ff4d1a; --glow: rgba(255,110,30,.8); } .ftry[data-lvl="2"] .t { color: #ffc27a; }
+  .ftry[data-lvl="3"] { --c1: #ffd04a; --c2: #ff3b1a; --glow: rgba(255,80,20,1); } .ftry[data-lvl="3"] .t { color: #ffe08a; }
+  .ftry[data-lvl="2"] .n, .ftry[data-lvl="3"] .n { animation: ftryPulse 1.4s ease-in-out infinite; }
+  .ftry.bump .n { animation: ftryBump .55s ease; }
+  .ftry.broke .n { animation: ftryBroke .5s ease; }
+  @keyframes ftryBump { 0% { transform: scale(.5); } 55% { transform: scale(1.35) rotate(-4deg); } 100% { transform: scale(1); } }
+  @keyframes ftryBroke { 25% { transform: translateX(-6px); } 50% { transform: translateX(6px); } 75% { transform: translateX(-3px); } }
+  @keyframes ftryPulse { 50% { transform: scale(1.06); } }
+  .plate.gain { animation: gain .7s ease; } @keyframes gain { 30% { transform: scale(1.18); border-color: var(--gold); } }
+  .msg .pts { display: block; margin-top: 4px; color: var(--gold); font-weight: 700; font-size: 1rem; }
   .plate { display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
   /* Record battu : contour rouge + points d'exclamation */
   .plate { position: relative; transition: border-color .3s, box-shadow .3s; }
@@ -183,10 +198,12 @@
 
     <!-- Colonne droite : image -->
     <div class="stage">
+      <div class="ftry" id="ftry" data-lvl="0" aria-live="polite"><span class="n" id="ftryN">0</span><span class="t">First try&nbsp;!</span></div>
       <div class="bar">
         <div class="plates">
           <span class="plate">Série <b id="streak">0</b></span>
           <span class="plate" id="recordPlate">Record <b id="best">0</b></span>
+          <span class="plate" id="scorePlate">Score <b id="score">0</b></span>
         </div>
         <div class="dots" id="dots" aria-label="Essais"></div>
       </div>
@@ -317,6 +334,10 @@ async function loadLibrary() {
    ============================================================ */
 let deck = [], cur = null, tries = 0, over = false, guessed = [];
 let streak = 0, best = 0, recordBroken = false;
+/* Score : plus on trouve vite, plus on gagne de points ; enchaîner les « first try » rapporte un bonus */
+const POINTS = [1000, 600, 300, 100];      /* points selon l'essai (1er, 2e, 3e, 4e) */
+const COMBO_BONUS = 250, COMBO_MAX = 5;    /* bonus = 250 × (enchaînement − 1), plafonné à 5 × 250 */
+let score = 0, combo = 0, lastGain = null;
 try { best = Number(localStorage.getItem("sdq_best")) || 0; } catch (e) {}
 
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -346,7 +367,7 @@ function renderDots(win) {
 }
 function render() {
   $("art").style.transform = `scale(${over ? 1 : ZOOM[Math.min(tries, MAX_TRIES - 1)]})`;
-  $("streak").textContent = streak; $("best").textContent = best;
+  $("streak").textContent = streak; $("best").textContent = best; $("score").textContent = score.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
   $("recordPlate").classList.toggle("broken", recordBroken);
 }
 
@@ -390,14 +411,30 @@ function addGuess(name, ok) {
   $("guesses").prepend(li);
 }
 
+/* Points de la manche + bonus d'enchaînement de « first try » */
+function scoreRound(win, triesUsed) {
+  const before = combo; let pts = 0, bonus = 0;
+  if (win) {
+    pts = POINTS[Math.min(triesUsed, POINTS.length) - 1] || 0;
+    if (triesUsed === 1) { combo++; bonus = Math.min(combo - 1, COMBO_MAX) * COMBO_BONUS; } else combo = 0;
+  } else combo = 0;
+  score += pts + bonus;
+  const f = $("ftry"); f.dataset.lvl = combo >= 5 ? 3 : combo >= 3 ? 2 : combo >= 1 ? 1 : 0; $("ftryN").textContent = combo;
+  f.classList.remove("bump", "broke"); void f.offsetWidth;
+  if (combo > before) f.classList.add("bump"); else if (before > 0) f.classList.add("broke");
+  const p = $("scorePlate"); p.classList.remove("gain"); void p.offsetWidth; if (pts + bonus) p.classList.add("gain");
+  return { pts, bonus };
+}
 function endRound(win) {
   over = true;
   $("frame").classList.add("revealed"); if (!win) $("frame").classList.add("lost");
   $("play").hidden = true; hideSuggestions(); $("result").hidden = false; $("hint").textContent = "";
   if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best", best); } catch (e) {} } } else { streak = 0; recordBroken = false; }
   const n = win ? tries + 1 : MAX_TRIES;
+  const sc = scoreRound(win, n);
+  const ptsLine = win ? `<span class="pts">+${sc.pts} pts${sc.bonus ? ` · enchaînement ×${combo} : +${sc.bonus}` : ""}</span>` : `<span class="pts" style="color:var(--mu)">+0 pt</span>`;
   $("msg").className = "msg " + (win ? "ok" : "ko");
-  $("msg").innerHTML = win ? `Bravo, c'était ${cur.name} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small><small>Skin : ${skinOf(cur.img)}</small>` : `Perdu… c'était ${cur.name}.<small>Skin : ${skinOf(cur.img)}</small>`;
+  $("msg").innerHTML = win ? `Bravo, c'était ${cur.name} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small><small>Skin : ${skinOf(cur.img)}</small>${ptsLine}` : `Perdu… c'était ${cur.name}.<small>Skin : ${skinOf(cur.img)}</small>${ptsLine}`;
   renderDots(win); render(); updateTools();
   $("next").focus();
 }
