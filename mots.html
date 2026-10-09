@@ -55,6 +55,8 @@
   .def { min-height: 0; margin: 10px auto 0; max-width: 560px; text-align: center; color: #c9d3e4; font-size: .95rem; font-style: italic; }
 
   /* Cases de réponse (tirets) et lettres mélangées, comme sur la référence */
+  .clue { display: flex; justify-content: center; margin: 14px 0 0; }
+  .clue img { width: 72px; height: 72px; border-radius: 10px; border: 2px solid var(--gold); box-shadow: 0 0 0 2px #000, 0 8px 20px rgba(0,0,0,.55); background: #0b0f14; }
   .slots, .tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
   .slots { margin: 22px 0 18px; row-gap: 12px; }
   .wordgap { width: 18px; }
@@ -136,6 +138,7 @@
 
     <div class="info" id="info"></div>
     <div class="def" id="def"></div>
+    <div class="clue" id="clue" hidden></div>
 
     <div class="slots" id="slots" aria-label="Réponse"></div>
     <div class="tiles" id="tiles" aria-label="Lettres mélangées"></div>
@@ -182,6 +185,31 @@ const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.f
 let deck = [], cur = null, letters = [], picked = [], tries = 0, over = false, hinted = false, misses = [];
 let streak = 0, best = 0, recordBroken = false;
 try { best = Number(localStorage.getItem("sdq_best_mots")) || 0; } catch (e) {}
+
+
+/* Icônes d'objets : récupérées en ligne sur Data Dragon (site de données de Riot), retrouvées par leur nom français */
+const dd = { ready: null, ver: null, map: {} };
+const ddNorm = s => norm(String(s).replace(/œ/gi, "oe"));
+function loadItemIcons() {
+  if (dd.ready) return dd.ready;
+  dd.ready = fetch("https://ddragon.leagueoflegends.com/api/versions.json").then(r => r.json()).then(v => {
+    dd.ver = v[0];
+    return fetch(`https://ddragon.leagueoflegends.com/cdn/${dd.ver}/data/fr_FR/item.json`).then(r => r.json());
+  }).then(j => {
+    Object.values(j.data).forEach(it => { const k = ddNorm(it.name); if (it.image && !dd.map[k]) dd.map[k] = it.image.full; });
+  }).catch(() => {});
+  return dd.ready;
+}
+async function showClue(round) {
+  const box = $("clue"); box.hidden = true; box.innerHTML = "";
+  if (round.cat !== "Objet") return;
+  await loadItemIcons();
+  const file = dd.map[ddNorm(round.display)];
+  if (!file || cur !== round) return;           /* pas d'icône trouvée, ou le mot a déjà changé */
+  const img = new Image(); img.alt = "Icône de l'objet";
+  img.onload = () => { if (cur === round) { box.appendChild(img); box.hidden = false; } };
+  img.src = `https://ddragon.leagueoflegends.com/cdn/${dd.ver}/img/item/${file}`;
+}
 
 /* ============================================================
    3. AFFICHAGE
@@ -251,11 +279,11 @@ function newRound() {
   cur = { cat, display, word: word0, def, hasDef: !!def0, won: false };
   letters = scrambleOf(cur.word); picked = []; tries = 0; over = false; hinted = false; misses = [];
   $("result").hidden = true; $("play").hidden = false;
-  $("slots").className = "slots"; $("def").textContent = ""; $("misses").innerHTML = ""; $("flash").textContent = "";
+  $("slots").className = "slots"; $("def").textContent = ""; $("clue").hidden = true; $("misses").innerHTML = ""; $("flash").textContent = "";
   $("hintBtn").disabled = false; $("answer").disabled = false; $("answer").value = "";
   const parts = display.split(" ").map(p => p.length);
   $("info").innerHTML = `<b>${cur.word.length} lettres</b>${parts.length > 1 ? " · " + parts.length + " mots" : ""}<span class="cat">${cur.cat}</span>`;
-  renderTiles(true); setAnswer(""); renderDots(); renderBar();
+  renderTiles(true); setAnswer(""); renderDots(); renderBar(); showClue(cur);
   $("answer").focus({ preventScroll: true });
 }
 
