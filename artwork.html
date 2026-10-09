@@ -348,6 +348,15 @@ function render() {
   $("recordPlate").classList.toggle("broken", recordBroken);
 }
 
+/* Nom du skin lu dans le nom du fichier : « Aatrox_030_DRX-Aatrox.jpg » -> « DRX Aatrox » */
+function skinOf(url) {
+  let f = decodeURIComponent(url.split("/").pop().split("?")[0]).replace(/\.[^.]+$/, "");
+  const parts = f.split("_");
+  let sk = parts.length >= 3 ? parts.slice(2).join(" ") : (parts.length === 2 && !/^\d+$/.test(parts[1]) ? parts[1] : "");
+  sk = sk.replace(/-/g, " ").replace(/\b([dlDLjJ]) (?=[A-Za-zÀ-ÿ])/g, "$1'").replace(/\s+/g, " ").trim();
+  if (!sk || sk.toLowerCase() === parts[0].toLowerCase()) return "Skin classique";
+  return sk.charAt(0).toUpperCase() + sk.slice(1);
+}
 function newRound() {
   if (!deck.length) deck = shuffle(ROUNDS.slice());
   const r = deck.pop();
@@ -386,7 +395,7 @@ function endRound(win) {
   if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best", best); } catch (e) {} } } else { streak = 0; recordBroken = false; }
   const n = win ? tries + 1 : MAX_TRIES;
   $("msg").className = "msg " + (win ? "ok" : "ko");
-  $("msg").innerHTML = win ? `Bravo, c'était ${cur.name} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${cur.name}.`;
+  $("msg").innerHTML = win ? `Bravo, c'était ${cur.name} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small><small>Skin : ${skinOf(cur.img)}</small>` : `Perdu… c'était ${cur.name}.<small>Skin : ${skinOf(cur.img)}</small>`;
   renderDots(win); render(); updateTools();
   $("next").focus();
 }
