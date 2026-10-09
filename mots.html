@@ -149,6 +149,7 @@
         <button class="alt" id="shuffle" type="button">⟳ Mélanger <kbd>Espace</kbd></button>
         <button class="alt" id="clear" type="button">Effacer</button>
         <button class="alt" id="hintBtn" type="button">Indice · −1 essai</button>
+        <button class="alt" id="giveUp" type="button">Abandonner <kbd>Échap</kbd></button>
       </div>
       <div class="flash" id="flash" role="status"></div>
     </div>
@@ -313,6 +314,9 @@ $("resetBest").onclick = () => {
   best = 0; recordBroken = false; try { localStorage.removeItem("sdq_best_mots"); } catch (e) {}
   renderBar();
 };
+$("giveUp").onclick = () => { if (!over) endRound(false); };
+/* Échap : abandonner, puis (une fois le mot révélé) passer au mot suivant */
+document.addEventListener("keydown", e => { if (e.key === "Escape") { e.preventDefault(); if (!over) endRound(false); else newRound(); } });
 document.addEventListener("keydown", e => { if (over && (e.key === "Enter") && document.activeElement !== $("next")) { e.preventDefault(); newRound(); } });
 
 newRound();
