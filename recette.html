@@ -198,7 +198,7 @@ const $ = id => document.getElementById(id);
 const MAX_TRIES = 3;
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-let ver = "", items = {}, basics = [], epics = [], deck = [];
+let ver = "", items = {}, basics = [], epics = [], legend = [], deck = [];
 let cur = null, slots = [], fixed = [], tries = 0, over = false, misses = [];
 let streak = 0, best = 0, recordBroken = false;
 try { best = Number(localStorage.getItem("sdq_best_recette")) || 0; } catch (e) {}
@@ -207,28 +207,36 @@ try { best = Number(localStorage.getItem("sdq_best_recette")) || 0; } catch (e) 
    1. DONNÉES : objets du jeu (Data Dragon de Riot, en français)
    ============================================================ */
 const icon = id => `https://ddragon.leagueoflegends.com/cdn/${ver}/img/item/${id}.png`;
+/* Listes officielles du wiki de League of Legends (wiki.leagueoflegends.com › List of items), par nom anglais */
+const BASIC = ["Amplifying Tome","B. F. Sword","Blasting Wand","Cloak of Agility","Cloth Armor","Dagger","Faerie Charm","Glowing Mote","Long Sword","Needlessly Large Rod","Null-Magic Mantle","Pickaxe","Rejuvenation Bead","Ruby Crystal","Sapphire Crystal"];
+const EPIC = ["Aether Wisp","Bami's Cinder","Bandleglass Mirror","Blighting Jewel","Bramble Vest","Catalyst of Aeons","Caulfield's Warhammer","Chain Vest","Crystalline Bracer","Executioner's Calling","Fated Ashes","Fiendish Codex","Forbidden Idol","Giant's Belt","Glacial Buckler","Haunting Guise","Hearthbound Axe","Hexdrinker","Hextech Alternator","Kindlegem","Last Whisper","Lifeline","Lost Chapter","Negatron Cloak","Noonquiver","Oblivion Orb","Phage","Quicksilver Sash","Rectrix","Recurve Bow","Runic Compass","Scout's Slingshot","Seeker's Armguard","Serrated Dirk","Shattered Armguard","Sheen","Spectre's Cowl","Steel Sigil","The Brutalizer","Tiamat","Tunneler","Vampiric Scepter","Verdant Barrier","Warden's Mail","Winged Moonplate","Zeal"];
+const LEGENDARY = ["Abyssal Mask","Actualizer","Archangel's Staff","Ardent Censer","Atma's Reckoning","Axiom Arc","Bandlepipes","Banshee's Veil","Bastionbreaker","Black Cleaver","Blackfire Torch","Blade of the Ruined King","Bloodletter's Curse","Bloodsong","Bloodthirster","Bounty of Worlds","Celestial Opposition","Chempunk Chainsword","Cosmic Drive","Cryptbloom","Dawncore","Dead Man's Plate","Death's Dance","Diadem of Songs","Dream Maker","Dusk and Dawn","Echoes of Helia","Eclipse","Edge of Night","Endless Hunger","Essence Reaver","Experimental Hexplate","Fiendhunter Bolts","Fimbulwinter","Force of Nature","Frozen Heart","Guardian Angel","Guinsoo's Rageblade","Heartsteel","Hexoptics C44","Hextech Gunblade","Hextech Rocketbelt","Hollow Radiance","Horizon Focus","Hubris","Hullbreaker","Iceborn Gauntlet","Immortal Shieldbow","Imperial Mandate","Infinity Edge","Jak'Sho, The Protean","Kaenic Rookern","Knight's Vow","Kraken Slayer","Liandry's Torment","Lich Bane","Locket of the Iron Solari","Lord Dominik's Regards","Luden's Echo","Malignance","Manamune","Maw of Malmortius","Mejai's Soulstealer","Mercurial Scimitar","Mikael's Blessing","Moonstone Renewer","Morellonomicon","Mortal Reminder","Muramana","Nashor's Tooth","Navori Flickerblade","Overlord's Bloodmail","Phantom Dancer","Profane Hydra","Protoplasm Harness","Rabadon's Deathcap","Randuin's Omen","Rapid Firecannon","Ravenous Hydra","Redemption","Riftmaker","Rite of Ruin","Rod of Ages","Runaan's Hurricane","Rylai's Crystal Scepter","Seraph's Embrace","Serpent's Fang","Serylda's Grudge","Shadowflame","Shurelya's Battlesong","Solstice Sleigh","Spear of Shojin","Spectral Cutlass","Spirit Visage","Staff of Flowing Water","Statikk Shiv","Sterak's Gage","Stormrazor","Stormsurge","Stridebreaker","Sundered Sky","Sunfire Aegis","Sword of Blossoming Dawn","Terminus","The Collector","Thornmail","Titanic Hydra","Trinity Force","Umbral Glaive","Unending Despair","Void Staff","Voltaic Cyclosword","Warmog's Armor","Whispering Circlet","Winter's Approach","Wit's End","Youmuu's Ghostblade","Yun Tal Wildarrows","Zaz'Zak's Realmspike","Zeke's Convergence","Zhonya's Hourglass"];
+const nk = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
 async function loadItems() {
   const v = await (await fetch("https://ddragon.leagueoflegends.com/api/versions.json")).json();
   ver = v[0];
-  const j = await (await fetch(`https://ddragon.leagueoflegends.com/cdn/${ver}/data/fr_FR/item.json`)).json();
-  const ok = it => it.gold && it.gold.purchasable && it.inStore !== false && it.maps && it.maps["11"]
-    && !it.requiredChampion && !it.requiredAlly && !it.requiredBuffCurrencyName && !it.hideFromAll
-    && !(it.tags || []).some(t => ["Consumable", "Trinket", "Jungle"].includes(t));
-  Object.entries(j.data).forEach(([id, it]) => { if (ok(it)) items[id] = { id, name: it.name, total: it.gold.total, base: it.gold.base, from: (it.from || []).slice(), into: it.into || [] }; });
-  Object.values(items).forEach(it => { it.from = it.from.filter(f => items[f]); it.into = it.into.filter(f => items[f]); });
-  const all = Object.values(items);
+  const base = `https://ddragon.leagueoflegends.com/cdn/${ver}/data/`;
+  const [en, fr] = await Promise.all([fetch(base + "en_US/item.json"), fetch(base + "fr_FR/item.json")]).then(r => Promise.all(r.map(x => x.json())));
+  /* nom anglais -> identifiant (en préférant l'objet vendu sur la Faille) */
+  const byName = {};
+  Object.entries(en.data).forEach(([id, it]) => {
+    const k = nk(it.name), sr = it.maps && it.maps["11"] && it.gold && it.gold.purchasable;
+    if (!byName[k] || (sr && !byName[k].sr)) byName[k] = { id, sr };
+  });
+  const make = names => names.map(n => (byName[nk(n)] || {}).id).filter(id => id && fr.data[id]);
+  const ids = { basic: make(BASIC), epic: make(EPIC), leg: make(LEGENDARY) };
+  [...ids.basic, ...ids.epic, ...ids.leg].forEach(id => {
+    const it = fr.data[id]; items[id] = { id, name: it.name, total: it.gold.total, base: it.gold.base, from: (it.from || []).slice() };
+  });
   const byPrice = (a, b) => a.total - b.total || a.name.localeCompare(b.name, "fr");
-  /* Tier 1 : objets de base, sans recette, qui servent à en construire d'autres */
-  basics = all.filter(i => !i.from.length && i.into.length).sort(byPrice);
-  const isBasic = id => basics.some(b => b.id === id);
-  /* Tier 2 : construits uniquement avec des objets de tier 1, et qui servent eux-mêmes à des objets complets */
-  epics = all.filter(i => i.from.length && i.into.length && i.from.every(isBasic)).sort(byPrice);
+  basics = ids.basic.map(i => items[i]).sort(byPrice);
+  epics = ids.epic.map(i => items[i]).sort(byPrice);
+  legend = ids.leg.map(i => items[i]);
 }
 const inPool = id => basics.some(b => b.id === id) || epics.some(e => e.id === id);
 function targets() {
-  /* Objets complets : construits avec des objets de tier 1 et/ou 2, qui ne servent plus à rien d'autre */
-  return Object.values(items).filter(i => i.from.length && !i.into.length && i.total >= 1000
-    && i.from.every(inPool) && i.from.length <= 4);
+  /* Objets complets (légendaires du wiki) dont tous les composants sont dans les listes de tier 1 et 2 */
+  return legend.filter(i => i.from.length && i.from.length <= 4 && i.from.every(inPool));
 }
 
 /* ============================================================
