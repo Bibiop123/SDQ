@@ -127,6 +127,17 @@
 
   footer { max-width: 1100px; margin: 0 auto; padding: 22px 18px 34px; color: #66738c; font-size: .8rem; text-align: center; border-top: 1px solid rgba(36,49,73,.7); }
 
+  /* Grand écran : les trois autres jeux en colonne à gauche, Le Shopkeeper en grand à droite */
+  @media (min-width: 1200px) {
+    main { max-width: 1320px; }
+    .layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 16px; align-items: stretch; }
+    .layout .grid { order: 1; grid-template-columns: 1fr; grid-template-rows: none; }
+    .layout .wide { order: 2; margin-bottom: 0; min-height: 0; }
+    .layout .big { grid-row: auto; min-height: 480px; }
+    .layout .wide .bg { object-position: 50% 8% !important; }
+    .layout .grid .small { min-height: 250px; }
+    .layout .wide h3 { font-size: 2.6rem; }
+  }
   @media (max-width: 760px) {
     .wide { min-height: 420px; } .wide h3 { font-size: 1.8rem; }
     .grid { grid-template-columns: 1fr; grid-template-rows: none; }
@@ -165,6 +176,7 @@
 
   <div class="sec" id="jeux"><h2>Mini-jeux</h2><span>4 disponibles</span></div>
 
+  <div class="layout">
   <!-- Jeu le plus récent -->
   <a class="card wide" href="shopkeeper.html">
     <img class="bg" src="shopkeeper.jpg" alt="" style="object-position:50% 10%">
@@ -221,6 +233,7 @@
         <span class="played" id="playedRecette">Jamais joué</span>
       </div>
     </a>
+  </div>
   </div>
 </main>
 
