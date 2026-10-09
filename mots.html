@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mots en désordre – Le Bonfire</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#070b16; --panel:#0e1526; --line:#243149; --tx:#e9eef7; --mu:#8d9ab2; --cyan:#3fc1e0; --gold:#e6c36a; --gold-d:#a67c2a; --ok:#4ade80; --ko:#ff6b6b; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { min-height: 100vh; color: var(--tx); background: var(--bg); position: relative; overflow-x: hidden; font: 16px/1.5 Barlow, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  body::before { content: ""; position: fixed; inset: -20px; z-index: -2; background: url("images/Briar_000_Briar.jpg") center / cover no-repeat; filter: blur(16px) brightness(.3) saturate(1.2); }
+  body::after { content: ""; position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 0%, rgba(63,193,224,.12), transparent 55%), linear-gradient(rgba(7,11,22,.55), var(--bg) 95%); }
+
+  .top { position: sticky; top: 0; z-index: 40; background: rgba(7,11,22,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top-in { max-width: 980px; margin: 0 auto; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--tx); text-decoration: none; font-family: Cinzel, Georgia, serif; font-weight: 800; letter-spacing: .08em; font-size: 1.05rem; }
+  .brand .mark { width: 30px; height: 30px; }
+  nav { display: flex; gap: 6px; }
+  nav a { padding: 7px 14px; border-radius: 10px; color: var(--mu); text-decoration: none; font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; border: 1px solid transparent; }
+  nav a:hover { color: var(--tx); border-color: var(--line); }
+  nav a.on { color: var(--cyan); border-color: rgba(63,193,224,.4); background: rgba(63,193,224,.08); }
+
+  main { max-width: 860px; margin: 0 auto; padding: 30px 16px 20px; }
+  .hero { text-align: center; margin-bottom: 22px; }
+  h1 { display: inline-flex; align-items: center; gap: 18px; margin: 0; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: clamp(1.7rem, 6vw, 3rem); letter-spacing: .05em;
+       background: linear-gradient(#fff3c4, var(--gold) 45%, var(--gold-d)); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 8px rgba(0,0,0,.8)); }
+  h1::before, h1::after { content: ""; width: clamp(20px, 7vw, 80px); height: 2px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  h1::after { transform: scaleX(-1); }
+  .sub { margin: 8px 0 0; color: #c9d3e4; font-size: 1.1rem; font-weight: 500; }
+
+  .game { position: relative; padding: 20px 22px 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,21,38,.86); box-shadow: 0 16px 44px rgba(0,0,0,.6); }
+  .bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .plates { display: flex; gap: 22px; }
+  .plate { position: relative; display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
+  .plate b { font-size: 1.2rem; font-weight: 700; letter-spacing: 0; color: var(--gold); text-transform: none; }
+  .plate.broken { border-color: #ff4a4a; color: #ffd9d9; }
+  .plate.broken b { color: #ff6b6b; }
+  .plate.broken::before, .plate.broken::after { content: "!"; position: absolute; top: 50%; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 1.35rem; line-height: 1; color: #ff3b3b; text-shadow: 0 0 8px rgba(255,59,59,.8); }
+  .plate.broken::before { left: -15px; transform: translateY(-50%) rotate(-14deg); }
+  .plate.broken::after { right: -15px; transform: translateY(-50%) rotate(14deg); }
+  .dots { display: flex; gap: 6px; }
+  .dots i { width: 28px; height: 6px; border-radius: 3px; background: #243149; }
+  .dots i.used { background: var(--ko); } .dots i.now { background: var(--cyan); } .dots i.win { background: var(--ok); }
+  .reset-best { position: absolute; top: -11px; left: -11px; z-index: 5; width: 26px; height: 26px; padding: 0; display: grid; place-items: center; border-radius: 50%; border: 1px solid var(--line); background: rgba(7,11,22,.9); color: var(--mu); cursor: pointer; opacity: .55; transition: opacity .2s, color .2s, border-color .2s; }
+  .reset-best svg { width: 13px; height: 13px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .reset-best:hover, .reset-best:focus-visible { opacity: 1; color: #ff6b6b; border-color: #ff6b6b; outline: none; transform: none; filter: none; }
+
+  .info { text-align: center; color: var(--mu); font-size: 1rem; font-weight: 500; letter-spacing: .02em; }
+  .info b { color: var(--tx); font-weight: 700; }
+  .info .cat { display: inline-block; margin-left: 6px; padding: 2px 10px; border-radius: 99px; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(230,195,106,.5); background: rgba(20,28,46,.85); }
+  .def { min-height: 0; margin: 10px auto 0; max-width: 560px; text-align: center; color: #c9d3e4; font-size: .95rem; font-style: italic; }
+
+  /* Cases de réponse (tirets) et lettres mélangées, comme sur la référence */
+  .slots, .tiles { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .slots { margin: 22px 0 18px; row-gap: 12px; }
+  .wordgap { width: 18px; }
+  .slot { width: clamp(30px, 8.5vw, 52px); height: clamp(40px, 11vw, 64px); display: grid; place-items: end center; padding-bottom: 4px; border-bottom: 3px solid #3a4866; font-family: "Barlow Condensed", Barlow, sans-serif; font-weight: 700; font-size: clamp(1.5rem, 5vw, 2.3rem); color: var(--tx); transition: border-color .15s; }
+  .slot.on { border-color: var(--cyan); }
+  .slots.ok .slot { border-color: var(--ok); color: var(--ok); }
+  .slots.ko .slot { border-color: var(--ko); color: var(--ko); }
+  .tiles { margin-bottom: 20px; }
+  .tile { width: clamp(38px, 10.5vw, 62px); height: clamp(52px, 14vw, 82px); padding: 0; display: grid; place-items: center; border-radius: 6px; border: 1px solid #2e3d5c; background: linear-gradient(#1c2744, #0f172b); box-shadow: inset 0 1px 0 rgba(255,255,255,.08), 0 6px 14px rgba(0,0,0,.45);
+          font-family: "Barlow Condensed", Barlow, sans-serif; font-weight: 700; font-size: clamp(1.7rem, 6vw, 2.8rem); color: #f3f6fb; cursor: pointer; transition: transform .12s, opacity .15s, border-color .15s; }
+  .tile:hover:not(:disabled) { border-color: var(--cyan); transform: translateY(-3px); filter: none; }
+  .tile.used { opacity: .22; transform: none; cursor: default; }
+  .tiles.pop .tile { animation: pop .35s ease both; }
+  @keyframes pop { from { opacity: 0; transform: translateY(10px) scale(.8); } }
+
+  .row { display: flex; gap: 10px; max-width: 520px; margin: 0 auto; }
+  input { flex: 1; min-width: 0; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(7,11,22,.8); color: var(--tx); font: inherit; font-size: 1.05rem; text-transform: uppercase; letter-spacing: .12em; text-align: center; }
+  input:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(63,193,224,.2); }
+  input::placeholder { color: #5f6c85; letter-spacing: .02em; text-transform: none; }
+  input.shake, .slots.shake { animation: shake .3s; }
+  input.shake { border-color: var(--ko); }
+  @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  button { padding: 13px 22px; border: 0; border-radius: 10px; font: inherit; font-size: 1.05rem; font-weight: 700; cursor: pointer; background: var(--cyan); color: #04202a; transition: transform .15s, filter .15s; }
+  button:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.1); }
+  button:disabled { opacity: .45; cursor: default; }
+  .tools { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+  button.alt { padding: 9px 16px; font-size: .92rem; background: rgba(14,21,38,.85); color: var(--tx); border: 1px solid var(--line); font-weight: 600; }
+  button.alt:hover:not(:disabled) { border-color: var(--cyan); filter: none; }
+  .flash { min-height: 22px; margin: 10px 2px 0; text-align: center; color: var(--ko); font-size: .9rem; font-weight: 600; }
+
+  .misses { list-style: none; margin: 8px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .misses li { padding: 4px 12px; border-radius: 10px; border: 1px solid rgba(255,107,107,.55); background: rgba(255,107,107,.1); font-weight: 700; letter-spacing: .1em; font-size: .9rem; }
+  .misses li small { margin-left: 8px; color: var(--ko); letter-spacing: .06em; text-transform: uppercase; font-size: .72rem; }
+
+  .result { text-align: center; padding: 6px 0 2px; }
+  .msg { font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; }
+  .msg.ok { color: var(--ok); } .msg.ko { color: var(--ko); }
+  .msg small { display: block; margin-top: 2px; color: var(--mu); font-size: .9rem; font-weight: 500; }
+
+  footer { max-width: 980px; margin: 14px auto 0; padding: 22px 18px 34px; color: #66738c; font-size: .8rem; text-align: center; border-top: 1px solid rgba(36,49,73,.7); }
+  [hidden] { display: none !important; }
+  @media (max-width: 560px) { nav a { padding: 7px 8px; font-size: .78rem; letter-spacing: .05em; } .brand { font-size: .9rem; } .top-in { padding: 10px 12px; gap: 8px; } .game { padding: 18px 12px 20px; } .plates { gap: 18px; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html">
+      <img class="mark" src="logo.svg" alt="" width="30" height="30">
+      LE BONFIRE
+    </a>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="artwork.html">Splash Art</a>
+      <a class="on" href="mots.html">Mots</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <h1>Mots en désordre</h1>
+    <p class="sub">Remets les lettres dans l'ordre pour retrouver le mot</p>
+  </section>
+
+  <section class="game">
+    <button class="reset-best" id="resetBest" type="button" title="Remettre le record à 0" aria-label="Remettre le record à 0"><svg viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v5h5"/></svg></button>
+
+    <div class="bar">
+      <div class="plates">
+        <span class="plate">Série <b id="streak">0</b></span>
+        <span class="plate" id="recordPlate">Record <b id="best">0</b></span>
+      </div>
+      <div class="dots" id="dots" aria-label="Essais"></div>
+    </div>
+
+    <div class="info" id="info"></div>
+    <div class="def" id="def"></div>
+
+    <div class="slots" id="slots" aria-label="Réponse"></div>
+    <div class="tiles" id="tiles" aria-label="Lettres mélangées"></div>
+
+    <div id="play">
+      <div class="row">
+        <input id="answer" type="text" autocomplete="off" autocapitalize="characters" spellcheck="false" placeholder="Tape le mot ou clique sur les lettres" aria-label="Ta réponse">
+        <button id="submit" disabled>Valider</button>
+      </div>
+      <div class="tools">
+        <button class="alt" id="shuffle" type="button">⟳ Mélanger</button>
+        <button class="alt" id="clear" type="button">Effacer</button>
+        <button class="alt" id="hintBtn" type="button">Indice · −1 essai</button>
+      </div>
+      <div class="flash" id="flash" role="status"></div>
+    </div>
+
+    <div class="result" id="result" hidden>
+      <div class="msg" id="msg"></div>
+      <button id="next">Mot suivant →</button>
+    </div>
+
+    <ul class="misses" id="misses"></ul>
+  </section>
+</main>
+
+<footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
+
+<script>
+/* ============================================================
+   1. MOTS : [catégorie, mot (espaces = séparation de mots), définition]
+   ============================================================ */
+const WORDS = [["Lexique", "BACKDOOR", "Attaquer une tour ou la base adverse en douce pendant que les ennemis sont occupés ailleurs."], ["Lexique", "BAIT", "S'exposer volontairement pour attirer un adversaire dans un piège."], ["Lexique", "BURST", "Infliger beaucoup de dégâts en très peu de temps."], ["Rôles", "BRUISER", "Champion qui mêle résistance et dégâts, aussi appelé semi-tank."], ["Rôles", "CARRY", "Champion ou joueur qui porte l'équipe vers la victoire en fin de partie."], ["Lexique", "CASTER", "Champion dont la puissance repose surtout sur ses sorts."], ["Lexique", "COOLDOWN", "Délai de récupération avant de pouvoir réutiliser un sort."], ["Lexique", "COUNTER PICK", "Champion qui a naturellement l'avantage face à un autre."], ["Lexique", "CREEP", "Sbire qui avance sur les lanes."], ["Lexique", "DASH", "Déplacement rapide sur une courte distance."], ["Lexique", "DEBUFF", "Malus qui réduit une statistique de la cible."], ["Lexique", "DENY", "Refuser un objectif à l'adversaire, par exemple un sbire."], ["Lexique", "DIVE", "Attaque agressive sous la tour adverse, très risquée."], ["Lexique", "DODGE", "Éviter un sort adverse."], ["Lexique", "ENGAGE", "Initier un combat, seul ou à plusieurs."], ["Lexique", "FACECHECK", "Entrer dans un buisson sans vision, au risque de mourir."], ["Lexique", "FARM", "Récolter de l'or en tuant sbires et monstres."], ["Lexique", "FEED", "Mourir de façon répétée face au même adversaire."], ["Lexique", "FLANK", "Attaquer par le flanc de l'équipe adverse pour éliminer ses carries."], ["Lexique", "FOCUS", "Concentrer toutes les attaques sur une cible."], ["Lexique", "FREEZE", "Stabiliser une vague de sbires près de sa tour."], ["Lexique", "GANK", "Attaque surprise à plusieurs pour obtenir un avantage numérique."], ["Lexique", "GAP CLOSER", "Compétence qui permet de se rapprocher rapidement d'un ennemi."], ["Lexique", "HARASS", "Affaiblir l'ennemi petit à petit avec des sorts ou des attaques."], ["Lexique", "INVADE", "Entrer dans la jungle adverse."], ["Lexique", "INSEC", "Geste de Lee Sin qui projette l'ennemi vers ses alliés."], ["Lexique", "INTERRUPT", "Interrompre un sort canalisé, comme une Téléportation."], ["Lexique", "JUKE", "Éviter les sorts adverses par un déplacement inattendu."], ["Lexique", "KITE", "Attaquer tout en restant hors de portée de l'ennemi."], ["Lexique", "LAST HIT", "Porter le coup final à un sbire pour récupérer l'or."], ["Lexique", "LANE SWAP", "Échanger de lane avec un allié."], ["Lexique", "LIFE STEAL", "Vol de vie en frappant les adversaires."], ["Lexique", "MATCHUP", "Avantages ou inconvénients d'un champion face à un autre."], ["Lexique", "MISAYA", "Geste de Twisted Fate : réapparaître au milieu des ennemis puis utiliser le Sablier de Zhonya."], ["Lexique", "NERF", "Réduction de puissance d'un champion ou d'un objet lors d'un patch."], ["Lexique", "OUTPLAY", "Jouer nettement mieux que l'adversaire."], ["Lexique", "OVEREXTEND", "Rester trop loin de sa tour, ce qui favorise les ganks."], ["Lexique", "PASSIVE", "Pouvoir qui s'active tout seul chez un champion."], ["Lexique", "PEEL", "Protéger un carry en bloquant les ennemis qui le visent."], ["Rôles", "PLAYMAKER", "Champion capable d'actions complexes grâce à son kit de sorts."], ["Lexique", "POKE", "Infliger des dégâts à distance sans subir de riposte."], ["Lexique", "PREMADE", "Groupe de joueurs qui jouent ensemble dès la file d'attente."], ["Lexique", "PROXY", "Farmer entre deux tours adverses pour empêcher l'ennemi de pousser."], ["Lexique", "PUSH", "Pousser une lane en tuant les sbires."], ["Lexique", "RECALL", "Retour à la base avec le sort Rappel."], ["Lexique", "ROAM", "Se déplacer sur la carte pour surprendre l'adversaire."], ["Lexique", "ROOT", "Immobilisation causée par un sort."], ["Lexique", "SCALE", "Montée en puissance au fil de la partie."], ["Lexique", "SHOVE", "Pousser sa lane vers la tour adverse."], ["Lexique", "SKILL SHOT", "Sort à viser, qui peut être esquivé ou raté."], ["Lexique", "SNOWBALL", "Avantage cumulatif qui permet de multiplier les kills."], ["Lexique", "SPLIT PUSH", "Pousser une lane seul pendant que l'équipe est ailleurs."], ["Lexique", "SQUISHY", "Champion fragile, facile à éliminer."], ["Lexique", "STEALTH", "Camouflage qui rend un champion invisible."], ["Lexique", "STUN", "Étourdissement qui empêche toute action."], ["Lexique", "SUSTAIN", "Capacité à tenir sa lane grâce à la régénération."], ["Rôles", "TANK", "Champion spécialisé dans l'absorption des dégâts."], ["Lexique", "TAUNT", "Provocation qui force la cible à attaquer."], ["Lexique", "TEAMFIGHT", "Combat général entre la majorité des deux équipes."], ["Lexique", "TENACITY", "Statistique qui réduit la durée des immobilisations."], ["Lexique", "THROW", "Gâcher une partie dominée, jusqu'à la perdre."], ["Lexique", "TRADE", "Échange de ressources lors d'un affrontement."], ["Lexique", "TRINKET", "Relique gratuite qui contrôle la vision."], ["Lexique", "TURTLE", "Jeu très défensif pour faire durer la partie."], ["Lexique", "WOMBO COMBO", "Enchaînement de sorts qui élimine l'adversaire en une fraction de seconde."], ["Lexique", "WARD", "Balise de vision."], ["Lexique", "PINK WARD", "Balise rose qui révèle les unités invisibles."], ["Rôles", "SUPPORT", "Champion qui aide l'équipe avec vision, protection ou soins."], ["Rôles", "JUNGLER", "Joueur chargé de la jungle et de ses monstres."], ["Rôles", "BOTLANE", "Voie du bas, souvent occupée par le duo ADC et support."], ["Lexique", "TOXIC", "Comportement négatif et agressif envers les autres joueurs."], ["Lexique", "TRYHARD", "Jouer à fond, parfois au sens péjoratif."], ["Lexique", "TROLL", "Joueur qui ne joue pas sérieusement pour nuire à la partie."], ["Lexique", "LEAVER", "Joueur qui quitte la partie."], ["Lexique", "META", "Ensemble des champions et builds les plus forts à un moment donné."], ["Lexique", "BUILD", "Choix de runes et d'objets d'un champion."], ["Lexique", "ARAM", "Mode 5v5 sur une seule voie, avec un champion attribué au hasard."], ["Lexique", "RANKED", "Parties classées, des divisions de Bronze à Challenger."], ["Sorts", "FLASH", "Sort d'invocateur qui téléporte sur une courte distance (Saut éclair)."], ["Sorts", "IGNITE", "Nom anglais du sort Embrasement."], ["Sorts", "SMITE", "Nom anglais du sort Châtiment, utilisé en jungle."], ["Sorts", "EXHAUST", "Nom anglais du sort Fatigue."], ["Sorts", "CLEANSE", "Nom anglais du sort Purge."], ["Sorts", "GHOST", "Nom anglais du sort Fantôme."], ["Objectifs", "BARON NASHOR", "Monstre épique qui octroie de puissants bonus à l'équipe qui le tue."], ["Objectifs", "DRAGON", "Monstre neutre dont chaque type donne un bonus cumulable."], ["Objectifs", "INHIBITEUR", "Structure de la base dont la destruction fait apparaître des super-sbires."], ["Objectifs", "NEXUS", "Structure centrale de la base qu'il faut détruire pour gagner."], ["Objectifs", "JUNGLE", "Zone de la carte peuplée de monstres, entre les lanes."], ["Objectifs", "BLUE BUFF", "Bonus qui régénère le mana et réduit les délais de récupération."], ["Objectifs", "RED BUFF", "Bonus du Roncier rouge : ralentit l'ennemi et inflige des dégâts sur la durée."], ["Esport", "WORLDS", "Championnat du monde annuel de League of Legends."], ["Esport", "FNATIC", "Équipe européenne, championne du monde en 2011."], ["Esport", "FAKER", "Légende de T1, joueur du milieu de la carte."], ["Esport", "SK TELECOM", "Équipe sud-coréenne devenue T1, double championne du monde (2015 et 2016)."], ["Esport", "INVICTUS GAMING", "Équipe chinoise championne du monde en 2018."], ["Esport", "FUNPLUS PHOENIX", "Équipe championne du monde en 2019."], ["Esport", "DAMWON GAMING", "Équipe sud-coréenne championne du monde en 2020."], ["Esport", "EDWARD GAMING", "Équipe chinoise championne du monde en 2021."], ["Esport", "SAMSUNG GALAXY", "Équipe sud-coréenne championne du monde en 2017."], ["Esport", "TAIPEI ASSASSINS", "Équipe taïwanaise championne du monde en 2012."], ["Esport", "AZUBU FROST", "Équipe sud-coréenne finaliste du championnat du monde 2012."], ["Esport", "CBLOL", "Ligue brésilienne de League of Legends."], ["Esport", "CAGNOTTE", "Prix total distribué aux équipes d'un tournoi."], ["Esport", "THOMAS LYTE", "Orfèvre qui a fabriqué la Coupe de l'Invocateur."], ["Esport", "ESPORT", "Compétition professionnelle de jeux vidéo."], ["Esport", "SEED", "Position de classement d'une équipe avant un tournoi."], ["Esport", "BERLIN", "Ville allemande qui a accueilli les Worlds 2015."], ["Esport", "REYKJAVIK", "Capitale islandaise où a débuté le championnat du monde 2021."], ["Esport", "INCHEON", "Ville sud-coréenne qui a accueilli les Worlds 2018."], ["Esport", "PEKIN", "Ville chinoise des Worlds 2017, avec le stade du Nid d'Oiseau."], ["Esport", "PARIS", "Ville française qui a accueilli les Worlds 2019."], ["Esport", "DREAMHACK", "Événement suédois où s'est tenu le tout premier championnat du monde."], ["Esport", "RIOT GAMES", "Éditeur et organisateur de League of Legends."], ["Esport", "TENCENT", "Entreprise qui gère la ligue chinoise (LPL)."], ["Esport", "GARENA", "Entreprise qui gère la ligue vietnamienne (VCS)."]];
+const MAX_TRIES = 3;
+const $ = id => document.getElementById(id);
+
+/* ============================================================
+   2. OUTILS
+   ============================================================ */
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z]/g, "");
+const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+let deck = [], cur = null, letters = [], picked = [], tries = 0, over = false, hinted = false, misses = [];
+let streak = 0, best = 0, recordBroken = false;
+try { best = Number(localStorage.getItem("sdq_best_mots")) || 0; } catch (e) {}
+
+/* ============================================================
+   3. AFFICHAGE
+   ============================================================ */
+function scrambleOf(word) {
+  const base = word.split("");
+  if (new Set(base).size < 2) return base;
+  let out; do { out = shuffle(base.slice()); } while (out.join("") === word);
+  return out;
+}
+function renderTiles(animate) {
+  const t = $("tiles"); t.innerHTML = ""; t.classList.toggle("pop", !!animate);
+  letters.forEach((ch, i) => {
+    const b = document.createElement("button"); b.type = "button"; b.className = "tile"; b.textContent = ch;
+    b.setAttribute("aria-label", "Lettre " + ch);
+    b.onclick = () => { if (over || picked.includes(i)) return; setAnswer($("answer").value + ch); $("answer").focus(); };
+    t.appendChild(b);
+  });
+  syncTiles();
+}
+function syncTiles() {
+  [...$("tiles").children].forEach((b, i) => { b.classList.toggle("used", picked.includes(i)); b.disabled = over || picked.includes(i); });
+}
+function renderSlots() {
+  const s = $("slots"); s.innerHTML = "";
+  let n = 0;
+  cur.display.split("").forEach(ch => {
+    if (ch === " ") { const g = document.createElement("span"); g.className = "wordgap"; s.appendChild(g); return; }
+    const d = document.createElement("span"); d.className = "slot";
+    const idx = picked[n]; d.textContent = idx !== undefined ? letters[idx] : "";
+    if (idx === undefined && n === picked.length && !over) d.classList.add("on");
+    s.appendChild(d); n++;
+  });
+}
+function renderDots() {
+  $("dots").innerHTML = Array.from({ length: MAX_TRIES }, (_, i) =>
+    `<i class="${i < tries ? "used" : i === tries ? (over ? (cur.won ? "win" : "") : "now") : ""}"></i>`).join("");
+}
+function renderBar() {
+  $("streak").textContent = streak; $("best").textContent = best;
+  $("recordPlate").classList.toggle("broken", recordBroken);
+}
+function flash(msg) { $("flash").textContent = msg; clearTimeout(flash.t); flash.t = setTimeout(() => { $("flash").textContent = ""; }, 2200); }
+function shake() { ["answer", "slots"].forEach(id => { const e = $(id); e.classList.remove("shake"); void e.offsetWidth; e.classList.add("shake"); }); }
+
+/* La saisie (clavier ou clic sur les lettres) remplit les cases à partir des lettres disponibles. */
+function setAnswer(text) {
+  const wanted = norm(text), used = new Set(); picked = [];
+  for (const ch of wanted) {
+    const i = letters.findIndex((l, k) => l === ch && !used.has(k));
+    if (i < 0) continue;                       /* lettre absente ou déjà utilisée */
+    used.add(i); picked.push(i);
+  }
+  $("answer").value = picked.map(i => letters[i]).join("");
+  $("submit").disabled = over || picked.length !== letters.length;
+  renderSlots(); syncTiles();
+}
+
+/* ============================================================
+   4. PARTIE
+   ============================================================ */
+function newRound() {
+  if (!deck.length) deck = shuffle(WORDS.slice());
+  const [cat, display, def] = deck.pop();
+  cur = { cat, display, word: norm(display), def, won: false };
+  letters = scrambleOf(cur.word); picked = []; tries = 0; over = false; hinted = false; misses = [];
+  $("result").hidden = true; $("play").hidden = false;
+  $("slots").className = "slots"; $("def").textContent = ""; $("misses").innerHTML = ""; $("flash").textContent = "";
+  $("hintBtn").disabled = false; $("answer").disabled = false; $("answer").value = "";
+  const parts = display.split(" ").map(p => p.length);
+  $("info").innerHTML = `<b>${cur.word.length} lettres</b>${parts.length > 1 ? " · " + parts.length + " mots" : ""}<span class="cat">${cur.cat}</span>`;
+  renderTiles(true); setAnswer(""); renderDots(); renderBar();
+  $("answer").focus({ preventScroll: true });
+}
+
+function loseTry() {
+  tries++;
+  if (tries >= MAX_TRIES) return endRound(false);
+  renderDots();
+}
+function submit() {
+  if (over || picked.length !== letters.length) return;
+  const guess = picked.map(i => letters[i]).join("");
+  if (guess === cur.word) return endRound(true);
+  misses.push(guess);
+  const li = document.createElement("li"); li.innerHTML = `${guess}<small>raté</small>`; $("misses").prepend(li);
+  shake(); flash("Ce n'est pas ça, réessaie !");
+  setAnswer(""); loseTry();
+}
+function hint() {
+  if (over || hinted) return;
+  hinted = true; $("def").textContent = "Indice : " + cur.def;
+  $("hintBtn").disabled = true; loseTry();
+}
+function endRound(win) {
+  over = true; cur.won = win;
+  /* Affiche le mot dans le bon ordre dans les cases */
+  const order = []; const taken = new Set();
+  cur.word.split("").forEach(ch => { const i = letters.findIndex((l, k) => l === ch && !taken.has(k)); taken.add(i); order.push(i); });
+  picked = order;
+  $("answer").value = cur.word; $("answer").disabled = true; $("submit").disabled = true;
+  $("slots").className = "slots " + (win ? "ok" : "ko");
+  $("def").textContent = cur.def;
+  $("play").hidden = true; $("result").hidden = false;
+  if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best_mots", best); } catch (e) {} } }
+  else { streak = 0; recordBroken = false; }
+  const n = tries + (win ? 1 : 0);
+  $("msg").className = "msg " + (win ? "ok" : "ko");
+  $("msg").innerHTML = win ? `Bravo, c'était ${cur.display} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${cur.display}.`;
+  renderSlots(); syncTiles(); renderDots(); renderBar();
+  $("next").focus();
+}
+
+/* ============================================================
+   5. ÉVÉNEMENTS
+   ============================================================ */
+$("answer").oninput = () => setAnswer($("answer").value);
+$("answer").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); if (!$("submit").disabled) submit(); else if (!over) flash("Utilise toutes les lettres (" + letters.length + ")."); } };
+$("submit").onclick = submit;
+$("next").onclick = newRound;
+$("hintBtn").onclick = hint;
+$("clear").onclick = () => { setAnswer(""); $("answer").focus(); };
+$("shuffle").onclick = () => { if (over) return; const keep = $("answer").value; letters = scrambleOf(cur.word); picked = []; renderTiles(true); setAnswer(keep); };
+$("resetBest").onclick = () => {
+  if (!confirm("Remettre le record à 0 ?")) return;
+  best = 0; recordBroken = false; try { localStorage.removeItem("sdq_best_mots"); } catch (e) {}
+  renderBar();
+};
+document.addEventListener("keydown", e => { if (over && (e.key === "Enter") && document.activeElement !== $("next")) { e.preventDefault(); newRound(); } });
+
+newRound();
+</script>
+</body>
+</html>
