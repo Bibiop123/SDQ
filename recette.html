@@ -82,7 +82,8 @@
   button.alt:hover:not(:disabled), nav a:not(.on):hover { border-color: var(--cyan); box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 0 14px rgba(63,193,224,.25); }
   .reset-best { opacity: .8; }
 
-  .game { max-width: 860px; margin-left: auto; margin-right: auto; }
+  main { max-width: 1060px; }
+  .game { max-width: 1020px; margin-left: auto; margin-right: auto; }
   .bar { margin-bottom: 18px; }
   .target { display: flex; flex-direction: column; align-items: center; gap: 6px; }
   .target .big { width: 96px; height: 96px; border-radius: 14px; border: 2px solid var(--gold); background: #0b0f14; box-shadow: 0 0 0 2px #000, 0 0 28px rgba(230,195,106,.35), 0 10px 24px rgba(0,0,0,.6); overflow: hidden; display: grid; place-items: center; }
@@ -116,12 +117,12 @@
   @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
   .hover { min-height: 24px; margin: 6px 0 12px; text-align: center; color: #c9d3e4; font-size: .95rem; }
   .hover b { color: var(--gold); } .hover span { color: var(--mu); }
-  .pools { display: grid; grid-template-columns: 1fr; gap: 12px; margin-top: 4px; }
+  .pools { display: grid; grid-template-columns: minmax(250px, 270px) 1fr; gap: 14px; margin-top: 4px; align-items: start; }
   .pool { padding: 10px 12px 12px; border: 1px solid var(--line); border-radius: 14px; background: rgba(7,11,22,.5); }
   .pool h3 { margin: 0 0 8px; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mu); font-weight: 700; }
   .pool h3 b { color: var(--cyan); }
   .grid { display: flex; flex-wrap: wrap; gap: 6px; }
-  .it { width: 48px; height: 48px; padding: 0; border-radius: 8px; border: 1.5px solid #34425f; background: #0b0f14; overflow: hidden; display: grid; place-items: center; cursor: pointer; transition: transform .12s, border-color .15s; }
+  .it { width: 44px; height: 44px; padding: 0; border-radius: 8px; border: 1.5px solid #34425f; background: #0b0f14; overflow: hidden; display: grid; place-items: center; cursor: pointer; transition: transform .12s, border-color .15s; }
   .it img { width: 100%; height: 100%; display: block; }
   .it:hover:not(:disabled), .it:focus-visible { border-color: var(--cyan); transform: translateY(-2px); filter: none; outline: none; }
   .it:disabled { opacity: .35; cursor: default; }
