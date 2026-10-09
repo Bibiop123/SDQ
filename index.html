@@ -129,6 +129,13 @@
     .card h3 { font-size: 1.7rem; }
     nav a { padding: 7px 10px; }
   }
+
+  /* Cadres des boutons et pastilles : plus marqués pour bien ressortir du fond */
+  :root { --frame: #56709c; }
+  .plate:not(.broken), button.alt, nav a:not(.on) { border: 1.5px solid var(--frame); background: rgba(24,35,62,.92); box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 3px 10px rgba(0,0,0,.4); }
+  .plate:not(.broken) { color: #aab6cd; }
+  button.alt, nav a:not(.on) { color: #dbe3f1; }
+  button.alt:hover:not(:disabled), nav a:not(.on):hover { border-color: var(--cyan); box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 0 14px rgba(63,193,224,.25); }
 </style>
 </head>
 <body>
