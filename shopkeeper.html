@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>La recette – Le Bonfire</title>
+<title>Le Shopkeeper – Le Bonfire</title>
 <link rel="icon" type="image/svg+xml" href="logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
@@ -12,7 +12,7 @@
   * { box-sizing: border-box; }
   html, body { margin: 0; }
   body { min-height: 100vh; color: var(--tx); background: var(--bg); position: relative; overflow-x: hidden; font: 16px/1.5 Barlow, system-ui, -apple-system, "Segoe UI", sans-serif; }
-  body::before { content: ""; position: fixed; inset: -20px; z-index: -2; background: url("images/Irelia_063_Breadsticks-Irelia.jpg") center / cover no-repeat; filter: blur(16px) brightness(.3) saturate(1.2); }
+  body::before { content: ""; position: fixed; inset: -20px; z-index: -2; background: url("shopkeeper.jpg") center / cover no-repeat; filter: blur(16px) brightness(.3) saturate(1.2); }
   body::after { content: ""; position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 0%, rgba(63,193,224,.12), transparent 55%), linear-gradient(rgba(7,11,22,.55), var(--bg) 95%); }
 
   .top { position: sticky; top: 0; z-index: 40; background: rgba(7,11,22,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
@@ -82,55 +82,37 @@
   button.alt:hover:not(:disabled), nav a:not(.on):hover { border-color: var(--cyan); box-shadow: inset 0 1px 0 rgba(255,255,255,.09), 0 0 14px rgba(63,193,224,.25); }
   .reset-best { opacity: .8; }
 
-  .game { max-width: 860px; margin-left: auto; margin-right: auto; }
-  .bar { margin-bottom: 18px; }
-  .target { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .target .big { width: 96px; height: 96px; border-radius: 14px; border: 2px solid var(--gold); background: #0b0f14; box-shadow: 0 0 0 2px #000, 0 0 28px rgba(230,195,106,.35), 0 10px 24px rgba(0,0,0,.6); overflow: hidden; display: grid; place-items: center; }
-  .target .big img { width: 100%; height: 100%; display: block; }
-  .target h2 { margin: 6px 0 0; font-family: Cinzel, Georgia, serif; font-size: 1.35rem; color: var(--gold); text-align: center; letter-spacing: .04em; }
-  .target .meta { color: var(--mu); font-size: .92rem; text-align: center; }
-  .target .meta b { color: var(--tx); }
-  .rslots { display: flex; justify-content: center; flex-wrap: wrap; gap: 30px 24px; margin: 30px 0 8px; position: relative; }
-  .rslots::before { content: ""; position: absolute; top: -30px; left: 50%; height: 16px; border-left: 2px solid #3a4866; }
-  .rslot { position: relative; display: flex; flex-direction: column; align-items: center; gap: 4px; width: 84px; cursor: pointer; background: none; border: 0; padding: 0; color: inherit; font-weight: 500; }
-  .col { position: relative; display: flex; flex-direction: column; align-items: center; }
-  .col::before, .subs > .rslot::before { content: ""; position: absolute; top: -14px; left: -9px; right: -9px; border-top: 2px solid #3a4866; }
-  .col:first-child::before, .subs > .rslot:first-child::before { left: 50%; } .col:last-child::before, .subs > .rslot:last-child::before { right: 50%; }
-  .col:only-child::before, .subs > .rslot:only-child::before { display: none; }
-  .col::after, .subs > .rslot::after { content: ""; position: absolute; top: -14px; left: 50%; height: 14px; border-left: 2px solid #3a4866; }
-  .col:only-child::after { top: -30px; height: 30px; }
-  .subs { position: relative; display: flex; gap: 8px; margin-top: 26px; }
-  .subs::before { content: ""; position: absolute; top: -26px; left: 50%; height: 12px; border-left: 2px solid #3a4866; }
-  .rslot.sm { width: 60px; } .rslot.sm .box { width: 46px; height: 46px; border-radius: 9px; } .rslot.sm small { font-size: .62rem; }
-  .rslot:hover:not(:disabled) { transform: none; filter: none; }
-  .rslot .box { width: 64px; height: 64px; border-radius: 12px; border: 2px dashed #46557a; background: rgba(7,11,22,.6); display: grid; place-items: center; overflow: hidden; }
-  .rslot .box img { width: 100%; height: 100%; display: block; }
-  .rslot.on .box { border-color: var(--cyan); box-shadow: 0 0 14px rgba(63,193,224,.35); }
-  .rslot.full .box { border-style: solid; border-color: var(--frame); }
-  .rslot.fixed .box { border-style: solid; border-color: var(--gold); box-shadow: 0 0 12px rgba(230,195,106,.35); }
-  .rslot.ok .box { border-style: solid; border-color: var(--ok); }
-  .rslot.ko .box { border-style: solid; border-color: var(--ko); }
-  .rslot small { font-size: .72rem; line-height: 1.15; color: #c9d3e4; text-align: center; min-height: 1.7em; }
-  .rslot:disabled { opacity: 1; cursor: default; }
-  .rslots.shake { animation: shake .3s; }
-  @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
-  .hover { min-height: 24px; margin: 6px 0 12px; text-align: center; color: #c9d3e4; font-size: .95rem; }
-  .hover b { color: var(--gold); } .hover span { color: var(--mu); }
-  .pools { display: grid; grid-template-columns: 1fr 1.6fr; gap: 14px; margin-top: 4px; }
-  .pool { padding: 10px 12px 12px; border: 1px solid var(--line); border-radius: 14px; background: rgba(7,11,22,.5); }
-  .pool h3 { margin: 0 0 8px; font-size: .78rem; letter-spacing: .14em; text-transform: uppercase; color: var(--mu); font-weight: 700; }
-  .pool h3 b { color: var(--cyan); }
-  .grid { display: flex; flex-wrap: wrap; gap: 6px; }
-  .it { width: 44px; height: 44px; padding: 0; border-radius: 8px; border: 1.5px solid #34425f; background: #0b0f14; overflow: hidden; display: grid; place-items: center; cursor: pointer; transition: transform .12s, border-color .15s; }
-  .it img { width: 100%; height: 100%; display: block; }
-  .it:hover:not(:disabled), .it:focus-visible { border-color: var(--cyan); transform: translateY(-2px); filter: none; outline: none; }
-  .it:disabled { opacity: .35; cursor: default; }
-  .it.txt { font-size: .6rem; font-weight: 700; color: #c9d3e4; line-height: 1; }
+  .game { max-width: 820px; margin-left: auto; margin-right: auto; }
+  .bar { margin-bottom: 14px; }
+  .keeper { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 4px 0 22px; }
+  .keeper .face { flex: none; width: 84px; height: 84px; border-radius: 50%; border: 2px solid var(--gold); box-shadow: 0 0 0 2px #000, 0 0 22px rgba(230,195,106,.3); background: #0b0f14 url("shopkeeper-classic.jpg") 49% 46% / 330% no-repeat; }
+  .keeper .bubble { position: relative; max-width: 380px; padding: 11px 16px; border-radius: 14px; border: 1.5px solid var(--frame); background: rgba(24,35,62,.92); color: #e4ebf7; font-size: 1.02rem; font-weight: 500; box-shadow: 0 6px 18px rgba(0,0,0,.4); }
+  .keeper .bubble::before { content: ""; position: absolute; left: -9px; top: 50%; width: 14px; height: 14px; background: rgba(24,35,62,.92); border-left: 1.5px solid var(--frame); border-bottom: 1.5px solid var(--frame); transform: translateY(-50%) rotate(45deg); }
+  .keeper .bubble b { color: var(--gold); }
+  .eq { display: flex; align-items: flex-start; justify-content: center; gap: 12px; flex-wrap: nowrap; }
+  .eq .op { align-self: center; margin-top: -26px; font-family: Cinzel, Georgia, serif; font-size: 2rem; font-weight: 800; color: var(--gold); }
+  .eq .total { align-self: center; margin-top: -26px; min-width: 96px; padding: 10px 14px; border-radius: 12px; border: 2px dashed #46557a; text-align: center; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 1.5rem; color: var(--gold); }
+  .eq .total small { display: block; font-family: Barlow, sans-serif; font-weight: 600; font-size: .7rem; letter-spacing: .12em; color: var(--mu); text-transform: uppercase; }
+  .eq .total.ok { border-style: solid; border-color: var(--ok); } .eq .total.ko { border-style: solid; border-color: var(--ko); }
+  .sitem { width: 108px; display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .sitem .pic { width: 92px; height: 92px; border-radius: 14px; border: 2px solid var(--gold); background: #0b0f14; box-shadow: 0 0 0 2px #000, 0 10px 24px rgba(0,0,0,.55); overflow: hidden; display: grid; place-items: center; color: #c9d3e4; font-size: .7rem; text-align: center; }
+  .sitem .pic img { width: 100%; height: 100%; display: block; }
+  .sitem .nm { font-size: .82rem; line-height: 1.15; text-align: center; color: #dbe3f1; font-weight: 600; min-height: 2.3em; }
+  .sitem .gold { min-width: 66px; padding: 2px 10px; border-radius: 99px; border: 1.5px dashed #46557a; color: var(--mu); font-weight: 700; font-size: .9rem; text-align: center; }
+  .sitem.shown .gold { border-style: solid; border-color: var(--gold); color: var(--gold); background: rgba(230,195,106,.1); }
   .status { text-align: center; color: var(--mu); padding: 30px 0; }
+  .eq.shake { animation: shake .3s; }
+  @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  .row { display: flex; gap: 10px; max-width: 420px; margin: 26px auto 0; }
+  input { flex: 1; min-width: 0; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(7,11,22,.8); color: var(--tx); font: inherit; font-size: 1.25rem; font-weight: 700; letter-spacing: .06em; text-align: center; }
+  input:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(63,193,224,.2); }
+  input::placeholder { color: #5f6c85; font-weight: 500; font-size: 1rem; letter-spacing: 0; }
+  input.shake { animation: shake .3s; border-color: var(--ko); }
   .misses { list-style: none; margin: 10px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-  .misses li { padding: 3px 10px; border-radius: 10px; border: 1px solid rgba(255,107,107,.55); background: rgba(255,107,107,.1); font-size: .8rem; }
-  .misses li small { margin-left: 6px; color: var(--ko); text-transform: uppercase; letter-spacing: .06em; font-size: .68rem; }
-  @media (max-width: 700px) { .rslots { gap: 30px 10px; } .subs { gap: 4px; } .rslot.sm { width: 50px; } .rslot.sm .box { width: 40px; height: 40px; } .rslot.sm small { font-size: .56rem; } .pools { grid-template-columns: 1fr; } .game { padding: 18px 12px 20px; } .rslot { width: 72px; } .rslot .box { width: 56px; height: 56px; } .it { width: 42px; height: 42px; } nav a { padding: 7px 8px; font-size: .74rem; letter-spacing: .04em; } .brand { font-size: .9rem; } .top-in { padding: 10px 10px; gap: 6px; } .plates { gap: 14px; } }
+  .misses li { padding: 4px 12px; border-radius: 10px; border: 1px solid rgba(255,107,107,.55); background: rgba(255,107,107,.1); font-weight: 700; font-size: .92rem; }
+  .misses li small { margin-left: 8px; color: var(--ko); text-transform: uppercase; letter-spacing: .06em; font-size: .72rem; }
+  .result .recap { margin: 2px auto 12px; max-width: 420px; color: #c9d3e4; font-size: .95rem; }
+  @media (max-width: 560px) { .keeper .face { width: 64px; height: 64px; } .keeper .bubble { font-size: .92rem; padding: 9px 12px; } .eq { gap: 4px; } .sitem { width: 84px; } .sitem .pic { width: 70px; height: 70px; } .sitem .nm { font-size: .72rem; } .eq .op { font-size: 1.4rem; } .eq .total { min-width: 62px; padding: 6px 8px; font-size: 1.1rem; margin-top: -34px; } .game { padding: 18px 10px 20px; } .plates { gap: 14px; } }
   @media (max-width: 480px) { .brand { font-size: 0; gap: 0; } nav { gap: 4px; } nav a { padding: 7px 7px; font-size: .72rem; letter-spacing: .03em; } }
   @media (max-width: 400px) { .brand { display: none; } .top-in { justify-content: center; } nav a { padding: 7px 6px; font-size: .7rem; } }
 </style>
@@ -147,16 +129,16 @@
       <a href="index.html">Accueil</a>
       <a href="artwork.html">Splash</a>
       <a href="mots.html">Mots</a>
-      <a class="on" href="recette.html">Recette</a>
-      <a href="shopkeeper.html">Shop</a>
+      <a href="recette.html">Recette</a>
+      <a class="on" href="shopkeeper.html">Shop</a>
     </nav>
   </div>
 </header>
 
 <main>
   <section class="hero">
-    <h1>La recette</h1>
-    <p class="sub">Retrouve les composants qui forment l'objet</p>
+    <h1>Le Shopkeeper</h1>
+    <p class="sub">Combien coûtent ces trois objets ?</p>
   </section>
 
   <section class="game">
@@ -173,28 +155,29 @@
     <div class="status" id="status">Chargement des objets…</div>
 
     <div id="board" hidden>
-      <div class="target" id="target"></div>
-      <div class="rslots" id="rslots" aria-label="Composants"></div>
-      <div class="hover" id="hover"></div>
+      <div class="keeper">
+        <div class="face" role="img" aria-label="Le marchand"></div>
+        <div class="bubble" id="bubble"></div>
+      </div>
+
+      <div class="eq" id="eq" aria-label="Les trois objets"></div>
 
       <div id="play">
-        <div class="tools">
+        <div class="row">
+          <input id="answer" type="text" inputmode="numeric" autocomplete="off" placeholder="Total en or…" aria-label="Total en or">
           <button id="submit" disabled>Valider</button>
-          <button class="alt" id="clear" type="button">Effacer</button>
+        </div>
+        <div class="tools">
           <button class="alt" id="giveUp" type="button">Abandonner <kbd>Échap</kbd></button>
         </div>
         <div class="flash" id="flash" role="status"></div>
       </div>
       <div class="result" id="result" hidden>
         <div class="msg" id="msg"></div>
-        <button id="next">Objet suivant →</button>
+        <div class="recap" id="recap"></div>
+        <button id="next">Autre commande →</button>
       </div>
       <ul class="misses" id="misses"></ul>
-
-      <div class="pools">
-        <div class="pool"><h3><b>Tier 1</b> · objets de base</h3><div class="grid" id="basics"></div></div>
-        <div class="pool"><h3><b>Tier 2</b> · objets intermédiaires</h3><div class="grid" id="epics"></div></div>
-      </div>
     </div>
   </section>
 </main>
@@ -204,108 +187,56 @@
 <script>
 const $ = id => document.getElementById(id);
 const MAX_TRIES = 3;
+const MARGIN = 100;                     /* écart accepté (en or) pour gagner */
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const fmt = n => n.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
 
-let ver = "", items = {}, basics = [], epics = [], legend = [], deck = [];
-let cur = null, slots = [], subs = [], fixed = [], fixedSub = [], tries = 0, over = false, misses = [];
+let ver = "", pool = [], cur = null, tries = 0, over = false, shown = [], guesses = [];
 let streak = 0, best = 0, recordBroken = false;
-try { best = Number(localStorage.getItem("sdq_best_recette")) || 0; } catch (e) {}
+try { best = Number(localStorage.getItem("sdq_best_shop")) || 0; } catch (e) {}
 
-/* ============================================================
-   1. DONNÉES : objets du jeu (Data Dragon de Riot, en français)
-   ============================================================ */
-const icon = id => `https://ddragon.leagueoflegends.com/cdn/${ver}/img/item/${id}.png`;
-/* Listes officielles du wiki de League of Legends (wiki.leagueoflegends.com › List of items), par nom anglais */
+/* Listes du wiki de League of Legends (List of items), par nom anglais : objets de base, intermédiaires et complets */
 const BASIC = ["Amplifying Tome","B. F. Sword","Blasting Wand","Cloak of Agility","Cloth Armor","Dagger","Faerie Charm","Glowing Mote","Long Sword","Needlessly Large Rod","Null-Magic Mantle","Pickaxe","Rejuvenation Bead","Ruby Crystal","Sapphire Crystal"];
 const EPIC = ["Aether Wisp","Bami's Cinder","Bandleglass Mirror","Blighting Jewel","Bramble Vest","Catalyst of Aeons","Caulfield's Warhammer","Chain Vest","Crystalline Bracer","Executioner's Calling","Fated Ashes","Fiendish Codex","Forbidden Idol","Giant's Belt","Glacial Buckler","Haunting Guise","Hearthbound Axe","Hexdrinker","Hextech Alternator","Kindlegem","Last Whisper","Lifeline","Lost Chapter","Negatron Cloak","Noonquiver","Oblivion Orb","Phage","Quicksilver Sash","Rectrix","Recurve Bow","Runic Compass","Scout's Slingshot","Seeker's Armguard","Serrated Dirk","Shattered Armguard","Sheen","Spectre's Cowl","Steel Sigil","The Brutalizer","Tiamat","Tunneler","Vampiric Scepter","Verdant Barrier","Warden's Mail","Winged Moonplate","Zeal"];
 const LEGENDARY = ["Abyssal Mask","Actualizer","Archangel's Staff","Ardent Censer","Atma's Reckoning","Axiom Arc","Bandlepipes","Banshee's Veil","Bastionbreaker","Black Cleaver","Blackfire Torch","Blade of the Ruined King","Bloodletter's Curse","Bloodsong","Bloodthirster","Bounty of Worlds","Celestial Opposition","Chempunk Chainsword","Cosmic Drive","Cryptbloom","Dawncore","Dead Man's Plate","Death's Dance","Diadem of Songs","Dream Maker","Dusk and Dawn","Echoes of Helia","Eclipse","Edge of Night","Endless Hunger","Essence Reaver","Experimental Hexplate","Fiendhunter Bolts","Fimbulwinter","Force of Nature","Frozen Heart","Guardian Angel","Guinsoo's Rageblade","Heartsteel","Hexoptics C44","Hextech Gunblade","Hextech Rocketbelt","Hollow Radiance","Horizon Focus","Hubris","Hullbreaker","Iceborn Gauntlet","Immortal Shieldbow","Imperial Mandate","Infinity Edge","Jak'Sho, The Protean","Kaenic Rookern","Knight's Vow","Kraken Slayer","Liandry's Torment","Lich Bane","Locket of the Iron Solari","Lord Dominik's Regards","Luden's Echo","Malignance","Manamune","Maw of Malmortius","Mejai's Soulstealer","Mercurial Scimitar","Mikael's Blessing","Moonstone Renewer","Morellonomicon","Mortal Reminder","Muramana","Nashor's Tooth","Navori Flickerblade","Overlord's Bloodmail","Phantom Dancer","Profane Hydra","Protoplasm Harness","Rabadon's Deathcap","Randuin's Omen","Rapid Firecannon","Ravenous Hydra","Redemption","Riftmaker","Rite of Ruin","Rod of Ages","Runaan's Hurricane","Rylai's Crystal Scepter","Seraph's Embrace","Serpent's Fang","Serylda's Grudge","Shadowflame","Shurelya's Battlesong","Solstice Sleigh","Spear of Shojin","Spectral Cutlass","Spirit Visage","Staff of Flowing Water","Statikk Shiv","Sterak's Gage","Stormrazor","Stormsurge","Stridebreaker","Sundered Sky","Sunfire Aegis","Sword of Blossoming Dawn","Terminus","The Collector","Thornmail","Titanic Hydra","Trinity Force","Umbral Glaive","Unending Despair","Void Staff","Voltaic Cyclosword","Warmog's Armor","Whispering Circlet","Winter's Approach","Wit's End","Youmuu's Ghostblade","Yun Tal Wildarrows","Zaz'Zak's Realmspike","Zeke's Convergence","Zhonya's Hourglass"];
 const nk = s => String(s).toLowerCase().replace(/[^a-z0-9]/g, "");
+const icon = id => `https://ddragon.leagueoflegends.com/cdn/${ver}/img/item/${id}.png`;
 async function loadItems() {
   const v = await (await fetch("https://ddragon.leagueoflegends.com/api/versions.json")).json();
   ver = v[0];
   const base = `https://ddragon.leagueoflegends.com/cdn/${ver}/data/`;
   const [en, fr] = await Promise.all([fetch(base + "en_US/item.json"), fetch(base + "fr_FR/item.json")]).then(r => Promise.all(r.map(x => x.json())));
-  /* nom anglais -> identifiant (en préférant l'objet vendu sur la Faille) */
   const byName = {};
   Object.entries(en.data).forEach(([id, it]) => {
     const k = nk(it.name), sr = it.maps && it.maps["11"] && it.gold && it.gold.purchasable;
     if (!byName[k] || (sr && !byName[k].sr)) byName[k] = { id, sr };
   });
-  const make = names => names.map(n => (byName[nk(n)] || {}).id).filter(id => id && fr.data[id]);
-  const ids = { basic: make(BASIC), epic: make(EPIC), leg: make(LEGENDARY) };
-  [...ids.basic, ...ids.epic, ...ids.leg].forEach(id => {
-    const it = fr.data[id]; items[id] = { id, name: it.name, total: it.gold.total, base: it.gold.base, from: (it.from || []).slice() };
+  const seen = new Set();
+  [...BASIC, ...EPIC, ...LEGENDARY].forEach(n => {
+    const e = byName[nk(n)]; if (!e || seen.has(e.id) || !fr.data[e.id]) return; seen.add(e.id);
+    const it = fr.data[e.id]; if (it.gold && it.gold.total > 0) pool.push({ id: e.id, name: it.name, price: it.gold.total });
   });
-  const byPrice = (a, b) => a.total - b.total || a.name.localeCompare(b.name, "fr");
-  basics = ids.basic.map(i => items[i]).sort(byPrice);
-  epics = ids.epic.map(i => items[i]).sort(byPrice);
-  legend = ids.leg.map(i => items[i]);
-}
-const isBasicId = id => basics.some(b => b.id === id);
-const inPool = id => basics.some(b => b.id === id) || epics.some(e => e.id === id);
-function targets() {
-  /* Objets complets (légendaires du wiki) dont tous les composants sont dans les listes de tier 1 et 2 */
-  return legend.filter(i => i.from.length && i.from.length <= 4 && i.from.every(inPool) && i.from.every(id => items[id].from.every(isBasicId)));
 }
 
 /* ============================================================
-   2. AFFICHAGE
+   AFFICHAGE
    ============================================================ */
-function img(id, name) {
-  const im = new Image(); im.alt = name; im.src = icon(id); im.draggable = false;
-  return im;
-}
-function renderPool(el, list) {
-  el.innerHTML = "";
-  list.forEach(it => {
-    const b = document.createElement("button"); b.type = "button"; b.className = "it"; b.title = it.name + " · " + it.total + " or";
-    b.setAttribute("aria-label", it.name); b.dataset.id = it.id;
-    const im = img(it.id, it.name); im.onerror = () => { b.classList.add("txt"); b.textContent = it.name.slice(0, 6); };
-    b.appendChild(im);
-    b.onclick = () => { pick(it.id); showInfo(it); };
-    b.onpointerenter = () => showInfo(it); b.onfocus = () => showInfo(it);
-    el.appendChild(b);
+function renderEq() {
+  const eq = $("eq"); eq.innerHTML = "";
+  cur.items.forEach((it, i) => {
+    if (i) { const op = document.createElement("span"); op.className = "op"; op.textContent = "+"; eq.appendChild(op); }
+    const d = document.createElement("div"); d.className = "sitem" + (shown.includes(i) ? " shown" : "");
+    const pic = document.createElement("div"); pic.className = "pic";
+    const im = new Image(); im.alt = it.name; im.src = icon(it.id); im.draggable = false; im.onerror = () => { im.remove(); pic.textContent = it.name; };
+    pic.appendChild(im);
+    const nm = document.createElement("div"); nm.className = "nm"; nm.textContent = it.name;
+    const g = document.createElement("div"); g.className = "gold"; g.textContent = shown.includes(i) ? fmt(it.price) + " or" : "? or";
+    d.append(pic, nm, g); eq.appendChild(d);
   });
-}
-function showInfo(it) { $("hover").innerHTML = `<b>${it.name}</b> <span>· ${it.total} or</span>`; }
-/* Prochaine case à remplir : d'abord les composants du haut, puis la recette de chaque objet intermédiaire */
-function nextEmpty() {
-  const i = slots.findIndex((s, k) => !s && !fixed.includes(k));
-  if (i >= 0) return [i, -1];
-  for (let a = 0; a < subs.length; a++) if (subs[a]) for (let b = 0; b < subs[a].length; b++) if (!subs[a][b] && !fixedSub.includes(a + "." + b)) return [a, b];
-  return null;
-}
-function slotBtn(id, cls, onclick, disabled) {
-  const b = document.createElement("button"); b.type = "button"; b.className = "rslot " + cls;
-  const bx = document.createElement("span"); bx.className = "box";
-  const cap = document.createElement("small");
-  if (id) { bx.appendChild(img(id, items[id].name)); cap.textContent = items[id].name; b.classList.add("full"); }
-  if (over) b.classList.add(cur.won ? "ok" : "ko");
-  b.disabled = disabled; b.onclick = onclick; b.append(bx, cap);
-  return b;
-}
-function renderSlots() {
-  const box = $("rslots"); box.innerHTML = "";
-  const ne = nextEmpty();
-  slots.forEach((id, i) => {
-    const col = document.createElement("div"); col.className = "col";
-    const fx = fixed.includes(i);
-    const b = slotBtn(id, fx ? "fixed" : "", () => { if (over || fx) return; slots[i] = null; subs[i] = null; renderSlots(); }, over || fx);
-    if (!id && ne && ne[0] === i && ne[1] < 0 && !over) b.classList.add("on");
-    col.appendChild(b);
-    if (subs[i]) {
-      const sb = document.createElement("div"); sb.className = "subs";
-      subs[i].forEach((sid, j) => {
-        const sfx = fixedSub.includes(i + "." + j);
-        const c = slotBtn(sid, "sm" + (sfx ? " fixed" : ""), () => { if (over || sfx) return; subs[i][j] = null; renderSlots(); }, over || sfx);
-        if (!sid && ne && ne[0] === i && ne[1] === j && !over) c.classList.add("on");
-        sb.appendChild(c);
-      });
-      col.appendChild(sb);
-    }
-    box.appendChild(col);
-  });
-  $("submit").disabled = over || slots.some(s => !s) || subs.some(a => a && a.some(x => !x));
+  const eqs = document.createElement("span"); eqs.className = "op"; eqs.textContent = "=";
+  const t = document.createElement("div"); t.className = "total" + (over ? (cur.won ? " ok" : " ko") : "");
+  t.innerHTML = over ? fmt(cur.total) + "<small>or</small>" : "?<small>or</small>";
+  eq.append(eqs, t);
 }
 function renderDots() {
   $("dots").innerHTML = Array.from({ length: MAX_TRIES }, (_, i) =>
@@ -313,109 +244,72 @@ function renderDots() {
 }
 function renderBar() { $("streak").textContent = streak; $("best").textContent = best; $("recordPlate").classList.toggle("broken", recordBroken); }
 function flash(msg) { $("flash").textContent = msg; clearTimeout(flash.t); flash.t = setTimeout(() => { $("flash").textContent = ""; }, 2200); }
-function shake() { const e = $("rslots"); e.classList.remove("shake"); void e.offsetWidth; e.classList.add("shake"); }
+function shake(id) { const e = $(id); e.classList.remove("shake"); void e.offsetWidth; e.classList.add("shake"); }
 
 /* ============================================================
-   3. PARTIE
+   PARTIE
    ============================================================ */
+let deck = [];
 function newRound() {
-  if (!deck.length) deck = shuffle(targets());
-  const t = deck.pop();
-  cur = { item: t, won: false };
-  slots = t.from.map(() => null); subs = t.from.map(() => null); fixed = []; fixedSub = []; tries = 0; over = false; misses = [];
-  $("result").hidden = true; $("play").hidden = false; $("misses").innerHTML = ""; $("flash").textContent = ""; $("hover").innerHTML = "";
-  const recipe = Math.max(0, t.total - t.from.reduce((s, id) => s + items[id].total, 0));
-  const tg = $("target"); tg.innerHTML = "";
-  const big = document.createElement("div"); big.className = "big"; big.appendChild(img(t.id, t.name));
-  const h = document.createElement("h2"); h.textContent = t.name;
-  const m = document.createElement("div"); m.className = "meta";
-  m.innerHTML = `<b>${t.total} or</b> · ${t.from.length} composants · assemblage <b>${recipe} or</b>`;
-  tg.append(big, h, m);
-  renderSlots(); renderDots(); renderBar();
+  if (deck.length < 3) deck = shuffle(pool.slice());
+  const items = [deck.pop(), deck.pop(), deck.pop()];
+  cur = { items, total: items.reduce((s, i) => s + i.price, 0), won: false };
+  tries = 0; over = false; shown = []; guesses = [];
+  $("result").hidden = true; $("play").hidden = false; $("misses").innerHTML = ""; $("flash").textContent = "";
+  $("answer").value = ""; $("answer").disabled = false; $("submit").disabled = true;
+  $("bubble").innerHTML = `Voilà ta commande ! Ça fait <b>combien d'or</b> en tout ? <small style="display:block;color:var(--mu);font-size:.8rem;margin-top:2px">À ${MARGIN} or près, ça ira.</small>`;
+  renderEq(); renderDots(); renderBar();
+  $("answer").focus({ preventScroll: true });
 }
-function setSlot(i, id) { slots[i] = id; subs[i] = items[id].from.length ? items[id].from.map(() => null) : null; }
-function pick(id) {
-  if (over) return;
-  const ne = nextEmpty(); if (!ne) return;
-  if (ne[1] < 0) setSlot(ne[0], id); else subs[ne[0]][ne[1]] = id;
-  renderSlots();
-}
-const key = arr => arr.slice().sort().join(",");
+const parse = v => { const d = String(v).replace(/[^0-9]/g, ""); return d ? Number(d) : NaN; };
 function loseTry() { tries++; if (tries >= MAX_TRIES) return endRound(false); renderDots(); }
-/* Chaque erreur révèle un composant à sa bonne place */
-const topOk = () => key(slots) === key(cur.item.from);
-function revealOne() {
-  const t = cur.item.from;
-  if (!topOk()) {
-    const free = t.map((_, i) => i).filter(i => !fixed.includes(i));
-    if (free.length <= 1) return;
-    const i = free[Math.floor(Math.random() * free.length)];
-    fixed.push(i); setSlot(i, t[i]);
-  } else {
-    const free = [];
-    slots.forEach((id, a) => { if (subs[a]) subs[a].forEach((_, b) => { if (!fixedSub.includes(a + "." + b)) free.push([a, b]); }); });
-    if (free.length <= 1) return;
-    const [a, b] = free[Math.floor(Math.random() * free.length)];
-    fixedSub.push(a + "." + b); subs[a][b] = items[slots[a]].from[b];
-  }
-}
-const subsOk = () => slots.every((id, a) => !subs[a] || key(subs[a]) === key(items[id].from));
 function submit() {
-  if (over || $("submit").disabled) return;
-  if (topOk() && subsOk()) return endRound(true);
-  const nm = id => items[id].name;
-  misses.push(1);
-  const li = document.createElement("li");
-  li.innerHTML = slots.map((id, a) => nm(id) + (subs[a] ? " (" + subs[a].map(nm).join(" + ") + ")" : "")).join(" + ") + "<small>raté</small>"; $("misses").prepend(li);
-  shake(); flash("Ce n'est pas la bonne recette, réessaie !");
-  const wasTop = topOk();
-  /* on garde ce qui est révélé (et les composants du haut s'ils étaient justes), on vide le reste */
-  if (!wasTop) { slots = slots.map((s, i) => fixed.includes(i) ? s : null); subs = subs.map((a, i) => fixed.includes(i) ? a : null); }
-  subs = subs.map((a, i) => a ? a.map((x, j) => fixedSub.includes(i + "." + j) ? x : null) : a);
-  loseTry(); if (!over) { revealOne(); renderSlots(); }
+  if (over) return;
+  const g = parse($("answer").value);
+  if (isNaN(g)) { shake("answer"); return flash("Entre un nombre."); }
+  if (Math.abs(g - cur.total) <= MARGIN) { guesses.push(g); return endRound(true, g); }
+  const up = g < cur.total;
+  const li = document.createElement("li"); li.innerHTML = `${fmt(g)} or<small>${up ? "plus ↑" : "moins ↓"}</small>`; $("misses").prepend(li);
+  shake("answer"); flash(up ? "C'est plus cher !" : "C'est moins cher !");
+  guesses.push(g);
+  /* chaque erreur dévoile le prix d'un objet */
+  const hidden = [0, 1, 2].filter(i => !shown.includes(i));
+  if (hidden.length > 1) shown.push(hidden[Math.floor(Math.random() * hidden.length)]);
+  $("answer").value = ""; $("submit").disabled = true;
+  loseTry(); if (!over) renderEq();
 }
-function endRound(win) {
-  over = true; cur.won = win; slots = cur.item.from.slice(); subs = slots.map(id => items[id].from.length ? items[id].from.slice() : null);
+function endRound(win, g) {
+  over = true; cur.won = win; shown = [0, 1, 2];
   $("play").hidden = true; $("result").hidden = false;
-  if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best_recette", best); } catch (e) {} } }
+  if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best_shop", best); } catch (e) {} } }
   else { streak = 0; recordBroken = false; }
   const n = tries + (win ? 1 : 0);
   $("msg").className = "msg " + (win ? "ok" : "ko");
-  $("msg").innerHTML = win ? `Bravo, c'est la bonne recette !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… voilà la recette.`;
-  renderSlots(); renderDots(); renderBar();
+  const gap = g !== undefined ? Math.abs(g - cur.total) : null;
+  $("msg").innerHTML = win ? `Bravo, c'est ${fmt(cur.total)} or !<small>${gap === 0 ? "Au gold près · " : "À " + fmt(gap) + " or près · "}trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${fmt(cur.total)} or.`;
+  $("recap").textContent = cur.items.map(i => i.name + " " + fmt(i.price)).join(" + ") + " = " + fmt(cur.total);
+  renderEq(); renderDots(); renderBar();
   $("next").focus();
 }
 
-/* ============================================================
-   4. ÉVÉNEMENTS
-   ============================================================ */
+$("answer").oninput = () => { const d = $("answer").value.replace(/[^0-9]/g, ""); $("answer").value = d ? fmt(Number(d)) : ""; $("submit").disabled = over || !d; };
+$("answer").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); submit(); } };
 $("submit").onclick = submit;
 $("next").onclick = newRound;
-function clearAll() {
-  slots = slots.map((s, i) => fixed.includes(i) ? s : null);
-  subs = subs.map((a, i) => a && slots[i] ? a.map((x, j) => fixedSub.includes(i + "." + j) ? x : null) : null);
-}
-$("clear").onclick = () => { if (over) return; clearAll(); renderSlots(); };
 $("giveUp").onclick = () => { if (!over) endRound(false); };
 document.addEventListener("keydown", e => {
   if (!cur) return;
   if (e.key === "Escape") { e.preventDefault(); if (!over) endRound(false); else newRound(); }
   else if (e.key === "Enter" && over && document.activeElement !== $("next")) { e.preventDefault(); newRound(); }
-  else if (e.key === "Enter" && !over && !$("submit").disabled && document.activeElement.className.indexOf("it") < 0) { e.preventDefault(); submit(); }
-  else if (e.key === "Backspace" && !over) { e.preventDefault(); let done = false;
-    for (let a = subs.length - 1; a >= 0 && !done; a--) if (subs[a]) for (let b = subs[a].length - 1; b >= 0; b--) if (subs[a][b] && !fixedSub.includes(a + "." + b)) { subs[a][b] = null; done = true; break; }
-    for (let i = slots.length - 1; i >= 0 && !done; i--) if (slots[i] && !fixed.includes(i)) { slots[i] = null; subs[i] = null; done = true; }
-    renderSlots(); }
 });
 $("resetBest").onclick = () => {
   if (!confirm("Remettre le record à 0 ?")) return;
-  best = 0; recordBroken = false; try { localStorage.removeItem("sdq_best_recette"); } catch (e) {}
+  best = 0; recordBroken = false; try { localStorage.removeItem("sdq_best_shop"); } catch (e) {}
   renderBar();
 };
 
 loadItems().then(() => {
-  if (!targets().length) throw new Error("vide");
-  renderPool($("basics"), basics); renderPool($("epics"), epics);
+  if (pool.length < 3) throw new Error("vide");
   $("status").hidden = true; $("board").hidden = false;
   newRound();
 }).catch(() => { $("status").textContent = "Impossible de charger les objets du jeu (Data Dragon). Vérifie ta connexion et recharge la page."; });
