@@ -42,6 +42,7 @@
   .reset-best:hover, .reset-best:focus-visible { opacity: 1; color: #ff6b6b; border-color: #ff6b6b; outline: none; }
   .plates { display: flex; gap: 22px; flex-wrap: wrap; row-gap: 8px; }
   /* Compteur de « first try » d'affilée : gris à 0, de plus en plus enflammé ensuite */
+  .ftry[data-lvl="0"] { display: none; }
   .ftry { display: flex; align-items: flex-end; justify-content: center; gap: 4px; height: 74px; margin: 0 0 10px; user-select: none; --c1: #8e96a6; --c2: #5b6272; --glow: transparent; }
   .ftry .n { font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 4.2rem; line-height: .9; background: linear-gradient(#f4f6fa, var(--c1) 45%, var(--c2)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-stroke: 1.5px rgba(0,0,0,.55); filter: drop-shadow(0 0 10px var(--glow)) drop-shadow(0 3px 3px rgba(0,0,0,.6)); transition: filter .3s; }
   .ftry .t { font-family: "Barlow Condensed", Barlow, sans-serif; font-weight: 700; font-style: italic; font-size: 1.5rem; letter-spacing: .06em; text-transform: uppercase; line-height: 1; padding-bottom: 6px; color: #aeb6c6; text-shadow: 0 2px 0 rgba(0,0,0,.65), 0 0 8px var(--glow); transform: rotate(-4deg); }
@@ -334,7 +335,7 @@ async function loadLibrary() {
    ============================================================ */
 let deck = [], cur = null, tries = 0, over = false, guessed = [];
 let streak = 0, best = 0, recordBroken = false;
-/* Score : plus on trouve vite, plus on gagne de points ; enchaîner les « first try » rapporte un bonus */
+/* Score (remis à 0 quand on perd) : plus on trouve vite, plus on gagne de points ; enchaîner les « first try » rapporte un bonus */
 const POINTS = [1000, 600, 300, 100];      /* points selon l'essai (1er, 2e, 3e, 4e) */
 const COMBO_BONUS = 250, COMBO_MAX = 5;    /* bonus = 250 × (enchaînement − 1), plafonné à 5 × 250 */
 let score = 0, combo = 0, lastGain = null;
@@ -418,12 +419,12 @@ function scoreRound(win, triesUsed) {
     pts = POINTS[Math.min(triesUsed, POINTS.length) - 1] || 0;
     if (triesUsed === 1) { combo++; bonus = Math.min(combo - 1, COMBO_MAX) * COMBO_BONUS; } else combo = 0;
   } else combo = 0;
-  score += pts + bonus;
+  const lost = score; score = win ? score + pts + bonus : 0;     /* perdre remet le score à 0 */
   const f = $("ftry"); f.dataset.lvl = combo >= 5 ? 3 : combo >= 3 ? 2 : combo >= 1 ? 1 : 0; $("ftryN").textContent = combo;
   f.classList.remove("bump", "broke"); void f.offsetWidth;
   if (combo > before) f.classList.add("bump"); else if (before > 0) f.classList.add("broke");
   const p = $("scorePlate"); p.classList.remove("gain"); void p.offsetWidth; if (pts + bonus) p.classList.add("gain");
-  return { pts, bonus };
+  return { pts, bonus, lost };
 }
 function endRound(win) {
   over = true;
@@ -432,7 +433,7 @@ function endRound(win) {
   if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best", best); } catch (e) {} } } else { streak = 0; recordBroken = false; }
   const n = win ? tries + 1 : MAX_TRIES;
   const sc = scoreRound(win, n);
-  const ptsLine = win ? `<span class="pts">+${sc.pts} pts${sc.bonus ? ` · enchaînement ×${combo} : +${sc.bonus}` : ""}</span>` : `<span class="pts" style="color:var(--mu)">+0 pt</span>`;
+  const ptsLine = win ? `<span class="pts">+${sc.pts} pts${sc.bonus ? ` · enchaînement ×${combo} : +${sc.bonus}` : ""}</span>` : `<span class="pts" style="color:var(--ko)">${sc.lost ? "Score remis à 0 (−" + sc.lost.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ") + " pts)" : "Score : 0"}</span>`;
   $("msg").className = "msg " + (win ? "ok" : "ko");
   $("msg").innerHTML = win ? `Bravo, c'était ${cur.name} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small><small>Skin : ${skinOf(cur.img)}</small>${ptsLine}` : `Perdu… c'était ${cur.name}.<small>Skin : ${skinOf(cur.img)}</small>${ptsLine}`;
   renderDots(win); render(); updateTools();
