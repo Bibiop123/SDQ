@@ -84,7 +84,15 @@
 
   .game { max-width: 820px; margin-left: auto; margin-right: auto; }
   .bar { margin-bottom: 14px; }
-  .keeper { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 4px 0 22px; }
+  .keeper { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 72px 0 22px; }
+  .faceWrap { position: relative; flex: none; }
+  .faceWrap .face { display: block; }
+  .faceWrap.angry .face { animation: grrface .5s; }
+  @keyframes grrface { 20% { transform: translateX(-4px) rotate(-5deg); } 40% { transform: translateX(4px) rotate(5deg); } 60% { transform: translateX(-3px) rotate(-3deg); } 80% { transform: translateX(3px) rotate(3deg); } }
+  .grr { position: absolute; left: -26px; bottom: 66px; width: 118px; pointer-events: none; opacity: 0; transform: scale(.4) rotate(-10deg); transform-origin: 30% 100%; filter: drop-shadow(0 4px 6px rgba(0,0,0,.5)); }
+  .grr.on { animation: grrpop 1.7s ease both; }
+  @keyframes grrpop { 0% { opacity: 0; transform: scale(.4) rotate(-10deg); } 12% { opacity: 1; transform: scale(1.12) rotate(-4deg); } 22% { transform: scale(1) rotate(-6deg); } 80% { opacity: 1; transform: scale(1) rotate(-6deg); } 100% { opacity: 0; transform: scale(.9) translateY(-6px) rotate(-6deg); } }
+  .grr text { font-family: "Barlow Condensed", Barlow, sans-serif; font-weight: 700; font-size: 25px; letter-spacing: 1px; fill: #fff; }
   .keeper .face { flex: none; width: 84px; height: 84px; border-radius: 50%; border: 2px solid var(--gold); box-shadow: 0 0 0 2px #000, 0 0 22px rgba(230,195,106,.3); background: #0b0f14 url("shopkeeper-classic.jpg") 49% 46% / 330% no-repeat; }
   .keeper .bubble { position: relative; max-width: 380px; padding: 11px 16px; border-radius: 14px; border: 1.5px solid var(--frame); background: rgba(24,35,62,.92); color: #e4ebf7; font-size: 1.02rem; font-weight: 500; box-shadow: 0 6px 18px rgba(0,0,0,.4); }
   .keeper .bubble::before { content: ""; position: absolute; left: -9px; top: 50%; width: 14px; height: 14px; background: rgba(24,35,62,.92); border-left: 1.5px solid var(--frame); border-bottom: 1.5px solid var(--frame); transform: translateY(-50%) rotate(45deg); }
@@ -98,7 +106,7 @@
   .sitem .pic { width: 92px; height: 92px; border-radius: 14px; border: 2px solid var(--gold); background: #0b0f14; box-shadow: 0 0 0 2px #000, 0 10px 24px rgba(0,0,0,.55); overflow: hidden; display: grid; place-items: center; color: #c9d3e4; font-size: .7rem; text-align: center; }
   .sitem .pic img { width: 100%; height: 100%; display: block; }
   .sitem .nm { font-size: .82rem; line-height: 1.15; text-align: center; color: #dbe3f1; font-weight: 600; min-height: 2.3em; }
-  .sitem .gold { min-width: 66px; padding: 2px 10px; border-radius: 99px; border: 1.5px dashed #46557a; color: var(--mu); font-weight: 700; font-size: .9rem; text-align: center; }
+  .sitem .gold { white-space: nowrap; min-width: 66px; padding: 2px 10px; border-radius: 99px; border: 1.5px dashed #46557a; color: var(--mu); font-weight: 700; font-size: .9rem; text-align: center; }
   .sitem.shown .gold { border-style: solid; border-color: var(--gold); color: var(--gold); background: rgba(230,195,106,.1); }
   .status { text-align: center; color: var(--mu); padding: 30px 0; }
   .eq.shake { animation: shake .3s; }
@@ -112,7 +120,7 @@
   .misses li { padding: 4px 12px; border-radius: 10px; border: 1px solid rgba(255,107,107,.55); background: rgba(255,107,107,.1); font-weight: 700; font-size: .92rem; }
   .misses li small { margin-left: 8px; color: var(--ko); text-transform: uppercase; letter-spacing: .06em; font-size: .72rem; }
   .result .recap { margin: 2px auto 12px; max-width: 420px; color: #c9d3e4; font-size: .95rem; }
-  @media (max-width: 560px) { .keeper .face { width: 64px; height: 64px; } .keeper .bubble { font-size: .92rem; padding: 9px 12px; } .eq { gap: 4px; } .sitem { width: 84px; } .sitem .pic { width: 70px; height: 70px; } .sitem .nm { font-size: .72rem; } .eq .op { font-size: 1.4rem; } .eq .total { min-width: 62px; padding: 6px 8px; font-size: 1.1rem; margin-top: -34px; } .game { padding: 18px 10px 20px; } .plates { gap: 14px; } }
+  @media (max-width: 560px) { .keeper .face { width: 64px; height: 64px; } .grr { width: 96px; left: -20px; bottom: 50px; } .keeper .bubble { font-size: .92rem; padding: 9px 12px; } .eq { gap: 4px; } .sitem { width: 84px; } .sitem .pic { width: 70px; height: 70px; } .sitem .nm { font-size: .72rem; } .eq .op { font-size: 1.4rem; } .eq .total { min-width: 62px; padding: 6px 8px; font-size: 1.1rem; margin-top: -34px; } .game { padding: 18px 10px 20px; } .plates { gap: 14px; } }
   @media (max-width: 480px) { .brand { font-size: 0; gap: 0; } nav { gap: 4px; } nav a { padding: 7px 7px; font-size: .72rem; letter-spacing: .03em; } }
   @media (max-width: 400px) { .brand { display: none; } .top-in { justify-content: center; } nav a { padding: 7px 6px; font-size: .7rem; } }
 </style>
@@ -156,7 +164,18 @@
 
     <div id="board" hidden>
       <div class="keeper">
-        <div class="face" role="img" aria-label="Le marchand"></div>
+        <div class="faceWrap" id="faceWrap">
+          <svg class="grr" id="grr" viewBox="0 0 130 84" aria-hidden="true">
+            <g fill="#843a66" stroke="#843a66" stroke-width="9" stroke-linejoin="round">
+              <circle cx="32" cy="38" r="20"/><circle cx="58" cy="26" r="22"/><circle cx="88" cy="30" r="22"/><circle cx="104" cy="46" r="15"/><circle cx="60" cy="48" r="20"/><circle cx="34" cy="50" r="14"/><path d="M30 56 L24 80 L52 62 Z"/>
+            </g>
+            <g fill="#cf689b">
+              <circle cx="32" cy="38" r="20"/><circle cx="58" cy="26" r="22"/><circle cx="88" cy="30" r="22"/><circle cx="104" cy="46" r="15"/><circle cx="60" cy="48" r="20"/><circle cx="34" cy="50" r="14"/><path d="M30 56 L24 80 L52 62 Z"/>
+            </g>
+            <text x="66" y="48" text-anchor="middle" transform="rotate(-7 66 44)">GRRR!</text>
+          </svg>
+          <div class="face" role="img" aria-label="Le marchand"></div>
+        </div>
         <div class="bubble" id="bubble"></div>
       </div>
 
@@ -262,6 +281,13 @@ function newRound() {
   $("answer").focus({ preventScroll: true });
 }
 const parse = v => { const d = String(v).replace(/[^0-9]/g, ""); return d ? Number(d) : NaN; };
+/* Le marchand râle quand on se trompe */
+function grr() {
+  const g = $("grr"), w = $("faceWrap");
+  [g, w].forEach(e => e.classList.remove("on", "angry")); void g.getBoundingClientRect();
+  g.classList.add("on"); w.classList.add("angry");
+  clearTimeout(grr.t); grr.t = setTimeout(() => { g.classList.remove("on"); w.classList.remove("angry"); }, 1800);
+}
 function loseTry() { tries++; if (tries >= MAX_TRIES) return endRound(false); renderDots(); }
 function submit() {
   if (over) return;
@@ -270,7 +296,7 @@ function submit() {
   if (Math.abs(g - cur.total) <= MARGIN) { guesses.push(g); return endRound(true, g); }
   const up = g < cur.total;
   const li = document.createElement("li"); li.innerHTML = `${fmt(g)} or<small>${up ? "plus ↑" : "moins ↓"}</small>`; $("misses").prepend(li);
-  shake("answer"); flash(up ? "C'est plus cher !" : "C'est moins cher !");
+  grr(); shake("answer"); flash(up ? "C'est plus cher !" : "C'est moins cher !");
   guesses.push(g);
   /* chaque erreur dévoile le prix d'un objet */
   const hidden = [0, 1, 2].filter(i => !shown.includes(i));
