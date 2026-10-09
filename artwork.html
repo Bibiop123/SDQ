@@ -466,7 +466,10 @@ $("answer").onkeydown = e => {
   else if (e.key === "Enter") {
     e.preventDefault();
     if (sel >= 0 && shown[sel]) submit(shown[sel]);
-    else if (shown.length === 1) submit(shown[0]);
+    else if (shown.length && !$("suggest").hidden) {
+      const q = keyOf($("answer").value);
+      submit(shown.find(n => keyOf(n) === q) || shown[0]);   /* Entrée = premier de la liste */
+    }
     else submit();
   }
 };
