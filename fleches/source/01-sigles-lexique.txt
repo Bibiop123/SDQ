@@ -208,3 +208,25 @@ RIFT | Faille
 FAILLE | Terrain de la Faille de l'invocateur
 SURRENDER | Abandonner
 SURR | Abandon, en argot
+GANKS | Embuscades de jungle
+GANKER | Faire une embuscade
+GANKE | Embuscade réussie
+FARMER | Récolter de l'or
+FARMEUR | Joueur qui récolte
+FEEDER | Joueur qui meurt sans cesse
+PUSHER | Champion qui pousse
+TANKER | Encaisser les dégâts
+SPAMMER | Répéter un sort
+CARRIER | Porter l'équipe
+FLASHER | Utiliser Flash
+PINGER | Envoyer un signal
+BANNIR | Interdire un champion
+PICKER | Choisir un champion
+LOCKER | Valider son choix
+CHEESER | Tenter une stratégie surprise
+CAMPER | Rester sur une voie
+DUNK | Plonger sous une tour
+STOMPER | Écraser l'adversaire
+SNIPER | Éliminer de loin
+KILLER | Champion qui élimine
+KS | Voler un kill

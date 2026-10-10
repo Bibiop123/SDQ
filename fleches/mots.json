@@ -193,7 +193,8 @@
 {
 "w": "KS",
 "c": [
-"Voler le kill d'un allié"
+"Voler le kill d'un allié",
+"Voler un kill"
 ],
 "cat": "Sigles et abréviations",
 "r": 0
@@ -265,9 +266,18 @@
 {
 "w": "OR",
 "c": [
-"Monnaie du jeu"
+"Monnaie du jeu",
+"Rang entre argent et platine"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PV",
+"c": [
+"Points de vie"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -365,9 +375,18 @@
 {
 "w": "AIR",
 "c": [
-"Élément de Janna"
+"Élément de Janna",
+"Ce que Janna maîtrise"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "AME",
+"c": [
+"Ce que Yorick berge"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -381,7 +400,9 @@
 {
 "w": "ARC",
 "c": [
-"Arme à distance"
+"Arme à distance",
+"Arme de Ashe",
+"Arme de tir"
 ],
 "cat": "Objets",
 "r": 0
@@ -453,6 +474,14 @@
 "r": 0
 },
 {
+"w": "CRI",
+"c": [
+"Bruit d'un champion"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "DOT",
 "c": [
 "Dégâts sur la durée"
@@ -497,7 +526,8 @@
 {
 "w": "EAU",
 "c": [
-"Élément de Nami"
+"Élément de Nami",
+"Ce qu'on franchit dans la rivière"
 ],
 "cat": "Régions, lieux et lore",
 "r": 0
@@ -530,6 +560,14 @@
 "r": 0
 },
 {
+"w": "EST",
+"c": [
+"Direction de Ionia"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "EUW",
 "c": [
 "Serveur d'Europe de l'Ouest"
@@ -554,9 +592,26 @@
 "r": 1
 },
 {
+"w": "FEE",
+"c": [
+"Créature de Lulu"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "FER",
+"c": [
+"Rang le plus bas"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "FEU",
 "c": [
-"Élément de Brand"
+"Élément de Brand",
+"Pouvoir de Annie"
 ],
 "cat": "Régions, lieux et lore",
 "r": 0
@@ -568,6 +623,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "FOU",
+"c": [
+"Personnalité de Jinx"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "FPX",
@@ -587,6 +650,14 @@
 "r": 1
 },
 {
+"w": "GEL",
+"c": [
+"Effet de ralentissement"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "HLE",
 "c": [
 "Équipe coréenne",
@@ -594,6 +665,15 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "ILE",
+"c": [
+"Terre dans l'eau",
+"Ionia en est une"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "IMO",
@@ -620,6 +700,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "JEU",
+"c": [
+"League of Legends en est un"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "KDA",
@@ -757,6 +845,15 @@
 "r": 0
 },
 {
+"w": "MER",
+"c": [
+"Elle borde Bilgewater",
+"Terrain des pirates"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "MGG",
 "c": [
 "Média esport français"
@@ -795,6 +892,15 @@
 "Tournoi international de mi-saison"
 ],
 "cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "MUR",
+"c": [
+"Obstacle du terrain",
+"Obstacle du jeu"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -864,6 +970,23 @@
 "r": 1
 },
 {
+"w": "ROC",
+"c": [
+"Matière de Malphite"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ROI",
+"c": [
+"Souverain de Demacia",
+"Titre de Tryndamere"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "SKT",
 "c": [
 "Ancien nom de T1"
@@ -890,6 +1013,14 @@
 "r": 1
 },
 {
+"w": "SUD",
+"c": [
+"Direction de Shurima"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "TFT",
 "c": [
 "Auto-battler de Riot",
@@ -897,6 +1028,14 @@
 "Jeu de stratégie de Riot"
 ],
 "cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "TIR",
+"c": [
+"Attaque à distance"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -958,6 +1097,14 @@
 "r": 0
 },
 {
+"w": "VIE",
+"c": [
+"Barre verte du champion"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "XUN",
 "c": [
 "Jungler chinois",
@@ -1003,11 +1150,35 @@
 "r": 0
 },
 {
+"w": "AILE",
+"c": [
+"Partie du corps de Kayle"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "AMES",
+"c": [
+"Butin de Thresh"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ARAM",
 "c": [
 "Mode à voie unique"
 ],
 "cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "ARME",
+"c": [
+"Objet de combat"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1017,6 +1188,14 @@
 "Reine des glaces"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "AUBE",
+"c": [
+"Début du jour de Leona"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1057,9 +1236,43 @@
 {
 "w": "BASE",
 "c": [
-"Point de départ"
+"Point de départ",
+"Point de départ de l'équipe"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BETE",
+"c": [
+"Animal de la jungle"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "BLEU",
+"c": [
+"Couleur de l'équipe de gauche"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "BOIS",
+"c": [
+"Matière des forêts"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "BOND",
+"c": [
+"Saut court",
+"Mouvement rapide"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1106,6 +1319,23 @@
 "r": 1
 },
 {
+"w": "CHAT",
+"c": [
+"Animal de Yuumi",
+"Félin"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "CIEL",
+"c": [
+"Montagne de Targon"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "CLUB",
 "c": [
 "Structure d'esport"
@@ -1114,11 +1344,27 @@
 "r": 1
 },
 {
+"w": "COUP",
+"c": [
+"Attaque"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "CRIT",
 "c": [
 "Coup critique"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "CROC",
+"c": [
+"Dent de Warwick"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1155,6 +1401,22 @@
 "r": 0
 },
 {
+"w": "DUNK",
+"c": [
+"Plonger sous une tour"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "ECHO",
+"c": [
+"Répétition de sort"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "EKKO",
 "c": [
 "Garçon qui brise le temps",
@@ -1166,9 +1428,18 @@
 "r": 0
 },
 {
+"w": "ELFE",
+"c": [
+"Peuple de fantasy"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "EPEE",
 "c": [
-"Lame du jeu"
+"Lame du jeu",
+"Arme de Garen"
 ],
 "cat": "Objets",
 "r": 0
@@ -1237,6 +1508,22 @@
 "File classée à cinq"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FORT",
+"c": [
+"Qualificatif de Garen"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "FUIR",
+"c": [
+"Battre en retraite"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1361,6 +1648,14 @@
 "r": 0
 },
 {
+"w": "JOUR",
+"c": [
+"Moment du Soleil"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "JUKE",
 "c": [
 "Esquiver en feintant"
@@ -1405,7 +1700,9 @@
 {
 "w": "LAME",
 "c": [
-"Arme tranchante"
+"Arme tranchante",
+"Arme de Zed",
+"Partie de l'épée"
 ],
 "cat": "Objets",
 "r": 0
@@ -1424,6 +1721,23 @@
 "Fin de partie"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "LENT",
+"c": [
+"Effet d'un ralentissement"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "LOUP",
+"c": [
+"Compagnon de Kindred",
+"Animal de Warwick"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1494,11 +1808,27 @@
 "r": 1
 },
 {
+"w": "MORT",
+"c": [
+"Fin d'un champion"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "MYLO",
 "c": [
 "Ami de Vi"
 ],
 "cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "NAIN",
+"c": [
+"Peuple de montagne"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1528,12 +1858,36 @@
 "r": 1
 },
 {
+"w": "NOIR",
+"c": [
+"Couleur de la Brume"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "NOKI",
 "c": [
 "Directeur artistique de la LFL"
 ],
 "cat": "Scène française, streamers et commentateurs",
 "r": 1
+},
+{
+"w": "NORD",
+"c": [
+"Direction du Freljord"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "NUIT",
+"c": [
+"Moment de Nocturne"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "NUNU",
@@ -1580,6 +1934,15 @@
 "r": 1
 },
 {
+"w": "OURS",
+"c": [
+"Animal de Volibear",
+"Compagnon d'Annie"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "PEEL",
 "c": [
 "Protéger son carry"
@@ -1612,11 +1975,36 @@
 "r": 0
 },
 {
+"w": "PONT",
+"c": [
+"Passage entre deux rives"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "POOL",
 "c": [
 "Champions maîtrisés"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PORT",
+"c": [
+"Ville de Bilgewater",
+"Lieu des navires"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "PRIX",
+"c": [
+"Récompense"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1645,6 +2033,14 @@
 "r": 0
 },
 {
+"w": "RANG",
+"c": [
+"Position dans la ligue"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "RELL",
 "c": [
 "Cavalière de fer",
@@ -1667,6 +2063,14 @@
 "Éditeur du jeu"
 ],
 "cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "RIRE",
+"c": [
+"Bruit de Shaco"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1696,7 +2100,8 @@
 {
 "w": "ROSE",
 "c": [
-"Fleur d'une skin"
+"Fleur d'une skin",
+"Couleur de Pink Ward"
 ],
 "cat": "Arcane, autres jeux Riot, musique, mèmes",
 "r": 0
@@ -1720,9 +2125,26 @@
 "r": 0
 },
 {
+"w": "SAGE",
+"c": [
+"Personne avisée"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "SANG",
+"c": [
+"Liquide de Vladimir"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "SAUT",
 "c": [
-"Déplacement bref"
+"Déplacement bref",
+"Mouvement de Flash"
 ],
 "cat": "Runes, sorts, monstres et modes",
 "r": 0
@@ -1871,9 +2293,27 @@
 {
 "w": "TOUR",
 "c": [
-"Structure défensive"
+"Structure défensive",
+"Bâtiment qui tire",
+"Défense de la voie"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TRAP",
+"c": [
+"Piège, en anglais"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "TUER",
+"c": [
+"Éliminer un adversaire"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1941,6 +2381,14 @@
 "Dragon, en anglais"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "YETI",
+"c": [
+"Compagnon de Nunu"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2067,6 +2515,14 @@
 "r": 0
 },
 {
+"w": "ALLIE",
+"c": [
+"Coéquipier"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "AMUMU",
 "c": [
 "Momie triste",
@@ -2091,6 +2547,14 @@
 "Salle de compétition"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "ASTRE",
+"c": [
+"Corps céleste de Targon"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2125,6 +2589,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "BICHE",
+"c": [
+"Animal de Lillia"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "BLIND",
@@ -2238,7 +2710,8 @@
 {
 "w": "CARTE",
 "c": [
-"Terrain de jeu"
+"Terrain de jeu",
+"Pouvoir de Twisted Fate"
 ],
 "cat": "Lexique du jeu",
 "r": 0
@@ -2250,6 +2723,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "CHIEN",
+"c": [
+"Animal de Nasus"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "CHIPS",
@@ -2276,6 +2757,14 @@
 ],
 "cat": "Joueurs pro",
 "r": 1
+},
+{
+"w": "CLAIR",
+"c": [
+"Qualificatif de Lux"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "CLUBS",
@@ -2334,6 +2823,15 @@
 ],
 "cat": "Joueurs pro",
 "r": 1
+},
+{
+"w": "DAGUE",
+"c": [
+"Arme de Katarina",
+"Arme d'assassin"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "DEATH",
@@ -2472,12 +2970,60 @@
 "r": 0
 },
 {
+"w": "FLEUR",
+"c": [
+"Pouvoir de Lillia"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "FORET",
+"c": [
+"Zone de la jungle"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "FOUET",
+"c": [
+"Arme de Nilah"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "FUITE",
+"c": [
+"Retraite sous pression"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "GALIO",
 "c": [
 "Colosse de Demacia",
 "Gargouille de pierre"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "GANKE",
+"c": [
+"Embuscade réussie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "GANKS",
+"c": [
+"Embuscades de jungle"
+],
+"cat": "Lexique du jeu",
 "r": 0
 },
 {
@@ -2508,9 +3054,27 @@
 {
 "w": "GLACE",
 "c": [
-"Élément de Anivia"
+"Élément de Anivia",
+"Élément du Freljord",
+"Matière d'Anivia"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "GOLEM",
+"c": [
+"Créature de pierre"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "GRAND",
+"c": [
+"Opposé de Teemo"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2524,7 +3088,8 @@
 {
 "w": "HACHE",
 "c": [
-"Arme tranchante lourde"
+"Arme tranchante lourde",
+"Arme de Darius"
 ],
 "cat": "Objets",
 "r": 0
@@ -2593,6 +3158,14 @@
 "r": 0
 },
 {
+"w": "JOUER",
+"c": [
+"Lancer une partie"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "KAISA",
 "c": [
 "Fille du Néant",
@@ -2642,6 +3215,14 @@
 "Arme d'hast"
 ],
 "cat": "Objets",
+"r": 0
+},
+{
+"w": "LAPIN",
+"c": [
+"Animal de Aurora"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2701,6 +3282,14 @@
 ],
 "cat": "Joueurs pro",
 "r": 1
+},
+{
+"w": "MATCH",
+"c": [
+"Rencontre"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "MEIKO",
@@ -2776,6 +3365,14 @@
 "r": 0
 },
 {
+"w": "NEIGE",
+"c": [
+"Elle recouvre le Freljord"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "NEXUS",
 "c": [
 "Cœur de la base"
@@ -2816,6 +3413,30 @@
 "Pouvoir de Zed"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "ORAGE",
+"c": [
+"Phénomène de Kennen"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "OUEST",
+"c": [
+"Direction de Demacia"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "PANDA",
+"c": [
+"Animal de Lux skin"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2861,12 +3482,60 @@
 "r": 1
 },
 {
+"w": "PETIT",
+"c": [
+"Qualificatif de Teemo"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "PIEGE",
+"c": [
+"Arme de Caitlyn"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "PLUME",
+"c": [
+"Arme de Xayah"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "POINT",
+"c": [
+"Unité de score"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "POPPY",
 "c": [
 "Gardienne du marteau",
 "Petite yordle au marteau"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "PORTE",
+"c": [
+"Entrée d'une base"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "PROIE",
+"c": [
+"Cible d'un chasseur"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2912,11 +3581,28 @@
 "r": 0
 },
 {
+"w": "REINE",
+"c": [
+"Titre de Ashe",
+"Souveraine du Freljord"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "RESET",
 "c": [
 "Retour pour racheter"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "RIVAL",
+"c": [
+"Adversaire de toujours"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2926,6 +3612,38 @@
 "Épéiste à la lame brisée"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "ROCHE",
+"c": [
+"Matière de Malphite"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ROSEE",
+"c": [
+"Pouvoir de Lulu"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ROUGE",
+"c": [
+"Couleur de l'équipe de droite"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ROUTE",
+"c": [
+"Chemin d'une voie"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2943,6 +3661,15 @@
 "Bonus choisis avant la partie"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SABLE",
+"c": [
+"Matière de Shurima",
+"Grain du désert"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2975,6 +3702,14 @@
 "Monter en puissance"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SCORE",
+"c": [
+"Total de points"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3035,6 +3770,14 @@
 "Père de Jinx"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "SINGE",
+"c": [
+"Animal de Wukong"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3197,6 +3940,14 @@
 "r": 0
 },
 {
+"w": "TEMPS",
+"c": [
+"Pouvoir de Zilean"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "TERRE",
 "c": [
 "Élément de Taliyah"
@@ -3240,7 +3991,9 @@
 {
 "w": "TROLL",
 "c": [
-"Joueur qui gâche la partie"
+"Joueur qui gâche la partie",
+"Joueur qui gâche",
+"Créature de Trundle"
 ],
 "cat": "Lexique du jeu",
 "r": 0
@@ -3282,6 +4035,14 @@
 "r": 0
 },
 {
+"w": "VENIN",
+"c": [
+"Arme de Elise"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "VIEGO",
 "c": [
 "Roi déchu",
@@ -3305,6 +4066,14 @@
 "Objet qui bloque un sort"
 ],
 "cat": "Objets",
+"r": 0
+},
+{
+"w": "VOLEE",
+"c": [
+"Tir de plusieurs flèches"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3413,6 +4182,14 @@
 "r": 0
 },
 {
+"w": "ARGENT",
+"c": [
+"Rang après bronze"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ASSIST",
 "c": [
 "Aide à l'élimination"
@@ -3449,6 +4226,14 @@
 "r": 0
 },
 {
+"w": "BANNIR",
+"c": [
+"Interdire un champion"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
 "w": "BERLIN",
 "c": [
 "Ville de finale 2015"
@@ -3466,12 +4251,28 @@
 "r": 0
 },
 {
+"w": "BRONZE",
+"c": [
+"Rang après fer"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "BRUMES",
 "c": [
 "Îles maudites",
 "Îles de la Brume noire"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "CAMPER",
+"c": [
+"Rester sur une voie"
+],
+"cat": "Lexique du jeu",
 "r": 0
 },
 {
@@ -3492,11 +4293,35 @@
 "r": 1
 },
 {
+"w": "CHAINE",
+"c": [
+"Arme de Thresh"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "CHAMPS",
 "c": [
 "Champions, en argot"
 ],
 "cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "CHASSE",
+"c": [
+"Activité de Nidalee"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "CHEMIN",
+"c": [
+"Voie entre deux bases"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3612,11 +4437,27 @@
 "r": 0
 },
 {
+"w": "ENNEMI",
+"c": [
+"Adversaire"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "EPINES",
 "c": [
 "Armure qui renvoie les coups"
 ],
 "cat": "Objets",
+"r": 0
+},
+{
+"w": "EQUIPE",
+"c": [
+"Cinq invocateurs"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3645,11 +4486,35 @@
 "r": 0
 },
 {
+"w": "FAIBLE",
+"c": [
+"Qualificatif de Teemo"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "FAILLE",
 "c": [
 "Terrain principal"
 ],
 "cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "FARMER",
+"c": [
+"Récolter de l'or"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FEEDER",
+"c": [
+"Joueur qui meurt sans cesse"
+],
+"cat": "Lexique du jeu",
 "r": 0
 },
 {
@@ -3667,6 +4532,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "FLECHE",
+"c": [
+"Munition de Ashe"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "FNATIC",
@@ -3694,6 +4567,22 @@
 "r": 0
 },
 {
+"w": "GAGNER",
+"c": [
+"Remporter la partie"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "GANKER",
+"c": [
+"Faire une embuscade"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
 "w": "GRAGAS",
 "c": [
 "Ivrogne bagarreur",
@@ -3709,6 +4598,14 @@
 "Tireur au fusil à pompe"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "GRIFFE",
+"c": [
+"Arme de Rengar"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3815,6 +4712,14 @@
 "r": 1
 },
 {
+"w": "JOUEUR",
+"c": [
+"Personne devant l'écran"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "JUNGLE",
 "c": [
 "Zone des monstres"
@@ -3856,6 +4761,14 @@
 "Assassin-insecte"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "KILLER",
+"c": [
+"Champion qui élimine"
+],
+"cat": "Lexique du jeu",
 "r": 0
 },
 {
@@ -3944,6 +4857,14 @@
 "r": 1
 },
 {
+"w": "LOCKER",
+"c": [
+"Valider son choix"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
 "w": "LOCKIN",
 "c": [
 "Chanson du Worlds"
@@ -3994,11 +4915,27 @@
 "r": 0
 },
 {
+"w": "MASTER",
+"c": [
+"Rang après diamant"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "NASHOR",
 "c": [
 "Baron du jeu"
 ],
 "cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "NIVEAU",
+"c": [
+"Rang d'un champion"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4027,6 +4964,15 @@
 "r": 1
 },
 {
+"w": "OISEAU",
+"c": [
+"Animal de Rakan",
+"Compagnon de Xayah"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "PASSIF",
 "c": [
 "Pouvoir permanent"
@@ -4044,11 +4990,44 @@
 "r": 1
 },
 {
+"w": "PERDRE",
+"c": [
+"Subir la défaite"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "PICKER",
+"c": [
+"Choisir un champion"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
 "w": "PIERRE",
 "c": [
-"Matière de Malphite"
+"Matière de Malphite",
+"Matière de Taliyah"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "PINGER",
+"c": [
+"Envoyer un signal"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "POISON",
+"c": [
+"Arme de Twitch"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4069,6 +5048,14 @@
 "r": 0
 },
 {
+"w": "PUSHER",
+"c": [
+"Champion qui pousse"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
 "w": "QIYANA",
 "c": [
 "Impératrice des éléments",
@@ -4086,6 +5073,14 @@
 "r": 0
 },
 {
+"w": "RACINE",
+"c": [
+"Pouvoir de Zyra"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "RAMMUS",
 "c": [
 "Tatou blindé",
@@ -4100,6 +5095,14 @@
 "Classée"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "RAPIDE",
+"c": [
+"Qualificatif de Master Yi"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4126,6 +5129,14 @@
 "Jungleuse du Vide"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "RENARD",
+"c": [
+"Animal de Ahri"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4259,6 +5270,14 @@
 "r": 1
 },
 {
+"w": "SNIPER",
+"c": [
+"Éliminer de loin"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
 "w": "SOLARI",
 "c": [
 "Médaillon de soutien",
@@ -4273,6 +5292,14 @@
 "Astre de Leona"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "SOMBRE",
+"c": [
+"Qualificatif de Brume noire"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4324,6 +5351,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "TANKER",
+"c": [
+"Encaisser les dégâts"
+],
+"cat": "Lexique du jeu",
+"r": 0
 },
 {
 "w": "TARGON",
@@ -4422,6 +5457,14 @@
 "Scientifique de Arcane"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "VIOLET",
+"c": [
+"Couleur du Vide"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4674,6 +5717,14 @@
 "r": 0
 },
 {
+"w": "CARRIER",
+"c": [
+"Porter l'équipe"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
 "w": "CASTERS",
 "c": [
 "Commentateurs"
@@ -4688,6 +5739,14 @@
 ],
 "cat": "Scène française, streamers et commentateurs",
 "r": 1
+},
+{
+"w": "CHEESER",
+"c": [
+"Tenter une stratégie surprise"
+],
+"cat": "Lexique du jeu",
+"r": 0
 },
 {
 "w": "CHOGATH",
@@ -4763,12 +5822,28 @@
 "r": 0
 },
 {
+"w": "DEFAITE",
+"c": [
+"Écran rouge de fin"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "DEMACIA",
 "c": [
 "Royaume de la lumière",
 "Cité de Garen et Lux"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "DIAMANT",
+"c": [
+"Rang après émeraude"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4814,6 +5889,14 @@
 "r": 0
 },
 {
+"w": "FARMEUR",
+"c": [
+"Joueur qui récolte"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
 "w": "FATIGUE",
 "c": [
 "Sort de ralentissement"
@@ -4827,6 +5910,14 @@
 "Derniers matchs d'un tournoi"
 ],
 "cat": "Équipes, compétitions et lieux",
+"r": 0
+},
+{
+"w": "FLASHER",
+"c": [
+"Utiliser Flash"
+],
+"cat": "Lexique du jeu",
 "r": 0
 },
 {
@@ -4971,6 +6062,14 @@
 "r": 1
 },
 {
+"w": "LUCIOLE",
+"c": [
+"Objet de lumière"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "LUMIERE",
 "c": [
 "Pouvoir de Lux"
@@ -5041,6 +6140,14 @@
 "Championnat du monde"
 ],
 "cat": "Équipes, compétitions et lieux",
+"r": 0
+},
+{
+"w": "MONSTRE",
+"c": [
+"Créature de la jungle"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -5119,6 +6226,14 @@
 ],
 "cat": "Scène française, streamers et commentateurs",
 "r": 1
+},
+{
+"w": "PLATINE",
+"c": [
+"Rang après or"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "PROJECT",
@@ -5246,6 +6361,14 @@
 "r": 0
 },
 {
+"w": "SERPENT",
+"c": [
+"Animal de Cassiopeia"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "SHURIMA",
 "c": [
 "Désert des Ascendants",
@@ -5308,6 +6431,14 @@
 "r": 0
 },
 {
+"w": "SPAMMER",
+"c": [
+"Répéter un sort"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
 "w": "SPECTRE",
 "c": [
 "Bouclier magique",
@@ -5325,6 +6456,14 @@
 "r": 0
 },
 {
+"w": "STOMPER",
+"c": [
+"Écraser l'adversaire"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
 "w": "SUPPORT",
 "c": [
 "Soutien de l'équipe"
@@ -5339,6 +6478,14 @@
 "Mage aux pierres"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "TAUREAU",
+"c": [
+"Animal de Alistar"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -5364,6 +6511,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "TOURNOI",
+"c": [
+"Compétition"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "TRIDENT",
@@ -5605,6 +6760,14 @@
 "r": 0
 },
 {
+"w": "EMERAUDE",
+"c": [
+"Rang après platine"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ENFORCER",
 "c": [
 "Policier de Piltover"
@@ -5722,6 +6885,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "LANTERNE",
+"c": [
+"Objet de Thresh"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "MADLIONS",
@@ -5948,6 +7119,14 @@
 "Peuple de Ionia"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "VICTOIRE",
+"c": [
+"Écran bleu de fin"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {

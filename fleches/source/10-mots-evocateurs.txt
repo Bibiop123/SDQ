@@ -1,0 +1,150 @@
+## Mots courants évoquant LoL
+OR | Monnaie du jeu | Rang entre argent et platine
+EAU | Élément de Nami | Ce qu'on franchit dans la rivière
+AIR | Élément de Janna | Ce que Janna maîtrise
+FEU | Élément de Brand | Pouvoir de Annie
+ROI | Souverain de Demacia | Titre de Tryndamere
+REINE | Titre de Ashe | Souveraine du Freljord
+TOUR | Bâtiment qui tire | Défense de la voie
+ARME | Objet de combat
+ARC | Arme de Ashe | Arme de tir
+ILE | Terre dans l'eau | Ionia en est une
+MER | Elle borde Bilgewater | Terrain des pirates
+PORT | Ville de Bilgewater | Lieu des navires
+SABLE | Matière de Shurima | Grain du désert
+NEIGE | Elle recouvre le Freljord
+GLACE | Élément du Freljord | Matière d'Anivia
+GEL | Effet de ralentissement
+NORD | Direction du Freljord
+SUD | Direction de Shurima
+EST | Direction de Ionia
+OUEST | Direction de Demacia
+ROC | Matière de Malphite
+ROCHE | Matière de Malphite
+PIERRE | Matière de Taliyah
+LAME | Arme de Zed | Partie de l'épée
+EPEE | Arme de Garen
+DAGUE | Arme de Katarina | Arme d'assassin
+HACHE | Arme de Darius
+FLECHE | Munition de Ashe
+CARTE | Pouvoir de Twisted Fate | Terrain de jeu
+CHASSE | Activité de Nidalee
+PROIE | Cible d'un chasseur
+LOUP | Compagnon de Kindred | Animal de Warwick
+OURS | Animal de Volibear | Compagnon d'Annie
+CHAT | Animal de Yuumi | Félin
+CHIEN | Animal de Nasus
+RENARD | Animal de Ahri
+OISEAU | Animal de Rakan | Compagnon de Xayah
+AILE | Partie du corps de Kayle
+SERPENT | Animal de Cassiopeia
+CRABE | Monstre de la rivière
+SINGE | Animal de Wukong
+TAUREAU | Animal de Alistar
+BICHE | Animal de Lillia
+LAPIN | Animal de Aurora
+PANDA | Animal de Lux skin
+YETI | Compagnon de Nunu
+GOLEM | Créature de pierre
+TROLL | Joueur qui gâche | Créature de Trundle
+ELFE | Peuple de fantasy
+NAIN | Peuple de montagne
+SAGE | Personne avisée
+MAGE | Lanceur de sorts
+TUER | Éliminer un adversaire
+MORT | Fin d'un champion
+VIE | Barre verte du champion
+PV | Points de vie
+GAGNER | Remporter la partie
+PERDRE | Subir la défaite
+VICTOIRE | Écran bleu de fin
+DEFAITE | Écran rouge de fin
+EQUIPE | Cinq invocateurs
+ALLIE | Coéquipier
+ENNEMI | Adversaire
+RIVAL | Adversaire de toujours
+JEU | League of Legends en est un
+JOUEUR | Personne devant l'écran
+JOUER | Lancer une partie
+MATCH | Rencontre
+TOURNOI | Compétition
+PRIX | Récompense
+SCORE | Total de points
+POINT | Unité de score
+NIVEAU | Rang d'un champion
+RANG | Position dans la ligue
+FER | Rang le plus bas
+BRONZE | Rang après fer
+ARGENT | Rang après bronze
+PLATINE | Rang après or
+EMERAUDE | Rang après platine
+DIAMANT | Rang après émeraude
+MASTER | Rang après diamant
+BLEU | Couleur de l'équipe de gauche
+ROUGE | Couleur de l'équipe de droite
+VIOLET | Couleur du Vide
+NOIR | Couleur de la Brume
+ROSE | Couleur de Pink Ward
+PONT | Passage entre deux rives
+BASE | Point de départ de l'équipe
+MUR | Obstacle du terrain
+PORTE | Entrée d'une base
+ROUTE | Chemin d'une voie
+CHEMIN | Voie entre deux bases
+BOIS | Matière des forêts
+FORET | Zone de la jungle
+CAMP | Zone de monstres
+MONSTRE | Créature de la jungle
+BETE | Animal de la jungle
+GRIFFE | Arme de Rengar
+CROC | Dent de Warwick
+COUP | Attaque
+TIR | Attaque à distance
+SAUT | Mouvement de Flash
+BOND | Saut court | Mouvement rapide
+FUITE | Retraite sous pression
+FUIR | Battre en retraite
+ESPRIT | Être de Ionia
+AME | Ce que Yorick berge
+AMES | Butin de Thresh
+SANG | Liquide de Vladimir
+OMBRE | Pouvoir de Zed
+NUIT | Moment de Nocturne
+JOUR | Moment du Soleil
+AUBE | Début du jour de Leona
+LUNE | Astre de Diana
+ASTRE | Corps céleste de Targon
+CIEL | Montagne de Targon
+TERRE | Élément de Taliyah
+VOLEE | Tir de plusieurs flèches
+CHAINE | Arme de Thresh
+FOUET | Arme de Nilah
+LANTERNE | Objet de Thresh
+LUCIOLE | Objet de lumière
+ETOILE | Astre de Soraka
+SOLEIL | Astre de Leona
+TEMPS | Pouvoir de Zilean
+ECHO | Répétition de sort
+ORAGE | Phénomène de Kennen
+VENT | Élément de Yasuo
+MUR | Obstacle du jeu
+TRAP | Piège, en anglais
+PIEGE | Arme de Caitlyn
+POISON | Arme de Twitch
+VENIN | Arme de Elise
+PLUME | Arme de Xayah
+FLEUR | Pouvoir de Lillia
+RACINE | Pouvoir de Zyra
+ROSEE | Pouvoir de Lulu
+FEE | Créature de Lulu
+FOU | Personnalité de Jinx
+RIRE | Bruit de Shaco
+CRI | Bruit d'un champion
+GRAND | Opposé de Teemo
+PETIT | Qualificatif de Teemo
+RAPIDE | Qualificatif de Master Yi
+LENT | Effet d'un ralentissement
+SOMBRE | Qualificatif de Brume noire
+CLAIR | Qualificatif de Lux
+FORT | Qualificatif de Garen
+FAIBLE | Qualificatif de Teemo
