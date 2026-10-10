@@ -6,6 +6,11 @@
      const ordre = SDQ.shuffle(liste, SDQ.rng("monjeu", SDQ.dayKey()));   // mélange identique pour tous
    (la liste doit être dans le même ordre pour tout le monde : on la trie par nom si elle vient d'un dossier).
    ============================================================ */
+/* ---- Classement du jour ----
+   Pour un vrai classement commun à tous, renseigne l'adresse d'une base Firebase Realtime Database (voir le README du projet / la conversation) :
+   window.SDQ_CONFIG = { firebaseUrl: "https://mon-projet-default-rtdb.europe-west1.firebasedatabase.app" };
+   Tant qu'elle est vide, les scores restent dans ce navigateur (test seulement). */
+window.SDQ_CONFIG = window.SDQ_CONFIG || { firebaseUrl: "" };
 window.SDQ = (function () {
   const TZ = "Europe/Paris";
   const dayKey = () => new Date().toLocaleDateString("sv-SE", { timeZone: TZ });
@@ -52,5 +57,53 @@ window.SDQ = (function () {
       document.body.appendChild(ov); btn.focus();
     });
   }
-  return { TZ, dayKey, rng, shuffle, secondsToMidnight, intro };
+  /* ---- Highscores du jour ---- */
+  const LOCAL = "sdq_daily_scores_local", fb = () => (window.SDQ_CONFIG.firebaseUrl || "").replace(/\/+$/, "");
+  const path = (game) => "scores/" + dayKey() + "/" + encodeURIComponent(game) + ".json";
+  async function entries(game) {
+    if (fb()) { const r = await fetch(fb() + "/" + path(game)); if (!r.ok) throw new Error("HTTP " + r.status); const o = await r.json(); return o ? Object.values(o) : []; }
+    try { const all = JSON.parse(localStorage.getItem(LOCAL)) || {}; return all[dayKey() + "|" + game] || []; } catch (e) { return []; }
+  }
+  async function top(game) {                 /* meilleur score du jour : { name, score } ou null */
+    try { const l = (await entries(game)).filter(e => e && Number.isFinite(e.score)).sort((a, b) => b.score - a.score || (a.t || 0) - (b.t || 0)); return l[0] || null; } catch (e) { return null; }
+  }
+  async function submit(game, name, score) {
+    const e = { name: String(name).trim().slice(0, 16), score: Math.max(0, Math.round(score)), t: Date.now() };
+    if (fb()) { const r = await fetch(fb() + "/" + path(game), { method: "POST", body: JSON.stringify(e) }); if (!r.ok) throw new Error("HTTP " + r.status); return e; }
+    const all = JSON.parse(localStorage.getItem(LOCAL) || "{}"), k = dayKey() + "|" + game; (all[k] = all[k] || []).push(e); localStorage.setItem(LOCAL, JSON.stringify(all)); return e;
+  }
+  const fmt = n => Number(n || 0).toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const topHtml = t => "<span>" + (t ? `Highscore #1 : <b>${fmt(t.score)}</b> — ${esc(t.name)}` : `Highscore #1 : <b>—</b> <span class="hs-mut">· sois le premier !</span>`) + "</span>";
+  /* Remplit un élément avec le highscore #1 du jour */
+  async function showTop(el, game) { el.innerHTML = topHtml(null); el.innerHTML = topHtml(await top(game)); }
+  /* Bloc de fin de partie : highscore + saisie du pseudo (une seule fois par jour et par jeu) */
+  function scoreBox(el, game, score) {
+    if (!document.getElementById("sdq-hs-css")) {
+      const st = document.createElement("style"); st.id = "sdq-hs-css";
+      st.textContent = ".sdq-hs{margin:0 0 16px;display:grid;gap:10px;justify-items:center}.sdq-hs .t{color:#c7d1e4;font-size:.95rem}.sdq-hs .t b{color:#e6c36a}.hs-mut{color:#8d9ab2}"
+        + ".sdq-hs form{display:flex;gap:8px;width:100%;max-width:380px}.sdq-hs input{flex:1;min-width:0;padding:10px 12px;border:1.5px solid #56709c;border-radius:10px;background:#0b1222;color:#e9eef7;font:inherit}"
+        + ".sdq-hs button{padding:10px 14px;border:0;border-radius:10px;background:#3fc1e0;color:#06101c;font:700 .95rem inherit;font-family:inherit;cursor:pointer;white-space:nowrap}.sdq-hs .ok{color:#4ade80;font-weight:600}.sdq-hs .ko{color:#ff6b6b;font-size:.85rem}";
+      document.head.appendChild(st);
+    }
+    const KEY = "sdq_daily_sub_" + game; let sub = null;
+    try { const d = JSON.parse(localStorage.getItem(KEY)); if (d && d.day === dayKey()) sub = d; } catch (e) {}
+    el.className = "sdq-hs"; el.innerHTML = '<div class="t"></div><div class="f"></div>';
+    const t = el.querySelector(".t"), f = el.querySelector(".f"), refresh = () => showTop(t, game);
+    refresh();
+    if (sub) { f.innerHTML = `<span class="ok">✓ Score enregistré sous « ${esc(sub.name)} »</span>`; return; }
+    let last = ""; try { last = localStorage.getItem("sdq_name") || ""; } catch (e) {}
+    f.innerHTML = `<form><input maxlength="16" placeholder="Ton pseudo" aria-label="Ton pseudo" value="${esc(last)}" required><button type="submit">Enregistrer mon score</button></form><div class="ko" hidden></div>`;
+    const form = f.querySelector("form"), err = f.querySelector(".ko"), btn = form.querySelector("button");
+    form.onsubmit = async ev => {
+      ev.preventDefault(); const name = form.querySelector("input").value.trim(); if (!name) return;
+      btn.disabled = true; err.hidden = true;
+      try {
+        await submit(game, name, score);
+        try { localStorage.setItem(KEY, JSON.stringify({ day: dayKey(), name })); localStorage.setItem("sdq_name", name); } catch (e) {}
+        f.innerHTML = `<span class="ok">✓ Score enregistré sous « ${esc(name)} »</span>`; refresh();
+      } catch (e) { btn.disabled = false; err.textContent = "Impossible d'enregistrer pour l'instant, réessaie."; err.hidden = false; }
+    };
+  }
+  return { TZ, dayKey, rng, shuffle, secondsToMidnight, intro, top, submit, showTop, scoreBox };
 })();
