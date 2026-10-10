@@ -119,6 +119,13 @@
   .reset-best { opacity: .8; }
   @media (max-width: 480px) { .brand { font-size: 0; gap: 0; } nav { gap: 4px; } nav a { padding: 7px 7px; font-size: .72rem; letter-spacing: .03em; } }
   @media (max-width: 400px) { .brand { display: none; } .top-in { justify-content: center; } nav a { padding: 7px 6px; font-size: .7rem; } }
+  .daily { max-width: 520px; margin: 10px auto 0; padding: 26px 22px; text-align: center; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,21,38,.86); box-shadow: 0 16px 44px rgba(0,0,0,.6); }
+  .daily h2 { margin: 0 0 16px; font-family: Cinzel, Georgia, serif; font-size: 1.5rem; color: var(--gold); }
+  .daily .stats { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+  .daily .stat { min-width: 120px; padding: 10px 16px; border: 1.5px solid var(--frame, #56709c); border-radius: 12px; background: rgba(24,35,62,.92); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
+  .daily .stat b { display: block; margin-top: 2px; font-size: 1.7rem; letter-spacing: 0; color: var(--gold); text-transform: none; }
+  .daily p { margin: 0 0 14px; color: #c9d3e4; } .daily p b { color: var(--tx); font-variant-numeric: tabular-nums; }
+  .daily .links a { color: var(--cyan); text-decoration: none; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -189,6 +196,13 @@
   </section>
 </main>
 
+
+  <section class="daily" id="daily" hidden>
+    <h2>Partie du jour terminée</h2>
+    <div class="stats" id="dailyStats"></div>
+    <p>Prochaine partie dans <b id="dailyClock">--:--:--</b></p>
+    <div class="links"><a href="index.html">Retour aux jeux</a></div>
+  </section>
 <footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
 
 <script>
@@ -329,7 +343,7 @@ window.addEventListener("resize", fitRows);
 /* ============================================================
    4. PARTIE
    ============================================================ */
-function newRound() {
+function _newRound() {
   if (!deck.length) deck = shuffle(WORDS.filter(w => w[0] !== "Champion").concat(shuffle(WORDS.filter(w => w[0] === "Champion")).slice(0, 40)));
   const [cat, display, def0] = deck.pop();
   const word0 = norm(display);
@@ -375,7 +389,7 @@ function submit() {
   loseTry(); revealLetter(); setAnswer("");
 }
 function endRound(win) {
-  over = true; cur.won = win;
+  over = true; cur.won = win; const prevStreak = streak;
   /* Affiche le mot dans le bon ordre dans les cases */
   const fm = fixedMap(), taken = new Set(fm.values()); picked = [];
   cur.word.split("").forEach((ch, pos) => { if (fm.has(pos)) return; const i = letters.findIndex((l, k) => l === ch && !taken.has(k)); taken.add(i); picked.push(i); });
@@ -388,9 +402,40 @@ function endRound(win) {
   const n = tries + (win ? 1 : 0);
   $("msg").className = "msg " + (win ? "ok" : "ko");
   $("msg").innerHTML = win ? `Bravo, c'était ${cur.display} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${cur.display}.`;
+  if (!FREE) {
+    if (win) dailySave({ done: false, streak });
+    else { dailySave({ done: true, streak: prevStreak }); dailyDone = true; $("next").textContent = "Voir mon résultat →"; }
+  }
   renderSlots(); syncTiles(); renderDots(); renderBar();
   $("next").focus();
 }
+
+
+/* ============================================================
+   UNE PARTIE PAR JOUR : la partie dure jusqu'à la première défaite, puis le jeu est verrouillé jusqu'à minuit.
+   (Ajoute ?libre à l'adresse pour jouer sans limite.)
+   ============================================================ */
+const DAILY_KEY = "sdq_daily_mots", FREE = /[?&](libre|free)(&|=|$)/.test(location.search);
+let dailyDone = false;
+const dayKey = () => new Date().toLocaleDateString("sv-SE");
+function dailyLoad() { try { const d = JSON.parse(localStorage.getItem(DAILY_KEY)); return d && d.day === dayKey() ? d : null; } catch (e) { return null; } }
+function dailySave(d) { try { localStorage.setItem(DAILY_KEY, JSON.stringify(Object.assign({ day: dayKey() }, d))); } catch (e) {} }
+const fmtN = n => Number(n || 0).toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
+function showDaily(d) {
+  dailyDone = true;
+  document.querySelector(".game").style.display = "none";
+  const lb = document.getElementById("lib-note"); if (lb) lb.style.display = "none";
+  $("dailyStats").innerHTML = `<div class="stat">Mots trouvés<b>${fmtN(d.streak)}</b></div>`;
+  $("daily").hidden = false;
+  const tick = () => {
+    const now = new Date(), next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    const s = Math.max(0, Math.round((next - now) / 1000)), p = n => String(n).padStart(2, "0");
+    $("dailyClock").textContent = p(Math.floor(s / 3600)) + ":" + p(Math.floor(s / 60) % 60) + ":" + p(s % 60);
+    if (s <= 0) location.reload();
+  };
+  tick(); setInterval(tick, 1000);
+}
+function newRound() { if (dailyDone) return showDaily(dailyLoad() || {}); _newRound(); }
 
 /* ============================================================
    5. ÉVÉNEMENTS
@@ -417,7 +462,11 @@ $("giveUp").onclick = () => { if (!over) endRound(false); };
 document.addEventListener("keydown", e => { if (e.key === "Escape") { e.preventDefault(); if (!over) endRound(false); else newRound(); } });
 document.addEventListener("keydown", e => { if (over && (e.key === "Enter") && document.activeElement !== $("next")) { e.preventDefault(); newRound(); } });
 
-newRound();
+{
+  const d = FREE ? null : dailyLoad();
+  if (d && d.done) showDaily(d);
+  else { if (d) { streak = d.streak || 0; } newRound(); }
+}
 </script>
 </body>
 </html>

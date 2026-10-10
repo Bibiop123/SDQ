@@ -142,6 +142,13 @@
   .reset-best { opacity: .8; }
   @media (max-width: 480px) { .brand { font-size: 0; gap: 0; } nav { gap: 4px; } nav a { padding: 7px 7px; font-size: .72rem; letter-spacing: .03em; } }
   @media (max-width: 400px) { .brand { display: none; } .top-in { justify-content: center; } nav a { padding: 7px 6px; font-size: .7rem; } }
+  .daily { max-width: 520px; margin: 10px auto 0; padding: 26px 22px; text-align: center; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,21,38,.86); box-shadow: 0 16px 44px rgba(0,0,0,.6); }
+  .daily h2 { margin: 0 0 16px; font-family: Cinzel, Georgia, serif; font-size: 1.5rem; color: var(--gold); }
+  .daily .stats { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+  .daily .stat { min-width: 120px; padding: 10px 16px; border: 1.5px solid var(--frame, #56709c); border-radius: 12px; background: rgba(24,35,62,.92); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
+  .daily .stat b { display: block; margin-top: 2px; font-size: 1.7rem; letter-spacing: 0; color: var(--gold); text-transform: none; }
+  .daily p { margin: 0 0 14px; color: #c9d3e4; } .daily p b { color: var(--tx); font-variant-numeric: tabular-nums; }
+  .daily .links a { color: var(--cyan); text-decoration: none; font-weight: 600; }
 </style>
 </head>
 <body>
@@ -213,6 +220,13 @@
         <div class="loading" id="loading">Chargement des images…</div>
       </div>
     </div>
+  </section>
+
+  <section class="daily" id="daily" hidden>
+    <h2>Partie du jour terminée</h2>
+    <div class="stats" id="dailyStats"></div>
+    <p>Prochaine partie dans <b id="dailyClock">--:--:--</b></p>
+    <div class="links"><a href="index.html">Retour aux jeux</a></div>
   </section>
   <p class="note" id="lib-note"></p>
 </main>
@@ -381,7 +395,7 @@ function skinOf(url) {
   if (!sk || sk.toLowerCase() === parts[0].toLowerCase()) return "Skin classique";
   return sk.charAt(0).toUpperCase() + sk.slice(1);
 }
-function newRound() {
+function _newRound() {
   if (!deck.length) deck = shuffle(ROUNDS.slice());
   const r = deck.pop();
   cur = { name: r.name, img: r.imgs[Math.floor(Math.random() * r.imgs.length)], face: r.face || DEFAULT_FACE };
@@ -427,7 +441,7 @@ function scoreRound(win, triesUsed) {
   return { pts, bonus, lost };
 }
 function endRound(win) {
-  over = true;
+  over = true; const prevStreak = streak;
   $("frame").classList.add("revealed"); if (!win) $("frame").classList.add("lost");
   $("play").hidden = true; hideSuggestions(); $("result").hidden = false; $("hint").textContent = "";
   if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best", best); } catch (e) {} } } else { streak = 0; recordBroken = false; }
@@ -436,6 +450,10 @@ function endRound(win) {
   const ptsLine = win ? `<span class="pts">+${sc.pts} pts${sc.bonus ? ` · enchaînement ×${combo} : +${sc.bonus}` : ""}</span>` : `<span class="pts" style="color:var(--ko)">${sc.lost ? "Score remis à 0 (−" + sc.lost.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ") + " pts)" : "Score : 0"}</span>`;
   $("msg").className = "msg " + (win ? "ok" : "ko");
   $("msg").innerHTML = win ? `Bravo, c'était ${cur.name} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small><small>Skin : ${skinOf(cur.img)}</small>${ptsLine}` : `Perdu… c'était ${cur.name}.<small>Skin : ${skinOf(cur.img)}</small>${ptsLine}`;
+  if (!FREE) {
+    if (win) dailySave({ done: false, score, streak, combo });
+    else { dailySave({ done: true, score: sc.lost, streak: prevStreak }); dailyDone = true; $("next").textContent = "Voir mon résultat →"; $("msg").querySelector(".pts").innerHTML = "Partie terminée · score final " + fmtN(sc.lost); }
+  }
   renderDots(win); render(); updateTools();
   $("next").focus();
 }
@@ -536,11 +554,44 @@ $("submit").onclick = () => submit();
 $("next").onclick = newRound;
 $("dezoom").onclick = dezoom;
 
+
+/* ============================================================
+   UNE PARTIE PAR JOUR : la partie dure jusqu'à la première défaite, puis le jeu est verrouillé jusqu'à minuit.
+   (Ajoute ?libre à l'adresse pour jouer sans limite.)
+   ============================================================ */
+const DAILY_KEY = "sdq_daily_art", FREE = /[?&](libre|free)(&|=|$)/.test(location.search);
+let dailyDone = false;
+const dayKey = () => new Date().toLocaleDateString("sv-SE");
+function dailyLoad() { try { const d = JSON.parse(localStorage.getItem(DAILY_KEY)); return d && d.day === dayKey() ? d : null; } catch (e) { return null; } }
+function dailySave(d) { try { localStorage.setItem(DAILY_KEY, JSON.stringify(Object.assign({ day: dayKey() }, d))); } catch (e) {} }
+const fmtN = n => Number(n || 0).toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
+function showDaily(d) {
+  dailyDone = true;
+  document.querySelector(".game").style.display = "none";
+  const lb = document.getElementById("lib-note"); if (lb) lb.style.display = "none";
+  $("dailyStats").innerHTML = `<div class="stat">Score final<b>${fmtN(d.score)}</b></div><div class="stat">Série<b>${fmtN(d.streak)}</b></div>`;
+  $("daily").hidden = false;
+  const tick = () => {
+    const now = new Date(), next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    const s = Math.max(0, Math.round((next - now) / 1000)), p = n => String(n).padStart(2, "0");
+    $("dailyClock").textContent = p(Math.floor(s / 3600)) + ":" + p(Math.floor(s / 60) % 60) + ":" + p(s % 60);
+    if (s <= 0) location.reload();
+  };
+  tick(); setInterval(tick, 1000);
+}
+function newRound() { if (dailyDone) return showDaily(dailyLoad() || {}); _newRound(); }
+
 /* ============================================================
    5. DÉMARRAGE
    ============================================================ */
 (async function init() {
   render(); renderDots();
+  const d = FREE ? null : dailyLoad();
+  if (d && d.done) return showDaily(d);
+  if (d) {                                   /* partie du jour en cours : on reprend où on s'était arrêté */
+    score = d.score || 0; streak = d.streak || 0; combo = d.combo || 0;
+    const f = $("ftry"); f.dataset.lvl = combo >= 5 ? 3 : combo >= 3 ? 2 : combo >= 1 ? 1 : 0; $("ftryN").textContent = combo; render();
+  }
   await loadLibrary();
   newRound();
 })();
