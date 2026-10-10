@@ -151,10 +151,12 @@
   .zonehead span { color: #9fb0cc; }
   @media (max-width: 600px) { .zonehead h2 { font-size: 1.3rem; } }
   .chip.day { border-color: rgba(230,195,106,.55); color: var(--gold); }
+  /* Grand écran : jeux centrés. Pour réserver une colonne de classement à droite, remettre :
+     .layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 28px; align-items: start; }  .lb { display: block; } */
   @media (min-width: 1200px) {
-    main { max-width: 1900px; padding-left: 3vw; padding-right: 3vw; }
-    .layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 28px; align-items: start; }
-    .lb { display: block; }
+    main { max-width: 1100px; margin-left: auto; margin-right: auto; }
+    .layout { display: block; }
+    .lb { display: none; }
   }
   .card.small, .card.big { min-height: 400px; }
   .grid .big { min-height: 480px; }
