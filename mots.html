@@ -478,7 +478,17 @@ document.addEventListener("keydown", e => { if (over && (e.key === "Enter") && d
 {
   const d = FREE ? null : dailyLoad();
   if (d && d.done) showDaily(d);
-  else { if (d) { streak = d.streak || 0; } newRound(); }
+  else {
+    if (d) { streak = d.streak || 0; }
+    if (FREE) newRound();
+    else SDQ.intro({
+      title: "Mots en désordre", sub: "Défi du jour · 1 partie",
+      rules: [["🔤", "Remets les lettres dans l'ordre pour retrouver le mot du lexique ou de l'esport LoL. Les mots sont les mêmes pour tout le monde aujourd'hui."],
+              ["🎯", "<b>3 essais</b> par mot. Chaque erreur te <b>révèle une lettre</b> à sa place."],
+              ["🏆", "Ton score = le <b>nombre de mots trouvés d'affilée</b>. Dès que tu rates un mot, la partie est terminée."],
+              ["🏁", "Une seule partie par jour : tiens le plus longtemps possible !"]],
+      button: (d ? "Reprendre la partie" : "Lancer la partie") }).then(newRound);
+  }
 }
 </script>
 </body>

@@ -618,6 +618,14 @@ function newRound() { if (dailyDone) return showDaily(dailyLoad() || {}); _newRo
     const f = $("ftry"); f.dataset.lvl = combo >= 5 ? 3 : combo >= 3 ? 2 : combo >= 1 ? 1 : 0; $("ftryN").textContent = combo; render();
   }
   await loadLibrary();
+  if (!FREE) await SDQ.intro({
+    title: "Splash Art", sub: "Défi du jour · 10 artworks",
+    rules: [["🖼️", "<b>10 artworks</b> à deviner, les mêmes pour tout le monde aujourd'hui."],
+            ["🎯", "<b>4 essais</b> par image : chaque erreur dézoome l'artwork. Plus tu trouves tôt, plus tu gagnes : <b>1000 · 600 · 300 · 100</b> pts."],
+            ["⚡", "<b>Rapidité</b> : jusqu'à <b>+300 pts</b> si tu réponds en moins de 5 s, le bonus fond jusqu'à 0 à 30 s. Le chrono part dès que l'image s'affiche."],
+            ["🔥", "<b>First try enchaînés</b> : chaque image trouvée du premier coup à la suite ajoute un bonus croissant : +250 au 2e, +500 au 3e… jusqu'à +1250."],
+            ["🏁", "Une seule partie par jour : une manche perdue vaut 0 pt et casse ta série."]],
+    button: (d ? "Reprendre la partie" : "Lancer la partie") });
   newRound();
 })();
 </script>
