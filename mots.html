@@ -185,8 +185,7 @@
       </div>
       <div class="tools">
         <button class="alt" id="shuffle" type="button">⟳ Mélanger <kbd>Espace</kbd></button>
-        <button class="alt" id="clear" type="button">Effacer</button>
-        <button class="alt" id="giveUp" type="button">Abandonner <kbd>Échap</kbd></button>
+        <button class="alt" id="giveUp" type="button" title="Passer au mot suivant : le mot compte comme raté (0 pt)">Passer <kbd>Échap</kbd></button>
       </div>
       <div class="flash" id="flash" role="status"></div>
     </div>
@@ -466,7 +465,6 @@ $("answer").oninput = () => setAnswer($("answer").value);
 $("answer").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); if (!$("submit").disabled) submit(); else if (!over) flash("Utilise toutes les lettres (" + letters.length + ")."); } };
 $("submit").onclick = submit;
 $("next").onclick = newRound;
-$("clear").onclick = () => { setAnswer(""); $("answer").focus(); };
 function reshuffle() { if (over) return; const keep = $("answer").value; letters = scrambleOf(cur.word); picked = []; renderTiles(true); setAnswer(keep); }
 $("shuffle").onclick = reshuffle;
 /* Barre d'espace = mélanger les lettres */
