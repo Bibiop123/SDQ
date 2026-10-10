@@ -83,7 +83,7 @@ window.SDQ = (function () {
       const st = document.createElement("style"); st.id = "sdq-hs-css";
       st.textContent = ".sdq-hs{margin:0 0 16px;display:grid;gap:10px;justify-items:center}.sdq-hs .t{color:#c7d1e4;font-size:.95rem}.sdq-hs .t b{color:#e6c36a}.hs-mut{color:#8d9ab2}"
         + ".sdq-hs form{display:flex;gap:8px;width:100%;max-width:380px}.sdq-hs input{flex:1;min-width:0;padding:10px 12px;border:1.5px solid #56709c;border-radius:10px;background:#0b1222;color:#e9eef7;font:inherit}"
-        + ".sdq-hs button{padding:10px 14px;border:0;border-radius:10px;background:#3fc1e0;color:#06101c;font:700 .95rem inherit;font-family:inherit;cursor:pointer;white-space:nowrap}.sdq-hs .ok{color:#4ade80;font-weight:600}.sdq-hs .ko{color:#ff6b6b;font-size:.85rem}";
+        + ".sdq-hs button{padding:10px 14px;border:0;border-radius:10px;background:#3fc1e0;color:#06101c;font:700 .95rem inherit;font-family:inherit;cursor:pointer;white-space:nowrap}.sdq-hs .f{width:100%;display:grid;justify-items:center;gap:8px;padding:14px 12px;border:1px solid rgba(230,195,106,.45);border-radius:14px;background:rgba(230,195,106,.07)}.sdq-hs .f:has(.ok){border-color:rgba(74,222,128,.4);background:rgba(74,222,128,.07)}.hs-call{color:#e6c36a;font-weight:700;font-size:.92rem;letter-spacing:.03em}.hs-arrow{display:inline-block;margin-right:8px;animation:hsbob 1s ease-in-out infinite}@keyframes hsbob{50%{transform:translateY(5px)}}.sdq-hs input{border-color:#e6c36a;box-shadow:0 0 0 3px rgba(230,195,106,.22),0 0 18px rgba(230,195,106,.3);animation:hsglow 1.8s ease-in-out infinite}@keyframes hsglow{50%{box-shadow:0 0 0 4px rgba(230,195,106,.38),0 0 26px rgba(230,195,106,.5)}}.sdq-hs input:focus{outline:none;animation:none;border-color:#fff3c4;box-shadow:0 0 0 3px rgba(230,195,106,.5)}@media (prefers-reduced-motion:reduce){.hs-arrow,.sdq-hs input{animation:none}}.sdq-hs .ok{color:#4ade80;font-weight:600}.sdq-hs .ko{color:#ff6b6b;font-size:.85rem}";
       document.head.appendChild(st);
     }
     const KEY = "sdq_daily_sub_" + game; let sub = null;
@@ -93,7 +93,7 @@ window.SDQ = (function () {
     refresh();
     if (sub) { f.innerHTML = `<span class="ok">✓ Score enregistré sous « ${esc(sub.name)} »</span>`; return; }
     let last = ""; try { last = localStorage.getItem("sdq_name") || ""; } catch (e) {}
-    f.innerHTML = `<form><input maxlength="16" placeholder="Ton pseudo" aria-label="Ton pseudo" value="${esc(last)}" required><button type="submit">Enregistrer mon score</button></form><div class="ko" hidden></div>`;
+    f.innerHTML = `<div class="hs-call"><span class="hs-arrow" aria-hidden="true">▼</span>Entre ton pseudo pour apparaître au classement</div><form><input maxlength="16" placeholder="Ton pseudo" aria-label="Ton pseudo" value="${esc(last)}" required><button type="submit">Enregistrer mon score</button></form><div class="ko" hidden></div>`;
     const form = f.querySelector("form"), err = f.querySelector(".ko"), btn = form.querySelector("button");
     form.onsubmit = async ev => {
       ev.preventDefault(); const name = form.querySelector("input").value.trim(); if (!name) return;
