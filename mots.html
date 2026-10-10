@@ -36,10 +36,6 @@
   .bar { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
   .plates { display: flex; gap: 22px; }
   .left { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; }
-  .easy { padding: 6px 12px; font-size: .78rem; letter-spacing: .06em; }
-  .easy b { color: var(--muted, #9fb0cf); font-weight: 700; }
-  .easy[aria-pressed="true"] { border-color: var(--gold, #e6c36a); color: var(--gold, #e6c36a); box-shadow: 0 0 0 1px rgba(230,195,106,.35); }
-  .easy[aria-pressed="true"] b { color: var(--gold, #e6c36a); }
   .slot.fixed { color: var(--gold, #e6c36a); border-color: var(--gold, #e6c36a); background: rgba(230,195,106,.1); }
   .plate { position: relative; display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
   .plate b { font-size: 1.2rem; font-weight: 700; letter-spacing: 0; color: var(--gold); text-transform: none; }
@@ -170,7 +166,6 @@
           <span class="plate" id="roundPlate" hidden>Mot <b id="rnd">1/10</b></span>
           <span class="plate" id="speedPlate" hidden title="Bonus de rapidité : répondre vite rapporte jusqu'à 300 pts">⚡ <b id="speed">300</b></span>
         </div>
-        <button class="alt easy" id="easy" type="button" aria-pressed="false" title="Affiche l'indice gratuitement dès le début">Mode facile : <b id="easyState">non</b></button>
       </div>
       <div class="dots" id="dots" aria-label="Essais"></div>
     </div>
@@ -236,9 +231,9 @@ let score = 0, round = 0, found = 0, t0 = 0, speedTimer = null;
 const speedNow = () => { const t = (Date.now() - t0) / 1000; return t <= SPEED_FULL ? SPEED_MAX : Math.max(0, Math.round(SPEED_MAX * (SPEED_ZERO - t) / (SPEED_ZERO - SPEED_FULL) / 5) * 5); };
 function startSpeed() { clearInterval(speedTimer); t0 = Date.now(); $("speed").textContent = SPEED_MAX; $("speedPlate").classList.remove("low"); speedTimer = setInterval(() => { const v = speedNow(); $("speed").textContent = v; $("speedPlate").classList.toggle("low", v === 0); }, 250); }
 function stopSpeed() { clearInterval(speedTimer); }   /* hasard de la manche : graine par jour en défi du jour, libre en mode infini */
-let deck = [], cur = null, letters = [], picked = [], tries = 0, over = false, misses = [], fixedPos = [], easy = false;
+let deck = [], cur = null, letters = [], picked = [], tries = 0, over = false, misses = [], fixedPos = [];
 let streak = 0, best = 0, recordBroken = false;
-try { best = Number(localStorage.getItem("sdq_best_mots")) || 0; easy = localStorage.getItem("sdq_easy_mots") === "1"; } catch (e) {}
+try { best = Number(localStorage.getItem("sdq_best_mots")) || 0; } catch (e) {}
 
 
 /* Icônes d'objets : récupérées en ligne sur Data Dragon (site de données de Riot), retrouvées par leur nom français */
@@ -386,12 +381,7 @@ function _newRound() {
   $("answer").focus({ preventScroll: true });
 }
 
-function showHint() { if (!over) $("def").textContent = easy ? "Indice : " + cur.def : ""; }
-function setEasy(v, save) {
-  easy = v; $("easy").setAttribute("aria-pressed", v); $("easyState").textContent = v ? "oui" : "non";
-  if (save) { try { localStorage.setItem("sdq_easy_mots", v ? "1" : "0"); } catch (e) {} }
-  if (cur) showHint();
-}
+function showHint() { if (!over) $("def").textContent = tries >= 1 ? "Indice : " + cur.def : ""; }   /* l'indice apparaît après le premier essai raté */
 /* Une erreur révèle une lettre à sa place (au hasard parmi les cases encore vides) */
 function revealLetter() {
   if (over) return;
@@ -402,7 +392,7 @@ function revealLetter() {
 function loseTry() {
   tries++;
   if (tries >= MAX_TRIES) return endRound(false);
-  renderDots();
+  showHint(); renderDots();
 }
 function submit() {
   if (over || picked.length !== freeCount()) return;
@@ -476,8 +466,6 @@ $("answer").oninput = () => setAnswer($("answer").value);
 $("answer").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); if (!$("submit").disabled) submit(); else if (!over) flash("Utilise toutes les lettres (" + letters.length + ")."); } };
 $("submit").onclick = submit;
 $("next").onclick = newRound;
-$("easy").onclick = () => setEasy(!easy, true);
-setEasy(easy, false);
 $("clear").onclick = () => { setAnswer(""); $("answer").focus(); };
 function reshuffle() { if (over) return; const keep = $("answer").value; letters = scrambleOf(cur.word); picked = []; renderTiles(true); setAnswer(keep); }
 $("shuffle").onclick = reshuffle;
@@ -504,7 +492,7 @@ document.addEventListener("keydown", e => { if (over && (e.key === "Enter") && d
       title: "Mots en désordre", sub: "Défi du jour · 10 mots",
       rules: [["🔤", "Remets les lettres dans l'ordre pour retrouver le mot du lexique ou de l'esport LoL. Les mots sont les mêmes pour tout le monde aujourd'hui."],
               ["📚", "<b>10 mots</b> à retrouver."],
-              ["🎯", "<b>3 essais</b> par mot : chaque erreur te <b>révèle une lettre</b> à sa place. Plus tu trouves tôt, plus tu gagnes : <b>1000 · 600 · 300</b> pts."],
+              ["🎯", "<b>3 essais</b> par mot : chaque erreur te <b>révèle une lettre</b> à sa place, et l'<b>indice</b> s'affiche dès le premier essai raté. Plus tu trouves tôt, plus tu gagnes : <b>1000 · 600 · 300</b> pts."],
               ["⚡", "<b>Rapidité</b> : jusqu'à <b>+300 pts</b> si tu réponds en moins de 10 s, le bonus fond jusqu'à 0 à 60 s. Le chrono part dès que le mot s'affiche."],
               ["🏁", "Une seule partie par jour : un mot raté vaut 0 pt, mais la partie continue."]],
       button: (d ? "Reprendre la partie" : "Lancer la partie") }).then(newRound);
