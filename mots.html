@@ -208,6 +208,7 @@
   </section>
 <footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
 
+<script src="daily.js"></script>
 <script>
 /* ============================================================
    1. MOTS : [catégorie, mot (espaces = séparation de mots), définition]
@@ -220,8 +221,9 @@ const $ = id => document.getElementById(id);
    2. OUTILS
    ============================================================ */
 const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z]/g, "");
-const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+const shuffle = (a, rnd = Math.random) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
+let R = Math.random;   /* hasard de la manche : graine par jour en défi du jour, libre en mode infini */
 let deck = [], cur = null, letters = [], picked = [], tries = 0, over = false, misses = [], fixedPos = [], easy = false;
 let streak = 0, best = 0, recordBroken = false;
 try { best = Number(localStorage.getItem("sdq_best_mots")) || 0; easy = localStorage.getItem("sdq_easy_mots") === "1"; } catch (e) {}
@@ -254,10 +256,10 @@ async function showClue(round) {
 /* ============================================================
    3. AFFICHAGE
    ============================================================ */
-function scrambleOf(word) {
+function scrambleOf(word, rnd) {
   const base = word.split("");
   if (new Set(base).size < 2) return base;
-  let out; do { out = shuffle(base.slice()); } while (out.join("") === word);
+  let out; do { out = shuffle(base.slice(), rnd); } while (out.join("") === word);
   return out;
 }
 /* Lettres offertes : position -> index de la case-lettre correspondante */
@@ -347,12 +349,18 @@ window.addEventListener("resize", fitRows);
    4. PARTIE
    ============================================================ */
 function _newRound() {
-  if (!deck.length) deck = shuffle(WORDS.filter(w => w[0] !== "Champion").concat(shuffle(WORDS.filter(w => w[0] === "Champion")).slice(0, 40)));
-  const [cat, display, def0] = deck.pop();
+  let pick;
+  if (FREE) { R = Math.random; if (!deck.length) deck = shuffle(WORDS.filter(w => w[0] !== "Champion").concat(shuffle(WORDS.filter(w => w[0] === "Champion")).slice(0, 40))); pick = deck.pop(); }
+  else {                                     /* défi du jour : même série de mots pour tout le monde (le mot n° k = nombre de mots déjà trouvés) */
+    const r = SDQ.rng("mots", dayKey());
+    const order = SDQ.shuffle(WORDS.filter(w => w[0] !== "Champion").concat(SDQ.shuffle(WORDS.filter(w => w[0] === "Champion"), r).slice(0, 40)), r);
+    pick = order[streak % order.length]; R = SDQ.rng("mots", dayKey(), streak);
+  }
+  const [cat, display, def0] = pick;
   const word0 = norm(display);
   const def = def0 || `Commence par ${word0[0]} et finit par ${word0[word0.length - 1]}.`;
   cur = { cat, display, word: word0, def, hasDef: !!def0, won: false };
-  letters = scrambleOf(cur.word); picked = []; tries = 0; over = false; misses = []; fixedPos = [];
+  letters = scrambleOf(cur.word, R); picked = []; tries = 0; over = false; misses = []; fixedPos = [];
   $("result").hidden = true; $("play").hidden = false;
   $("slots").className = "slots"; $("def").textContent = ""; $("clue").hidden = true; $("misses").innerHTML = ""; $("flash").textContent = "";
   $("answer").disabled = false; $("answer").value = "";
@@ -374,7 +382,7 @@ function revealLetter() {
   if (over) return;
   const free = []; for (let i = 0; i < letters.length; i++) if (!fixedPos.includes(i)) free.push(i);
   if (free.length <= 1) return;
-  fixedPos.push(free[Math.floor(Math.random() * free.length)]);
+  fixedPos.push(free[Math.floor(R() * free.length)]);
 }
 function loseTry() {
   tries++;
@@ -421,7 +429,7 @@ function endRound(win) {
 const DAILY_KEY = "sdq_daily_mots", FREE = /[?&](libre|free)(&|=|$)/.test(location.search);
 let dailyDone = false;
 { const c = document.getElementById("modechip"); if (c) { c.textContent = FREE ? "Mode infini" : "Défi du jour · 1 partie"; c.classList.toggle("free", FREE); } }
-const dayKey = () => new Date().toLocaleDateString("sv-SE");
+const dayKey = SDQ.dayKey;
 function dailyLoad() { try { const d = JSON.parse(localStorage.getItem(DAILY_KEY)); return d && d.day === dayKey() ? d : null; } catch (e) { return null; } }
 function dailySave(d) { try { localStorage.setItem(DAILY_KEY, JSON.stringify(Object.assign({ day: dayKey() }, d))); } catch (e) {} }
 const fmtN = n => Number(n || 0).toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
@@ -431,11 +439,11 @@ function showDaily(d) {
   const lb = document.getElementById("lib-note"); if (lb) lb.style.display = "none";
   $("dailyStats").innerHTML = `<div class="stat">Mots trouvés<b>${fmtN(d.streak)}</b></div>`;
   $("daily").hidden = false;
+  const day0 = dayKey();
   const tick = () => {
-    const now = new Date(), next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-    const s = Math.max(0, Math.round((next - now) / 1000)), p = n => String(n).padStart(2, "0");
+    const s = SDQ.secondsToMidnight(), p = n => String(n).padStart(2, "0");
     $("dailyClock").textContent = p(Math.floor(s / 3600)) + ":" + p(Math.floor(s / 60) % 60) + ":" + p(s % 60);
-    if (s <= 0) location.reload();
+    if (dayKey() !== day0) location.reload();
   };
   tick(); setInterval(tick, 1000);
 }

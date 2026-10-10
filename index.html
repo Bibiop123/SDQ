@@ -287,7 +287,7 @@
   /* Défi du jour : état de la partie du jour (enregistré par la page du jeu) */
   function daily(key, id, fmt) {
     try {
-      var d = JSON.parse(localStorage.getItem(key)), today = new Date().toLocaleDateString("sv-SE");
+      var d = JSON.parse(localStorage.getItem(key)), today = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Paris" });
       if (!d || d.day !== today) return;
       document.getElementById(id).innerHTML = d.done ? "Terminé · " + fmt(d) : "En cours · " + fmt(d);
     } catch (e) {}

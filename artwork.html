@@ -239,6 +239,7 @@
 
 <footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
 
+<script src="daily.js"></script>
 <script>
 /* ============================================================
    1. CONFIGURATION
@@ -353,6 +354,7 @@ async function loadLibrary() {
 /* ============================================================
    3. LOGIQUE DU JEU
    ============================================================ */
+let R = Math.random, skip = 0;   /* R : hasard de la manche (graine par jour en défi du jour, libre en mode infini) */
 let deck = [], cur = null, tries = 0, over = false, guessed = [];
 let streak = 0, best = 0, recordBroken = false;
 /* Score (remis à 0 quand on perd) : plus on trouve vite, plus on gagne de points ; enchaîner les « first try » rapporte un bonus */
@@ -373,7 +375,7 @@ const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.r
 function pickFocus(face) {
   let bestScore = -1, pool = [];
   for (let i = 0; i < 400; i++) {
-    const ox = 0.05 + Math.random() * 0.9, oy = 0.05 + Math.random() * 0.9;
+    const ox = 0.05 + R() * 0.9, oy = 0.05 + R() * 0.9;
     let score = 0;
     for (let k = 0; k < ZOOM.length; k++) {
       const z = ZOOM[k];
@@ -384,7 +386,7 @@ function pickFocus(face) {
     if (score > bestScore) { bestScore = score; pool = []; }
     if (score === bestScore) pool.push([ox, oy]);
   }
-  const [x, y] = pool[Math.floor(Math.random() * pool.length)];
+  const [x, y] = pool[Math.floor(R() * pool.length)];
   return `${(x * 100).toFixed(1)}% ${(y * 100).toFixed(1)}%`;
 }
 
@@ -409,9 +411,15 @@ function skinOf(url) {
   return sk.charAt(0).toUpperCase() + sk.slice(1);
 }
 function _newRound() {
-  if (!deck.length) deck = shuffle(ROUNDS.slice());
-  const r = deck.pop();
-  cur = { name: r.name, img: r.imgs[Math.floor(Math.random() * r.imgs.length)], face: r.face || DEFAULT_FACE };
+  let r;
+  if (FREE) { R = Math.random; if (!deck.length) deck = shuffle(ROUNDS.slice()); r = deck.pop(); }
+  else {                                     /* défi du jour : même champion, même skin, même cadrage pour tout le monde */
+    const k = round + skip, byName = (a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+    const order = SDQ.shuffle(ROUNDS.slice().sort(byName), SDQ.rng("artwork", dayKey()));
+    r = order[k % order.length]; R = SDQ.rng("artwork", dayKey(), k);
+  }
+  const imgs = r.imgs.slice().sort();
+  cur = { name: r.name, img: imgs[Math.floor(R() * imgs.length)], face: r.face || DEFAULT_FACE };
   tries = 0; over = false; guessed = [];
   $("guesses").innerHTML = ""; $("result").hidden = true; $("play").hidden = false; $("flash").textContent = "";
   $("hint").textContent = "Chaque erreur dézoome un peu l'image.";
@@ -424,7 +432,7 @@ function _newRound() {
   render(); renderDots();
   const show = () => { $("loading").hidden = true; art.style.visibility = "visible"; void art.offsetWidth; frame.classList.remove("noanim"); startSpeed(); };
   art.onload = () => { frame.style.aspectRatio = art.naturalWidth + " / " + art.naturalHeight; show(); };
-  art.onerror = () => { console.warn("Image introuvable :", cur.img); if (ROUNDS.length > 1) newRound(); else show(); };
+  art.onerror = () => { console.warn("Image introuvable :", cur.img); skip++; if (ROUNDS.length > 1) newRound(); else show(); };
   art.src = cur.img;
   $("answer").focus();
 }
@@ -577,7 +585,7 @@ $("dezoom").onclick = dezoom;
 const DAILY_KEY = "sdq_daily_art", FREE = /[?&](libre|free)(&|=|$)/.test(location.search);
 let dailyDone = false;
 { const c = document.getElementById("modechip"); if (c) { c.textContent = FREE ? "Mode infini" : "Défi du jour · 10 artworks"; c.classList.toggle("free", FREE); } }
-const dayKey = () => new Date().toLocaleDateString("sv-SE");
+const dayKey = SDQ.dayKey;
 function dailyLoad() { try { const d = JSON.parse(localStorage.getItem(DAILY_KEY)); return d && d.day === dayKey() ? d : null; } catch (e) { return null; } }
 function dailySave(d) { try { localStorage.setItem(DAILY_KEY, JSON.stringify(Object.assign({ day: dayKey() }, d))); } catch (e) {} }
 const fmtN = n => Number(n || 0).toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
@@ -587,11 +595,11 @@ function showDaily(d) {
   const lb = document.getElementById("lib-note"); if (lb) lb.style.display = "none";
   $("dailyStats").innerHTML = `<div class="stat">Score final<b>${fmtN(d.score)}</b></div><div class="stat">Trouvés<b>${fmtN(d.found)}/${DAILY_ROUNDS}</b></div>`;
   $("daily").hidden = false;
+  const day0 = dayKey();
   const tick = () => {
-    const now = new Date(), next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
-    const s = Math.max(0, Math.round((next - now) / 1000)), p = n => String(n).padStart(2, "0");
+    const s = SDQ.secondsToMidnight(), p = n => String(n).padStart(2, "0");
     $("dailyClock").textContent = p(Math.floor(s / 3600)) + ":" + p(Math.floor(s / 60) % 60) + ":" + p(s % 60);
-    if (s <= 0) location.reload();
+    if (dayKey() !== day0) location.reload();
   };
   tick(); setInterval(tick, 1000);
 }
