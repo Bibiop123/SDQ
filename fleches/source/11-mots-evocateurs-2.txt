@@ -1,0 +1,168 @@
+## Mots courants évoquant LoL
+AS | Carte de Twisted Fate | Premier des as de la pioche
+OS | Squelette de Karthus | Matière de Sion
+SOL | Terrain de la Faille
+RAT | Animal de Twitch | Rongeur de Zaun
+ELU | Choisi parmi les Ascendants
+ORC | Peuple de fantasy
+ENT | Créature d'arbre
+DON | Pouvoir offert par les dieux
+ANGE | Kayle en est un | Être ailé
+DIEU | Être suprême de Targon
+TITAN | Géant de pierre
+GEANT | Créature immense
+DEMON | Créature infernale | Être des Brumes
+SORCIER | Mage de Ryze
+SORCIERE | Mage de Morgana
+GRIMOIRE | Livre de magie
+LIVRE | Objet de Yuumi
+PAGE | Feuille de livre
+SCEAU | Cachet de pouvoir
+IDOLE | Champion adoré
+REGNE | Période de domination
+TRONE | Siège du roi
+COURONNE | Coiffe du roi
+GARDE | Soldat de Demacia
+GARDIEN | Protecteur de la tour
+GUERRE | Conflit de Noxus
+PAIX | Opposée à la guerre
+ARMEE | Troupes de Noxus
+NAVIRE | Bateau de Bilgewater
+BATEAU | Moyen de transport de Gangplank
+VOILE | Tissu du navire
+ANCRE | Arme de Nautilus
+EPAVE | Bateau échoué
+BANDIT | Hors-la-loi
+PIRATE | Habitant de Bilgewater
+TRESOR | Butin du pirate
+TONNERRE | Bruit de la tempête
+ECLAIR | Éclat de Zeri
+MAGIE | Pouvoir des mages
+FORGE | Atelier de Ornn
+FORGER | Fabriquer une arme
+ENCLUME | Outil du forgeron
+ACIER | Matière de Camille
+CHIMIE | Science de Singed
+MACHINE | Appareil de Piltover
+ROBOT | Mécanique de Blitzcrank
+ENGRENAGE | Pièce de Orianna
+VAPEUR | Technologie de Piltover
+GAZ | Poison de Singed
+ACIDE | Arme de Kog'Maw
+LAVE | Roche fondue
+VOLCAN | Montagne de feu
+MONTAGNE | Relief de Targon
+SOMMET | Cime
+FALAISE | Paroi de roche
+GROTTE | Cavité de montagne
+CAVERNE | Grande grotte
+MARAIS | Terre humide
+LAC | Étendue d'eau
+FLEUVE | Grand cours d'eau
+RIVIERE | Couloir central
+PLAGE | Rive de sable
+COTE | Rivage
+DUNE | Colline de sable
+OASIS | Point d'eau du désert
+RUINE | Vestige
+TEMPLE | Lieu sacré de Ionia
+TOMBE | Lieu de repos
+CRYPTE | Caveau
+ARENE | Lieu de combat
+STADE | Enceinte de sport
+SCENE | Estrade
+FOULE | Public
+OVATION | Applaudissements
+HYMNE | Chant de victoire
+DRAPEAU | Emblème de l'équipe
+EMBLEME | Symbole
+BLASON | Armoiries
+ARMURE | Protection de Galio
+CASQUE | Coiffe de Garen
+GANT | Pièce de Vi
+BOTTE | Chaussure
+MASQUE | Visage de Shaco
+RELIQUE | Objet ancien
+TOTEM | Idole de bois
+SABRE | Lame courbe
+KATANA | Lame de Yasuo
+SHURIKEN | Étoile de Akali
+KUNAI | Arme de Akali
+FAUCILLE | Arme de moissonneur
+JAVELOT | Lance de jet
+EPERON | Pointe de botte
+BOMBE | Arme de Ziggs
+MINE | Piège de Ziggs
+MECHE | Cordon de bombe
+POUDRE | Matière explosive
+FUSIL | Arme de Graves
+PISTOLET | Arme de Miss Fortune
+BALLE | Projectile
+CIBLE | Victime visée
+VISER | Cadrer sa cible
+TIREUR | Champion à distance
+ARCHER | Tireur à l'arc
+CHEVAL | Monture de Hecarim
+CAVALIER | Guerrier monté
+MONTURE | Animal de selle
+SANGLIER | Monture de Sejuani
+LIEVRE | Animal rapide
+TORTUE | Animal de Taliyah
+KRAKEN | Monstre des mers
+POULPE | Créature de tentacules
+REQUIN | Animal de Fizz
+BALEINE | Géant des mers
+POISSON | Animal de Fizz
+ALGUE | Plante marine
+CORAIL | Récif des mers
+PERLE | Joyau des mers
+OEUF | Origine des dragons
+GRIFFON | Créature ailée
+CHIMERE | Bête fabuleuse
+SIRENE | Créature des mers
+VAMPIRE | Créature de la nuit
+ZOMBIE | Mort-vivant
+SPECTRE | Fantôme
+SQUELETTE | Corps de Karthus
+LICHE | Mort-vivant magique
+SPIRALE | Forme en tourbillon
+CRISTAL | Pierre de Skarner
+CHARME | Pouvoir de Ahri
+FURIE | Colère de Olaf
+RAGE | Colère
+HONNEUR | Valeur de Demacia
+GLOIRE | Renommée
+DESTIN | Pouvoir de Twisted Fate
+CHANCE | Atout de Twisted Fate
+DEFI | Épreuve
+QUETE | Mission
+HEROS | Champion légendaire
+LEGENDE | Récit célèbre
+MYTHE | Récit ancien
+EXIL | Bannissement
+PRISON | Lieu de Hecarim
+CHAINES | Arme de Thresh
+FLAMME | Pouvoir de Brand
+BRAISE | Reste de feu
+CENDRE | Reste de brûlure
+FUMEE | Résidu de feu
+BRUME | Fléau des Îles
+NUAGE | Brouillard
+POUSSIERE | Matière du désert
+LUEUR | Lumière faible
+FLASHER | Utiliser Flash
+SOURIRE | Expression de Jinx
+LARME | Goutte d'émotion
+MIROIR | Reflet de Shaco
+CLONE | Copie de Shaco
+LEURRE | Piège de Shaco
+BOUFFON | Shaco en est un
+CLOWN | Personnage de Shaco
+MAITRE | Titre de Yi
+ELEVE | Disciple
+DISCIPLE | Élève de Ionia
+MOINE | Lee Sin en est un
+DOJO | Salle d'entraînement de Ionia
+LOTUS | Fleur de Ionia
+JADE | Pierre précieuse de Ionia
+THE | Boisson de Ionia

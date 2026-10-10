@@ -28,7 +28,8 @@
 {
 "w": "AS",
 "c": [
-"Vitesse d'attaque"
+"Vitesse d'attaque",
+"Carte de Twisted Fate"
 ],
 "cat": "Sigles et abréviations",
 "r": 0
@@ -273,6 +274,15 @@
 "r": 0
 },
 {
+"w": "OS",
+"c": [
+"Squelette de Karthus",
+"Matière de Sion"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "PV",
 "c": [
 "Points de vie"
@@ -482,6 +492,14 @@
 "r": 0
 },
 {
+"w": "DON",
+"c": [
+"Pouvoir offert par les dieux"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "DOT",
 "c": [
 "Dégâts sur la durée"
@@ -557,6 +575,22 @@
 "Cote de classement"
 ],
 "cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "ELU",
+"c": [
+"Choisi parmi les Ascendants"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ENT",
+"c": [
+"Créature d'arbre"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -650,6 +684,14 @@
 "r": 1
 },
 {
+"w": "GAZ",
+"c": [
+"Poison de Singed"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "GEL",
 "c": [
 "Effet de ralentissement"
@@ -728,6 +770,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "LAC",
+"c": [
+"Étendue d'eau"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "LCK",
@@ -929,6 +979,14 @@
 "r": 0
 },
 {
+"w": "ORC",
+"c": [
+"Peuple de fantasy"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "OTP",
 "c": [
 "Spécialiste d'un seul champion"
@@ -959,6 +1017,15 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "RAT",
+"c": [
+"Animal de Twitch",
+"Rongeur de Zaun"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "RNG",
@@ -995,6 +1062,14 @@
 "r": 1
 },
 {
+"w": "SOL",
+"c": [
+"Terrain de la Faille"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "SSG",
 "c": [
 "Équipe coréenne",
@@ -1028,6 +1103,14 @@
 "Jeu de stratégie de Riot"
 ],
 "cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "THE",
+"c": [
+"Boisson de Ionia"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1161,6 +1244,15 @@
 "w": "AMES",
 "c": [
 "Butin de Thresh"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ANGE",
+"c": [
+"Kayle en est un",
+"Être ailé"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -1344,6 +1436,14 @@
 "r": 1
 },
 {
+"w": "COTE",
+"c": [
+"Rivage"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "COUP",
 "c": [
 "Attaque"
@@ -1376,6 +1476,14 @@
 "r": 0
 },
 {
+"w": "DEFI",
+"c": [
+"Épreuve"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "DEFT",
 "c": [
 "ADC coréen",
@@ -1393,11 +1501,35 @@
 "r": 0
 },
 {
+"w": "DIEU",
+"c": [
+"Être suprême de Targon"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "DIVE",
 "c": [
 "Plonger sous la tour"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "DOJO",
+"c": [
+"Salle d'entraînement de Ionia"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "DUNE",
+"c": [
+"Colline de sable"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1450,6 +1582,14 @@
 "Serveur d'Europe du Nord et de l'Est"
 ],
 "cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "EXIL",
+"c": [
+"Bannissement"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1532,6 +1672,14 @@
 "Embuscade de jungle"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "GANT",
+"c": [
+"Pièce de Vi"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1625,6 +1773,14 @@
 "Objet, en anglais"
 ],
 "cat": "Objets",
+"r": 0
+},
+{
+"w": "JADE",
+"c": [
+"Pierre précieuse de Ionia"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -1724,6 +1880,14 @@
 "r": 0
 },
 {
+"w": "LAVE",
+"c": [
+"Roche fondue"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "LENT",
 "c": [
 "Effet d'un ralentissement"
@@ -1799,6 +1963,14 @@
 "r": 0
 },
 {
+"w": "MINE",
+"c": [
+"Piège de Ziggs"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "MLXG",
 "c": [
 "Jungler chinois",
@@ -1841,6 +2013,14 @@
 "r": 0
 },
 {
+"w": "NEON",
+"c": [
+"Ligne de skins lumineux"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "NERF",
 "c": [
 "Baisse de puissance"
@@ -1856,6 +2036,14 @@
 ],
 "cat": "Joueurs pro",
 "r": 1
+},
+{
+"w": "NOEL",
+"c": [
+"Fête de fin d'année"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
 },
 {
 "w": "NOIR",
@@ -1899,6 +2087,14 @@
 "r": 0
 },
 {
+"w": "OEUF",
+"c": [
+"Origine des dragons"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "OLAF",
 "c": [
 "Berserker",
@@ -1938,6 +2134,22 @@
 "c": [
 "Animal de Volibear",
 "Compagnon d'Annie"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "PAGE",
+"c": [
+"Feuille de livre"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "PAIX",
+"c": [
+"Opposée à la guerre"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -2030,6 +2242,14 @@
 "Soutien assassin"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "RAGE",
+"c": [
+"Colère"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2490,6 +2710,22 @@
 "r": 0
 },
 {
+"w": "ACIDE",
+"c": [
+"Arme de Kog'Maw"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ACIER",
+"c": [
+"Matière de Camille"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "AEGIS",
 "c": [
 "Structure française d'esport"
@@ -2515,6 +2751,14 @@
 "r": 0
 },
 {
+"w": "ALGUE",
+"c": [
+"Plante marine"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ALLIE",
 "c": [
 "Coéquipier"
@@ -2529,6 +2773,22 @@
 "Petite momie en pleurs"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "ANCRE",
+"c": [
+"Arme de Nautilus"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ANIMA",
+"c": [
+"Ligne de skins de bêtes"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
@@ -2550,9 +2810,33 @@
 "r": 0
 },
 {
+"w": "ARENE",
+"c": [
+"Lieu de combat"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ARMEE",
+"c": [
+"Troupes de Noxus"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ASTRE",
 "c": [
 "Corps céleste de Targon"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "BALLE",
+"c": [
+"Projectile"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -2607,11 +2891,27 @@
 "r": 0
 },
 {
+"w": "BOMBE",
+"c": [
+"Arme de Ziggs"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "BOOST",
 "c": [
 "Aide payante à monter"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BOTTE",
+"c": [
+"Chaussure"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2759,9 +3059,33 @@
 "r": 1
 },
 {
+"w": "CIBLE",
+"c": [
+"Victime visée"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "CLAIR",
 "c": [
 "Qualificatif de Lux"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "CLONE",
+"c": [
+"Copie de Shaco"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "CLOWN",
+"c": [
+"Personnage de Shaco"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -2809,6 +3133,14 @@
 "r": 0
 },
 {
+"w": "COVEN",
+"c": [
+"Ligne de skins de sorcières"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "CRABE",
 "c": [
 "Monstre de la rivière"
@@ -2825,6 +3157,14 @@
 "r": 1
 },
 {
+"w": "CYBER",
+"c": [
+"Ligne de skins de cyborgs"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "DAGUE",
 "c": [
 "Arme de Katarina",
@@ -2839,6 +3179,15 @@
 "Mort"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "DEMON",
+"c": [
+"Créature infernale",
+"Être des Brumes"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2894,6 +3243,14 @@
 "r": 0
 },
 {
+"w": "ELEVE",
+"c": [
+"Disciple"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ELISE",
 "c": [
 "Reine araignée",
@@ -2916,6 +3273,14 @@
 "Expression du champion"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "EPAVE",
+"c": [
+"Bateau échoué"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -2986,6 +3351,14 @@
 "r": 0
 },
 {
+"w": "FORGE",
+"c": [
+"Atelier de Ornn"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "FOUET",
 "c": [
 "Arme de Nilah"
@@ -2994,9 +3367,41 @@
 "r": 0
 },
 {
+"w": "FOULE",
+"c": [
+"Public"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "FUITE",
 "c": [
 "Retraite sous pression"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "FUMEE",
+"c": [
+"Résidu de feu"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "FURIE",
+"c": [
+"Colère de Olaf"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "FUSIL",
+"c": [
+"Arme de Graves"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -3027,12 +3432,28 @@
 "r": 0
 },
 {
+"w": "GARDE",
+"c": [
+"Soldat de Demacia"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "GAREN",
 "c": [
 "Puissance de Demacia",
 "Frère de Lux"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "GEANT",
+"c": [
+"Créature immense"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3101,6 +3522,38 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "HEROS",
+"c": [
+"Champion légendaire"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "HIVER",
+"c": [
+"Saison de Noël"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
+"w": "HYMNE",
+"c": [
+"Chant de victoire"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "IDOLE",
+"c": [
+"Champion adoré"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "IONIA",
@@ -3210,6 +3663,14 @@
 "r": 0
 },
 {
+"w": "KUNAI",
+"c": [
+"Arme de Akali"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "LANCE",
 "c": [
 "Arme d'hast"
@@ -3221,6 +3682,14 @@
 "w": "LAPIN",
 "c": [
 "Animal de Aurora"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "LARME",
+"c": [
+"Goutte d'émotion"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -3243,6 +3712,14 @@
 "r": 0
 },
 {
+"w": "LICHE",
+"c": [
+"Mort-vivant magique"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "LIGUE",
 "c": [
 "Compétition des Invocateurs"
@@ -3251,11 +3728,27 @@
 "r": 0
 },
 {
+"w": "LIVRE",
+"c": [
+"Objet de Yuumi"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "LOBBY",
 "c": [
 "Salle d'attente"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "LOTUS",
+"c": [
+"Fleur de Ionia"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3268,9 +3761,18 @@
 "r": 0
 },
 {
+"w": "LUEUR",
+"c": [
+"Lumière faible"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "MAGIE",
 "c": [
-"Pouvoir de Runeterra"
+"Pouvoir de Runeterra",
+"Pouvoir des mages"
 ],
 "cat": "Régions, lieux et lore",
 "r": 0
@@ -3287,6 +3789,22 @@
 "w": "MATCH",
 "c": [
 "Rencontre"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "MECHA",
+"c": [
+"Ligne de skins de robots géants"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
+"w": "MECHE",
+"c": [
+"Cordon de bombe"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -3335,6 +3853,22 @@
 "Enfant de Ixtal"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "MOINE",
+"c": [
+"Lee Sin en est un"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "MYTHE",
+"c": [
+"Récit ancien"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3391,12 +3925,36 @@
 "r": 0
 },
 {
+"w": "NINJA",
+"c": [
+"Ligne de skins furtive"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "NOXUS",
 "c": [
 "Empire expansionniste",
 "Cité de Darius"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "NUAGE",
+"c": [
+"Brouillard"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "OASIS",
+"c": [
+"Point d'eau du désert"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3482,6 +4040,14 @@
 "r": 1
 },
 {
+"w": "PERLE",
+"c": [
+"Joyau des mers"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "PETIT",
 "c": [
 "Qualificatif de Teemo"
@@ -3493,6 +4059,14 @@
 "w": "PIEGE",
 "c": [
 "Arme de Caitlyn"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "PLAGE",
+"c": [
+"Rive de sable"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -3555,6 +4129,14 @@
 "r": 0
 },
 {
+"w": "QUETE",
+"c": [
+"Mission"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "QUEUE",
 "c": [
 "File d'attente"
@@ -3578,6 +4160,14 @@
 "Soutien oiseau"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "REGNE",
+"c": [
+"Période de domination"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3615,6 +4205,14 @@
 "r": 0
 },
 {
+"w": "ROBOT",
+"c": [
+"Mécanique de Blitzcrank"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ROCHE",
 "c": [
 "Matière de Malphite"
@@ -3642,6 +4240,14 @@
 "w": "ROUTE",
 "c": [
 "Chemin d'une voie"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "RUINE",
+"c": [
+"Vestige"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -3702,6 +4308,22 @@
 "Monter en puissance"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SCEAU",
+"c": [
+"Cachet de pouvoir"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "SCENE",
+"c": [
+"Estrade"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -3872,10 +4494,11 @@
 {
 "w": "STADE",
 "c": [
-"Enceinte de finale"
+"Enceinte de finale",
+"Enceinte de sport"
 ],
 "cat": "Équipes, compétitions et lieux",
-"r": 1
+"r": 0
 },
 {
 "w": "STOMP",
@@ -3964,10 +4587,27 @@
 "r": 0
 },
 {
+"w": "TITAN",
+"c": [
+"Géant de pierre"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "TOMBE",
+"c": [
+"Lieu de repos"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "TOTEM",
 "c": [
 "Balise de départ",
-"Relique de vision"
+"Relique de vision",
+"Idole de bois"
 ],
 "cat": "Objets",
 "r": 0
@@ -3996,6 +4636,14 @@
 "Créature de Trundle"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TRONE",
+"c": [
+"Siège du roi"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4061,9 +4709,18 @@
 "r": 1
 },
 {
+"w": "VISER",
+"c": [
+"Cadrer sa cible"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "VOILE",
 "c": [
-"Objet qui bloque un sort"
+"Objet qui bloque un sort",
+"Tissu du navire"
 ],
 "cat": "Objets",
 "r": 0
@@ -4173,6 +4830,14 @@
 "r": 0
 },
 {
+"w": "ARCHER",
+"c": [
+"Tireur à l'arc"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ARDENT",
 "c": [
 "Encensoir de soutien",
@@ -4185,6 +4850,14 @@
 "w": "ARGENT",
 "c": [
 "Rang après bronze"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ARMURE",
+"c": [
+"Protection de Galio"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -4217,6 +4890,14 @@
 "r": 0
 },
 {
+"w": "BANDIT",
+"c": [
+"Hors-la-loi"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "BANDLE",
 "c": [
 "Cité des yordles",
@@ -4234,6 +4915,14 @@
 "r": 0
 },
 {
+"w": "BATEAU",
+"c": [
+"Moyen de transport de Gangplank"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "BERLIN",
 "c": [
 "Ville de finale 2015"
@@ -4242,12 +4931,28 @@
 "r": 1
 },
 {
+"w": "BLASON",
+"c": [
+"Armoiries"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "BOTTES",
 "c": [
 "Objet de vitesse",
 "Chaussures de champion"
 ],
 "cat": "Objets",
+"r": 0
+},
+{
+"w": "BRAISE",
+"c": [
+"Reste de feu"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4285,12 +4990,28 @@
 "r": 1
 },
 {
+"w": "CASQUE",
+"c": [
+"Coiffe de Garen"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "CASTER",
 "c": [
 "Commentateur"
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "CENDRE",
+"c": [
+"Reste de brûlure"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "CHAINE",
@@ -4309,6 +5030,22 @@
 "r": 0
 },
 {
+"w": "CHANCE",
+"c": [
+"Atout de Twisted Fate"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "CHARME",
+"c": [
+"Pouvoir de Ahri"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "CHASSE",
 "c": [
 "Activité de Nidalee"
@@ -4320,6 +5057,22 @@
 "w": "CHEMIN",
 "c": [
 "Voie entre deux bases"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "CHEVAL",
+"c": [
+"Monture de Hecarim"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "CHIMIE",
+"c": [
+"Science de Singed"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -4346,6 +5099,30 @@
 "Réussite sous pression"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "CORAIL",
+"c": [
+"Récif des mers"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "COSMIC",
+"c": [
+"Ligne de skins de l'espace"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
+"w": "CRYPTE",
+"c": [
+"Caveau"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4384,6 +5161,14 @@
 "r": 0
 },
 {
+"w": "DESTIN",
+"c": [
+"Pouvoir de Twisted Fate"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "DRAGON",
 "c": [
 "Monstre épique",
@@ -4399,6 +5184,14 @@
 "Frère de Darius"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "ECLAIR",
+"c": [
+"Éclat de Zeri"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4445,11 +5238,27 @@
 "r": 0
 },
 {
+"w": "EPERON",
+"c": [
+"Pointe de botte"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "EPINES",
 "c": [
 "Armure qui renvoie les coups"
 ],
 "cat": "Objets",
+"r": 0
+},
+{
+"w": "EPIQUE",
+"c": [
+"Skin de rang élevé"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
@@ -4483,6 +5292,14 @@
 "Tireur blond et aventurier"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "FAERIE",
+"c": [
+"Ligne de skins de fées"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
@@ -4534,9 +5351,25 @@
 "r": 1
 },
 {
+"w": "FLAMME",
+"c": [
+"Pouvoir de Brand"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "FLECHE",
 "c": [
 "Munition de Ashe"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "FLEUVE",
+"c": [
+"Grand cours d'eau"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -4549,6 +5382,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "FORGER",
+"c": [
+"Fabriquer une arme"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "FOUDRE",
@@ -4583,6 +5424,14 @@
 "r": 0
 },
 {
+"w": "GLOIRE",
+"c": [
+"Renommée"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "GRAGAS",
 "c": [
 "Ivrogne bagarreur",
@@ -4609,6 +5458,22 @@
 "r": 0
 },
 {
+"w": "GROOVE",
+"c": [
+"Ligne de skins de danse"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
+"w": "GROTTE",
+"c": [
+"Cavité de montagne"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "GROUPE",
 "c": [
 "Poule de tournoi"
@@ -4619,7 +5484,8 @@
 {
 "w": "GUERRE",
 "c": [
-"Conflit de Runeterra"
+"Conflit de Runeterra",
+"Conflit de Noxus"
 ],
 "cat": "Régions, lieux et lore",
 "r": 0
@@ -4746,6 +5612,14 @@
 "r": 1
 },
 {
+"w": "KATANA",
+"c": [
+"Lame de Yasuo"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "KENNEN",
 "c": [
 "Cœur de la tempête",
@@ -4793,7 +5667,8 @@
 "w": "KRAKEN",
 "c": [
 "Bouclier de tireur",
-"Tueur de colosses"
+"Tueur de colosses",
+"Monstre des mers"
 ],
 "cat": "Objets",
 "r": 0
@@ -4837,6 +5712,22 @@
 "Combattant au coup du dragon"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "LEURRE",
+"c": [
+"Piège de Shaco"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "LIEVRE",
+"c": [
+"Animal rapide"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4898,12 +5789,28 @@
 "r": 1
 },
 {
+"w": "MAITRE",
+"c": [
+"Titre de Yi"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "MAOKAI",
 "c": [
 "Tordu",
 "Tank-arbre"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "MARAIS",
+"c": [
+"Terre humide"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -4915,9 +5822,25 @@
 "r": 0
 },
 {
+"w": "MASQUE",
+"c": [
+"Visage de Shaco"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "MASTER",
 "c": [
 "Rang après diamant"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "MIROIR",
+"c": [
+"Reflet de Shaco"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -4928,6 +5851,14 @@
 "Baron du jeu"
 ],
 "cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "NAVIRE",
+"c": [
+"Bateau de Bilgewater"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -5023,6 +5954,15 @@
 "r": 0
 },
 {
+"w": "PIRATE",
+"c": [
+"Habitant de Bilgewater",
+"Ligne de skins de Bilgewater"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "POISON",
 "c": [
 "Arme de Twitch"
@@ -5040,11 +5980,43 @@
 "r": 0
 },
 {
+"w": "POUDRE",
+"c": [
+"Matière explosive"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "POULPE",
+"c": [
+"Créature de tentacules"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "POWDER",
 "c": [
 "Jinx avant le chaos"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "PRISON",
+"c": [
+"Lieu de Hecarim"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "PROJET",
+"c": [
+"Ligne de skins futuristes"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
@@ -5166,6 +6138,14 @@
 "r": 0
 },
 {
+"w": "REQUIN",
+"c": [
+"Animal de Fizz"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ROOKIE",
 "c": [
 "Mid laner coréen",
@@ -5261,6 +6241,14 @@
 "r": 0
 },
 {
+"w": "SIRENE",
+"c": [
+"Créature des mers"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "SNEAKY",
 "c": [
 "ADC américain",
@@ -5298,6 +6286,14 @@
 "w": "SOMBRE",
 "c": [
 "Qualificatif de Brume noire"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "SOMMET",
+"c": [
+"Cime"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -5379,6 +6375,14 @@
 "r": 1
 },
 {
+"w": "TEMPLE",
+"c": [
+"Lieu sacré de Ionia"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "THESHY",
 "c": [
 "Top laner chinois",
@@ -5394,6 +6398,30 @@
 "Soutien à la lanterne"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "TIREUR",
+"c": [
+"Champion à distance"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "TORTUE",
+"c": [
+"Animal de Taliyah"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "TRESOR",
+"c": [
+"Butin du pirate"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -5423,12 +6451,28 @@
 "r": 1
 },
 {
+"w": "ULTIME",
+"c": [
+"Skin au prestige absolu"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "VANDER",
 "c": [
 "Père de substitution de Vi et Powder",
 "Gardien du Pit"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "VAPEUR",
+"c": [
+"Technologie de Piltover"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -5465,6 +6509,22 @@
 "Couleur du Vide"
 ],
 "cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "VOLCAN",
+"c": [
+"Montagne de feu"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "WINTER",
+"c": [
+"Ligne de skins d'hiver"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
@@ -5580,6 +6640,14 @@
 "r": 0
 },
 {
+"w": "ZOMBIE",
+"c": [
+"Mort-vivant"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ALISTAR",
 "c": [
 "Minotaure protecteur",
@@ -5621,6 +6689,14 @@
 "r": 0
 },
 {
+"w": "BALEINE",
+"c": [
+"Géant des mers"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "BANSHEE",
 "c": [
 "Voile qui bloque un sort",
@@ -5640,11 +6716,27 @@
 "r": 0
 },
 {
+"w": "BLOSSOM",
+"c": [
+"Ligne de skins de fleurs"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "BOTLANE",
 "c": [
 "Voie basse"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BOUFFON",
+"c": [
+"Shaco en est un"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -5741,11 +6833,35 @@
 "r": 1
 },
 {
+"w": "CAVERNE",
+"c": [
+"Grande grotte"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "CHAINES",
+"c": [
+"Arme de Thresh"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "CHEESER",
 "c": [
 "Tenter une stratégie surprise"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "CHIMERE",
+"c": [
+"Bête fabuleuse"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -5800,7 +6916,8 @@
 {
 "w": "CRISTAL",
 "c": [
-"Pierre précieuse"
+"Pierre précieuse",
+"Pierre de Skarner"
 ],
 "cat": "Objets",
 "r": 0
@@ -5855,11 +6972,43 @@
 "r": 1
 },
 {
+"w": "DRAPEAU",
+"c": [
+"Emblème de l'équipe"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "EMBLEME",
+"c": [
+"Symbole"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "ENCLUME",
+"c": [
+"Outil du forgeron"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "ESSENCE",
 "c": [
 "Monnaie bleue du jeu"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "ETERNUM",
+"c": [
+"Ligne de skins de l'éternité"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
@@ -5877,6 +7026,14 @@
 "Fatigue"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FALAISE",
+"c": [
+"Paroi de roche"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -5930,6 +7087,22 @@
 "r": 1
 },
 {
+"w": "GARDIEN",
+"c": [
+"Protecteur de la tour"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "GRIFFON",
+"c": [
+"Créature ailée"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "GUINSOO",
 "c": [
 "Lame qui monte en puissance",
@@ -5957,6 +7130,14 @@
 "r": 0
 },
 {
+"w": "HONNEUR",
+"c": [
+"Valeur de Demacia"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "IMAGINE",
 "c": [
 "Groupe de League, avec Dragons"
@@ -5971,6 +7152,14 @@
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "JAVELOT",
+"c": [
+"Lance de jet"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "KALISTA",
@@ -6036,6 +7225,14 @@
 "r": 0
 },
 {
+"w": "LEGENDE",
+"c": [
+"Récit célèbre"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "LEHENDS",
 "c": [
 "Support coréen",
@@ -6075,6 +7272,14 @@
 "Pouvoir de Lux"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "MACHINE",
+"c": [
+"Appareil de Piltover"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -6151,6 +7356,14 @@
 "r": 0
 },
 {
+"w": "MONTURE",
+"c": [
+"Animal de selle"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "MORGANA",
 "c": [
 "Déchue",
@@ -6195,6 +7408,14 @@
 "r": 1
 },
 {
+"w": "ODYSSEY",
+"c": [
+"Ligne de skins de l'espace"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "ORIANNA",
 "c": [
 "Dame mécanique",
@@ -6209,6 +7430,14 @@
 "Surpasser l'adversaire"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "OVATION",
+"c": [
+"Applaudissements"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -6231,6 +7460,14 @@
 "w": "PLATINE",
 "c": [
 "Rang après or"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "POISSON",
+"c": [
+"Animal de Fizz"
 ],
 "cat": "Mots courants évoquant LoL",
 "r": 0
@@ -6290,7 +7527,8 @@
 {
 "w": "RELIQUE",
 "c": [
-"Objet de départ"
+"Objet de départ",
+"Objet ancien"
 ],
 "cat": "Objets",
 "r": 0
@@ -6314,7 +7552,8 @@
 {
 "w": "RIVIERE",
 "c": [
-"Cours d'eau central"
+"Cours d'eau central",
+"Couloir central"
 ],
 "cat": "Lexique du jeu",
 "r": 0
@@ -6425,9 +7664,18 @@
 "w": "SORCIER",
 "c": [
 "Bottes de puissance",
-"Chaussures du mage"
+"Chaussures du mage",
+"Mage de Ryze"
 ],
 "cat": "Objets",
+"r": 0
+},
+{
+"w": "SOURIRE",
+"c": [
+"Expression de Jinx"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -6442,9 +7690,18 @@
 "w": "SPECTRE",
 "c": [
 "Bouclier magique",
-"Voile des esprits"
+"Voile des esprits",
+"Fantôme"
 ],
 "cat": "Objets",
+"r": 0
+},
+{
+"w": "SPIRALE",
+"c": [
+"Forme en tourbillon"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -6571,6 +7828,14 @@
 "r": 0
 },
 {
+"w": "VAMPIRE",
+"c": [
+"Créature de la nuit"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "VASTAYA",
 "c": [
 "Peuple mi-humain mi-animal"
@@ -6636,6 +7901,14 @@
 ],
 "cat": "Scène française, streamers et commentateurs",
 "r": 1
+},
+{
+"w": "ZOMBIES",
+"c": [
+"Ligne de skins d'horreur"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
 },
 {
 "w": "AMULETTE",
@@ -6728,6 +8001,14 @@
 "r": 1
 },
 {
+"w": "CAVALIER",
+"c": [
+"Guerrier monté"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "CHAMPION",
 "c": [
 "Personnage jouable"
@@ -6746,7 +8027,8 @@
 {
 "w": "COURONNE",
 "c": [
-"Coiffe de roi"
+"Coiffe de roi",
+"Coiffe du roi"
 ],
 "cat": "Objets",
 "r": 0
@@ -6760,6 +8042,14 @@
 "r": 0
 },
 {
+"w": "DISCIPLE",
+"c": [
+"Élève de Ionia"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "EMERAUDE",
 "c": [
 "Rang après platine"
@@ -6768,11 +8058,27 @@
 "r": 0
 },
 {
+"w": "EMPYREAN",
+"c": [
+"Ligne de skins célestes"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "ENFORCER",
 "c": [
 "Policier de Piltover"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "FAUCILLE",
+"c": [
+"Arme de moissonneur"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -6806,6 +8112,22 @@
 "Gant de combattant"
 ],
 "cat": "Objets",
+"r": 0
+},
+{
+"w": "GRIMOIRE",
+"c": [
+"Livre de magie"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "GUARDIAN",
+"c": [
+"Ligne de skins de gardiens"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
@@ -6844,6 +8166,14 @@
 "r": 0
 },
 {
+"w": "HIGHNOON",
+"c": [
+"Ligne de skins de western"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "HUMANOID",
 "c": [
 "Mid laner tchèque",
@@ -6851,6 +8181,14 @@
 ],
 "cat": "Joueurs pro",
 "r": 1
+},
+{
+"w": "INFERNAL",
+"c": [
+"Ligne de skins du feu"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
 },
 {
 "w": "INSTITUT",
@@ -6946,6 +8284,22 @@
 "r": 1
 },
 {
+"w": "MONTAGNE",
+"c": [
+"Relief de Targon"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "MYTHIQUE",
+"c": [
+"Skin de rang supérieur"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "NAUTILUS",
 "c": [
 "Titan des profondeurs",
@@ -6990,12 +8344,28 @@
 "r": 0
 },
 {
+"w": "PISTOLET",
+"c": [
+"Arme de Miss Fortune"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "PLAYOFFS",
 "c": [
 "Phase finale d'une ligue"
 ],
 "cat": "Équipes, compétitions et lieux",
 "r": 1
+},
+{
+"w": "PRESTIGE",
+"c": [
+"Skin de collection"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
 },
 {
 "w": "PROPHETE",
@@ -7012,6 +8382,22 @@
 "Crocodile guerrier"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "SAMOURAI",
+"c": [
+"Ligne de skins japonais"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
+"w": "SANGLIER",
+"c": [
+"Monture de Sejuani"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -7040,6 +8426,14 @@
 "r": 1
 },
 {
+"w": "SENTINEL",
+"c": [
+"Ligne de skins de gardiens"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "SHANGHAI",
 "c": [
 "Ville de Chine"
@@ -7048,11 +8442,35 @@
 "r": 1
 },
 {
+"w": "SHURIKEN",
+"c": [
+"Étoile de Akali"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "SNOWBALL",
 "c": [
 "Avantage qui s'accumule"
 ],
 "cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SNOWMOON",
+"c": [
+"Ligne de skins de la nouvelle lune"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
+"w": "SORCIERE",
+"c": [
+"Mage de Morgana"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -7087,6 +8505,14 @@
 ],
 "cat": "Joueurs pro",
 "r": 1
+},
+{
+"w": "TONNERRE",
+"c": [
+"Bruit de la tempête"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
 },
 {
 "w": "TOURELLE",
@@ -7190,6 +8616,14 @@
 "r": 0
 },
 {
+"w": "BLOODMOON",
+"c": [
+"Ligne de skins de la lune rouge"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "CHAMPIONS",
 "c": [
 "Personnages jouables"
@@ -7215,11 +8649,27 @@
 "r": 1
 },
 {
+"w": "DREADNOVA",
+"c": [
+"Ligne de skins de l'espace"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "ELDERWOOD",
 "c": [
 "Ligne de skins de forêt"
 ],
 "cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "ENGRENAGE",
+"c": [
+"Pièce de Orianna"
+],
+"cat": "Mots courants évoquant LoL",
 "r": 0
 },
 {
@@ -7238,6 +8688,14 @@
 "Capitaine pirate"
 ],
 "cat": "Champions",
+"r": 0
+},
+{
+"w": "HALLOWEEN",
+"c": [
+"Fête des citrouilles"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
@@ -7283,6 +8741,22 @@
 "r": 0
 },
 {
+"w": "POOLPARTY",
+"c": [
+"Ligne de skins de plage"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
+"w": "POUSSIERE",
+"c": [
+"Matière du désert"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
 "w": "PRECISION",
 "c": [
 "Arbre de runes jaune",
@@ -7298,6 +8772,14 @@
 "Rune de Domination"
 ],
 "cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "PULSEFIRE",
+"c": [
+"Ligne de skins futuriste"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
@@ -7334,6 +8816,22 @@
 ],
 "cat": "Joueurs pro",
 "r": 1
+},
+{
+"w": "SQUELETTE",
+"c": [
+"Corps de Karthus"
+],
+"cat": "Mots courants évoquant LoL",
+"r": 0
+},
+{
+"w": "STARGUARD",
+"c": [
+"Ligne de skins de filles magiques"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
 },
 {
 "w": "STOCKHOLM",
@@ -7409,11 +8907,27 @@
 "r": 0
 },
 {
+"w": "ASTRONAUTE",
+"c": [
+"Ligne de skins de l'espace"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "BANDLECITY",
 "c": [
 "Cité des yordles"
 ],
 "cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "BATTLECAST",
+"c": [
+"Ligne de skins de robots"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
@@ -7487,6 +9001,14 @@
 "r": 0
 },
 {
+"w": "HEARTSTEEL",
+"c": [
+"Ligne de skins de groupe de pop"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
 "w": "INHIBITEUR",
 "c": [
 "Bâtiment de base"
@@ -7510,6 +9032,14 @@
 ],
 "cat": "Joueurs pro",
 "r": 1
+},
+{
+"w": "LEGENDAIRE",
+"c": [
+"Skin le plus rare"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
 },
 {
 "w": "LOSANGELES",
@@ -7611,6 +9141,22 @@
 "Voie de la magie"
 ],
 "cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "SOULFIGHTER",
+"c": [
+"Ligne de skins de combattants"
+],
+"cat": "Lignes de skins et univers",
+"r": 0
+},
+{
+"w": "SPACEGROOVE",
+"c": [
+"Ligne de skins disco de l'espace"
+],
+"cat": "Lignes de skins et univers",
 "r": 0
 },
 {
