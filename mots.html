@@ -43,6 +43,8 @@
   .slot.fixed { color: var(--gold, #e6c36a); border-color: var(--gold, #e6c36a); background: rgba(230,195,106,.1); }
   .plate { position: relative; display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
   .plate b { font-size: 1.2rem; font-weight: 700; letter-spacing: 0; color: var(--gold); text-transform: none; }
+  .msg .pts { display: block; margin-top: 6px; color: var(--gold); font-weight: 700; font-size: .95rem; }
+  .plate[hidden] { display: none; } #speedPlate { color: var(--gold) !important; } #speedPlate.low { opacity: .45; }
   .plate.broken { border-color: #ff4a4a; color: #ffd9d9; }
   .plate.broken b { color: #ff6b6b; }
   .plate.broken::before, .plate.broken::after { content: "!"; position: absolute; top: 50%; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 1.35rem; line-height: 1; color: #ff3b3b; text-shadow: 0 0 8px rgba(255,59,59,.8); }
@@ -162,8 +164,11 @@
     <div class="bar">
       <div class="left">
         <div class="plates">
-          <span class="plate">Série <b id="streak">0</b></span>
+          <span class="plate" id="streakPlate">Série <b id="streak">0</b></span>
           <span class="plate" id="recordPlate">Record <b id="best">0</b></span>
+          <span class="plate" id="scorePlate" hidden>Score <b id="score">0</b></span>
+          <span class="plate" id="roundPlate" hidden>Mot <b id="rnd">1/10</b></span>
+          <span class="plate" id="speedPlate" hidden title="Bonus de rapidité : répondre vite rapporte jusqu'à 300 pts">⚡ <b id="speed">300</b></span>
         </div>
         <button class="alt easy" id="easy" type="button" aria-pressed="false" title="Affiche l'indice gratuitement dès le début">Mode facile : <b id="easyState">non</b></button>
       </div>
@@ -224,7 +229,13 @@ const $ = id => document.getElementById(id);
 const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toUpperCase().replace(/[^A-Z]/g, "");
 const shuffle = (a, rnd = Math.random) => { for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(rnd() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 
-let R = Math.random;   /* hasard de la manche : graine par jour en défi du jour, libre en mode infini */
+let R = Math.random;
+/* Défi du jour : 10 mots, points selon l'essai + bonus de rapidité (300 pts si ≤ 10 s, fond jusqu'à 0 à 60 s) */
+const POINTS = [1000, 600, 300], SPEED_MAX = 300, SPEED_FULL = 10, SPEED_ZERO = 60, DAILY_ROUNDS = 10;
+let score = 0, round = 0, found = 0, t0 = 0, speedTimer = null;
+const speedNow = () => { const t = (Date.now() - t0) / 1000; return t <= SPEED_FULL ? SPEED_MAX : Math.max(0, Math.round(SPEED_MAX * (SPEED_ZERO - t) / (SPEED_ZERO - SPEED_FULL) / 5) * 5); };
+function startSpeed() { clearInterval(speedTimer); t0 = Date.now(); $("speed").textContent = SPEED_MAX; $("speedPlate").classList.remove("low"); speedTimer = setInterval(() => { const v = speedNow(); $("speed").textContent = v; $("speedPlate").classList.toggle("low", v === 0); }, 250); }
+function stopSpeed() { clearInterval(speedTimer); }   /* hasard de la manche : graine par jour en défi du jour, libre en mode infini */
 let deck = [], cur = null, letters = [], picked = [], tries = 0, over = false, misses = [], fixedPos = [], easy = false;
 let streak = 0, best = 0, recordBroken = false;
 try { best = Number(localStorage.getItem("sdq_best_mots")) || 0; easy = localStorage.getItem("sdq_easy_mots") === "1"; } catch (e) {}
@@ -309,6 +320,8 @@ function renderDots() {
 }
 function renderBar() {
   $("streak").textContent = streak; $("best").textContent = best;
+  $("streakPlate").hidden = $("recordPlate").hidden = !FREE; $("scorePlate").hidden = $("roundPlate").hidden = $("speedPlate").hidden = FREE;
+  $("score").textContent = fmtN(score); $("rnd").textContent = Math.min(round + (over ? 0 : 1), DAILY_ROUNDS) + "/" + DAILY_ROUNDS;
   $("recordPlate").classList.toggle("broken", recordBroken);
 }
 function flash(msg) { $("flash").textContent = msg; clearTimeout(flash.t); flash.t = setTimeout(() => { $("flash").textContent = ""; }, 2200); }
@@ -352,10 +365,10 @@ window.addEventListener("resize", fitRows);
 function _newRound() {
   let pick;
   if (FREE) { R = Math.random; if (!deck.length) deck = shuffle(WORDS.filter(w => w[0] !== "Champion").concat(shuffle(WORDS.filter(w => w[0] === "Champion")).slice(0, 40))); pick = deck.pop(); }
-  else {                                     /* défi du jour : même série de mots pour tout le monde (le mot n° k = nombre de mots déjà trouvés) */
+  else {                                     /* défi du jour : même série de mots pour tout le monde (mot n° k = nombre de manches jouées) */
     const r = SDQ.rng("mots", dayKey());
     const order = SDQ.shuffle(WORDS.filter(w => w[0] !== "Champion").concat(SDQ.shuffle(WORDS.filter(w => w[0] === "Champion"), r).slice(0, 40)), r);
-    pick = order[streak % order.length]; R = SDQ.rng("mots", dayKey(), streak);
+    pick = order[round % order.length]; R = SDQ.rng("mots", dayKey(), round);
   }
   const [cat, display, def0] = pick;
   const word0 = norm(display);
@@ -369,6 +382,7 @@ function _newRound() {
   $("info").innerHTML = `<b>${cur.word.length} lettres</b>${parts.length > 1 ? " · " + parts.length + " mots" : ""}`;
   $("catrow").innerHTML = `<span class="cat">${cur.cat}</span>`;
   showHint(); fitRows(); renderTiles(true); setAnswer(""); renderDots(); renderBar(); showClue(cur);
+  if (!FREE) startSpeed();
   $("answer").focus({ preventScroll: true });
 }
 
@@ -401,7 +415,7 @@ function submit() {
   loseTry(); revealLetter(); setAnswer("");
 }
 function endRound(win) {
-  over = true; cur.won = win; const prevStreak = streak;
+  over = true; cur.won = win; stopSpeed();
   /* Affiche le mot dans le bon ordre dans les cases */
   const fm = fixedMap(), taken = new Set(fm.values()); picked = [];
   cur.word.split("").forEach((ch, pos) => { if (fm.has(pos)) return; const i = letters.findIndex((l, k) => l === ch && !taken.has(k)); taken.add(i); picked.push(i); });
@@ -409,15 +423,20 @@ function endRound(win) {
   $("slots").className = "slots " + (win ? "ok" : "ko");
   $("def").textContent = cur.hasDef ? cur.def : "";
   $("play").hidden = true; $("result").hidden = false;
-  if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best_mots", best); } catch (e) {} } }
+  if (win) { streak++; if (FREE && streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best_mots", best); } catch (e) {} } }
   else { streak = 0; recordBroken = false; }
   const n = tries + (win ? 1 : 0);
-  $("msg").className = "msg " + (win ? "ok" : "ko");
-  $("msg").innerHTML = win ? `Bravo, c'était ${cur.display} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${cur.display}.`;
+  let ptsLine = "";
   if (!FREE) {
-    if (win) dailySave({ done: false, streak });
-    else { dailySave({ done: true, streak: prevStreak }); dailyDone = true; $("next").textContent = "Voir mon résultat →"; }
+    const pts = win ? (POINTS[n - 1] || 0) : 0, spd = win ? speedNow() : 0;
+    score += pts + spd; round++; if (win) found++;
+    ptsLine = win ? `<span class="pts">+${pts} pts${spd ? ` · ⚡ rapidité : +${spd}` : ""}</span>` : `<span class="pts" style="color:var(--ko)">Manche perdue : 0 pt</span>`;
+    const fin = round >= DAILY_ROUNDS;
+    dailySave({ done: fin, score, streak, round, found });
+    if (fin) { dailyDone = true; $("next").textContent = "Voir mon résultat →"; ptsLine += `<span class="pts">Partie terminée · score final ${fmtN(score)}</span>`; }
   }
+  $("msg").className = "msg " + (win ? "ok" : "ko");
+  $("msg").innerHTML = (win ? `Bravo, c'était ${cur.display} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small>` : `Perdu… c'était ${cur.display}.`) + ptsLine;
   renderSlots(); syncTiles(); renderDots(); renderBar();
   $("next").focus();
 }
@@ -429,7 +448,7 @@ function endRound(win) {
    ============================================================ */
 const DAILY_KEY = "sdq_daily_mots", FREE = /[?&](libre|free)(&|=|$)/.test(location.search);
 let dailyDone = false;
-{ const c = document.getElementById("modechip"); if (c) { c.textContent = FREE ? "Mode infini" : "Défi du jour · 1 partie"; c.classList.toggle("free", FREE); } }
+{ const c = document.getElementById("modechip"); if (c) { c.textContent = FREE ? "Mode infini" : "Défi du jour · 10 mots"; c.classList.toggle("free", FREE); } }
 const dayKey = SDQ.dayKey;
 function dailyLoad() { try { const d = JSON.parse(localStorage.getItem(DAILY_KEY)); return d && d.day === dayKey() ? d : null; } catch (e) { return null; } }
 function dailySave(d) { try { localStorage.setItem(DAILY_KEY, JSON.stringify(Object.assign({ day: dayKey() }, d))); } catch (e) {} }
@@ -438,7 +457,7 @@ function showDaily(d) {
   dailyDone = true;
   document.querySelector(".game").style.display = "none";
   const lb = document.getElementById("lib-note"); if (lb) lb.style.display = "none";
-  $("dailyStats").innerHTML = `<div class="stat">Mots trouvés<b>${fmtN(d.streak)}</b></div>`;
+  $("dailyStats").innerHTML = `<div class="stat">Score final<b>${fmtN(d.score)}</b></div><div class="stat">Trouvés<b>${fmtN(d.found)}/${DAILY_ROUNDS}</b></div>`;
   $("daily").hidden = false;
   const day0 = dayKey();
   const tick = () => {
@@ -479,14 +498,15 @@ document.addEventListener("keydown", e => { if (over && (e.key === "Enter") && d
   const d = FREE ? null : dailyLoad();
   if (d && d.done) showDaily(d);
   else {
-    if (d) { streak = d.streak || 0; }
+    if (d) { streak = d.streak || 0; score = d.score || 0; round = d.round || 0; found = d.found || 0; }
     if (FREE) newRound();
     else SDQ.intro({
-      title: "Mots en désordre", sub: "Défi du jour · 1 partie",
+      title: "Mots en désordre", sub: "Défi du jour · 10 mots",
       rules: [["🔤", "Remets les lettres dans l'ordre pour retrouver le mot du lexique ou de l'esport LoL. Les mots sont les mêmes pour tout le monde aujourd'hui."],
-              ["🎯", "<b>3 essais</b> par mot. Chaque erreur te <b>révèle une lettre</b> à sa place."],
-              ["🏆", "Ton score = le <b>nombre de mots trouvés d'affilée</b>. Dès que tu rates un mot, la partie est terminée."],
-              ["🏁", "Une seule partie par jour : tiens le plus longtemps possible !"]],
+              ["📚", "<b>10 mots</b> à retrouver."],
+              ["🎯", "<b>3 essais</b> par mot : chaque erreur te <b>révèle une lettre</b> à sa place. Plus tu trouves tôt, plus tu gagnes : <b>1000 · 600 · 300</b> pts."],
+              ["⚡", "<b>Rapidité</b> : jusqu'à <b>+300 pts</b> si tu réponds en moins de 10 s, le bonus fond jusqu'à 0 à 60 s. Le chrono part dès que le mot s'affiche."],
+              ["🏁", "Une seule partie par jour : un mot raté vaut 0 pt, mais la partie continue."]],
       button: (d ? "Reprendre la partie" : "Lancer la partie") }).then(newRound);
   }
 }
