@@ -209,6 +209,33 @@
 
   <div class="sec zonehead zone2"><h2>Mode infini</h2><span>sans limite de parties</span></div>
   <div class="grid">
+    <a class="card big" href="mots.html?libre">
+      <div class="deco" aria-hidden="true">
+        <div class="wcard"><div class="wimg"><img class="nash" src="nashor.jpg" alt=""></div><span class="scr" aria-hidden="true"><i>S</i><i>H</i><i>N</i><i>A</i><i>R</i><i>O</i></span><span class="ans"><i>N</i><i>A</i><i>S</i><i>H</i><i>O</i><i>R</i></span></div>
+        <div class="wcard"><div class="wimg"><img class="jay" src="images/Jayce_000_Jayce.jpg" alt=""></div><span class="scr" aria-hidden="true"><i>C</i><i>J</i><i>Y</i><i>E</i><i>A</i></span><span class="ans"><i>J</i><i>A</i><i>Y</i><i>C</i><i>E</i></span></div>
+        <div class="wcard"><div class="wimg"><img class="ward" src="ward.png" alt=""></div><span class="scr" aria-hidden="true"><i>R</i><i>D</i><i>A</i><i>W</i></span><span class="ans"><i>W</i><i>A</i><i>R</i><i>D</i></span></div>
+        <div class="wcard"><div class="wimg"><img src="flash.jpg" alt=""></div><span class="scr" aria-hidden="true"><i>S</i><i>H</i><i>A</i><i>L</i><i>F</i></span><span class="ans"><i>F</i><i>L</i><i>A</i><i>S</i><i>H</i></span></div>
+      </div>
+      <span class="ico"><svg viewBox="0 0 24 24"><path d="M4 18L9 6l5 12M5.8 14h6.4"/><path d="M16 6h4v12h-4"/></svg></span>
+      <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span><span class="chip day">Illimité</span></div>
+      <h3>Mots en désordre</h3>
+      <p>Remets les lettres dans l'ordre pour retrouver un mot du lexique ou de l'esport de League of Legends. Sans limite de parties : entraîne-toi autant que tu veux.</p>
+      <div class="meta">
+        <span class="cta">Jouer <span aria-hidden="true">›</span></span>
+        <span class="played" id="playedMotsFree">Jamais joué</span>
+      </div>
+    </a>
+    <a class="card small" href="artwork.html?libre">
+      <img class="bg" src="images/Briar_000_Briar.jpg" alt="">
+      <span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 16l5-5 4 4 3-3 6 6"/><circle cx="9" cy="9" r="1.4"/></svg></span>
+      <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span><span class="chip day">Illimité</span></div>
+      <h3>Splash Art</h3>
+      <p>Devine le champion à partir d'un morceau de splash art. Sans limite de parties.</p>
+      <div class="meta">
+        <span class="cta">Jouer <span aria-hidden="true">›</span></span>
+        <span class="played" id="playedFree">Jamais joué</span>
+      </div>
+    </a>
     <a class="card small" href="recette.html">
       <img class="bg" src="images/Irelia_063_Breadsticks-Irelia.jpg" alt="">
       <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 3l8 4.5v9L12 21l-8-4.5v-9z"/><path d="M12 12l8-4.5M12 12v9M12 12L4 7.5"/></svg></span>
@@ -252,6 +279,11 @@
   }
   var nf = function (n) { return Number(n || 0).toLocaleString("fr-FR"); };
   daily("sdq_daily_art", "played", function (d) { return "<b>" + nf(d.score) + "</b> pts"; });
+  try {
+    var bf = Number(localStorage.getItem("sdq_best")) || 0, bmf = Number(localStorage.getItem("sdq_best_mots")) || 0;
+    if (bf > 0) document.getElementById("playedFree").innerHTML = "Record <b>" + bf + "</b>";
+    if (bmf > 0) document.getElementById("playedMotsFree").innerHTML = "Record <b>" + bmf + "</b>";
+  } catch (e) {}
   daily("sdq_daily_mots", "playedMots", function (d) { return "<b>" + nf(d.streak) + "</b> mot" + (d.streak > 1 ? "s" : ""); });
 try {
   var bs = Number(localStorage.getItem("sdq_best_shop")) || 0;

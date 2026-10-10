@@ -149,6 +149,8 @@
   .daily .stat b { display: block; margin-top: 2px; font-size: 1.7rem; letter-spacing: 0; color: var(--gold); text-transform: none; }
   .daily p { margin: 0 0 14px; color: #c9d3e4; } .daily p b { color: var(--tx); font-variant-numeric: tabular-nums; }
   .daily .links a { color: var(--cyan); text-decoration: none; font-weight: 600; }
+  .modechip { display: inline-block; margin-top: 10px; padding: 3px 14px; border-radius: 99px; border: 1.5px solid var(--gold); color: var(--gold); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: rgba(230,195,106,.08); }
+  .modechip.free { border-color: var(--cyan); color: var(--cyan); background: rgba(63,193,224,.08); }
 </style>
 </head>
 <body>
@@ -173,6 +175,7 @@
   <section class="hero">
     <h1>Splash Art</h1>
     <p class="sub">À quel champion appartient ce splash art ?</p>
+    <span class="modechip" id="modechip"></span>
   </section>
 
   <section class="game">
@@ -226,7 +229,7 @@
     <h2>Partie du jour terminée</h2>
     <div class="stats" id="dailyStats"></div>
     <p>Prochaine partie dans <b id="dailyClock">--:--:--</b></p>
-    <div class="links"><a href="index.html">Retour aux jeux</a></div>
+    <div class="links"><a href="artwork.html?libre">Jouer en mode infini →</a> &nbsp;·&nbsp; <a href="index.html">Retour aux jeux</a></div>
   </section>
   <p class="note" id="lib-note"></p>
 </main>
@@ -561,6 +564,7 @@ $("dezoom").onclick = dezoom;
    ============================================================ */
 const DAILY_KEY = "sdq_daily_art", FREE = /[?&](libre|free)(&|=|$)/.test(location.search);
 let dailyDone = false;
+{ const c = document.getElementById("modechip"); if (c) { c.textContent = FREE ? "Mode infini" : "Défi du jour · 1 partie"; c.classList.toggle("free", FREE); } }
 const dayKey = () => new Date().toLocaleDateString("sv-SE");
 function dailyLoad() { try { const d = JSON.parse(localStorage.getItem(DAILY_KEY)); return d && d.day === dayKey() ? d : null; } catch (e) { return null; } }
 function dailySave(d) { try { localStorage.setItem(DAILY_KEY, JSON.stringify(Object.assign({ day: dayKey() }, d))); } catch (e) {} }
