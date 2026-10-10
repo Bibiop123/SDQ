@@ -60,6 +60,7 @@
   .plate { display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1px solid var(--line); border-radius: 12px; background: rgba(7,11,22,.6); color: var(--mu); font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
   /* Record battu : contour rouge + points d'exclamation */
   .plate { position: relative; transition: border-color .3s, box-shadow .3s; }
+  .plate[hidden] { display: none; } #speedPlate { color: var(--gold); border-color: rgba(230,195,106,.45); } #speedPlate.low { opacity: .45; }
   .plate.broken { border-color: #ff4a4a; color: #ffd9d9; }
   .plate.broken b { color: #ff6b6b; }
   .plate.broken::before, .plate.broken::after { content: "!"; position: absolute; top: 50%; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 1.35rem; line-height: 1; color: #ff3b3b; text-shadow: 0 0 8px rgba(255,59,59,.8); animation: bang .6s cubic-bezier(.2,1.6,.4,1) both; }
@@ -215,6 +216,8 @@
           <span class="plate">Série <b id="streak">0</b></span>
           <span class="plate" id="recordPlate">Record <b id="best">0</b></span>
           <span class="plate" id="scorePlate">Score <b id="score">0</b></span>
+          <span class="plate" id="roundPlate" hidden>Image <b id="rnd">1/10</b></span>
+          <span class="plate" id="speedPlate" title="Bonus de rapidité : répondre vite rapporte jusqu'à 300 pts">⚡ <b id="speed">300</b></span>
         </div>
         <div class="dots" id="dots" aria-label="Essais"></div>
       </div>
@@ -356,6 +359,12 @@ let streak = 0, best = 0, recordBroken = false;
 const POINTS = [1000, 600, 300, 100];      /* points selon l'essai (1er, 2e, 3e, 4e) */
 const COMBO_BONUS = 250, COMBO_MAX = 5;    /* bonus = 250 × (enchaînement − 1), plafonné à 5 × 250 */
 let score = 0, combo = 0, lastGain = null;
+/* Rapidité : bonus max si on répond en moins de 5 s, qui fond linéairement jusqu'à 0 à 30 s (seulement sur une bonne réponse) */
+const SPEED_MAX = 300, SPEED_FULL = 5, SPEED_ZERO = 30, DAILY_ROUNDS = 10;
+let t0 = 0, speedTimer = null, round = 0, found = 0;
+const speedNow = () => { const t = (Date.now() - t0) / 1000; return t <= SPEED_FULL ? SPEED_MAX : Math.max(0, Math.round(SPEED_MAX * (SPEED_ZERO - t) / (SPEED_ZERO - SPEED_FULL) / 5) * 5); };
+function startSpeed() { clearInterval(speedTimer); t0 = Date.now(); $("speed").textContent = SPEED_MAX; speedTimer = setInterval(() => { const v = speedNow(); $("speed").textContent = v; $("speedPlate").classList.toggle("low", v === 0); }, 250); }
+function stopSpeed() { clearInterval(speedTimer); }
 try { best = Number(localStorage.getItem("sdq_best")) || 0; } catch (e) {}
 
 const shuffle = a => { for (let i = a.length - 1; i > 0; i--) { const j = Math.random() * (i + 1) | 0; [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -387,6 +396,7 @@ function render() {
   $("art").style.transform = `scale(${over ? 1 : ZOOM[Math.min(tries, MAX_TRIES - 1)]})`;
   $("streak").textContent = streak; $("best").textContent = best; $("score").textContent = score.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
   $("recordPlate").classList.toggle("broken", recordBroken);
+  $("roundPlate").hidden = FREE; $("rnd").textContent = Math.min(round + (over ? 0 : 1), DAILY_ROUNDS) + "/" + DAILY_ROUNDS;
 }
 
 /* Nom du skin lu dans le nom du fichier : « Aatrox_030_DRX-Aatrox.jpg » -> « DRX Aatrox » */
@@ -412,7 +422,7 @@ function _newRound() {
   art.style.visibility = "hidden";
   art.style.transformOrigin = pickFocus(cur.face);
   render(); renderDots();
-  const show = () => { $("loading").hidden = true; art.style.visibility = "visible"; void art.offsetWidth; frame.classList.remove("noanim"); };
+  const show = () => { $("loading").hidden = true; art.style.visibility = "visible"; void art.offsetWidth; frame.classList.remove("noanim"); startSpeed(); };
   art.onload = () => { frame.style.aspectRatio = art.naturalWidth + " / " + art.naturalHeight; show(); };
   art.onerror = () => { console.warn("Image introuvable :", cur.img); if (ROUNDS.length > 1) newRound(); else show(); };
   art.src = cur.img;
@@ -430,32 +440,34 @@ function addGuess(name, ok) {
 }
 
 /* Points de la manche + bonus d'enchaînement de « first try » */
-function scoreRound(win, triesUsed) {
-  const before = combo; let pts = 0, bonus = 0;
+function scoreRound(win, triesUsed, speed) {
+  const before = combo; let pts = 0, bonus = 0; speed = speed || 0;
   if (win) {
     pts = POINTS[Math.min(triesUsed, POINTS.length) - 1] || 0;
     if (triesUsed === 1) { combo++; bonus = Math.min(combo - 1, COMBO_MAX) * COMBO_BONUS; } else combo = 0;
   } else combo = 0;
-  const lost = score; score = win ? score + pts + bonus : 0;     /* perdre remet le score à 0 */
+  const lost = score; score = win ? score + pts + bonus + speed : (FREE ? 0 : score);     /* mode infini : perdre remet le score à 0 ; défi du jour : on garde ses points, la manche vaut 0 */
   const f = $("ftry"); f.dataset.lvl = combo >= 5 ? 3 : combo >= 3 ? 2 : combo >= 1 ? 1 : 0; $("ftryN").textContent = combo;
   f.classList.remove("bump", "broke"); void f.offsetWidth;
   if (combo > before) f.classList.add("bump"); else if (before > 0) f.classList.add("broke");
-  const p = $("scorePlate"); p.classList.remove("gain"); void p.offsetWidth; if (pts + bonus) p.classList.add("gain");
-  return { pts, bonus, lost };
+  const p = $("scorePlate"); p.classList.remove("gain"); void p.offsetWidth; if (pts + bonus + speed) p.classList.add("gain");
+  return { pts, bonus, lost, speed };
 }
 function endRound(win) {
-  over = true; const prevStreak = streak;
+  over = true; stopSpeed(); const spd = win ? speedNow() : 0;
   $("frame").classList.add("revealed"); if (!win) $("frame").classList.add("lost");
   $("play").hidden = true; hideSuggestions(); $("result").hidden = false; $("hint").textContent = "";
   if (win) { streak++; if (streak > best) { if (best > 0) recordBroken = true; best = streak; try { localStorage.setItem("sdq_best", best); } catch (e) {} } } else { streak = 0; recordBroken = false; }
   const n = win ? tries + 1 : MAX_TRIES;
-  const sc = scoreRound(win, n);
-  const ptsLine = win ? `<span class="pts">+${sc.pts} pts${sc.bonus ? ` · enchaînement ×${combo} : +${sc.bonus}` : ""}</span>` : `<span class="pts" style="color:var(--ko)">${sc.lost ? "Score remis à 0 (−" + sc.lost.toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ") + " pts)" : "Score : 0"}</span>`;
+  const sc = scoreRound(win, n, spd);
+  const ptsLine = win ? `<span class="pts">+${sc.pts} pts${sc.speed ? ` · ⚡ rapidité : +${sc.speed}` : ""}${sc.bonus ? ` · enchaînement ×${combo} : +${sc.bonus}` : ""}</span>` : `<span class="pts" style="color:var(--ko)">${FREE ? (sc.lost ? "Score remis à 0 (−" + fmtN(sc.lost) + " pts)" : "Score : 0") : "Manche perdue : 0 pt"}</span>`;
   $("msg").className = "msg " + (win ? "ok" : "ko");
   $("msg").innerHTML = win ? `Bravo, c'était ${cur.name} !<small>Trouvé en ${n} essai${n > 1 ? "s" : ""}</small><small>Skin : ${skinOf(cur.img)}</small>${ptsLine}` : `Perdu… c'était ${cur.name}.<small>Skin : ${skinOf(cur.img)}</small>${ptsLine}`;
   if (!FREE) {
-    if (win) dailySave({ done: false, score, streak, combo });
-    else { dailySave({ done: true, score: sc.lost, streak: prevStreak }); dailyDone = true; $("next").textContent = "Voir mon résultat →"; $("msg").querySelector(".pts").innerHTML = "Partie terminée · score final " + fmtN(sc.lost); }
+    round++; if (win) found++;
+    const fin = round >= DAILY_ROUNDS;
+    dailySave({ done: fin, score, streak, combo, round, found });
+    if (fin) { dailyDone = true; $("next").textContent = "Voir mon résultat →"; $("msg").querySelector(".pts").innerHTML += "<br>Partie terminée · score final " + fmtN(score); }
   }
   renderDots(win); render(); updateTools();
   $("next").focus();
@@ -559,12 +571,12 @@ $("dezoom").onclick = dezoom;
 
 
 /* ============================================================
-   UNE PARTIE PAR JOUR : la partie dure jusqu'à la première défaite, puis le jeu est verrouillé jusqu'à minuit.
+   UNE PARTIE PAR JOUR : 10 artworks, puis le jeu est verrouillé jusqu'à minuit.
    (Ajoute ?libre à l'adresse pour jouer sans limite.)
    ============================================================ */
 const DAILY_KEY = "sdq_daily_art", FREE = /[?&](libre|free)(&|=|$)/.test(location.search);
 let dailyDone = false;
-{ const c = document.getElementById("modechip"); if (c) { c.textContent = FREE ? "Mode infini" : "Défi du jour · 1 partie"; c.classList.toggle("free", FREE); } }
+{ const c = document.getElementById("modechip"); if (c) { c.textContent = FREE ? "Mode infini" : "Défi du jour · 10 artworks"; c.classList.toggle("free", FREE); } }
 const dayKey = () => new Date().toLocaleDateString("sv-SE");
 function dailyLoad() { try { const d = JSON.parse(localStorage.getItem(DAILY_KEY)); return d && d.day === dayKey() ? d : null; } catch (e) { return null; } }
 function dailySave(d) { try { localStorage.setItem(DAILY_KEY, JSON.stringify(Object.assign({ day: dayKey() }, d))); } catch (e) {} }
@@ -573,7 +585,7 @@ function showDaily(d) {
   dailyDone = true;
   document.querySelector(".game").style.display = "none";
   const lb = document.getElementById("lib-note"); if (lb) lb.style.display = "none";
-  $("dailyStats").innerHTML = `<div class="stat">Score final<b>${fmtN(d.score)}</b></div><div class="stat">Série<b>${fmtN(d.streak)}</b></div>`;
+  $("dailyStats").innerHTML = `<div class="stat">Score final<b>${fmtN(d.score)}</b></div><div class="stat">Trouvés<b>${fmtN(d.found)}/${DAILY_ROUNDS}</b></div>`;
   $("daily").hidden = false;
   const tick = () => {
     const now = new Date(), next = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
@@ -593,7 +605,7 @@ function newRound() { if (dailyDone) return showDaily(dailyLoad() || {}); _newRo
   const d = FREE ? null : dailyLoad();
   if (d && d.done) return showDaily(d);
   if (d) {                                   /* partie du jour en cours : on reprend où on s'était arrêté */
-    score = d.score || 0; streak = d.streak || 0; combo = d.combo || 0;
+    score = d.score || 0; streak = d.streak || 0; combo = d.combo || 0; round = d.round || 0; found = d.found || 0;
     const f = $("ftry"); f.dataset.lvl = combo >= 5 ? 3 : combo >= 3 ? 2 : combo >= 1 ? 1 : 0; $("ftryN").textContent = combo; render();
   }
   await loadLibrary();
