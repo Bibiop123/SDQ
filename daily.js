@@ -10,7 +10,7 @@
    Pour un vrai classement commun à tous, renseigne l'adresse d'une base Firebase Realtime Database (voir le README du projet / la conversation) :
    window.SDQ_CONFIG = { firebaseUrl: "https://mon-projet-default-rtdb.europe-west1.firebasedatabase.app" };
    Tant qu'elle est vide, les scores restent dans ce navigateur (test seulement). */
-window.SDQ_CONFIG = window.SDQ_CONFIG || { firebaseUrl: "" };
+window.SDQ_CONFIG = window.SDQ_CONFIG || { firebaseUrl: "", firebaseDb: "base-bonfire-default-rtdb" };   /* firebaseDb : nom de la base, l'adresse (région) est détectée automatiquement */
 window.SDQ = (function () {
   const TZ = "Europe/Paris";
   const dayKey = () => new Date().toLocaleDateString("sv-SE", { timeZone: TZ });
@@ -58,9 +58,23 @@ window.SDQ = (function () {
     });
   }
   /* ---- Highscores du jour ---- */
-  const LOCAL = "sdq_daily_scores_local", fb = () => (window.SDQ_CONFIG.firebaseUrl || "").replace(/\/+$/, "");
+  const LOCAL = "sdq_daily_scores_local";
+  let fbBase = (window.SDQ_CONFIG.firebaseUrl || "").replace(/\/+$/, ""), fbProbe = null;
+  const fb = () => fbBase;
+  /* Détecte l'adresse de la base d'après son nom (US, Europe, Asie) : la mauvaise région répond 404 */
+  function detect() {
+    const db = window.SDQ_CONFIG.firebaseDb;
+    if (fbBase || !db) return Promise.resolve();
+    try { const c = localStorage.getItem("sdq_fb_base"); if (c && c.indexOf(db) >= 0) { fbBase = c; return Promise.resolve(); } } catch (e) {}
+    return fbProbe || (fbProbe = (async () => {
+      for (const h of [db + ".firebaseio.com", db + ".europe-west1.firebasedatabase.app", db + ".asia-southeast1.firebasedatabase.app"]) {
+        try { const r = await fetch("https://" + h + "/.json?shallow=true"); if (r.status !== 404) { fbBase = "https://" + h; try { localStorage.setItem("sdq_fb_base", fbBase); } catch (e) {} return; } } catch (e) {}
+      }
+    })());
+  }
   const path = (game) => "scores/" + dayKey() + "/" + encodeURIComponent(game) + ".json";
   async function entries(game) {
+    await detect();
     if (fb()) { const r = await fetch(fb() + "/" + path(game)); if (!r.ok) throw new Error("HTTP " + r.status); const o = await r.json(); return o ? Object.values(o) : []; }
     try { const all = JSON.parse(localStorage.getItem(LOCAL)) || {}; return all[dayKey() + "|" + game] || []; } catch (e) { return []; }
   }
@@ -68,6 +82,7 @@ window.SDQ = (function () {
     try { const l = (await entries(game)).filter(e => e && Number.isFinite(e.score)).sort((a, b) => b.score - a.score || (a.t || 0) - (b.t || 0)); return l[0] || null; } catch (e) { return null; }
   }
   async function submit(game, name, score) {
+    await detect();
     const e = { name: String(name).trim().slice(0, 16), score: Math.max(0, Math.round(score)), t: Date.now() };
     if (fb()) { const r = await fetch(fb() + "/" + path(game), { method: "POST", body: JSON.stringify(e) }); if (!r.ok) throw new Error("HTTP " + r.status); return e; }
     const all = JSON.parse(localStorage.getItem(LOCAL) || "{}"), k = dayKey() + "|" + game; (all[k] = all[k] || []).push(e); localStorage.setItem(LOCAL, JSON.stringify(all)); return e;
