@@ -135,6 +135,7 @@
   .soon .bg-ico { position: absolute; right: -10px; top: 50%; transform: translateY(-50%); z-index: -1; width: 130px; height: 130px; opacity: .1; stroke: #fff; fill: none; stroke-width: 1.2; }
   .soon h3, .soon p { opacity: .75; }
 
+  .resetday { background: none; border: 0; color: inherit; font: inherit; font-size: .72rem; opacity: .28; cursor: pointer; margin-left: 10px; padding: 2px 4px; } .resetday:hover { opacity: .9; text-decoration: underline; }
   footer { max-width: 1100px; margin: 0 auto; padding: 22px 18px 34px; color: #66738c; font-size: .8rem; text-align: center; border-top: 1px solid rgba(36,49,73,.7); }
 
   /* Grand écran : les quatre jeux sur la gauche (un grand en haut, trois en dessous), la droite est gardée libre pour un futur classement */
@@ -281,7 +282,7 @@
   </div>
 </main>
 
-<footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
+<footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.<button class="resetday" type="button" title="Réinitialise les parties du jour (test)" onclick='try { Object.keys(localStorage).filter(function (k) { return k.indexOf("sdq_daily_") === 0; }).forEach(function (k) { localStorage.removeItem(k); }); } catch (e) {} location.reload();'>↺ réinit. défis du jour</button></footer>
 
 <script>
   /* Défi du jour : état de la partie du jour (enregistré par la page du jeu) */

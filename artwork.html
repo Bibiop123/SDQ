@@ -152,6 +152,7 @@
   .daily .links a { color: var(--cyan); text-decoration: none; font-weight: 600; }
   .modechip { display: inline-block; margin-top: 10px; padding: 3px 14px; border-radius: 99px; border: 1.5px solid var(--gold); color: var(--gold); font-size: .8rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; background: rgba(230,195,106,.08); }
   .modechip.free { border-color: var(--cyan); color: var(--cyan); background: rgba(63,193,224,.08); }
+  .resetday { background: none; border: 0; color: inherit; font: inherit; font-size: .72rem; opacity: .28; cursor: pointer; margin-left: 10px; padding: 2px 4px; } .resetday:hover { opacity: .9; text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -232,7 +233,7 @@
     <h2>Partie du jour terminée</h2>
     <div class="stats" id="dailyStats"></div>
     <p>Prochaine partie dans <b id="dailyClock">--:--:--</b></p>
-    <div class="links"><a href="artwork.html?libre">Jouer en mode infini →</a> &nbsp;·&nbsp; <a href="index.html">Retour aux jeux</a></div>
+    <div class="links"><a href="artwork.html?libre">Jouer en mode infini →</a> &nbsp;·&nbsp; <a href="index.html">Retour aux jeux</a> &nbsp;·&nbsp; <button class="resetday" type="button" title="Réinitialise les parties du jour (test)" onclick='try { Object.keys(localStorage).filter(function (k) { return k.indexOf("sdq_daily_") === 0; }).forEach(function (k) { localStorage.removeItem(k); }); } catch (e) {} location.href = location.pathname;'>↺ réinit.</button></div>
   </section>
   <p class="note" id="lib-note"></p>
 </main>
