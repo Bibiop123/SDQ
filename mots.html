@@ -185,7 +185,7 @@
       </div>
       <div class="tools">
         <button class="alt" id="shuffle" type="button">⟳ Mélanger <kbd>Espace</kbd></button>
-        <button class="alt" id="giveUp" type="button" title="Passer au mot suivant : le mot compte comme raté (0 pt)">Passer <kbd>Échap</kbd></button>
+        <button class="alt" id="giveUp" type="button" title="Passer : compte comme un essai raté et révèle une lettre">Passer <kbd>Échap</kbd></button>
       </div>
       <div class="flash" id="flash" role="status"></div>
     </div>
@@ -403,6 +403,12 @@ function submit() {
   shake(); flash("Ce n'est pas ça, réessaie !");
   loseTry(); revealLetter(); setAnswer("");
 }
+/* « Passer » : compte comme un essai raté (une lettre est révélée), sans proposer de mot */
+function pass() {
+  if (over) return;
+  const li = document.createElement("li"); li.innerHTML = `—<small>passé</small>`; $("misses").prepend(li);
+  flash("Essai passé : une lettre t'est révélée."); loseTry(); revealLetter(); setAnswer("");
+}
 function endRound(win) {
   over = true; cur.won = win; stopSpeed();
   /* Affiche le mot dans le bon ordre dans les cases */
@@ -475,9 +481,9 @@ $("resetBest").onclick = () => {
   best = 0; recordBroken = false; try { localStorage.removeItem("sdq_best_mots"); } catch (e) {}
   renderBar();
 };
-$("giveUp").onclick = () => { if (!over) endRound(false); };
+$("giveUp").onclick = pass;
 /* Échap : abandonner, puis (une fois le mot révélé) passer au mot suivant */
-document.addEventListener("keydown", e => { if (e.key === "Escape") { e.preventDefault(); if (!over) endRound(false); else newRound(); } });
+document.addEventListener("keydown", e => { if (e.key === "Escape") { e.preventDefault(); if (!over) pass(); else newRound(); } });
 document.addEventListener("keydown", e => { if (over && (e.key === "Enter") && document.activeElement !== $("next")) { e.preventDefault(); newRound(); } });
 
 {
