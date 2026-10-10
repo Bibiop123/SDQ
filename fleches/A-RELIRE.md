@@ -1,0 +1,221 @@
+# Mots à relire
+
+Ces mots sont marqués « à vérifier » (faits récents, noms de joueurs, équipes, scène française). Dis-moi lesquels corriger ou retirer.
+
+
+## Équipes, compétitions et lieux (100)
+
+- **ANALYSTE** — Spécialiste des données
+- **ARBITRE** — Contrôleur du match
+- **ASTRALIS** — Équipe danoise
+- **BERCY** — Salle de Paris
+- **BERLIN** — Ville de finale 2015
+- **BLG** — Équipe chinoise / Bilibili Gaming
+- **BO1** — Un seul match
+- **BO3** — Meilleur des trois
+- **BO5** — Meilleur des cinq
+- **BOOTCAMP** — Stage d'équipe
+- **BRACKET** — Tableau des matchs
+- **BUSAN** — Ville de Corée
+- **C9** — Cloud9, en abrégé
+- **CASTER** — Commentateur
+- **CASTERS** — Commentateurs
+- **CBLOL** — Ligue brésilienne
+- **CLOUD9** — Équipe américaine
+- **COACH** — Entraîneur d'une équipe
+- **COLOGNE** — Ville d'Allemagne
+- **COPENHAGUE** — Capitale du Danemark
+- **DAMWON** — Équipe coréenne / Champion du monde 2020
+- **DK** — Équipe coréenne / Dplus Kia
+- **DRX** — Équipe coréenne / Équipe de Deft
+- **DWG** — Équipe coréenne / Damwon
+- **EDG** — Équipe chinoise / Edward Gaming
+- **FINALE** — Dernier match d'un tournoi
+- **FNATIC** — Équipe européenne historique / Équipe britannique de légende
+- **FNC** — Fnatic, en abrégé
+- **FPX** — Équipe chinoise / FunPlus Phoenix
+- **G2** — Équipe européenne / Équipe de Caps
+- **GAM** — Équipe vietnamienne
+- **GENG** — Équipe coréenne / Gen.G en abrégé
+- **GROUPE** — Poule de tournoi
+- **HANOI** — Capitale du Vietnam
+- **HLE** — Équipe coréenne / Hanwha Life
+- **IG** — Équipe chinoise / Invictus Gaming
+- **INCHEON** — Ville du Mondial 2018
+- **JDG** — Équipe chinoise / JD Gaming
+- **KARMINE** — Équipe de Kameto / Équipe bleue française
+- **KATOWICE** — Ville de Pologne
+- **KC** — Karmine Corp, en abrégé
+- **KOI** — Équipe espagnole / Équipe de Ibai
+- **KT** — Équipe coréenne
+- **LIQUID** — Équipe américaine
+- **LJL** — Ligue japonaise
+- **LLA** — Ligue d'Amérique latine
+- **LONDRES** — Capitale du Royaume-Uni
+- **LOSANGELES** — Ville des États-Unis
+- **LTA** — Ligue des Amériques
+- **LYTE** — Orfèvre de la Coupe
+- **MAD** — Équipe espagnole
+- **MADLIONS** — Équipe de Elyoya
+- **MADRID** — Capitale de l'Espagne
+- **MANAGER** — Dirigeant d'équipe
+- **MIAMI** — Ville des États-Unis
+- **NEWYORK** — Ville des États-Unis
+- **OBSERVATEUR** — Cadreur du match
+- **OSLO** — Capitale de la Norvège
+- **PARIS** — Ville de finale 2019
+- **PCS** — Ligue du Pacifique
+- **PEKIN** — Capitale de la Chine
+- **PLAYOFFS** — Phase finale d'une ligue
+- **PSG** — Équipe de Taïwan
+- **REMPLACANT** — Joueur de réserve
+- **REYKJAVIK** — Capitale de l'Islande
+- **RNG** — Équipe chinoise / Royal Never Give Up
+- **ROME** — Capitale de l'Italie
+- **ROSTER** — Liste des joueurs
+- **SAISON** — Année de compétition
+- **SANFRANCISCO** — Ville américaine
+- **SAOPAULO** — Ville du Brésil
+- **SCRIM** — Match d'entraînement
+- **SEED** — Tête de série
+- **SEEDING** — Tirage au sort pondéré
+- **SEOUL** — Capitale de la Corée
+- **SHANGHAI** — Ville de Chine
+- **SKT** — Ancien nom de T1
+- **SPLIT** — Moitié de saison
+- **SSG** — Équipe coréenne / Samsung Galaxy
+- **SSW** — Équipe coréenne / Samsung White
+- **STADE** — Enceinte de finale
+- **STOCKHOLM** — Capitale de la Suède
+- **STREAM** — Diffusion en direct
+- **STREAMER** — Joueur en direct
+- **STUDIO** — Plateau de diffusion
+- **SUBSTITUT** — Remplaçant
+- **SUMMONER** — Coupe de l'Invocateur
+- **T1** — Équipe de Faker / Équipe coréenne légendaire
+- **TAIPEI** — Capitale de Taïwan
+- **TITULAIRE** — Joueur de l'équipe première
+- **TL** — Team Liquid, en abrégé
+- **TORONTO** — Ville du Canada
+- **TRANSFERT** — Changement d'équipe
+- **TROPHEE** — Récompense
+- **TSM** — Équipe de Bjergsen
+- **VCS** — Ligue vietnamienne
+- **VITALITY** — Équipe française / Abeille de LoL
+- **WORLDS** — Championnat du monde
+- **YOUTUBE** — Plateforme de vidéos
+- **ZENITH** — Salle de concert
+
+## Joueurs pro (71)
+
+- **BANG** — ADC de SKT / Tireur coréen
+- **BENGI** — Jungler de SKT / Jungler coréen
+- **BIN** — Top laner chinois / Joueur de Bilibili
+- **BJERGSEN** — Mid laner danois / Joueur de TSM
+- **BWIPO** — Top laner belge / Joueur de Fnatic
+- **CALISTE** — Jeune joueur français / Joueur de Karmine Corp
+- **CANYON** — Jungler de Damwon / Jungler coréen
+- **CAPS** — Mid laner danois / Joueur de G2
+- **CHIPS** — Commentateur français / Duo de Noi
+- **CHOVY** — Mid laner de Gen.G / Joueur au CS légendaire
+- **CLEARLOVE** — Jungler chinois / Vétéran de la LPL
+- **CREME** — Joueur de Karmine Corp
+- **DEFT** — ADC coréen / Champion du monde avec DRX
+- **DOINB** — Mid laner coréen / Joueur de FunPlus Phoenix
+- **DOUBLELIFT** — ADC américain / Ancien de TSM
+- **EDWARD** — Joueur chinois / Joueur de EDG
+- **ELK** — ADC chinois / Joueur de JD Gaming
+- **ELYOYA** — Jungler espagnol / Joueur de MAD
+- **FAKER** — Légende de T1 / Mid laner coréen aux cinq titres
+- **FROGGEN** — Mid laner danois / Vétéran européen
+- **GUMAYUSI** — ADC de T1 / Tireur coréen
+- **HANSSAMA** — ADC français / Joueur de G2
+- **HUMANOID** — Mid laner tchèque / Joueur de Fnatic
+- **HYLISSANG** — Support bulgare / Joueur de Fnatic
+- **IMPACT** — Top laner américain / Joueur de Team Liquid
+- **JACKEYLOVE** — ADC chinois / Joueur de Invictus Gaming
+- **JANKOS** — Jungler polonais / Joueur de G2
+- **JENSEN** — Mid laner danois / Joueur de Cloud9
+- **JIEJIE** — Jungler chinois / Joueur de Edward Gaming
+- **KANAVI** — Jungler coréen / Joueur de JD Gaming
+- **KERIA** — Support de T1 / Soutien coréen
+- **KNIGHT** — Mid laner chinois / Joueur de JD Gaming
+- **LARSSEN** — Mid laner suédois / Joueur de G2
+- **LEHENDS** — Support coréen / Joueur de Gen.G
+- **MARIN** — Top laner coréen
+- **MATA** — Support de Samsung White / Soutien coréen
+- **MEIKO** — Support chinois / Joueur de Edward Gaming
+- **MIKYX** — Support slovène / Joueur de G2 / Support de G2
+- **MLXG** — Jungler chinois / Joueur de RNG
+- **NING** — Jungler chinois / Joueur de Invictus Gaming
+- **NUGURI** — Top laner de Damwon / Top coréen
+- **ODOAMNE** — Top laner roumain / Joueur de Rogue
+- **ONER** — Jungler de T1 / Jungler coréen
+- **PEANUT** — Jungler coréen / Joueur de Gen.G
+- **PERKZ** — Joueur croate / Ancien de G2 et Fnatic
+- **RAZORK** — Jungler espagnol / Joueur de G2
+- **REKKLES** — ADC suédois / Joueur longtemps chez Fnatic
+- **ROOKIE** — Mid laner coréen / Joueur de Invictus Gaming
+- **RULER** — ADC coréen / Champion du monde 2017
+- **SAKEN** — Top laner français
+- **SCOUT** — Mid laner coréen / Joueur de Edward Gaming
+- **SELFMADE** — Jungler polonais / Joueur de Misfits
+- **SHEO** — Joueur français / Joueur de BDS
+- **SHOWMAKER** — Mid laner de Damwon / Mid coréen
+- **SNEAKY** — ADC américain / Joueur de Cloud9
+- **TARGAMAS** — Support français / Joueur de G2
+- **TARZAN** — Jungler coréen / Joueur de DK
+- **THESHY** — Top laner chinois / Joueur de Invictus Gaming
+- **TIAN** — Jungler chinois
+- **UPSET** — ADC allemand / Joueur de Fnatic
+- **UZI** — Tireur chinois légendaire / ADC de Royal Never Give Up
+- **VIPER** — ADC coréen / Joueur de Edward Gaming
+- **WOLF** — Support de SKT / Soutien coréen
+- **WUNDER** — Top laner danois / Joueur de G2
+- **XIAOHU** — Mid laner chinois / Joueur de RNG
+- **XPEKE** — Mid laner espagnol / Joueur de Fnatic
+- **XUN** — Jungler chinois / Joueur de Bilibili
+- **YIKE** — Jungler suédois / Joueur de G2
+- **ZEKA** — Mid laner coréen / Joueur de Hanwha
+- **ZEUS** — Top laner de T1 / Joueur coréen
+- **ZVEN** — ADC danois / Joueur de Cloud9
+
+## Scène française, streamers et commentateurs (32)
+
+- **AEGIS** — Structure française d'esport
+- **BULII** — Présentatrice française de l'esport
+- **CAEDREL** — Streamer britannique
+- **CASTEUR** — Commentateur
+- **CASTEUSE** — Commentatrice
+- **CLUB** — Structure d'esport
+- **CLUBS** — Structures d'esport
+- **DOMINGO** — Flash dans un mur, en argot
+- **FAN** — Supporter
+- **FANS** — Supporters
+- **HOST** — Animateur d'un plateau
+- **HYPE** — Enthousiasme du public
+- **IBAI** — Streamer espagnol
+- **INTERVIEW** — Entretien après un match
+- **KAMETO** — Fondateur de Karmine Corp / Streamer de la Karmine
+- **LOUNET** — Manager de AEGIS
+- **MGG** — Média esport français
+- **MISTERMV** — Streamer français
+- **NOI** — Commentateur français / Duo de Chips
+- **NOKI** — Directeur artistique de la LFL
+- **ONETRICK** — Spécialiste d'un seul champion
+- **OTP** — Spécialiste d'un seul champion
+- **PLATEAU** — Studio de diffusion
+- **REPLAYS** — Retour sur les actions
+- **SARDOCHE** — Streamer français
+- **SHAUNZ** — Cofondateur de AEGIS
+- **SIXEN** — Cofondateur de Team Du Sud
+- **SKYYART** — Commentateur français
+- **TIPSALEWO** — Journaliste de MGG
+- **TYLER1** — Streamer américain célèbre
+- **WEBEDIA** — Organisateur de la LFL
+- **ZERATOR** — Streamer français
+
+## Champions (2)
+
+- **YUNARA** — Tireuse de Ionia
+- **ZAAHEN** — Guerrier de Shurima

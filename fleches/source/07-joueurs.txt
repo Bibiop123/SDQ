@@ -1,0 +1,72 @@
+## Joueurs pro
+?FAKER | Légende de T1 | Mid laner coréen aux cinq titres
+?UZI | Tireur chinois légendaire | ADC de Royal Never Give Up
+?CAPS | Mid laner danois | Joueur de G2
+?PERKZ | Joueur croate | Ancien de G2 et Fnatic
+?REKKLES | ADC suédois | Joueur longtemps chez Fnatic
+?BJERGSEN | Mid laner danois | Joueur de TSM
+?DOUBLELIFT | ADC américain | Ancien de TSM
+?DEFT | ADC coréen | Champion du monde avec DRX
+?RULER | ADC coréen | Champion du monde 2017
+?CHOVY | Mid laner de Gen.G | Joueur au CS légendaire
+?KERIA | Support de T1 | Soutien coréen
+?GUMAYUSI | ADC de T1 | Tireur coréen
+?ONER | Jungler de T1 | Jungler coréen
+?ZEUS | Top laner de T1 | Joueur coréen
+?SHOWMAKER | Mid laner de Damwon | Mid coréen
+?CANYON | Jungler de Damwon | Jungler coréen
+?NUGURI | Top laner de Damwon | Top coréen
+?BENGI | Jungler de SKT | Jungler coréen
+?BANG | ADC de SKT | Tireur coréen
+?WOLF | Support de SKT | Soutien coréen
+?MATA | Support de Samsung White | Soutien coréen
+?THESHY | Top laner chinois | Joueur de Invictus Gaming
+?ROOKIE | Mid laner coréen | Joueur de Invictus Gaming
+?NING | Jungler chinois | Joueur de Invictus Gaming
+?JACKEYLOVE | ADC chinois | Joueur de Invictus Gaming
+?DOINB | Mid laner coréen | Joueur de FunPlus Phoenix
+?XIAOHU | Mid laner chinois | Joueur de RNG
+?MLXG | Jungler chinois | Joueur de RNG
+?CLEARLOVE | Jungler chinois | Vétéran de la LPL
+?MEIKO | Support chinois | Joueur de Edward Gaming
+?VIPER | ADC coréen | Joueur de Edward Gaming
+?SCOUT | Mid laner coréen | Joueur de Edward Gaming
+?JANKOS | Jungler polonais | Joueur de G2
+?MIKYX | Support slovène | Joueur de G2
+?WUNDER | Top laner danois | Joueur de G2
+?XPEKE | Mid laner espagnol | Joueur de Fnatic
+?FROGGEN | Mid laner danois | Vétéran européen
+?SNEAKY | ADC américain | Joueur de Cloud9
+?JENSEN | Mid laner danois | Joueur de Cloud9
+?ZVEN | ADC danois | Joueur de Cloud9
+?BWIPO | Top laner belge | Joueur de Fnatic
+?HYLISSANG | Support bulgare | Joueur de Fnatic
+?IMPACT | Top laner américain | Joueur de Team Liquid
+?KNIGHT | Mid laner chinois | Joueur de JD Gaming
+?TIAN | Jungler chinois
+?ELK | ADC chinois | Joueur de JD Gaming
+?PEANUT | Jungler coréen | Joueur de Gen.G
+?MARIN | Top laner coréen
+?TARZAN | Jungler coréen | Joueur de DK
+?KANAVI | Jungler coréen | Joueur de JD Gaming
+?ZEKA | Mid laner coréen | Joueur de Hanwha
+?LEHENDS | Support coréen | Joueur de Gen.G
+?HUMANOID | Mid laner tchèque | Joueur de Fnatic
+?ELYOYA | Jungler espagnol | Joueur de MAD
+?UPSET | ADC allemand | Joueur de Fnatic
+?HANSSAMA | ADC français | Joueur de G2
+?LARSSEN | Mid laner suédois | Joueur de G2
+?ODOAMNE | Top laner roumain | Joueur de Rogue
+?SELFMADE | Jungler polonais | Joueur de Misfits
+?JIEJIE | Jungler chinois | Joueur de Edward Gaming
+?BIN | Top laner chinois | Joueur de Bilibili
+?XUN | Jungler chinois | Joueur de Bilibili
+?YIKE | Jungler suédois | Joueur de G2
+?TARGAMAS | Support français | Joueur de G2
+?CALISTE | Jeune joueur français | Joueur de Karmine Corp
+?SHEO | Joueur français | Joueur de BDS
+?EDWARD | Joueur chinois | Joueur de EDG
+?CREME | Joueur de Karmine Corp
+?SAKEN | Top laner français
+?RAZORK | Jungler espagnol | Joueur de G2
+?CHIPS | Commentateur français

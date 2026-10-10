@@ -1,0 +1,112 @@
+## Équipes, compétitions et lieux
+?T1 | Équipe de Faker | Équipe coréenne légendaire
+?GENG | Équipe coréenne | Gen.G en abrégé
+?G2 | Équipe européenne | Équipe de Caps
+?FNATIC | Équipe européenne historique | Équipe britannique de légende
+?FNC | Fnatic, en abrégé
+?KOI | Équipe espagnole | Équipe de Ibai
+?VITALITY | Équipe française | Abeille de LoL
+?KC | Karmine Corp, en abrégé
+?KARMINE | Équipe de Kameto | Équipe bleue française
+?BDS | Team BDS, en abrégé
+?MAD | Équipe espagnole | MAD Lions
+?MAD LIONS | Équipe de Elyoya
+?ASTRALIS | Équipe danoise
+?CLOUD9 | Équipe américaine
+?C9 | Cloud9, en abrégé
+?TSM | Équipe de Bjergsen
+?LIQUID | Équipe américaine | Team Liquid
+?TL | Team Liquid, en abrégé
+?RNG | Équipe chinoise | Royal Never Give Up
+?EDG | Équipe chinoise | Edward Gaming
+?IG | Équipe chinoise | Invictus Gaming
+?FPX | Équipe chinoise | FunPlus Phoenix
+?JDG | Équipe chinoise | JD Gaming
+?BLG | Équipe chinoise | Bilibili Gaming
+?DRX | Équipe coréenne | Équipe de Deft
+?DWG | Équipe coréenne | Damwon
+?DAMWON | Équipe coréenne | Champion du monde 2020
+?SKT | Ancien nom de T1
+?SSG | Équipe coréenne | Samsung Galaxy
+?SSW | Équipe coréenne | Samsung White
+?KT | Équipe coréenne
+?HLE | Équipe coréenne | Hanwha Life
+?DK | Équipe coréenne | Dplus Kia
+?PSG | Équipe de Taïwan | PSG Talon
+?TALON | Équipe de Hong Kong
+?GAM | Équipe vietnamienne
+?VCS | Ligue vietnamienne
+?CBLOL | Ligue brésilienne
+?LJL | Ligue japonaise
+?PCS | Ligue du Pacifique
+?LLA | Ligue d'Amérique latine
+?LTA | Ligue des Amériques
+?WORLDS | Championnat du monde
+MONDIAL | Championnat du monde
+?MSI | Tournoi international de mi-saison
+?FINALE | Dernier match d'un tournoi
+FINALES | Derniers matchs d'un tournoi
+?PLAYOFFS | Phase finale d'une ligue
+?SPLIT | Moitié de saison
+?SAISON | Année de compétition
+?DRAFT | Phase de choix des champions
+?BO1 | Un seul match
+?BO3 | Meilleur des trois
+?BO5 | Meilleur des cinq
+?SEED | Tête de série
+?SEEDING | Tirage au sort pondéré
+?BRACKET | Tableau des matchs
+?GROUPE | Poule de tournoi
+?COACH | Entraîneur d'une équipe
+?ANALYSTE | Spécialiste des données
+?MANAGER | Dirigeant d'équipe
+?SCRIM | Match d'entraînement
+?BOOTCAMP | Stage d'équipe
+?ROSTER | Liste des joueurs
+?TRANSFERT | Changement d'équipe
+?SUBSTITUT | Remplaçant
+?REMPLACANT | Joueur de réserve
+?TITULAIRE | Joueur de l'équipe première
+?CASTER | Commentateur
+?CASTERS | Commentateurs
+?OBSERVATEUR | Cadreur du match
+?ARBITRE | Contrôleur du match
+?STUDIO | Plateau de diffusion
+?STREAM | Diffusion en direct
+?STREAMER | Joueur en direct
+?TWITCH | Plateforme de streaming
+?YOUTUBE | Plateforme de vidéos
+?COUPE | Trophée du Mondial
+?TROPHEE | Récompense
+?SUMMONER | Coupe de l'Invocateur
+?LYTE | Orfèvre de la Coupe
+?BERLIN | Ville de finale 2015
+?PARIS | Ville de finale 2019
+?SEOUL | Capitale de la Corée
+?PEKIN | Capitale de la Chine
+?LONDRES | Capitale du Royaume-Uni
+?MADRID | Capitale de l'Espagne
+?ROME | Capitale de l'Italie
+?BUSAN | Ville de Corée
+?INCHEON | Ville du Mondial 2018
+?SHANGHAI | Ville de Chine
+?TAIPEI | Capitale de Taïwan
+?HANOI | Capitale du Vietnam
+?SAOPAULO | Ville du Brésil
+?LOSANGELES | Ville des États-Unis
+?NEWYORK | Ville des États-Unis
+?SAN FRANCISCO | Ville américaine
+?MIAMI | Ville des États-Unis
+?TORONTO | Ville du Canada
+?KATOWICE | Ville de Pologne
+?COLOGNE | Ville d'Allemagne
+?STOCKHOLM | Capitale de la Suède
+?COPENHAGUE | Capitale du Danemark
+?OSLO | Capitale de la Norvège
+?REYKJAVIK | Capitale de l'Islande
+?BERCY | Salle de Paris
+?ACCOR | Salle de Paris
+?ZENITH | Salle de concert
+?STADE | Enceinte de finale
+?ARENA | Salle de compétition
+?LOL | Jeu de Riot

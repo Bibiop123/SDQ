@@ -1,0 +1,72 @@
+## Régions, lieux et lore
+DEMACIA | Royaume de la lumière | Cité de Garen et Lux
+NOXUS | Empire expansionniste | Cité de Darius
+PILTOVER | Cité du progrès | Ville des inventeurs
+ZAUN | Bas-fonds de Piltover | Cité en dessous
+IONIA | Île de l'équilibre | Terre de Yasuo
+FRELJORD | Terre gelée | Région de Ashe
+SHURIMA | Désert des Ascendants | Empire du sable
+BILGEWATER | Port des pirates | Cité de Gangplank
+TARGON | Montagne du ciel | Sommet des Aspects
+IXTAL | Jungle des éléments | Terre de Qiyana
+BANDLE | Cité des yordles | Terre des petits
+BANDLECITY | Cité des yordles
+BRUMES | Îles maudites | Îles de la Brume noire
+ISLES | Îles, en anglais
+HALLOWED | Terre de Gwen | Île des poupées
+VIDE | Dimension monstrueuse | Néant
+NEANT | Dimension monstrueuse | Vide
+RUNETERRA | Monde de League of Legends
+VALORAN | Continent principal
+CAMAVOR | Terre de Kayn
+SENTINELLES | Gardiens de la lumière
+YORDLE | Petit peuple poilu | Peuple de Teemo
+YORDLES | Petits poilus
+VASTAYA | Peuple mi-humain mi-animal
+VASTAYAS | Peuple de Ionia
+DARKIN | Épées maudites | Guerriers déchus de Aatrox
+DARKINS | Épées maudites
+ASCENDANT | Être divin de Shurima
+ASCENDANTS | Êtres divins
+CHIMTECH | Technologie de Zaun
+HEXTECH | Magie de Piltover
+MAGIE | Pouvoir de Runeterra
+RUNE | Pouvoir de Runeterra
+BRUME | Fléau des Îles
+ARCANE | Série animée de Riot
+ARCANES | Pouvoirs de Piltover
+SILCO | Chef de Zaun
+VANDER | Père de substitution de Vi et Powder
+POWDER | Jinx avant le chaos
+CAITLYN | Shérif de Piltover
+ENFORCER | Policier de Piltover
+CONSEIL | Dirigeants de Piltover
+FIRELIGHTS | Résistants de Zaun
+MEDARDA | Famille de Mel
+CITOYEN | Habitant de Valoran
+LEAGUE | Ligue des Légendes
+LIGUE | Compétition des Invocateurs
+INSTITUT | Lieu de la Ligue des Légendes
+GUERRE | Conflit de Runeterra
+RUNIQUE | Relatif aux runes
+PROPHETE | Voyant du Néant
+HERITIER | Descendant d'un héros
+PIERRE | Matière de Malphite
+FEU | Élément de Brand
+GLACE | Élément de Anivia
+TERRE | Élément de Taliyah
+AIR | Élément de Janna
+EAU | Élément de Nami
+VENT | Élément de Yasuo
+LUNE | Astre de Diana
+SOLEIL | Astre de Leona
+ETOILE | Astre de Soraka
+OMBRE | Pouvoir de Zed
+LUMIERE | Pouvoir de Lux
+TEMPETE | Pouvoir de Kennen
+FOUDRE | Pouvoir de Ezreal
+ANCIEN | Dragon âgé
+SPIRITE | Esprit de Ionia
+ESPRIT | Être de Ionia
+FANTOME | Spectre
+WYRM | Dragon, en anglais

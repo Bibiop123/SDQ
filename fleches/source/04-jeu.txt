@@ -1,0 +1,55 @@
+## Runes, sorts, monstres et modes
+ELECTROCUTION | Rune de burst | Éclair de la rune de Domination
+CONQUERANT | Rune de combattant | Rune de précision
+PRECISION | Arbre de runes jaune | Voie des runes de tir
+DOMINATION | Arbre de runes rouge | Voie du burst
+SORCELLERIE | Arbre de runes bleu | Voie de la magie
+INSPIRATION | Arbre de runes cyan | Voie des astuces
+RESOLUTION | Arbre de runes vert | Voie du tank
+CADENCE | Rune de vitesse | Rythme d'une attaque
+PREDATEUR | Rune de chasseur | Rune de Domination
+RECOLTE | Rune sombre | Moisson noire
+DEBUFF | Malus appliqué
+HEXTECH | Magie de Piltover
+FLASH | Sort de saut
+SAUT | Déplacement bref
+CLAIRVOYANCE | Sort de vision
+PURGE | Sort anti-contrôle
+FATIGUE | Sort de ralentissement
+FANTOME | Sort de vitesse
+SOIN | Sort de soin
+BARRIERE | Sort de bouclier
+CHATIMENT | Sort de jungle
+EMBRASEMENT | Sort de brûlure
+MARQUE | Sort de boule de neige
+BARON | Monstre épique de la fin
+NASHOR | Baron du jeu
+DRAGON | Monstre épique | Drake
+DRAKE | Dragon du jeu
+HERAUT | Monstre épique de la rivière
+ATAKHAN | Monstre épique récent
+VOIDGRUB | Larve du Néant
+VOIDGRUBS | Larves du Néant
+GROMP | Crapaud de jungle
+KRUGS | Golems de pierre
+WOLVES | Camp de loups
+RAPTORS | Camp d'oiseaux
+CRABE | Monstre de la rivière
+SCUTTLE | Crabe de la rivière
+BUFF | Bonus de jungle
+CAMP | Zone de monstres
+INHIBITEUR | Bâtiment de base
+NEXUS | Cœur de la base
+TOURELLE | Tour qui tire
+SUPERSBIRE | Gros sbire de fin
+FAILLE | Terrain principal
+ARENA | Mode en duo
+URF | Mode à vitesse folle
+TFT | Jeu de stratégie de Riot
+WILDRIFT | Version mobile du jeu
+RUNETERRA | Monde du jeu
+CHAMPION | Personnage jouable
+CHAMPIONS | Personnages jouables
+INVOCATEUR | Rôle du joueur
+BOUTIQUE | Lieu d'achat
+SHOP | Boutique, en anglais

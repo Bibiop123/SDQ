@@ -1,0 +1,55 @@
+## Objets
+ITEM | Objet, en anglais
+OBJET | Équipement acheté à la boutique
+BOTTES | Objet de vitesse | Chaussures de champion
+POTION | Soin de départ | Fiole à boire
+ELIXIR | Boisson de puissance | Potion de fin de partie
+TOTEM | Balise de départ | Relique de vision
+BALISE | Marque de vision | Ward
+ZHONYA | Sablier invulnérable | Sablier à stase
+RABADON | Coiffe de puissance | Chapeau qui gonfle la magie
+GUINSOO | Lame qui monte en puissance | Rageblade
+LUDEN | Écho de puissance | Objet de mage qui explose
+LIANDRY | Tourment de puissance | Brûlure sur la durée
+BANSHEE | Voile qui bloque un sort | Voile magique
+RANDUIN | Présage de tank | Présage contre les critiques
+MEJAI | Âme volée | Objet qui monte avec les éliminations
+SERAPH | Étreinte de mana | Larme transformée
+STERAK | Défi de combattant | Ouragan de Sterak
+SHOJIN | Lance des dragons | Objet de vitesse d'action
+TRINITE | Force de combattant | Triforce
+KRAKEN | Bouclier de tireur | Tueur de colosses
+BERSERKER | Bottes de vitesse d'attaque | Greaves rapides
+MERCURE | Jambières anti-CC | Ceinture qui purge
+SORCIER | Bottes de puissance | Chaussures du mage
+EXECUTEUR | Objet qui coupe les soins | Lame contre les soigneurs
+EPINES | Armure qui renvoie les coups
+SPECTRE | Bouclier magique | Voile des esprits
+SOLARI | Médaillon de soutien | Bouclier du Soleil
+ARDENT | Encensoir de soutien | Soutien offensif
+ZEKE | Convergence de soutien | Aura d'alliés
+DORAN | Objet de départ | Équipement de début de partie
+VOILE | Objet qui bloque un sort
+GAUNTLET | Gant de combattant
+GANTELET | Gant en armure
+TRIDENT | Arme à trois pointes
+BOUCLIER | Objet de défense
+CUIRASSE | Armure lourde
+EPEE | Lame du jeu
+LAME | Arme tranchante
+BATON | Arme de mage
+HACHE | Arme tranchante lourde
+MARTEAU | Arme à deux mains
+FLEAU | Arme lourde à chaîne
+ARC | Arme à distance
+ARBALETE | Arme à carreaux
+LANCE | Arme d'hast
+FAUX | Arme de Kayn
+CAPE | Pièce de tissu magique
+CAPUCHE | Vêtement de tête
+AMULETTE | Bijou protecteur
+RELIQUE | Objet de départ
+CRISTAL | Pierre précieuse
+COUPE | Récipient pour l'Invocateur
+COURONNE | Coiffe de roi
+GEMME | Pierre de puissance

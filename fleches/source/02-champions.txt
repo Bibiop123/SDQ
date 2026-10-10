@@ -1,0 +1,169 @@
+## Champions
+AATROX | Épée des Darkin | Darkin à la grande lame
+AHRI | Renarde à neuf queues | Mage de Ionia
+AKALI | Assassin voilé de Ionia | Poing de l'équilibre
+AKSHAN | Sentinelle rebelle | Tireur au grappin
+ALISTAR | Minotaure protecteur | Soutien taureau
+AMBESSA | Matriarche de Noxus
+AMUMU | Momie triste | Petite momie en pleurs
+ANIVIA | Phénix de glace | Cryophénix
+ANNIE | Petite fille et son ours Tibbers | Enfant des flammes
+APHELIOS | Tireur armé de lunes | Arme de Targon
+ASHE | Archère du Freljord | Reine des glaces
+AURORA | Sorcière entre deux mondes | Mage au lapin des esprits
+AZIR | Empereur de Shurima | Mage aux soldats de sable
+BARD | Gardien errant | Soutien aux carillons
+BELVETH | Impératrice du Néant | Reine du Vide
+BLITZCRANK | Golem à grappin | Grand automate
+BRAND | Vengeance ardente | Mage de feu
+BRAUM | Cœur du Freljord | Soutien au grand bouclier
+BRIAR | Expérience ravageuse | Jungleuse affamée
+CAITLYN | Shérif de Piltover | Tireuse aux pièges
+CAMILLE | Dame d'acier | Assassine de Piltover
+CASSIOPEIA | Étreinte du serpent | Mage mi-femme mi-serpent
+CHOGATH | Terreur du Néant | Monstre qui dévore
+CORKI | Pilote téméraire yordle | Aviateur yordle
+DARIUS | Main de Noxus | Bourreau à la hache
+DIANA | Lame de la lune | Combattante de Targon
+DRAVEN | Glorieux bourreau | Frère de Darius
+EKKO | Garçon qui brise le temps | Voyageur de Zaun
+ELISE | Reine araignée | Mage aux deux formes
+EVELYNN | Étreinte du chagrin | Assassine charmeuse
+EZREAL | Explorateur prodigue | Tireur blond et aventurier
+FIDDLESTICKS | Épouvantail | Terreur ancienne
+FIORA | Escrimeuse de Demacia | Duelliste hors pair
+FIZZ | Filou des mers | Petit yordle poisson
+GALIO | Colosse de Demacia | Gargouille de pierre
+GANGPLANK | Fléau des mers | Capitaine pirate
+GAREN | Puissance de Demacia | Frère de Lux
+GNAR | Chaînon manquant | Petit yordle devenu mastodonte
+GRAGAS | Ivrogne bagarreur | Gros buveur
+GRAVES | Hors-la-loi | Tireur au fusil à pompe
+GWEN | Couturière sacrée | Poupée de Hallowed Isles
+HECARIM | Ombre de la guerre | Centaure spectral
+HEIMERDINGER | Inventeur éminent | Yordle scientifique
+HWEI | Visionnaire peintre | Mage artiste
+ILLAOI | Prêtresse du Kraken | Prêtresse à tentacules
+IRELIA | Danseuse des lames | Combattante de Ionia
+IVERN | Père des bois | Druide de la jungle
+JANNA | Colère de la tempête | Soutien du vent
+JAX | Maître d'armes | Combattant à la lanterne
+JAYCE | Défenseur de demain | Champion au marteau transformable
+JHIN | Virtuose | Tireur obsédé par le quatre
+JINX | Gâchette folle | Tireuse chaotique de Zaun
+KAISA | Fille du Néant | Tireuse à armure vivante
+KALISTA | Lance de la vengeance | Tireuse aux lances
+KARMA | Éclairée | Mage de Ionia
+KARTHUS | Chanteur de requiem | Mage-liche
+KASSADIN | Marcheur du Néant | Mage du Vide
+KATARINA | Lame sinistre | Assassine aux dagues
+KAYLE | Juste | Ange guerrier
+KAYN | Faucheur d'ombre | Combattant à la faux
+KENNEN | Cœur de la tempête | Petit yordle ninja
+KHAZIX | Fléau du Vide | Assassin-insecte
+KINDRED | Chasseurs éternels | Agneau et Loup
+KLED | Cavalier colérique | Petit yordle sur Skaarl
+KOGMAW | Gueule des abysses | Tireur au bec acide
+LEBLANC | Séductrice illusionniste | Mage trompeuse
+LEESIN | Moine aveugle | Combattant au coup du dragon
+LEONA | Aube radieuse | Soutien du Soleil
+LILLIA | Fleur timide | Jungleuse biche
+LISSANDRA | Sorcière de glace | Mage du Freljord
+LUCIAN | Purificateur | Tireur aux deux pistolets
+LULU | Fée féerique | Soutien yordle à la magie
+LUX | Dame de lumière | Mage de Demacia
+MALPHITE | Éclat du monolithe | Tank de roche
+MALZAHAR | Prophète du Néant | Mage du Vide
+MAOKAI | Tordu | Tank-arbre
+MASTERYI | Maître du Wuju | Combattant ionien
+MEL | Mage de Piltover | Conseillère de Piltover
+MILIO | Soutien chaleureux | Enfant du feu doux
+MISSFORTUNE | Chasseuse de primes | Tireuse de Bilgewater
+MORDEKAISER | Revenant de fer | Roi de la mort
+MORGANA | Déchue | Mage aux chaînes noires
+NAAFIRI | Meute d'ombre | Chiens de chasse
+NAMI | Marée | Soutien sirène
+NASUS | Conservateur des sables | Chien de Shurima
+NAUTILUS | Titan des profondeurs | Tank scaphandrier
+NEEKO | Caméléon curieuse | Mage caméléon
+NIDALEE | Chasseuse bestiale | Femme-panthère
+NILAH | Joie sans entrave | Tireuse au fouet
+NOCTURNE | Éternel cauchemar | Assassin des rêves
+NUNU | Garçon sur son yéti | Enfant et son yéti
+OLAF | Berserker | Guerrier viking
+ORIANNA | Dame mécanique | Mage à la balle
+ORNN | Forgeron du Freljord | Dieu de la forge
+PANTHEON | Lance de Targon | Guerrier immortel
+POPPY | Gardienne du marteau | Petite yordle au marteau
+PYKE | Éventreur du port | Soutien assassin
+QIYANA | Impératrice des éléments | Assassine de Ixtal
+QUINN | Ailes de Demacia | Tireuse avec Valor
+RAKAN | Charmeur | Soutien oiseau
+RAMMUS | Tatou blindé | Tank qui roule
+REKSAI | Terreur de sable | Jungleuse du Vide
+RELL | Cavalière de fer | Soutien en armure
+RENATA | Baronne chimique | Soutien de Zaun
+RENEKTON | Boucher des sables | Crocodile guerrier
+RENGAR | Chasseur orgueilleux | Assassin félin
+RIVEN | Exilée | Épéiste à la lame brisée
+RUMBLE | Mécanicien téméraire | Petit yordle en robot
+RYZE | Mage runique | Sorcier aux runes
+SAMIRA | Rose du désert | Tireuse flamboyante
+SEJUANI | Courroux du Nord | Cavalière du sanglier
+SENNA | Rédemptrice | Tireuse aux lanternes
+SERAPHINE | Chanteuse de rêve | Mage pop star
+SETT | Boss | Combattant du poing
+SHACO | Bouffon démoniaque | Assassin farceur
+SHEN | Œil du crépuscule | Tank de l'équilibre
+SHYVANA | Demi-dragon | Combattante-dragon
+SINGED | Chimiste fou | Scientifique qui laisse du poison
+SION | Colosse mort-vivant | Tank sans fin
+SIVIR | Maîtresse de guerre | Tireuse au boomerang
+SKARNER | Sentinelle de cristal | Scorpion géant
+SMOLDER | Dragonnet | Petit dragon tireur
+SONA | Virtuose des cordes | Soutien muette
+SORAKA | Enfant des étoiles | Soutien soigneuse
+SWAIN | Grand général | Mage corbeau
+SYLAS | Libéré | Mage aux chaînes
+SYNDRA | Souveraine obscure | Mage aux sphères
+TAHMKENCH | Roi de la rivière | Grand grenouillard
+TALIYAH | Tisseuse de pierres | Mage aux pierres
+TALON | Lame de l'ombre | Assassin de Noxus
+TARIC | Bouclier de Valoran | Soutien de pierre précieuse
+TEEMO | Éclaireur véloce | Yordle aux champignons
+THRESH | Gardien des chaînes | Soutien à la lanterne
+TRISTANA | Artilleuse yordle | Tireuse au canon
+TRUNDLE | Roi des trolls | Combattant à la massue
+TRYNDAMERE | Roi barbare | Guerrier à l'épée rouge
+TWISTEDFATE | Maître des cartes | Mage joueur de cartes
+TWITCH | Rat de la peste | Tireur furtif de Zaun
+UDYR | Esprit sauvage | Combattant aux quatre esprits
+URGOT | Dreadnought | Tank des bas-fonds
+VARUS | Flèche de la vengeance | Tireur corrompu
+VAYNE | Chasseuse de la nuit | Tireuse aux carreaux d'argent
+VEIGAR | Maître du mal | Petit yordle noir
+VELKOZ | Œil du Néant | Mage-œil
+VEX | Morne | Mage yordle déprimée
+VI | Gardienne de Piltover | Combattante aux gantelets
+VIEGO | Roi déchu | Assassin de la Brume
+VIKTOR | Héraut des machines | Mage mécanique
+VLADIMIR | Moissonneur écarlate | Mage au sang
+VOLIBEAR | Fléau du tonnerre | Ours du Freljord
+WARWICK | Fureur de Zaun | Loup-garou
+WUKONG | Roi-singe | Combattant au bâton
+XAYAH | Rebelle | Tireuse aux plumes
+XERATH | Mage ascensionné | Mage du Shurima
+XINZHAO | Sénéchal de Demacia | Lancier de Demacia
+YASUO | Impardonnable | Samouraï au vent
+YONE | Inoubliable | Frère de Yasuo
+YORICK | Berger des âmes | Pelle et goules
+?YUNARA | Tireuse de Ionia
+YUUMI | Chatte magique | Soutien-livre
+ZAC | Arme secrète | Blob de Zaun
+?ZAAHEN | Guerrier de Shurima
+ZED | Maître des ombres | Assassin ninja
+ZERI | Étincelle de Zaun | Tireuse électrique
+ZIGGS | Expert en explosifs | Yordle bombardier
+ZILEAN | Gardien du temps | Soutien horloger
+ZOE | Aspect du crépuscule | Mage aux sorts rebondissants
+ZYRA | Lueur des ronces | Mage-plante

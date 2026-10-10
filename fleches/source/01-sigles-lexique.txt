@@ -1,0 +1,210 @@
+## Sigles et abréviations
+AD | Dégâts physiques | Attack damage
+AP | Puissance magique | Dégâts magiques
+CC | Contrôle de foule | Étourdissement, ralentissement…
+HP | Points de vie
+MP | Points de mana
+CS | Sbires tués | Dernier coup
+KDA | Ratio de combats | Kills, deaths, assists
+ADC | Tireur du bas | Carry à distance
+JG | Joueur de la jungle
+TP | Téléportation, en abrégé
+FF | Abandon, en abrégé
+GG | Bien joué, en fin de partie
+OP | Trop puissant
+CD | Temps de recharge
+MMR | Cote cachée du classement
+LP | Points de ligue
+LEC | Ligue européenne
+LCK | Ligue coréenne
+LPL | Ligue chinoise
+LFL | Ligue française
+LCS | Ligue nord-américaine
+MSI | Tournoi de mi-saison
+AFK | Absent du clavier
+KS | Voler le kill d'un allié
+DC | Déconnexion
+ELO | Niveau d'un joueur classé | Cote de classement
+BG | Bien joué, en chat
+GL | Bonne chance, en chat
+HF | Amuse-toi bien, en chat
+GJ | Bien joué, en abrégé
+WP | Bien joué, en anglais
+NT | Beau coup, en anglais
+NP | Pas de souci, en chat
+IMO | À mon avis, en chat
+GA | Garder de la vision, en abrégé
+MIA | Ennemi disparu de la carte
+SS | Ennemi disparu, en chat
+OOM | Plus de mana
+DPS | Dégâts par seconde
+DOT | Dégâts sur la durée
+AA | Attaque de base
+AS | Vitesse d'attaque
+MR | Résistance magique
+AOE | Dégâts de zone
+CDR | Réduction du temps de recharge
+EXP | Expérience
+XP | Expérience gagnée
+LVL | Niveau
+PBE | Serveur de test public
+EUW | Serveur d'Europe de l'Ouest
+EUNE | Serveur d'Europe du Nord et de l'Est
+NA | Serveur d'Amérique du Nord
+KR | Serveur coréen
+OCE | Serveur d'Océanie
+TFT | Auto-battler de Riot | Teamfight Tactics
+LOL | Initiales du jeu
+RIOT | Éditeur du jeu
+ARAM | Mode à voie unique
+URF | Mode à vitesse folle
+## Lexique du jeu
+BUFF | Bonus temporaire | Amélioration
+NERF | Baisse de puissance
+GANK | Embuscade de jungle
+FARM | Récolte d'or | Tuer des sbires
+FEED | Mourir sans cesse
+TANK | Champion costaud
+CARRY | Porteur de l'équipe
+MAGE | Lanceur de sorts
+POKE | Harcèlement à distance
+DASH | Bond rapide
+STUN | Étourdissement
+SNARE | Immobilisation
+ROOT | Enracinement
+SLOW | Ralentissement
+TAUNT | Provocation
+FEAR | Peur infligée à la cible
+BLIND | Cécité qui rate les attaques
+SILENCE | Interdit de lancer des sorts
+KNOCKUP | Projection en l'air
+KITE | Attaquer en reculant
+PEEL | Protéger son carry
+ROAM | Se balader sur la carte
+PUSH | Pousser une voie
+SHOVE | Pousser fort une voie
+FREEZE | Geler la vague de sbires
+PROXY | Farmer chez l'ennemi
+DIVE | Plonger sous la tour
+BAIT | Appât
+JUKE | Esquiver en feintant
+FLANK | Attaquer par le côté
+ENGAGE | Lancer le combat
+DENY | Priver d'or
+TRADE | Échange de coups
+ZONE | Garder à distance
+LANE | Voie
+LANING | Phase de voie
+BUSH | Buisson
+BRUSH | Buisson, en anglais
+WARD | Balise de vision
+TRINKET | Relique
+RECALL | Retour à la base
+RESET | Retour pour racheter
+ULT | Sort ultime
+ULTI | Ultime, en argot
+PASSIF | Pouvoir permanent
+PASSIVE | Compétence sans activation
+COMBO | Enchaînement de sorts
+BURST | Dégâts instantanés
+SNOWBALL | Avantage qui s'accumule
+THROW | Gâcher une victoire
+TILT | Perte de sang-froid
+TOXIC | Joueur malsain
+TROLL | Joueur qui gâche la partie
+FLAME | Insulter, en chat
+LEAVER | Abandonneur
+SMURF | Compte secondaire
+BOOST | Aide payante à monter
+DUO | Partie à deux
+SOLOQ | File classée en solo
+FLEX | File classée à cinq
+DRAFT | Partie avec choix des champions
+BAN | Interdiction d'un champion
+PICK | Choix d'un champion
+MAIN | Champion favori
+POOL | Champions maîtrisés
+META | Choix dominant du moment
+PATCH | Mise à jour
+HOTFIX | Correctif rapide
+BUILD | Choix d'objets
+CRIT | Coup critique
+PROC | Effet déclenché
+STACK | Cumul d'effets
+SPAWN | Apparition
+RESPAWN | Réapparition
+AGGRO | Attention des monstres
+LEASH | Aider le jungler
+SMITE | Châtiment
+ACE | Équipe ennemie éliminée
+PENTA | Cinq éliminations d'affilée
+QUADRA | Quatre éliminations d'affilée
+TRIPLE | Trois éliminations d'affilée
+KILL | Élimination
+ASSIST | Aide à l'élimination
+DEATH | Mort
+GOLD | Or
+OR | Monnaie du jeu
+SBIRE | Petit soldat
+SBIRES | Petits soldats
+TOUR | Structure défensive
+NEXUS | Cœur de la base
+FONTAINE | Zone de soin de la base
+BASE | Point de départ
+JUNGLE | Zone des monstres
+RIVIERE | Cours d'eau central
+CARTE | Terrain de jeu
+MINIMAP | Mini-carte
+PING | Signal envoyé aux alliés
+EMOTE | Expression du champion
+SKIN | Apparence d'un champion
+SKINS | Apparences
+CHROMA | Variante de couleur d'un skin
+RUNE | Pouvoir d'avant-partie
+RUNES | Bonus choisis avant la partie
+MAITRISE | Niveau d'un champion
+HEXTECH | Technologie magique
+SORT | Compétence
+SORTS | Compétences
+ESSENCE | Monnaie bleue du jeu
+RP | Monnaie payante de Riot
+SUPPORT | Soutien de l'équipe
+TOP | Voie du haut
+MID | Voie du milieu
+BOT | Voie du bas
+BOTLANE | Voie basse
+TOPLANE | Voie haute
+MIDLANE | Voie centrale
+SIDE | Voie latérale
+LATE | Fin de partie
+EARLY | Début de partie
+MIDGAME | Milieu de partie
+SCALE | Monter en puissance
+SCALING | Progression de la puissance
+CLEANSE | Purge
+EXHAUST | Fatigue
+IGNITE | Embrasement
+BARRIER | Barrière
+HEAL | Soin
+GHOST | Fantôme
+FLASH | Saut éclair
+TELEPORT | Téléportation
+CLAIRVOYANCE | Sort de vision
+OUTPLAY | Surpasser l'adversaire
+STOMP | Écraser l'équipe adverse
+CLUTCH | Réussite sous pression
+CHOKE | Rater un moment décisif
+HIGHLIGHT | Meilleur moment
+REPLAY | Revoir la partie
+SPECTATE | Regarder en direct
+LOBBY | Salle d'attente
+QUEUE | File d'attente
+ACCEPT | Accepter la partie
+DECLINE | Refuser la partie
+RANKED | Classée
+NORMAL | Partie non classée
+ARENA | Mode en duo
+RIFT | Faille
+FAILLE | Terrain de la Faille de l'invocateur
+SURRENDER | Abandonner
+SURR | Abandon, en argot

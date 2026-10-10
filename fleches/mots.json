@@ -1,0 +1,6514 @@
+[
+{
+"w": "AA",
+"c": [
+"Attaque de base"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "AD",
+"c": [
+"Dégâts physiques",
+"Attack damage"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "AP",
+"c": [
+"Puissance magique",
+"Dégâts magiques"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "AS",
+"c": [
+"Vitesse d'attaque"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "BG",
+"c": [
+"Bien joué, en chat"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "C9",
+"c": [
+"Cloud9, en abrégé"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "CC",
+"c": [
+"Contrôle de foule",
+"Étourdissement, ralentissement…"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "CD",
+"c": [
+"Temps de recharge"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "CS",
+"c": [
+"Sbires tués",
+"Dernier coup"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "DC",
+"c": [
+"Déconnexion"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "DK",
+"c": [
+"Équipe coréenne",
+"Dplus Kia"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "FF",
+"c": [
+"Abandon, en abrégé"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "G2",
+"c": [
+"Équipe européenne",
+"Équipe de Caps"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "GA",
+"c": [
+"Garder de la vision, en abrégé"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "GG",
+"c": [
+"Bien joué, en fin de partie"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "GJ",
+"c": [
+"Bien joué, en abrégé"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "GL",
+"c": [
+"Bonne chance, en chat"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "HF",
+"c": [
+"Amuse-toi bien, en chat"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "HP",
+"c": [
+"Points de vie"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "IG",
+"c": [
+"Équipe chinoise",
+"Invictus Gaming"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "JG",
+"c": [
+"Joueur de la jungle"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "KC",
+"c": [
+"Karmine Corp, en abrégé"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "KR",
+"c": [
+"Serveur coréen"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "KS",
+"c": [
+"Voler le kill d'un allié"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "KT",
+"c": [
+"Équipe coréenne"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "LP",
+"c": [
+"Points de ligue"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "MP",
+"c": [
+"Points de mana"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "MR",
+"c": [
+"Résistance magique"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "NA",
+"c": [
+"Serveur d'Amérique du Nord"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "NP",
+"c": [
+"Pas de souci, en chat"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "NT",
+"c": [
+"Beau coup, en anglais"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "OP",
+"c": [
+"Trop puissant"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "OR",
+"c": [
+"Monnaie du jeu"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "RP",
+"c": [
+"Monnaie payante de Riot"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SS",
+"c": [
+"Ennemi disparu, en chat"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "T1",
+"c": [
+"Équipe de Faker",
+"Équipe coréenne légendaire"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "TL",
+"c": [
+"Team Liquid, en abrégé"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "TP",
+"c": [
+"Téléportation, en abrégé"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "VI",
+"c": [
+"Gardienne de Piltover",
+"Combattante aux gantelets",
+"Sœur de Jinx"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "WP",
+"c": [
+"Bien joué, en anglais"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "XP",
+"c": [
+"Expérience gagnée"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "ACE",
+"c": [
+"Équipe ennemie éliminée"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "ADC",
+"c": [
+"Tireur du bas",
+"Carry à distance"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "AFK",
+"c": [
+"Absent du clavier"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "AIR",
+"c": [
+"Élément de Janna"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "AOE",
+"c": [
+"Dégâts de zone"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "ARC",
+"c": [
+"Arme à distance"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "BAN",
+"c": [
+"Interdiction d'un champion"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BIN",
+"c": [
+"Top laner chinois",
+"Joueur de Bilibili"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "BLG",
+"c": [
+"Équipe chinoise",
+"Bilibili Gaming"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "BO1",
+"c": [
+"Un seul match"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "BO3",
+"c": [
+"Meilleur des trois"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "BO5",
+"c": [
+"Meilleur des cinq"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "BOT",
+"c": [
+"Voie du bas"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "CDR",
+"c": [
+"Réduction du temps de recharge"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "DOT",
+"c": [
+"Dégâts sur la durée"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "DPS",
+"c": [
+"Dégâts par seconde"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "DRX",
+"c": [
+"Équipe coréenne",
+"Équipe de Deft"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "DUO",
+"c": [
+"Partie à deux"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "DWG",
+"c": [
+"Équipe coréenne",
+"Damwon"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "EAU",
+"c": [
+"Élément de Nami"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "EDG",
+"c": [
+"Équipe chinoise",
+"Edward Gaming"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "ELK",
+"c": [
+"ADC chinois",
+"Joueur de JD Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ELO",
+"c": [
+"Niveau d'un joueur classé",
+"Cote de classement"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "EUW",
+"c": [
+"Serveur d'Europe de l'Ouest"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "EXP",
+"c": [
+"Expérience"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "FAN",
+"c": [
+"Supporter"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "FEU",
+"c": [
+"Élément de Brand"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "FNC",
+"c": [
+"Fnatic, en abrégé"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "FPX",
+"c": [
+"Équipe chinoise",
+"FunPlus Phoenix"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "GAM",
+"c": [
+"Équipe vietnamienne"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "HLE",
+"c": [
+"Équipe coréenne",
+"Hanwha Life"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "IMO",
+"c": [
+"À mon avis, en chat"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "JAX",
+"c": [
+"Maître d'armes",
+"Combattant à la lanterne"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "JDG",
+"c": [
+"Équipe chinoise",
+"JD Gaming"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "KDA",
+"c": [
+"Ratio de combats",
+"Kills, deaths, assists",
+"Groupe virtuel de skins",
+"Pop de League"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "KOI",
+"c": [
+"Équipe espagnole",
+"Équipe de Ibai"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "LCK",
+"c": [
+"Ligue coréenne"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "LCS",
+"c": [
+"Ligue nord-américaine"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "LEC",
+"c": [
+"Ligue européenne"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "LFL",
+"c": [
+"Ligue française"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "LJL",
+"c": [
+"Ligue japonaise"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "LLA",
+"c": [
+"Ligue d'Amérique latine"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "LOL",
+"c": [
+"Initiales du jeu",
+"Jeu de Riot"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "LOR",
+"c": [
+"Jeu de cartes de Riot"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "LPL",
+"c": [
+"Ligue chinoise"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "LTA",
+"c": [
+"Ligue des Amériques"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "LUX",
+"c": [
+"Dame de lumière",
+"Mage de Demacia"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "LVL",
+"c": [
+"Niveau"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "MAD",
+"c": [
+"Équipe espagnole"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "MEL",
+"c": [
+"Mage de Piltover",
+"Conseillère de Piltover"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "MGG",
+"c": [
+"Média esport français"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "MIA",
+"c": [
+"Ennemi disparu de la carte"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "MID",
+"c": [
+"Voie du milieu"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "MMR",
+"c": [
+"Cote cachée du classement"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "MSI",
+"c": [
+"Tournoi de mi-saison",
+"Tournoi international de mi-saison"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "NOI",
+"c": [
+"Commentateur français",
+"Duo de Chips"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "OCE",
+"c": [
+"Serveur d'Océanie"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "OOM",
+"c": [
+"Plus de mana"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "OTP",
+"c": [
+"Spécialiste d'un seul champion"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "PBE",
+"c": [
+"Serveur de test public"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "PCS",
+"c": [
+"Ligue du Pacifique"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "PSG",
+"c": [
+"Équipe de Taïwan"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "RNG",
+"c": [
+"Équipe chinoise",
+"Royal Never Give Up"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SKT",
+"c": [
+"Ancien nom de T1"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SSG",
+"c": [
+"Équipe coréenne",
+"Samsung Galaxy"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SSW",
+"c": [
+"Équipe coréenne",
+"Samsung White"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "TFT",
+"c": [
+"Auto-battler de Riot",
+"Teamfight Tactics",
+"Jeu de stratégie de Riot"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "TOP",
+"c": [
+"Voie du haut"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TSM",
+"c": [
+"Équipe de Bjergsen"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "ULT",
+"c": [
+"Sort ultime"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "URF",
+"c": [
+"Mode à vitesse folle"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "UZI",
+"c": [
+"Tireur chinois légendaire",
+"ADC de Royal Never Give Up"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "VCS",
+"c": [
+"Ligue vietnamienne"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "VEX",
+"c": [
+"Morne",
+"Mage yordle déprimée"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "XUN",
+"c": [
+"Jungler chinois",
+"Joueur de Bilibili"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ZAC",
+"c": [
+"Arme secrète",
+"Blob de Zaun"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ZED",
+"c": [
+"Maître des ombres",
+"Assassin ninja"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ZOE",
+"c": [
+"Aspect du crépuscule",
+"Mage aux sorts rebondissants"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "AHRI",
+"c": [
+"Renarde à neuf queues",
+"Mage de Ionia"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ARAM",
+"c": [
+"Mode à voie unique"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "ASHE",
+"c": [
+"Archère du Freljord",
+"Reine des glaces"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "AZIR",
+"c": [
+"Empereur de Shurima",
+"Mage aux soldats de sable"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "BAIT",
+"c": [
+"Appât"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BANG",
+"c": [
+"ADC de SKT",
+"Tireur coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "BARD",
+"c": [
+"Gardien errant",
+"Soutien aux carillons"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "BASE",
+"c": [
+"Point de départ"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BUFF",
+"c": [
+"Bonus temporaire",
+"Amélioration",
+"Bonus de jungle"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BUSH",
+"c": [
+"Buisson"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "CAMP",
+"c": [
+"Zone de monstres"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "CAPE",
+"c": [
+"Pièce de tissu magique"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "CAPS",
+"c": [
+"Mid laner danois",
+"Joueur de G2"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "CLUB",
+"c": [
+"Structure d'esport"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "CRIT",
+"c": [
+"Coup critique"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "DASH",
+"c": [
+"Bond rapide"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "DEFT",
+"c": [
+"ADC coréen",
+"Champion du monde avec DRX"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "DENY",
+"c": [
+"Priver d'or"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "DIVE",
+"c": [
+"Plonger sous la tour"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "EKKO",
+"c": [
+"Garçon qui brise le temps",
+"Voyageur de Zaun",
+"Garçon du temps",
+"Allié de Powder"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "EPEE",
+"c": [
+"Lame du jeu"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "EUNE",
+"c": [
+"Serveur d'Europe du Nord et de l'Est"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "FANS",
+"c": [
+"Supporters"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "FARM",
+"c": [
+"Récolte d'or",
+"Tuer des sbires"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FAUX",
+"c": [
+"Arme de Kayn"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "FEAR",
+"c": [
+"Peur infligée à la cible"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FEED",
+"c": [
+"Mourir sans cesse"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FIZZ",
+"c": [
+"Filou des mers",
+"Petit yordle poisson"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "FLEX",
+"c": [
+"File classée à cinq"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "GANK",
+"c": [
+"Embuscade de jungle"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "GENG",
+"c": [
+"Équipe coréenne",
+"Gen.G en abrégé"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "GNAR",
+"c": [
+"Chaînon manquant",
+"Petit yordle devenu mastodonte"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "GOLD",
+"c": [
+"Or"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "GWEN",
+"c": [
+"Couturière sacrée",
+"Poupée de Hallowed Isles"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "HEAL",
+"c": [
+"Soin"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "HOST",
+"c": [
+"Animateur d'un plateau"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "HWEI",
+"c": [
+"Visionnaire peintre",
+"Mage artiste",
+"Peintre de Ionia"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "HYPE",
+"c": [
+"Enthousiasme du public"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "IBAI",
+"c": [
+"Streamer espagnol"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "ISHA",
+"c": [
+"Fille de Zaun"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "ITEM",
+"c": [
+"Objet, en anglais"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "JHIN",
+"c": [
+"Virtuose",
+"Tireur obsédé par le quatre"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "JINX",
+"c": [
+"Gâchette folle",
+"Tireuse chaotique de Zaun",
+"Personnage de Arcane",
+"Sœur de Vi"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "JUKE",
+"c": [
+"Esquiver en feintant"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "KAYN",
+"c": [
+"Faucheur d'ombre",
+"Combattant à la faux"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KILL",
+"c": [
+"Élimination"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "KITE",
+"c": [
+"Attaquer en reculant"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "KLED",
+"c": [
+"Cavalier colérique",
+"Petit yordle sur Skaarl"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "LAME",
+"c": [
+"Arme tranchante"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "LANE",
+"c": [
+"Voie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "LATE",
+"c": [
+"Fin de partie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "LULU",
+"c": [
+"Fée féerique",
+"Soutien yordle à la magie"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "LUNE",
+"c": [
+"Astre de Diana"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "LYTE",
+"c": [
+"Orfèvre de la Coupe"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "MAGE",
+"c": [
+"Lanceur de sorts"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "MAIN",
+"c": [
+"Champion favori"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "MATA",
+"c": [
+"Support de Samsung White",
+"Soutien coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "META",
+"c": [
+"Choix dominant du moment"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "MLXG",
+"c": [
+"Jungler chinois",
+"Joueur de RNG"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "MYLO",
+"c": [
+"Ami de Vi"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "NAMI",
+"c": [
+"Marée",
+"Soutien sirène"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "NERF",
+"c": [
+"Baisse de puissance"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "NING",
+"c": [
+"Jungler chinois",
+"Joueur de Invictus Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "NOKI",
+"c": [
+"Directeur artistique de la LFL"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "NUNU",
+"c": [
+"Garçon sur son yéti",
+"Enfant et son yéti"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "OLAF",
+"c": [
+"Berserker",
+"Guerrier viking"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ONER",
+"c": [
+"Jungler de T1",
+"Jungler coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ORNN",
+"c": [
+"Forgeron du Freljord",
+"Dieu de la forge"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "OSLO",
+"c": [
+"Capitale de la Norvège"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "PEEL",
+"c": [
+"Protéger son carry"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PICK",
+"c": [
+"Choix d'un champion"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PING",
+"c": [
+"Signal envoyé aux alliés"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "POKE",
+"c": [
+"Harcèlement à distance"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "POOL",
+"c": [
+"Champions maîtrisés"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PROC",
+"c": [
+"Effet déclenché"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PUSH",
+"c": [
+"Pousser une voie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PYKE",
+"c": [
+"Éventreur du port",
+"Soutien assassin"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "RELL",
+"c": [
+"Cavalière de fer",
+"Soutien en armure"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "RIFT",
+"c": [
+"Faille"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "RIOT",
+"c": [
+"Éditeur du jeu"
+],
+"cat": "Sigles et abréviations",
+"r": 0
+},
+{
+"w": "ROAM",
+"c": [
+"Se balader sur la carte"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "ROME",
+"c": [
+"Capitale de l'Italie"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "ROOT",
+"c": [
+"Enracinement"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "ROSE",
+"c": [
+"Fleur d'une skin"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "RUNE",
+"c": [
+"Pouvoir d'avant-partie",
+"Pouvoir de Runeterra"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "RYZE",
+"c": [
+"Mage runique",
+"Sorcier aux runes"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SAUT",
+"c": [
+"Déplacement bref"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "SEED",
+"c": [
+"Tête de série"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SETT",
+"c": [
+"Boss",
+"Combattant du poing"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SHEN",
+"c": [
+"Œil du crépuscule",
+"Tank de l'équilibre"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SHEO",
+"c": [
+"Joueur français",
+"Joueur de BDS"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "SHOP",
+"c": [
+"Boutique, en anglais"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "SIDE",
+"c": [
+"Voie latérale"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SION",
+"c": [
+"Colosse mort-vivant",
+"Tank sans fin"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SKIN",
+"c": [
+"Apparence d'un champion"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SLOW",
+"c": [
+"Ralentissement"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SONA",
+"c": [
+"Virtuose des cordes",
+"Soutien muette"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SORA",
+"c": [
+"Étoile du jeu"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "SORT",
+"c": [
+"Compétence"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "STUN",
+"c": [
+"Étourdissement"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SURR",
+"c": [
+"Abandon, en argot"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TANK",
+"c": [
+"Champion costaud"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TIAN",
+"c": [
+"Jungler chinois"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "TILT",
+"c": [
+"Perte de sang-froid"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TOUR",
+"c": [
+"Structure défensive"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "UDYR",
+"c": [
+"Esprit sauvage",
+"Combattant aux quatre esprits"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ULTI",
+"c": [
+"Ultime, en argot"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "VALO",
+"c": [
+"Jeu de tir de Riot"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "VENT",
+"c": [
+"Élément de Yasuo"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "VIDE",
+"c": [
+"Dimension monstrueuse",
+"Néant"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "WARD",
+"c": [
+"Balise de vision"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "WOLF",
+"c": [
+"Support de SKT",
+"Soutien coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "WYRM",
+"c": [
+"Dragon, en anglais"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "YIKE",
+"c": [
+"Jungler suédois",
+"Joueur de G2"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "YONE",
+"c": [
+"Inoubliable",
+"Frère de Yasuo"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ZAUN",
+"c": [
+"Bas-fonds de Piltover",
+"Cité en dessous"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "ZEKA",
+"c": [
+"Mid laner coréen",
+"Joueur de Hanwha"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ZEKE",
+"c": [
+"Convergence de soutien",
+"Aura d'alliés"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "ZERI",
+"c": [
+"Étincelle de Zaun",
+"Tireuse électrique"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ZEUS",
+"c": [
+"Top laner de T1",
+"Joueur coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ZONE",
+"c": [
+"Garder à distance"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "ZVEN",
+"c": [
+"ADC danois",
+"Joueur de Cloud9"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ZYRA",
+"c": [
+"Lueur des ronces",
+"Mage-plante"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ACCOR",
+"c": [
+"Salle de Paris",
+"Salle de finale à Paris"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 0
+},
+{
+"w": "AEGIS",
+"c": [
+"Structure française d'esport"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "AGGRO",
+"c": [
+"Attention des monstres"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "AKALI",
+"c": [
+"Assassin voilé de Ionia",
+"Poing de l'équilibre"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "AMUMU",
+"c": [
+"Momie triste",
+"Petite momie en pleurs"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ANNIE",
+"c": [
+"Petite fille et son ours Tibbers",
+"Enfant des flammes"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ARENA",
+"c": [
+"Mode en duo",
+"Salle de compétition"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BARON",
+"c": [
+"Monstre épique de la fin"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "BATON",
+"c": [
+"Arme de mage"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "BENGI",
+"c": [
+"Jungler de SKT",
+"Jungler coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "BERCY",
+"c": [
+"Salle de Paris"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "BLIND",
+"c": [
+"Cécité qui rate les attaques"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BOOST",
+"c": [
+"Aide payante à monter"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BRAND",
+"c": [
+"Vengeance ardente",
+"Mage de feu"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "BRAUM",
+"c": [
+"Cœur du Freljord",
+"Soutien au grand bouclier"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "BRIAR",
+"c": [
+"Expérience ravageuse",
+"Jungleuse affamée",
+"Champion de Noxus"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "BRUME",
+"c": [
+"Fléau des Îles"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "BRUSH",
+"c": [
+"Buisson, en anglais"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BUILD",
+"c": [
+"Choix d'objets"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BULII",
+"c": [
+"Présentatrice française de l'esport"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "BURST",
+"c": [
+"Dégâts instantanés"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BUSAN",
+"c": [
+"Ville de Corée"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "BWIPO",
+"c": [
+"Top laner belge",
+"Joueur de Fnatic"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "CARRY",
+"c": [
+"Porteur de l'équipe"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "CARTE",
+"c": [
+"Terrain de jeu"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "CBLOL",
+"c": [
+"Ligue brésilienne"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "CHIPS",
+"c": [
+"Commentateur français",
+"Duo de Noi"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "CHOKE",
+"c": [
+"Rater un moment décisif"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "CHOVY",
+"c": [
+"Mid laner de Gen.G",
+"Joueur au CS légendaire"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "CLUBS",
+"c": [
+"Structures d'esport"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "COACH",
+"c": [
+"Entraîneur d'une équipe"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "COMBO",
+"c": [
+"Enchaînement de sorts"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "CORKI",
+"c": [
+"Pilote téméraire yordle",
+"Aviateur yordle"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "COUPE",
+"c": [
+"Récipient pour l'Invocateur",
+"Trophée du Mondial"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "CRABE",
+"c": [
+"Monstre de la rivière"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "CREME",
+"c": [
+"Joueur de Karmine Corp"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "DEATH",
+"c": [
+"Mort"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "DIANA",
+"c": [
+"Lame de la lune",
+"Combattante de Targon"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "DOINB",
+"c": [
+"Mid laner coréen",
+"Joueur de FunPlus Phoenix"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "DORAN",
+"c": [
+"Objet de départ",
+"Équipement de début de partie"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "DRAFT",
+"c": [
+"Partie avec choix des champions",
+"Phase de choix des champions"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "DRAKE",
+"c": [
+"Dragon du jeu"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "EARLY",
+"c": [
+"Début de partie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "ELISE",
+"c": [
+"Reine araignée",
+"Mage aux deux formes"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ELORA",
+"c": [
+"Fille de Sevika"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "EMOTE",
+"c": [
+"Expression du champion"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FAKER",
+"c": [
+"Légende de T1",
+"Mid laner coréen aux cinq titres"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "FIORA",
+"c": [
+"Escrimeuse de Demacia",
+"Duelliste hors pair"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "FLAME",
+"c": [
+"Insulter, en chat"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FLANK",
+"c": [
+"Attaquer par le côté"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FLASH",
+"c": [
+"Saut éclair",
+"Sort de saut"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FLEAU",
+"c": [
+"Arme lourde à chaîne"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "GALIO",
+"c": [
+"Colosse de Demacia",
+"Gargouille de pierre"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "GAREN",
+"c": [
+"Puissance de Demacia",
+"Frère de Lux"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "GEMME",
+"c": [
+"Pierre de puissance"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "GHOST",
+"c": [
+"Fantôme"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "GLACE",
+"c": [
+"Élément de Anivia"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "GROMP",
+"c": [
+"Crapaud de jungle"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "HACHE",
+"c": [
+"Arme tranchante lourde"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "HANOI",
+"c": [
+"Capitale du Vietnam"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "IONIA",
+"c": [
+"Île de l'équilibre",
+"Terre de Yasuo"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "ISLES",
+"c": [
+"Îles, en anglais"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "IVERN",
+"c": [
+"Père des bois",
+"Druide de la jungle"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "IXTAL",
+"c": [
+"Jungle des éléments",
+"Terre de Qiyana"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "JANNA",
+"c": [
+"Colère de la tempête",
+"Soutien du vent"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "JAYCE",
+"c": [
+"Défenseur de demain",
+"Champion au marteau transformable",
+"Inventeur de Arcane",
+"Allié de Viktor"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KAISA",
+"c": [
+"Fille du Néant",
+"Tireuse à armure vivante"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KARMA",
+"c": [
+"Éclairée",
+"Mage de Ionia"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KAYLE",
+"c": [
+"Juste",
+"Ange guerrier"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KERIA",
+"c": [
+"Support de T1",
+"Soutien coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "KRUGS",
+"c": [
+"Golems de pierre"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "LANCE",
+"c": [
+"Arme d'hast"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "LEASH",
+"c": [
+"Aider le jungler"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "LEONA",
+"c": [
+"Aube radieuse",
+"Soutien du Soleil"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "LIGUE",
+"c": [
+"Compétition des Invocateurs"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "LOBBY",
+"c": [
+"Salle d'attente"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "LUDEN",
+"c": [
+"Écho de puissance",
+"Objet de mage qui explose"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "MAGIE",
+"c": [
+"Pouvoir de Runeterra"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "MARIN",
+"c": [
+"Top laner coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "MEIKO",
+"c": [
+"Support chinois",
+"Joueur de Edward Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "MEJAI",
+"c": [
+"Âme volée",
+"Objet qui monte avec les éliminations"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "MIAMI",
+"c": [
+"Ville des États-Unis"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "MIKYX",
+"c": [
+"Support slovène",
+"Joueur de G2",
+"Support de G2"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "MILIO",
+"c": [
+"Soutien chaleureux",
+"Enfant du feu doux",
+"Enfant de Ixtal"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "NASUS",
+"c": [
+"Conservateur des sables",
+"Chien de Shurima"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "NEANT",
+"c": [
+"Dimension monstrueuse",
+"Vide"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "NEEKO",
+"c": [
+"Caméléon curieuse",
+"Mage caméléon"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "NEXUS",
+"c": [
+"Cœur de la base"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "NILAH",
+"c": [
+"Joie sans entrave",
+"Tireuse au fouet",
+"Combattante de Bilgewater"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "NOXUS",
+"c": [
+"Empire expansionniste",
+"Cité de Darius"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "OBJET",
+"c": [
+"Équipement acheté à la boutique"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "OMBRE",
+"c": [
+"Pouvoir de Zed"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "PARIS",
+"c": [
+"Ville de finale 2019"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "PATCH",
+"c": [
+"Mise à jour"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PEKIN",
+"c": [
+"Capitale de la Chine"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "PENTA",
+"c": [
+"Cinq éliminations d'affilée",
+"Cinq éliminations"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PERKZ",
+"c": [
+"Joueur croate",
+"Ancien de G2 et Fnatic"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "POPPY",
+"c": [
+"Gardienne du marteau",
+"Petite yordle au marteau"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "PROXY",
+"c": [
+"Farmer chez l'ennemi"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PURGE",
+"c": [
+"Sort anti-contrôle"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "QUEUE",
+"c": [
+"File d'attente"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "QUINN",
+"c": [
+"Ailes de Demacia",
+"Tireuse avec Valor"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "RAKAN",
+"c": [
+"Charmeur",
+"Soutien oiseau"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "RESET",
+"c": [
+"Retour pour racheter"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "RIVEN",
+"c": [
+"Exilée",
+"Épéiste à la lame brisée"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "RULER",
+"c": [
+"ADC coréen",
+"Champion du monde 2017"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "RUNES",
+"c": [
+"Bonus choisis avant la partie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SABRE",
+"c": [
+"Lame courbe"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "SAKEN",
+"c": [
+"Top laner français"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "SBIRE",
+"c": [
+"Petit soldat"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SCALE",
+"c": [
+"Monter en puissance"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SCOUT",
+"c": [
+"Mid laner coréen",
+"Joueur de Edward Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "SCRIM",
+"c": [
+"Match d'entraînement"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SENNA",
+"c": [
+"Rédemptrice",
+"Tireuse aux lanternes"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SEOUL",
+"c": [
+"Capitale de la Corée"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SHACO",
+"c": [
+"Bouffon démoniaque",
+"Assassin farceur"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SHOVE",
+"c": [
+"Pousser fort une voie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SILCO",
+"c": [
+"Chef de Zaun",
+"Père de Jinx"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "SIVIR",
+"c": [
+"Maîtresse de guerre",
+"Tireuse au boomerang"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SIXEN",
+"c": [
+"Cofondateur de Team Du Sud"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "SKINS",
+"c": [
+"Apparences"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SMITE",
+"c": [
+"Châtiment"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SMURF",
+"c": [
+"Compte secondaire"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SNARE",
+"c": [
+"Immobilisation"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SOLOQ",
+"c": [
+"File classée en solo"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SORTS",
+"c": [
+"Compétences"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SPAWN",
+"c": [
+"Apparition"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SPLIT",
+"c": [
+"Moitié de saison"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "STACK",
+"c": [
+"Cumul d'effets"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "STADE",
+"c": [
+"Enceinte de finale"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "STOMP",
+"c": [
+"Écraser l'équipe adverse"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SWAIN",
+"c": [
+"Grand général",
+"Mage corbeau"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SYLAS",
+"c": [
+"Libéré",
+"Mage aux chaînes"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "TALON",
+"c": [
+"Lame de l'ombre",
+"Assassin de Noxus",
+"Équipe de Hong Kong"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "TARIC",
+"c": [
+"Bouclier de Valoran",
+"Soutien de pierre précieuse"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "TAUNT",
+"c": [
+"Provocation"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TEEMO",
+"c": [
+"Éclaireur véloce",
+"Yordle aux champignons"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "TERRE",
+"c": [
+"Élément de Taliyah"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "THROW",
+"c": [
+"Gâcher une victoire"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TOTEM",
+"c": [
+"Balise de départ",
+"Relique de vision"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "TOXIC",
+"c": [
+"Joueur malsain"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TRADE",
+"c": [
+"Échange de coups"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TROLL",
+"c": [
+"Joueur qui gâche la partie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "UPSET",
+"c": [
+"ADC allemand",
+"Joueur de Fnatic"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "URGOT",
+"c": [
+"Dreadnought",
+"Tank des bas-fonds"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "VARUS",
+"c": [
+"Flèche de la vengeance",
+"Tireur corrompu"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "VAYNE",
+"c": [
+"Chasseuse de la nuit",
+"Tireuse aux carreaux d'argent"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "VIEGO",
+"c": [
+"Roi déchu",
+"Assassin de la Brume"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "VIPER",
+"c": [
+"ADC coréen",
+"Joueur de Edward Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "VOILE",
+"c": [
+"Objet qui bloque un sort"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "XAYAH",
+"c": [
+"Rebelle",
+"Tireuse aux plumes"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "XPEKE",
+"c": [
+"Mid laner espagnol",
+"Joueur de Fnatic"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "YASUO",
+"c": [
+"Impardonnable",
+"Samouraï au vent"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "YUUMI",
+"c": [
+"Chatte magique",
+"Soutien-livre"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ZIGGS",
+"c": [
+"Expert en explosifs",
+"Yordle bombardier"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "AATROX",
+"c": [
+"Épée des Darkin",
+"Darkin à la grande lame"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "AKSHAN",
+"c": [
+"Sentinelle rebelle",
+"Tireur au grappin"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ANCIEN",
+"c": [
+"Dragon âgé"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "ANIVIA",
+"c": [
+"Phénix de glace",
+"Cryophénix"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ARCADE",
+"c": [
+"Ligne de skins de jeux vidéo"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "ARCANE",
+"c": [
+"Série animée de Riot"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "ARDENT",
+"c": [
+"Encensoir de soutien",
+"Soutien offensif"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "ASSIST",
+"c": [
+"Aide à l'élimination"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "AURORA",
+"c": [
+"Sorcière entre deux mondes",
+"Mage au lapin des esprits",
+"Mage de Freljord"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "BALISE",
+"c": [
+"Marque de vision",
+"Ward"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "BANDLE",
+"c": [
+"Cité des yordles",
+"Terre des petits"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "BERLIN",
+"c": [
+"Ville de finale 2015"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "BOTTES",
+"c": [
+"Objet de vitesse",
+"Chaussures de champion"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "BRUMES",
+"c": [
+"Îles maudites",
+"Îles de la Brume noire"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "CANYON",
+"c": [
+"Jungler de Damwon",
+"Jungler coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "CASTER",
+"c": [
+"Commentateur"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "CHAMPS",
+"c": [
+"Champions, en argot"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "CHROMA",
+"c": [
+"Variante de couleur d'un skin"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "CLOUD9",
+"c": [
+"Équipe américaine"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "CLUTCH",
+"c": [
+"Réussite sous pression"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "DAMWON",
+"c": [
+"Équipe coréenne",
+"Champion du monde 2020"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "DARIUS",
+"c": [
+"Main de Noxus",
+"Bourreau à la hache"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "DARKIN",
+"c": [
+"Épées maudites",
+"Guerriers déchus de Aatrox"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "DEBUFF",
+"c": [
+"Malus appliqué"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "DRAGON",
+"c": [
+"Monstre épique",
+"Drake"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "DRAVEN",
+"c": [
+"Glorieux bourreau",
+"Frère de Darius"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "EDWARD",
+"c": [
+"Joueur chinois",
+"Joueur de EDG"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ELIXIR",
+"c": [
+"Boisson de puissance",
+"Potion de fin de partie"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "ELYOYA",
+"c": [
+"Jungler espagnol",
+"Joueur de MAD"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ENGAGE",
+"c": [
+"Lancer le combat"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "EPINES",
+"c": [
+"Armure qui renvoie les coups"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "ESPRIT",
+"c": [
+"Être de Ionia"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "ETOILE",
+"c": [
+"Astre de Soraka"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "EZREAL",
+"c": [
+"Explorateur prodigue",
+"Tireur blond et aventurier"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "FAILLE",
+"c": [
+"Terrain principal"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "FELINS",
+"c": [
+"Peuple de Shurima"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "FINALE",
+"c": [
+"Dernier match d'un tournoi"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "FNATIC",
+"c": [
+"Équipe européenne historique",
+"Équipe britannique de légende"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "FOUDRE",
+"c": [
+"Pouvoir de Ezreal"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "FREEZE",
+"c": [
+"Geler la vague de sbires"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "GRAGAS",
+"c": [
+"Ivrogne bagarreur",
+"Gros buveur"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "GRAVES",
+"c": [
+"Hors-la-loi",
+"Tireur au fusil à pompe"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "GROUPE",
+"c": [
+"Poule de tournoi"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "GUERRE",
+"c": [
+"Conflit de Runeterra"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "HERAUT",
+"c": [
+"Monstre épique de la rivière"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "HOTFIX",
+"c": [
+"Correctif rapide"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "IGNITE",
+"c": [
+"Embrasement"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "ILLAOI",
+"c": [
+"Prêtresse du Kraken",
+"Prêtresse à tentacules",
+"Prêtresse de Bilgewater"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "IMPACT",
+"c": [
+"Top laner américain",
+"Joueur de Team Liquid"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "IONIEN",
+"c": [
+"Habitant de Ionia"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "IRELIA",
+"c": [
+"Danseuse des lames",
+"Combattante de Ionia"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "JANKOS",
+"c": [
+"Jungler polonais",
+"Joueur de G2"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "JENSEN",
+"c": [
+"Mid laner danois",
+"Joueur de Cloud9"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "JIEJIE",
+"c": [
+"Jungler chinois",
+"Joueur de Edward Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "JUNGLE",
+"c": [
+"Zone des monstres"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "KAMETO",
+"c": [
+"Fondateur de Karmine Corp",
+"Streamer de la Karmine"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "KANAVI",
+"c": [
+"Jungler coréen",
+"Joueur de JD Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "KENNEN",
+"c": [
+"Cœur de la tempête",
+"Petit yordle ninja"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KHAZIX",
+"c": [
+"Fléau du Vide",
+"Assassin-insecte"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KNIGHT",
+"c": [
+"Mid laner chinois",
+"Joueur de JD Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "KOGMAW",
+"c": [
+"Gueule des abysses",
+"Tireur au bec acide"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KRAKEN",
+"c": [
+"Bouclier de tireur",
+"Tueur de colosses"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "KSANTE",
+"c": [
+"Champion de Nazumah"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "LANING",
+"c": [
+"Phase de voie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "LEAGUE",
+"c": [
+"Ligue des Légendes"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "LEAVER",
+"c": [
+"Abandonneur"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "LEESIN",
+"c": [
+"Moine aveugle",
+"Combattant au coup du dragon"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "LILLIA",
+"c": [
+"Fleur timide",
+"Jungleuse biche"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "LIQUID",
+"c": [
+"Équipe américaine"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "LOCKIN",
+"c": [
+"Chanson du Worlds"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "LOUNET",
+"c": [
+"Manager de AEGIS"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "LUCIAN",
+"c": [
+"Purificateur",
+"Tireur aux deux pistolets"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "MADRID",
+"c": [
+"Capitale de l'Espagne"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "MAOKAI",
+"c": [
+"Tordu",
+"Tank-arbre"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "MARQUE",
+"c": [
+"Sort de boule de neige"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "NASHOR",
+"c": [
+"Baron du jeu"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "NORMAL",
+"c": [
+"Partie non classée"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "NOXIEN",
+"c": [
+"Habitant de Noxus"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "NUGURI",
+"c": [
+"Top laner de Damwon",
+"Top coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "PASSIF",
+"c": [
+"Pouvoir permanent"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PEANUT",
+"c": [
+"Jungler coréen",
+"Joueur de Gen.G"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "PIERRE",
+"c": [
+"Matière de Malphite"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "POTION",
+"c": [
+"Soin de départ",
+"Fiole à boire"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "POWDER",
+"c": [
+"Jinx avant le chaos"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "QIYANA",
+"c": [
+"Impératrice des éléments",
+"Assassine de Ixtal"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "QUADRA",
+"c": [
+"Quatre éliminations d'affilée"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "RAMMUS",
+"c": [
+"Tatou blindé",
+"Tank qui roule"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "RANKED",
+"c": [
+"Classée"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "RAZORK",
+"c": [
+"Jungler espagnol",
+"Joueur de G2"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "RECALL",
+"c": [
+"Retour à la base"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "REKSAI",
+"c": [
+"Terreur de sable",
+"Jungleuse du Vide"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "RENATA",
+"c": [
+"Baronne chimique",
+"Soutien de Zaun"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "RENGAR",
+"c": [
+"Chasseur orgueilleux",
+"Assassin félin"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "REPLAY",
+"c": [
+"Revoir la partie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "ROOKIE",
+"c": [
+"Mid laner coréen",
+"Joueur de Invictus Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ROSTER",
+"c": [
+"Liste des joueurs"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "RUMBLE",
+"c": [
+"Mécanicien téméraire",
+"Petit yordle en robot"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SAISON",
+"c": [
+"Année de compétition"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SAMIRA",
+"c": [
+"Rose du désert",
+"Tireuse flamboyante"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SBIRES",
+"c": [
+"Petits soldats"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SERAPH",
+"c": [
+"Étreinte de mana",
+"Larme transformée"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "SEVIKA",
+"c": [
+"Chef de Firelights"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "SHAUNZ",
+"c": [
+"Cofondateur de AEGIS"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "SHOJIN",
+"c": [
+"Lance des dragons",
+"Objet de vitesse d'action"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "SINGED",
+"c": [
+"Chimiste fou",
+"Scientifique qui laisse du poison",
+"Chimiste de Zaun"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SNEAKY",
+"c": [
+"ADC américain",
+"Joueur de Cloud9"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "SOLARI",
+"c": [
+"Médaillon de soutien",
+"Bouclier du Soleil"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "SOLEIL",
+"c": [
+"Astre de Leona"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "SORAKA",
+"c": [
+"Enfant des étoiles",
+"Soutien soigneuse"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "STERAK",
+"c": [
+"Défi de combattant"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "STREAM",
+"c": [
+"Diffusion en direct"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "STUDIO",
+"c": [
+"Plateau de diffusion"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SYNDRA",
+"c": [
+"Souveraine obscure",
+"Mage aux sphères"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "TAIPEI",
+"c": [
+"Capitale de Taïwan"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "TARGON",
+"c": [
+"Montagne du ciel",
+"Sommet des Aspects"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "TARZAN",
+"c": [
+"Jungler coréen",
+"Joueur de DK"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "THESHY",
+"c": [
+"Top laner chinois",
+"Joueur de Invictus Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "THRESH",
+"c": [
+"Gardien des chaînes",
+"Soutien à la lanterne"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "TRIPLE",
+"c": [
+"Trois éliminations d'affilée"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TWITCH",
+"c": [
+"Rat de la peste",
+"Tireur furtif de Zaun",
+"Plateforme de streaming"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "TYLER1",
+"c": [
+"Streamer américain célèbre"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "VANDER",
+"c": [
+"Père de substitution de Vi et Powder",
+"Gardien du Pit"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "VEIGAR",
+"c": [
+"Maître du mal",
+"Petit yordle noir"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "VELKOZ",
+"c": [
+"Œil du Néant",
+"Mage-œil"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "VIKTOR",
+"c": [
+"Héraut des machines",
+"Mage mécanique",
+"Scientifique de Arcane"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "WOLVES",
+"c": [
+"Camp de loups"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "WORLDS",
+"c": [
+"Championnat du monde"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "WUKONG",
+"c": [
+"Roi-singe",
+"Combattant au bâton"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "WUNDER",
+"c": [
+"Top laner danois",
+"Joueur de G2"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "XERATH",
+"c": [
+"Mage ascensionné",
+"Mage du Shurima"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "XIAOHU",
+"c": [
+"Mid laner chinois",
+"Joueur de RNG"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "YORDLE",
+"c": [
+"Petit peuple poilu",
+"Peuple de Teemo"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "YORICK",
+"c": [
+"Berger des âmes",
+"Pelle et goules"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "YUNARA",
+"c": [
+"Tireuse de Ionia"
+],
+"cat": "Champions",
+"r": 1
+},
+{
+"w": "ZAAHEN",
+"c": [
+"Guerrier de Shurima"
+],
+"cat": "Champions",
+"r": 1
+},
+{
+"w": "ZENITH",
+"c": [
+"Salle de concert"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "ZHONYA",
+"c": [
+"Sablier invulnérable",
+"Sablier à stase"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "ZILEAN",
+"c": [
+"Gardien du temps",
+"Soutien horloger"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ALISTAR",
+"c": [
+"Minotaure protecteur",
+"Soutien taureau"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "AMBESSA",
+"c": [
+"Matriarche de Noxus"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ARBITRE",
+"c": [
+"Contrôleur du match"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "ARCANES",
+"c": [
+"Pouvoirs de Piltover"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "ATAKHAN",
+"c": [
+"Monstre épique récent"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "BANSHEE",
+"c": [
+"Voile qui bloque un sort",
+"Voile magique"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "BELVETH",
+"c": [
+"Impératrice du Néant",
+"Reine du Vide",
+"Impératrice du Vide"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "BOTLANE",
+"c": [
+"Voie basse"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "BRACKET",
+"c": [
+"Tableau des matchs"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "CADENCE",
+"c": [
+"Rune de vitesse",
+"Rythme d'une attaque"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "CAEDREL",
+"c": [
+"Streamer britannique"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "CAITLYN",
+"c": [
+"Shérif de Piltover",
+"Tireuse aux pièges",
+"Shérif de Arcane"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "CALISTE",
+"c": [
+"Jeune joueur français",
+"Joueur de Karmine Corp"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "CAMAVOR",
+"c": [
+"Terre de Kayn"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "CAMILLE",
+"c": [
+"Dame d'acier",
+"Assassine de Piltover"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "CAPUCHE",
+"c": [
+"Vêtement de tête"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "CASTERS",
+"c": [
+"Commentateurs"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "CASTEUR",
+"c": [
+"Commentateur"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "CHOGATH",
+"c": [
+"Terreur du Néant",
+"Monstre qui dévore"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "CITOYEN",
+"c": [
+"Habitant de Valoran"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "CLAGGOR",
+"c": [
+"Ami de Vi"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "CLEANSE",
+"c": [
+"Purge"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "COLOGNE",
+"c": [
+"Ville d'Allemagne"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "CONSEIL",
+"c": [
+"Dirigeants de Piltover"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "CRISTAL",
+"c": [
+"Pierre précieuse"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "DARKINS",
+"c": [
+"Épées maudites"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "DECLINE",
+"c": [
+"Refuser la partie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "DEMACIA",
+"c": [
+"Royaume de la lumière",
+"Cité de Garen et Lux"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "DOMINGO",
+"c": [
+"Flash dans un mur, en argot"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "ESSENCE",
+"c": [
+"Monnaie bleue du jeu"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "EVELYNN",
+"c": [
+"Étreinte du chagrin",
+"Assassine charmeuse"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "EXHAUST",
+"c": [
+"Fatigue"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FANTOME",
+"c": [
+"Sort de vitesse",
+"Spectre"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "FATIGUE",
+"c": [
+"Sort de ralentissement"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "FINALES",
+"c": [
+"Derniers matchs d'un tournoi"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 0
+},
+{
+"w": "FROGGEN",
+"c": [
+"Mid laner danois",
+"Vétéran européen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "GUINSOO",
+"c": [
+"Lame qui monte en puissance",
+"Rageblade"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "HECARIM",
+"c": [
+"Ombre de la guerre",
+"Centaure spectral"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "HEXTECH",
+"c": [
+"Technologie magique",
+"Magie de Piltover"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "IMAGINE",
+"c": [
+"Groupe de League, avec Dragons"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "INCHEON",
+"c": [
+"Ville du Mondial 2018"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "KALISTA",
+"c": [
+"Lance de la vengeance",
+"Tireuse aux lances"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KARMINE",
+"c": [
+"Équipe de Kameto",
+"Équipe bleue française"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "KARTHUS",
+"c": [
+"Chanteur de requiem",
+"Mage-liche"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KINDRED",
+"c": [
+"Chasseurs éternels",
+"Agneau et Loup"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KNOCKUP",
+"c": [
+"Projection en l'air"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "LARSSEN",
+"c": [
+"Mid laner suédois",
+"Joueur de G2"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "LEBLANC",
+"c": [
+"Séductrice illusionniste",
+"Mage trompeuse",
+"Séductrice de Noxus"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "LEHENDS",
+"c": [
+"Support coréen",
+"Joueur de Gen.G"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "LIANDRY",
+"c": [
+"Tourment de puissance",
+"Brûlure sur la durée"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "LONDRES",
+"c": [
+"Capitale du Royaume-Uni"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "LUMIERE",
+"c": [
+"Pouvoir de Lux"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "MANAGER",
+"c": [
+"Dirigeant d'équipe"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "MARTEAU",
+"c": [
+"Arme à deux mains"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "MEDARDA",
+"c": [
+"Famille de Mel"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "MERCURE",
+"c": [
+"Jambières anti-CC",
+"Ceinture qui purge"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "MIDGAME",
+"c": [
+"Milieu de partie"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "MIDLANE",
+"c": [
+"Voie centrale"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "MINIMAP",
+"c": [
+"Mini-carte"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "MONDIAL",
+"c": [
+"Championnat du monde"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 0
+},
+{
+"w": "MORGANA",
+"c": [
+"Déchue",
+"Mage aux chaînes noires"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "NAAFIRI",
+"c": [
+"Meute d'ombre",
+"Chiens de chasse"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "NEWYORK",
+"c": [
+"Ville des États-Unis"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "NIDALEE",
+"c": [
+"Chasseuse bestiale",
+"Femme-panthère"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ODOAMNE",
+"c": [
+"Top laner roumain",
+"Joueur de Rogue"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ORIANNA",
+"c": [
+"Dame mécanique",
+"Mage à la balle"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "OUTPLAY",
+"c": [
+"Surpasser l'adversaire"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PASSIVE",
+"c": [
+"Compétence sans activation"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "PLATEAU",
+"c": [
+"Studio de diffusion"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "PROJECT",
+"c": [
+"Ligne de skins futuristes"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "RABADON",
+"c": [
+"Coiffe de puissance",
+"Chapeau qui gonfle la magie"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "RANDUIN",
+"c": [
+"Présage de tank",
+"Présage contre les critiques"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "RAPTORS",
+"c": [
+"Camp d'oiseaux"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "RECOLTE",
+"c": [
+"Rune sombre",
+"Moisson noire"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "REKKLES",
+"c": [
+"ADC suédois",
+"Joueur longtemps chez Fnatic"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "RELIQUE",
+"c": [
+"Objet de départ"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "REPLAYS",
+"c": [
+"Retour sur les actions"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "RESPAWN",
+"c": [
+"Réapparition"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "RIVIERE",
+"c": [
+"Cours d'eau central"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "RUNIQUE",
+"c": [
+"Relatif aux runes"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "SCALING",
+"c": [
+"Progression de la puissance"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SCUTTLE",
+"c": [
+"Crabe de la rivière"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "SEEDING",
+"c": [
+"Tirage au sort pondéré"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SEJUANI",
+"c": [
+"Courroux du Nord",
+"Cavalière du sanglier"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SHURIMA",
+"c": [
+"Désert des Ascendants",
+"Empire du sable"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "SHYVANA",
+"c": [
+"Demi-dragon",
+"Combattante-dragon"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SILENCE",
+"c": [
+"Interdit de lancer des sorts"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SKARNER",
+"c": [
+"Sentinelle de cristal",
+"Scorpion géant"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SKYYART",
+"c": [
+"Commentateur français"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "SMOLDER",
+"c": [
+"Dragonnet",
+"Petit dragon tireur",
+"Petit dragon"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SORCIER",
+"c": [
+"Bottes de puissance",
+"Chaussures du mage"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "SPECTRE",
+"c": [
+"Bouclier magique",
+"Voile des esprits"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "SPIRITE",
+"c": [
+"Esprit de Ionia"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "SUPPORT",
+"c": [
+"Soutien de l'équipe"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TALIYAH",
+"c": [
+"Tisseuse de pierres",
+"Mage aux pierres"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "TEMPETE",
+"c": [
+"Pouvoir de Kennen"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "TOPLANE",
+"c": [
+"Voie haute"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TORONTO",
+"c": [
+"Ville du Canada"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "TRIDENT",
+"c": [
+"Arme à trois pointes"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "TRINITE",
+"c": [
+"Force de combattant",
+"Triforce"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "TRINKET",
+"c": [
+"Relique"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TROPHEE",
+"c": [
+"Récompense"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "TRUNDLE",
+"c": [
+"Roi des trolls",
+"Combattant à la massue"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "VALORAN",
+"c": [
+"Continent principal"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "VASTAYA",
+"c": [
+"Peuple mi-humain mi-animal"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "WARWICK",
+"c": [
+"Fureur de Zaun",
+"Loup-garou",
+"Garçon devenu loup"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "WEBEDIA",
+"c": [
+"Organisateur de la LFL"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "XINZHAO",
+"c": [
+"Sénéchal de Demacia",
+"Lancier de Demacia"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "YORDLES",
+"c": [
+"Petits poilus"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "YOUTUBE",
+"c": [
+"Plateforme de vidéos"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "ZAUNITE",
+"c": [
+"Habitant de Zaun"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "ZERATOR",
+"c": [
+"Streamer français"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "AMULETTE",
+"c": [
+"Bijou protecteur"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "ANALYSTE",
+"c": [
+"Spécialiste des données"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "APHELIOS",
+"c": [
+"Tireur armé de lunes",
+"Arme de Targon"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ARBALETE",
+"c": [
+"Arme à carreaux"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "ASTRALIS",
+"c": [
+"Équipe danoise"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "BARRIERE",
+"c": [
+"Sort de bouclier"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "BJERGSEN",
+"c": [
+"Mid laner danois",
+"Joueur de TSM"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "BOOTCAMP",
+"c": [
+"Stage d'équipe"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "BOUCLIER",
+"c": [
+"Objet de défense"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "BOUTIQUE",
+"c": [
+"Lieu d'achat"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "CASTEUSE",
+"c": [
+"Commentatrice"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "CHAMPION",
+"c": [
+"Personnage jouable"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "CHIMTECH",
+"c": [
+"Technologie de Zaun"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "COURONNE",
+"c": [
+"Coiffe de roi"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "CUIRASSE",
+"c": [
+"Armure lourde"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "ENFORCER",
+"c": [
+"Policier de Piltover"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "FONTAINE",
+"c": [
+"Zone de soin de la base"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FRELJORD",
+"c": [
+"Terre gelée",
+"Région de Ashe"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "GANTELET",
+"c": [
+"Gant en armure"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "GAUNTLET",
+"c": [
+"Gant de combattant"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "GUMAYUSI",
+"c": [
+"ADC de T1",
+"Tireur coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "HALLOWED",
+"c": [
+"Terre de Gwen",
+"Île des poupées"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "HANSSAMA",
+"c": [
+"ADC français",
+"Joueur de G2"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "HERITIER",
+"c": [
+"Descendant d'un héros"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "HUMANOID",
+"c": [
+"Mid laner tchèque",
+"Joueur de Fnatic"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "INSTITUT",
+"c": [
+"Lieu de la Ligue des Légendes"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "KASSADIN",
+"c": [
+"Marcheur du Néant",
+"Mage du Vide"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KATARINA",
+"c": [
+"Lame sinistre",
+"Assassine aux dagues"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "KATOWICE",
+"c": [
+"Ville de Pologne"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "MADLIONS",
+"c": [
+"Équipe de Elyoya"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "MAITRISE",
+"c": [
+"Niveau d'un champion"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "MALPHITE",
+"c": [
+"Éclat du monolithe",
+"Tank de roche"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "MALZAHAR",
+"c": [
+"Prophète du Néant",
+"Mage du Vide"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "MASTERYI",
+"c": [
+"Maître du Wuju",
+"Combattant ionien"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "MISTERMV",
+"c": [
+"Streamer français"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "NAUTILUS",
+"c": [
+"Titan des profondeurs",
+"Tank scaphandrier"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "NOCTURNE",
+"c": [
+"Éternel cauchemar",
+"Assassin des rêves"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "ONETRICK",
+"c": [
+"Spécialiste d'un seul champion"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "PANTHEON",
+"c": [
+"Lance de Targon",
+"Guerrier immortel"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "PILTOVER",
+"c": [
+"Cité du progrès",
+"Ville des inventeurs"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "PLAYOFFS",
+"c": [
+"Phase finale d'une ligue"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "PROPHETE",
+"c": [
+"Voyant du Néant"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "RENEKTON",
+"c": [
+"Boucher des sables",
+"Crocodile guerrier"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SAOPAULO",
+"c": [
+"Ville du Brésil"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SARDOCHE",
+"c": [
+"Streamer français"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "SELFMADE",
+"c": [
+"Jungler polonais",
+"Joueur de Misfits"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "SHANGHAI",
+"c": [
+"Ville de Chine"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SNOWBALL",
+"c": [
+"Avantage qui s'accumule"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "SPECTATE",
+"c": [
+"Regarder en direct"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "STREAMER",
+"c": [
+"Joueur en direct"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SUMMONER",
+"c": [
+"Coupe de l'Invocateur"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "TARGAMAS",
+"c": [
+"Support français",
+"Joueur de G2"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "TOURELLE",
+"c": [
+"Tour qui tire"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "TRISTANA",
+"c": [
+"Artilleuse yordle",
+"Tireuse au canon"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "VALORANT",
+"c": [
+"Jeu de tir de Riot"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "VASTAYAS",
+"c": [
+"Peuple de Ionia"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "VITALITY",
+"c": [
+"Équipe française",
+"Abeille de LoL"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "VLADIMIR",
+"c": [
+"Moissonneur écarlate",
+"Mage au sang"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "VOIDGRUB",
+"c": [
+"Larve du Néant"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "VOLIBEAR",
+"c": [
+"Fléau du tonnerre",
+"Ours du Freljord"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "WILDRIFT",
+"c": [
+"Version mobile du jeu"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "ASCENDANT",
+"c": [
+"Être divin de Shurima"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "BERSERKER",
+"c": [
+"Bottes de vitesse d'attaque",
+"Greaves rapides"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "CHAMPIONS",
+"c": [
+"Personnages jouables"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "CHATIMENT",
+"c": [
+"Sort de jungle"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "CLEARLOVE",
+"c": [
+"Jungler chinois",
+"Vétéran de la LPL"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "ELDERWOOD",
+"c": [
+"Ligne de skins de forêt"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "EXECUTEUR",
+"c": [
+"Objet qui coupe les soins",
+"Lame contre les soigneurs"
+],
+"cat": "Objets",
+"r": 0
+},
+{
+"w": "GANGPLANK",
+"c": [
+"Fléau des mers",
+"Capitaine pirate"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "HIGHLIGHT",
+"c": [
+"Meilleur moment"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "HYLISSANG",
+"c": [
+"Support bulgare",
+"Joueur de Fnatic"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "INTERVIEW",
+"c": [
+"Entretien après un match"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "LISSANDRA",
+"c": [
+"Sorcière de glace",
+"Mage du Freljord"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "PENTAKILL",
+"c": [
+"Groupe de métal de League"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "PRECISION",
+"c": [
+"Arbre de runes jaune",
+"Voie des runes de tir"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "PREDATEUR",
+"c": [
+"Rune de chasseur",
+"Rune de Domination"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "REYKJAVIK",
+"c": [
+"Capitale de l'Islande"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "RUNETERRA",
+"c": [
+"Monde du jeu",
+"Monde de League of Legends"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "SERAPHINE",
+"c": [
+"Chanteuse de rêve",
+"Mage pop star"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SHOWMAKER",
+"c": [
+"Mid laner de Damwon",
+"Mid coréen"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "STOCKHOLM",
+"c": [
+"Capitale de la Suède"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SUBSTITUT",
+"c": [
+"Remplaçant"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SURRENDER",
+"c": [
+"Abandonner"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "TAHMKENCH",
+"c": [
+"Roi de la rivière",
+"Grand grenouillard"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "TIPSALEWO",
+"c": [
+"Journaliste de MGG"
+],
+"cat": "Scène française, streamers et commentateurs",
+"r": 1
+},
+{
+"w": "TITULAIRE",
+"c": [
+"Joueur de l'équipe première"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "TRANSFERT",
+"c": [
+"Changement d'équipe"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "VOIDGRUBS",
+"c": [
+"Larves du Néant"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "ASCENDANTS",
+"c": [
+"Êtres divins"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "BANDLECITY",
+"c": [
+"Cité des yordles"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "BILGEWATER",
+"c": [
+"Port des pirates",
+"Cité de Gangplank"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "BLITZCRANK",
+"c": [
+"Golem à grappin",
+"Grand automate"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "CASSIOPEIA",
+"c": [
+"Étreinte du serpent",
+"Mage mi-femme mi-serpent"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "CONQUERANT",
+"c": [
+"Rune de combattant",
+"Rune de précision"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "COPENHAGUE",
+"c": [
+"Capitale du Danemark"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "DOMINATION",
+"c": [
+"Arbre de runes rouge",
+"Voie du burst"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "DOUBLELIFT",
+"c": [
+"ADC américain",
+"Ancien de TSM"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "FIRELIGHTS",
+"c": [
+"Résistants de Zaun"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "INHIBITEUR",
+"c": [
+"Bâtiment de base"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "INVOCATEUR",
+"c": [
+"Rôle du joueur"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "JACKEYLOVE",
+"c": [
+"ADC chinois",
+"Joueur de Invictus Gaming"
+],
+"cat": "Joueurs pro",
+"r": 1
+},
+{
+"w": "LOSANGELES",
+"c": [
+"Ville des États-Unis"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "REMPLACANT",
+"c": [
+"Joueur de réserve"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "RESOLUTION",
+"c": [
+"Arbre de runes vert",
+"Voie du tank"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "SUPERSBIRE",
+"c": [
+"Gros sbire de fin"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "TRYNDAMERE",
+"c": [
+"Roi barbare",
+"Guerrier à l'épée rouge"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "EMBRASEMENT",
+"c": [
+"Sort de brûlure"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "INSPIRATION",
+"c": [
+"Arbre de runes cyan",
+"Voie des astuces"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "MISSFORTUNE",
+"c": [
+"Chasseuse de primes",
+"Tireuse de Bilgewater"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "MORDEKAISER",
+"c": [
+"Revenant de fer",
+"Roi de la mort"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "OBSERVATEUR",
+"c": [
+"Cadreur du match"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "SENTINELLES",
+"c": [
+"Gardiens de la lumière"
+],
+"cat": "Régions, lieux et lore",
+"r": 0
+},
+{
+"w": "SORCELLERIE",
+"c": [
+"Arbre de runes bleu",
+"Voie de la magie"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "TWISTEDFATE",
+"c": [
+"Maître des cartes",
+"Mage joueur de cartes"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "BIBLIOTHEQUE",
+"c": [
+"Lieu de savoir"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "CLAIRVOYANCE",
+"c": [
+"Sort de vision"
+],
+"cat": "Lexique du jeu",
+"r": 0
+},
+{
+"w": "FIDDLESTICKS",
+"c": [
+"Épouvantail",
+"Terreur ancienne"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "HEIMERDINGER",
+"c": [
+"Inventeur éminent",
+"Yordle scientifique",
+"Inventeur de Piltover"
+],
+"cat": "Champions",
+"r": 0
+},
+{
+"w": "SANFRANCISCO",
+"c": [
+"Ville américaine"
+],
+"cat": "Équipes, compétitions et lieux",
+"r": 1
+},
+{
+"w": "STARGUARDIAN",
+"c": [
+"Ligne de skins de filles magiques"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+},
+{
+"w": "ELECTROCUTION",
+"c": [
+"Rune de burst",
+"Éclair de la rune de Domination"
+],
+"cat": "Runes, sorts, monstres et modes",
+"r": 0
+},
+{
+"w": "SPIRITBLOSSOM",
+"c": [
+"Ligne de skins de fleurs"
+],
+"cat": "Arcane, autres jeux Riot, musique, mèmes",
+"r": 0
+}
+]
