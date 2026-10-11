@@ -283,6 +283,17 @@
       <span class="played" id="playedShop">Jamais joué</span>
     </div>
   </a>
+    <a class="card small" href="plusmoins.html"><span class="ribbon inf">INFINI</span>
+    <img class="bg" src="nashor.jpg" alt="">
+    <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 4v16M5 11l7-7 7 7"/></svg></span>
+    <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Facile</span><span class="chip">Illimité</span><span class="chip new">Nouveau</span></div>
+    <h3>Plus ou moins</h3>
+    <p>Deux objets ou deux champions : lequel coûte le plus cher, a le plus de PV… Une erreur et c'est fini, le duel se resserre à chaque victoire.</p>
+    <div class="meta">
+      <span class="cta">Jouer <span aria-hidden="true">›</span></span>
+      <span class="played" id="playedPm">Jamais joué</span>
+    </div>
+  </a>
   </div>
   </div>
   <!-- Place réservée pour un futur classement -->
@@ -311,6 +322,10 @@
   } catch (e) {}
   SDQ.showTop(document.getElementById("hsArt"), "artwork"); SDQ.showTop(document.getElementById("hsMots"), "mots");
   daily("sdq_daily_mots", "playedMots", function (d) { return "<b>" + nf(d.score) + "</b> pts"; });
+try {
+  var bp = Math.max(Number(localStorage.getItem("sdq_best_pm_items")) || 0, Number(localStorage.getItem("sdq_best_pm_champs")) || 0);
+  if (bp > 0) document.getElementById("playedPm").innerHTML = "Record <b>" + bp + "</b>";
+} catch (e) {}
 try {
   var bs = Number(localStorage.getItem("sdq_best_shop")) || 0;
   if (bs > 0) document.getElementById("playedShop").innerHTML = "Record <b>" + bs + "</b>";
