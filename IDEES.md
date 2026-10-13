@@ -4,3 +4,6 @@
 - **Mots cachés** — une grille avec 10 mots d'un thème du jour.
 - **Qui suis-je ?** — les indices du mot arrivent un par un, du plus vague au plus précis. Moins on en demande, plus on gagne de points.
 - **Mots fléchés LoL** — mis de côté (trop dur en 100 % LoL). Base de mots dans `fleches/`.
+
+## Devine le personnage (en cours)
+Données collectées : `donnees/champions.json` (173 champions : titre, date de sortie, région, espèce, genre, rôles, ressource, portée, sorts, relations, faits de lore, et 3 phases d'indices : 1 = très vague, 2 = moyen, 3 = précis). Sources : Data Dragon, site Univers, wiki LoL. Les champs `null` = non confirmé par les sources (espèce surtout). Relecture conseillée des indices.
