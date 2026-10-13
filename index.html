@@ -283,6 +283,17 @@
       <span class="played" id="playedShop">Jamais joué</span>
     </div>
   </a>
+    <a class="card small" href="devine.html"><span class="ribbon inf">INFINI</span>
+    <img class="bg" src="nashor.jpg" alt="">
+    <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8M12 17h.01"/></svg></span>
+    <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span><span class="chip">Illimité</span><span class="chip new">Nouveau</span></div>
+    <h3>Devine le personnage</h3>
+    <p>Des indices de plus en plus précis sur un champion. Moins tu en utilises, plus tu gagnes de points.</p>
+    <div class="meta">
+      <span class="cta">Jouer <span aria-hidden="true">›</span></span>
+      <span class="played" id="playedDev">Jamais joué</span>
+    </div>
+  </a>
   </div>
   </div>
   <!-- Place réservée pour un futur classement -->
@@ -311,6 +322,10 @@
   } catch (e) {}
   SDQ.showTop(document.getElementById("hsArt"), "artwork"); SDQ.showTop(document.getElementById("hsMots"), "mots");
   daily("sdq_daily_mots", "playedMots", function (d) { return "<b>" + nf(d.score) + "</b> pts"; });
+try {
+  var bd = Number(localStorage.getItem("sdq_best_devine")) || 0;
+  if (bd > 0) document.getElementById("playedDev").innerHTML = "Record <b>" + bd + "</b>";
+} catch (e) {}
 try {
   var bs = Number(localStorage.getItem("sdq_best_shop")) || 0;
   if (bs > 0) document.getElementById("playedShop").innerHTML = "Record <b>" + bs + "</b>";
