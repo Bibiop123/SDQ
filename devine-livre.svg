@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <radialGradient id="bgG" cx="55%" cy="38%" r="75%"><stop offset="0" stop-color="#1b3a5a"/><stop offset=".55" stop-color="#0d1a2f"/><stop offset="1" stop-color="#070b16"/></radialGradient>
+    <linearGradient id="pgL" x1="0" x2="1"><stop offset="0" stop-color="#d9c79b"/><stop offset=".8" stop-color="#eadbb3"/><stop offset="1" stop-color="#b8a374"/></linearGradient>
+    <linearGradient id="pgR" x1="1" x2="0"><stop offset="0" stop-color="#d9c79b"/><stop offset=".8" stop-color="#eadbb3"/><stop offset="1" stop-color="#b8a374"/></linearGradient>
+    <radialGradient id="glow" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#3fc1e0" stop-opacity=".55"/><stop offset="1" stop-color="#3fc1e0" stop-opacity="0"/></radialGradient>
+    <filter id="blur" x="-5%" y="-30%" width="110%" height="160%"><feGaussianBlur stdDeviation="3.2"/></filter>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="9"/></filter>
+    <linearGradient id="fig" x1="0" x2="0" gradientUnits="userSpaceOnUse" y1="60" y2="440"><stop offset="0" stop-color="#03060b"/><stop offset=".5" stop-color="#04070d" stop-opacity=".96"/><stop offset="1" stop-color="#04070d" stop-opacity=".45"/></linearGradient>
+    <clipPath id="clipR"><path d="M400 168 C470 144 600 138 710 158 L710 418 C600 398 470 402 400 432 Z"/></clipPath>
+  </defs>
+  <rect width="800" height="600" fill="url(#bgG)"/>
+  <ellipse cx="520" cy="250" rx="300" ry="230" fill="url(#glow)"/>
+  <g fill="#fff" opacity=".5"><circle cx="90" cy="70" r="1.6"/><circle cx="180" cy="30" r="1.2"/><circle cx="700" cy="60" r="1.6"/><circle cx="760" cy="150" r="1.2"/><circle cx="40" cy="190" r="1.2"/><circle cx="640" cy="22" r="1.2"/></g>
+  <g transform="translate(40 -40) scale(.95)">
+  <!-- livre -->
+  <ellipse cx="400" cy="470" rx="330" ry="26" fill="#000" opacity=".55" filter="url(#soft)"/>
+  <path d="M82 150 C200 128 330 132 400 160 C470 132 600 128 718 150 L718 428 C600 406 470 410 400 440 C330 410 200 406 82 428 Z" fill="#4a2f17" stroke="#c99a3c" stroke-width="3"/>
+  <path d="M96 148 C210 128 335 132 400 162 L400 432 C335 402 210 398 96 420 Z" fill="url(#pgL)"/>
+  <path d="M704 148 C590 128 465 132 400 162 L400 432 C465 402 590 398 704 420 Z" fill="url(#pgR)"/>
+  <path d="M400 162 L400 432" stroke="#6b5230" stroke-width="3" opacity=".7"/>
+  <!-- page gauche : texte net -->
+  <g fill="#6a4d27" opacity=".85">
+    <rect x="140" y="188" width="150" height="9" rx="4" opacity=".95"/>
+    <rect x="130" y="214" width="236" height="5" rx="2.5"/><rect x="130" y="230" width="226" height="5" rx="2.5"/><rect x="130" y="246" width="238" height="5" rx="2.5"/><rect x="130" y="262" width="190" height="5" rx="2.5"/>
+    <rect x="130" y="288" width="236" height="5" rx="2.5"/><rect x="130" y="304" width="228" height="5" rx="2.5"/><rect x="130" y="320" width="238" height="5" rx="2.5"/><rect x="130" y="336" width="214" height="5" rx="2.5"/><rect x="130" y="352" width="236" height="5" rx="2.5"/><rect x="130" y="368" width="150" height="5" rx="2.5"/>
+  </g>
+  <rect x="130" y="212" width="40" height="40" rx="3" fill="none" stroke="#a5792a" stroke-width="2.5" opacity=".6"/>
+  <!-- page droite : texte net en haut, flouté en bas -->
+  <g clip-path="url(#clipR)">
+    <g fill="#6a4d27" opacity=".85">
+      <rect x="436" y="190" width="170" height="5" rx="2.5"/><rect x="436" y="206" width="236" height="5" rx="2.5"/><rect x="436" y="222" width="220" height="5" rx="2.5"/>
+    </g>
+    <g fill="#6a4d27" opacity=".8" filter="url(#blur)">
+      <rect x="436" y="240" width="238" height="6" rx="3"/><rect x="436" y="258" width="226" height="6" rx="3"/><rect x="436" y="276" width="238" height="6" rx="3"/><rect x="436" y="294" width="210" height="6" rx="3"/>
+      <rect x="436" y="318" width="238" height="6" rx="3"/><rect x="436" y="336" width="232" height="6" rx="3"/><rect x="436" y="354" width="238" height="6" rx="3"/><rect x="436" y="372" width="196" height="6" rx="3"/><rect x="436" y="390" width="120" height="6" rx="3"/>
+    </g>
+  </g>
+  <!-- silhouette dans l'ombre -->
+  <ellipse cx="560" cy="418" rx="100" ry="16" fill="#000" opacity=".5" filter="url(#soft)"/>
+  <g>
+    <path d="M556 64 C522 64 502 94 504 132 C505 152 513 166 524 178 C500 188 480 206 470 232 C452 282 446 350 436 424 C470 436 510 438 556 438 C602 438 642 436 676 424 C666 350 660 282 642 232 C632 206 612 188 588 178 C599 166 607 152 608 132 C610 94 590 64 556 64 Z" fill="url(#fig)" stroke="#3fc1e0" stroke-width="2.5" stroke-opacity=".5"/>
+    <path d="M556 64 C522 64 502 94 504 132 C505 152 513 166 524 178 L588 178 C599 166 607 152 608 132 C610 94 590 64 556 64 Z" fill="#000"/>
+    <ellipse cx="538" cy="128" rx="7" ry="4.5" fill="#bff3ff"/><ellipse cx="574" cy="128" rx="7" ry="4.5" fill="#bff3ff"/>
+    <ellipse cx="538" cy="128" rx="14" ry="10" fill="#3fc1e0" opacity=".35" filter="url(#soft)"/><ellipse cx="574" cy="128" rx="14" ry="10" fill="#3fc1e0" opacity=".35" filter="url(#soft)"/>
+  </g>
+  </g>
+  <!-- point d'interrogation doré sur la page gauche, flouté -->
+  <text x="258" y="262" font-family="Cinzel, Georgia, serif" font-weight="800" font-size="120" text-anchor="middle" fill="#a5792a" opacity=".0">?</text>
+</svg>

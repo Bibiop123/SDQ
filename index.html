@@ -112,11 +112,6 @@
   .chip.new { background: linear-gradient(#f3d98a, #c99a35); color: #1a1305; border-color: transparent; }
   /* Loupe sur le Kennen : fond flouté, l'intérieur de la vitre reste net */
   .card.lensy { --lx: 27%; --ly: 27%; }
-  /* Devine le personnage : splash art de Rammus assombri façon silhouette */
-  .card.silh .bg { filter: grayscale(1) brightness(.42) contrast(1.35) blur(2px); transform: scale(1.06); }
-  .card.silh::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(circle at 70% 38%, rgba(63,193,224,.38), transparent 62%); mix-blend-mode: screen; pointer-events: none; }
-  .card.silh .qmark { position: absolute; right: 9%; top: 14%; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 7.5rem; line-height: 1; color: var(--gold); opacity: .9; text-shadow: 0 0 28px rgba(230,195,106,.55), 0 4px 14px rgba(0,0,0,.8); pointer-events: none; z-index: 0; }
-  a.card.silh:hover .bg { transform: scale(1.1); }
   .card.lensy .bg { filter: blur(6px) brightness(.8); transform: scale(1.04); }
   a.card.lensy:hover .bg { transform: scale(1.04); }
   .card.lensy .bg.sharp { z-index: 0; pointer-events: none; filter: none; transform: none;
@@ -288,9 +283,8 @@
       <span class="played" id="playedShop">Jamais joué</span>
     </div>
   </a>
-    <a class="card small silh" href="devine.html"><span class="ribbon inf">INFINI</span>
-    <img class="bg" id="silhBg" src="https://ddragon.leagueoflegends.com/cdn/img/champion/splash/Rammus_0.jpg" alt="" style="object-position:50% 25%" onerror="this.onerror=null;this.src='nashor.jpg'">
-    <span class="qmark" aria-hidden="true">?</span>
+    <a class="card small" href="devine.html"><span class="ribbon inf">INFINI</span>
+    <img class="bg" src="devine-livre.svg" alt="" style="object-position:50% 20%">
     <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.6 2.2c-.7.4-1.1.9-1.1 1.8M12 17h.01"/></svg></span>
     <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span><span class="chip">Illimité</span><span class="chip new">Nouveau</span></div>
     <h3>Devine le personnage</h3>
