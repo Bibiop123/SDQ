@@ -162,7 +162,6 @@
       <div class="timer" id="timer"><div class="bar2"><i id="timerBar"></i></div><b id="timerT">90</b></div>
       <div id="play">
         <div class="guess">
-          <div class="sug" id="sug" hidden></div>
           <div class="row">
             <input id="answer" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Nom d'un champion…" aria-label="Nom d'un champion">
             <button id="submit" disabled>Valider</button>
@@ -300,7 +299,7 @@ function submit() {
   if (over) return;
   let c = sugI >= 0 ? sugList[sugI] : byKey[nk($("answer").value)];
   if (!c && sugList.length === 1) c = sugList[0];
-  if (!c) { shake(); return flash("Champion inconnu : choisis dans la liste."); }
+  if (!c) { shake(); return flash("Champion inconnu : vérifie l'orthographe."); }
   guess(c);
 }
 function end() {
@@ -325,28 +324,10 @@ function showResult(sc) {
     t(); setInterval(t, 1000);
   }
 }
-/* Suggestions */
-function closeSug() { $("sug").hidden = true; sugList = []; sugI = -1; }
-function showSug() {
-  const k = nk($("answer").value); if (!k) return closeSug();
-  const a = champs.filter(c => nk(c.name).startsWith(k)), b = champs.filter(c => !nk(c.name).startsWith(k) && nk(c.name).includes(k));
-  sugList = [...a, ...b].slice(0, 6); sugI = -1;
-  const box = $("sug"); box.innerHTML = "";
-  sugList.forEach((c, i) => {
-    const d = document.createElement("div"), im = new Image(); im.src = c.img; im.alt = ""; im.onerror = () => im.remove(); d.appendChild(im); d.appendChild(document.createTextNode(c.name));
-    d.onmousedown = e => { e.preventDefault(); guess(c); }; box.appendChild(d);
-  });
-  box.hidden = !sugList.length;
-}
-$("answer").oninput = () => { $("submit").disabled = !$("answer").value.trim(); showSug(); };
-$("answer").onkeydown = e => {
-  const mk = () => [...$("sug").children].forEach((d, i) => d.classList.toggle("on", i === sugI));
-  if (e.key === "ArrowDown" && sugList.length) { e.preventDefault(); sugI = (sugI + 1) % sugList.length; mk(); }
-  else if (e.key === "ArrowUp" && sugList.length) { e.preventDefault(); sugI = (sugI - 1 + sugList.length) % sugList.length; mk(); }
-  else if (e.key === "Enter") { e.preventDefault(); if (sugI < 0 && sugList.length && !byKey[nk($("answer").value)]) sugI = 0; submit(); }
-  else if (e.key === "Escape") closeSug();
-};
-$("answer").onblur = () => setTimeout(closeSug, 100);
+/* Pas de suggestions : il faut taper le nom en entier */
+function closeSug() {}
+$("answer").oninput = () => { $("submit").disabled = !$("answer").value.trim(); };
+$("answer").onkeydown = e => { if (e.key === "Enter") { e.preventDefault(); submit(); } };
 $("submit").onclick = submit;
 $("finish").onclick = () => { if (!over && confirm("Terminer la partie maintenant ?")) end(); };
 $("again").onclick = () => { cat = pickCat(); begin(); $("again").hidden = true; };
