@@ -75,11 +75,11 @@ window.SDQ = (function () {
   const path = (game) => "scores/" + dayKey() + "/" + encodeURIComponent(game) + ".json";
   async function entries(game) {
     await detect();
-    if (fb()) { const r = await fetch(fb() + "/" + path(game)); if (!r.ok) throw new Error("HTTP " + r.status); const o = await r.json(); return o ? Object.values(o) : []; }
+    if (fb()) { const r = await fetch(fb() + "/" + path(game), { cache: "no-store" }); if (!r.ok) throw new Error("HTTP " + r.status); const o = await r.json(); return o ? Object.values(o) : []; }
     try { const all = JSON.parse(localStorage.getItem(LOCAL)) || {}; return all[dayKey() + "|" + game] || []; } catch (e) { return []; }
   }
-  async function top(game) {                 /* meilleur score du jour : { name, score } ou null */
-    try { const l = (await entries(game)).filter(e => e && Number.isFinite(e.score)).sort((a, b) => b.score - a.score || (a.t || 0) - (b.t || 0)); return l[0] || null; } catch (e) { return null; }
+  async function top(game) {                 /* meilleur score du jour : { name, score }, null (aucun score) ou { err } si la base répond mal */
+    try { const l = (await entries(game)).filter(e => e && Number.isFinite(e.score)).sort((a, b) => b.score - a.score || (a.t || 0) - (b.t || 0)); return l[0] || null; } catch (e) { return { err: String(e && e.message || e) }; }
   }
   async function submit(game, name, score) {
     await detect();
@@ -89,7 +89,7 @@ window.SDQ = (function () {
   }
   const fmt = n => Number(n || 0).toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
   const esc = t => String(t).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  const topHtml = t => "<span>" + (t ? `Highscore #1 : <b>${fmt(t.score)}</b> — ${esc(t.name)}` : `Highscore #1 : <b>—</b> <span class="hs-mut">· sois le premier !</span>`) + "</span>";
+  const topHtml = t => t && t.err ? `<span>Classement indisponible <span class="hs-mut">(${esc(t.err)})</span></span>` : "<span>" + (t ? `Highscore #1 : <b>${fmt(t.score)}</b> — ${esc(t.name)}` : `Highscore #1 : <b>—</b> <span class="hs-mut">· sois le premier !</span>`) + "</span>";
   /* Remplit un élément avec le highscore #1 du jour */
   async function showTop(el, game) { el.innerHTML = topHtml(null); el.innerHTML = topHtml(await top(game)); }
   /* Bloc de fin de partie : highscore + saisie du pseudo (une seule fois par jour et par jeu) */
