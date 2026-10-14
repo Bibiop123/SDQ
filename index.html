@@ -118,7 +118,8 @@
   .slotsbg i.ok { border-color: rgba(74,222,128,.7); background: rgba(74,222,128,.12); }
   .slotsbg { -webkit-mask-image: linear-gradient(#000 40%, transparent 66%); mask-image: linear-gradient(#000 40%, transparent 66%); }
   a.card:hover .slotsbg { transform: none; }
-  @media (max-width: 600px) { .card.small.cite { min-height: 400px; } .slotsbg { grid-template-columns: repeat(2, 1fr); padding-top: 78px; } }
+  @media (max-width: 600px) { .card.small.cite { min-height: 400px; } .slotsbg { grid-template-columns: repeat(2, 1fr); padding-top: 78px; -webkit-mask-image: linear-gradient(#000 22%, transparent 42%); mask-image: linear-gradient(#000 22%, transparent 42%); } }
+  @media (min-width: 601px) and (max-width: 899px) { .slotsbg { -webkit-mask-image: linear-gradient(#000 22%, transparent 45%); mask-image: linear-gradient(#000 22%, transparent 45%); } }
   .card.lensy .bg { filter: blur(6px) brightness(.8); transform: scale(1.04); }
   a.card.lensy:hover .bg { transform: scale(1.04); }
   .card.lensy .bg.sharp { z-index: 0; pointer-events: none; filter: none; transform: none;
@@ -161,12 +162,24 @@
   /* Grand écran : jeux centrés. Pour réserver une colonne de classement à droite, remettre :
      .layout { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr); gap: 28px; align-items: start; }  .lb { display: block; } */
   @media (min-width: 1200px) {
-    main { max-width: 1100px; margin-left: auto; margin-right: auto; }
+    main { max-width: 1180px; margin-left: auto; margin-right: auto; }
     .layout { display: block; }
     .lb { display: none; }
   }
   .card.small, .card.big { min-height: 400px; }
   .grid .big { min-height: 480px; }
+  /* Cartes plus compactes : 3 par ligne sur grand écran pour voir tous les jeux d'un coup d'œil */
+  @media (min-width: 900px) {
+    main { max-width: 1180px; }
+    .grid { grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .card.small, .card.big, .grid .big, .card.small.cite { min-height: 385px; }
+    .card { padding: 18px; }
+    .hs { left: 76px; right: 18px; top: 18px; }
+    .hs .hs-mut { display: none; }
+    .deco { top: 68px; scale: .5; }
+    .slotsbg { padding-top: 76px; -webkit-mask-image: linear-gradient(#000 25%, transparent 52%); mask-image: linear-gradient(#000 25%, transparent 52%); }
+    .loupe { width: 140px; height: 140px; }
+  }
   @media (max-width: 760px) {
     .grid { grid-template-columns: 1fr; grid-template-rows: none; }
     .big { grid-row: auto; min-height: 450px; } .card.small { min-height: 280px; }
