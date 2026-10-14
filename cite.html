@@ -110,6 +110,14 @@
   .timer.low .bar2 i { background: var(--ko); }
   .timer b { min-width: 3ch; text-align: right; font-size: 1.25rem; color: var(--gold); }
   .found { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 14px 0 0; min-height: 40px; }
+  .slots { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; margin: 16px 0 0; }
+  .slot { height: 38px; border: 1.5px solid #2c3b57; border-radius: 8px; background: rgba(7,11,22,.55); display: flex; align-items: center; gap: 8px; padding: 0 8px; font-weight: 600; font-size: .92rem; overflow: hidden; white-space: nowrap; }
+  .slot img { width: 26px; height: 26px; border-radius: 50%; flex: none; }
+  .slot.ok { border-color: var(--ok); background: rgba(74,222,128,.1); animation: pop .3s ease; }
+  .slot.miss { border-color: var(--ko); background: rgba(255,107,107,.08); color: #ffc9c9; }
+  .count { text-align: center; margin: 10px 0 0; color: var(--mu); font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; font-weight: 600; }
+  .count b { color: var(--gold); font-size: 1.5rem; letter-spacing: 0; }
+  @media (max-width: 560px) { .slots { grid-template-columns: repeat(2, 1fr); } }
   .chip2 { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px; border-radius: 99px; border: 1.5px solid var(--ok); background: rgba(74,222,128,.1); font-weight: 600; font-size: .92rem; animation: pop .3s ease; }
   .chip2 img { width: 26px; height: 26px; border-radius: 50%; }
   .chip2.miss { border-color: var(--ko); background: rgba(255,107,107,.08); color: #ffc9c9; }
@@ -163,7 +171,8 @@
         <div class="flash" id="flash" role="status"></div>
         <div class="tools"><button class="alt" id="finish" type="button">Terminer</button></div>
       </div>
-      <div class="found" id="found" aria-live="polite"></div>
+      <div class="count" id="count" aria-live="polite"></div>
+      <div class="slots" id="found"></div>
       <div class="result" id="result" hidden>
         <div class="msg" id="msg"></div>
         <div class="stats" id="stats"></div>
@@ -246,9 +255,18 @@ function dailySave(d) { try { localStorage.setItem(DAILY_KEY, JSON.stringify(Obj
 
 function render() {
   $("foundN").textContent = found.length; $("totalN").textContent = " / " + members.length; $("score").textContent = fmt(scoreOf());
+  $("count").innerHTML = `<b>${found.length}</b> / ${members.length} trouvés`;
   const box = $("found"); box.innerHTML = "";
-  found.forEach(id => { const c = champs.find(x => x.id === id); box.appendChild(chip(c, false)); });
-  if (over) members.filter(c => !found.includes(c.id)).forEach(c => box.appendChild(chip(c, true)));
+  const missed = over ? members.filter(c => !found.includes(c.id)) : [];
+  for (let i = 0; i < members.length; i++) {
+    const s = document.createElement("div"); s.className = "slot";
+    const c = i < found.length ? champs.find(x => x.id === found[i]) : missed[i - found.length];
+    if (c) {
+      s.classList.add(i < found.length ? "ok" : "miss");
+      const im = new Image(); im.src = c.img; im.alt = ""; im.onerror = () => im.remove(); s.appendChild(im); s.appendChild(document.createTextNode(c.name));
+    }
+    box.appendChild(s);
+  }
 }
 function chip(c, miss) {
   const s = document.createElement("span"); s.className = "chip2" + (miss ? " miss" : "");
