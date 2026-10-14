@@ -217,9 +217,27 @@ const REGIONS = {
 };
 const inRegion = (k, c) => REGIONS[k][1].some(i => nk(i) === nk(c.id));
 
+/* Espèces et séries de skins (listes « Universe » du wiki LoL) : noms séparés par « | », reconnus comme les noms saisis */
+const GROUPS = [
+  ["yordle", "Les <b>Yordles</b>", "Amumu|Corki|Fizz|Gnar|Heimerdinger|Kennen|Kled|Lulu|Poppy|Rumble|Teemo|Tristana|Veigar|Vex|Ziggs"],
+  ["vastaya", "Les <b>Vastayas</b>", "Ahri|Aurora|Nami|Neeko|Rakan|Rengar|Wukong|Xayah"],
+  ["voidborn", "Les créatures du <b>Néant</b> (Voidborn)", "Bel'Veth|Cho'Gath|Kha'Zix|Kog'Maw|Rek'Sai|Vel'Koz"],
+  ["undead", "Les <b>morts-vivants</b>", "Hecarim|Kalista|Karthus|Mordekaiser|Nautilus|Pyke|Senna|Sion|Thresh|Viego"],
+  ["sg", "Les champions avec un skin <b>Gardien des étoiles</b> (Star Guardian)", "Ahri|Akali|Ekko|Ezreal|Fiddlesticks|Gwen|Janna|Jinx|Kai'Sa|Lulu|Lux|Miss Fortune|Morgana|Neeko|Nilah|Orianna|Poppy|Quinn|Rakan|Rell|Senna|Seraphine|Sona|Soraka|Syndra|Taliyah|Xayah|Zoe"],
+  ["sb", "Les champions avec un skin <b>Spirit Blossom</b>", "Ahri|Akali|Aphelios|Ashe|Bard|Cassiopeia|Darius|Evelynn|Hwei|Irelia|Ivern|Karma|Kayle|Kindred|Lee Sin|Lillia|Lux|Master Yi|Morgana|Nidalee|Riven|Sett|Soraka|Syndra|Teemo|Thresh|Tristana|Varus|Vayne|Yasuo|Yone|Yorick|Zed|Zyra"],
+  ["project", "Les champions avec un skin <b>PROJECT</b>", "Akali|Ashe|Darius|Ekko|Fiora|Gangplank|Irelia|Jax|Jhin|Jinx|Katarina|Leona|Lucian|Master Yi|Mordekaiser|Naafiri|Pyke|Renekton|Sejuani|Senna|Sylas|Twitch|Varus|Vayne|Vi|Warwick|Yasuo|Zed|Zeri"],
+  ["ba", "Les champions avec un skin <b>Académie de combat</b> (Battle Academia)", "Akshan|Briar|Caitlyn|Ezreal|Garen|Graves|Jayce|Katarina|Kayn|Leona|Lux|Poppy|Qiyana|Rakan|Samira|Wukong|Xayah|Yone|Yuumi|Zilean"],
+  ["bm", "Les champions avec un skin <b>Lune de sang</b> (Blood Moon)", "Aatrox|Akali|Diana|Elise|Evelynn|Fiddlesticks|Jhin|Kalista|Katarina|Kennen|Master Yi|Pyke|Ryze|Shen|Sivir|Talon|Thresh|Tryndamere|Twisted Fate|Yasuo|Zed|Zilean|Zyra"],
+  ["pp", "Les champions avec un skin <b>Pool Party</b>", "Renekton|Taric|Braum|Caitlyn|Draven|Dr. Mundo|Fiora|Gangplank|Graves|Heimerdinger|Jarvan IV|Lee Sin|Leona|Lulu|Malphite|Miss Fortune|Orianna|Rek'Sai|Sett|Syndra|Taliyah|Twitch|Zac|Ziggs|Zoe"],
+  ["cc", "Les champions avec un skin <b>Cafe Cuties</b>", "Annie|Bard|Gwen|Jinx|Lulu|Poppy|Rumble|Sivir|Soraka|Vladimir|Yuumi|Zoe"]
+];
+const inGroup = (names, c) => names.split("|").some(n => byKey[nk(n)] === c);
+
 /* Catégories : l'ordre est fixe (le défi du jour en choisit une avec le hasard de la date). Chaque catégorie est calculée d'après Data Dragon. */
 const TAGS = { mage: "Mage", assassin: "Assassin", tank: "Tank", fighter: "Combattant", combattant: "Combattant", marksman: "Tireur", tireur: "Tireur", support: "Support", soutien: "Support" };
 const tagsOf = c => c.tags.map(t => TAGS[nk(t)] || t);
+const isNone = c => ["", "aucun", "aucune", "none", "sanscout", "aucuncout", "sansressource"].includes(nk(c.partype || ""));
+const isEnergy = c => /ner/i.test(c.partype || "");
 const isMana = c => /mana/i.test(c.partype || "");
 const CATS = [
   { id: "mage", label: "Les <b>Mages</b>", f: c => tagsOf(c).includes("Mage") },
@@ -229,10 +247,14 @@ const CATS = [
   { id: "tireur", label: "Les <b>Tireurs</b>", f: c => tagsOf(c).includes("Tireur") },
   { id: "support", label: "Les <b>Supports</b>", f: c => tagsOf(c).includes("Support") },
   { id: "nomana", label: "Les champions <b>sans mana</b>", f: c => !isMana(c) },
-  { id: "energie", label: "Les champions à <b>énergie</b>", f: c => /ner/i.test(c.partype || "") },
+  { id: "energie", label: "Les champions à <b>énergie</b>", f: c => isEnergy(c) },
   { id: "portee550", label: "Les champions avec une portée d'attaque d'<b>au moins 550</b>", f: c => c.range >= 550 },
+  { id: "compose", label: "Les champions dont le nom est <b>composé de plusieurs mots</b>", f: c => /\s/.test(c.name) },
+  { id: "aucune", label: "Les champions <b>sans ressource</b>", f: c => isNone(c) },
+  { id: "colere", label: "Les champions à <b>Fureur ou Rage</b>", f: c => /fureur|rage/i.test(c.partype || "") },
+  { id: "orig", label: "Les champions avec une <b>ressource originale</b> (ni mana, ni énergie, ni aucune)", f: c => !isMana(c) && !isEnergy(c) && !isNone(c) },
   { id: "apostrophe", label: "Les champions dont le nom contient une <b>apostrophe</b>", f: c => c.name.includes("'") }
-].concat(Object.keys(REGIONS).map(k => ({ id: "r" + k, label: "Les champions " + REGIONS[k][0], f: c => inRegion(k, c) }))).concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(L => ({ id: "l" + L, label: `Les champions dont le nom commence par <b>${L}</b>`, f: c => nk(c.name)[0] === L.toLowerCase() })));
+].concat(GROUPS.map(g => ({ id: "g" + g[0], label: g[1], f: c => inGroup(g[2], c) }))).concat(Object.keys(REGIONS).map(k => ({ id: "r" + k, label: "Les champions " + REGIONS[k][0], f: c => inRegion(k, c) }))).concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(L => ({ id: "l" + L, label: `Les champions dont le nom commence par <b>${L}</b>`, f: c => nk(c.name)[0] === L.toLowerCase() })));
 
 async function load() {
   const ver = (await (await fetch(DD + "api/versions.json")).json())[0];

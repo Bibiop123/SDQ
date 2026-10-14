@@ -10,3 +10,5 @@ Données collectées : `donnees/champions.json` (173 champions : titre, date de 
 
 ## Cite-les-tous (fait : cite.html)
 Défi du jour (catégorie du jour identique pour tous, 90 s, 100 pts/champion + 500 si tous trouvés, highscore) + mode infini `?libre`. Catégories : rôles, sans mana, énergie, portée ≥ 550, apostrophe, régions (13, listes du wiki LoL), initiale. Idées futures : catégories par espèce, objets.
+
+Cite-les-tous : catégories ajoutées — noms composés, ressources (sans ressource, Fureur/Rage, originale), espèces (Yordles, Vastayas, Néant, morts-vivants), séries de skins (Star Guardian, Spirit Blossom, PROJECT, Battle Academia, Blood Moon, Pool Party, Cafe Cuties). Listes issues des pages « Universe » du wiki : peuvent être incomplètes (à corriger au fil des retours). Non ajoutées (page illisible ou incomplète) : Arcade, High Noon, Pulsefire, Dark Star, Soul Fighter.
