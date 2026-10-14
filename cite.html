@@ -188,8 +188,26 @@ const DAILY_KEY = "sdq_daily_cite", dayKey = SDQ.dayKey;
 /* Surnoms acceptés en plus du nom complet */
 const ALIAS = { nunu: "Nunu", willump: "Nunu", mundo: "DrMundo", jarvan: "JarvanIV", jarvan4: "JarvanIV", tf: "TwistedFate", yi: "MasterYi", mf: "MissFortune", sol: "AurelionSol", kench: "TahmKench", renata: "Renata", xin: "XinZhao", wukong: "MonkeyKing", lee: "LeeSin", fiddle: "Fiddlesticks", asol: "AurelionSol", gp: "Gangplank", malz: "Malzahar", cass: "Cassiopeia", kata: "Katarina", trist: "Tristana", vlad: "Vladimir", ez: "Ezreal", heimer: "Heimerdinger", morde: "Mordekaiser", blitz: "Blitzcrank", leona: "Leona" };
 
-let champs = [], byKey = {}, year = {}, cat = null, members = [], found = [], over = false, start = 0, tick = null, score = 0, best = 0, sugList = [], sugI = -1;
+let champs = [], byKey = {}, cat = null, members = [], found = [], over = false, start = 0, tick = null, score = 0, best = 0, sugList = [], sugI = -1;
 try { best = Number(localStorage.getItem("sdq_best_cite")) || 0; } catch (e) {}
+
+/* Régions (liste « Champions of … » du wiki LoL, d'après l'Univers) : ids Data Dragon */
+const REGIONS = {
+  Bilgewater: ["de <b>Bilgewater</b>", "Fizz Gangplank Graves Illaoi MissFortune Nautilus Nilah Pyke TwistedFate".split(" ")],
+  Demacia: ["de <b>Demacia</b>", "Fiora Galio Garen JarvanIV Kayle Locke Lux Morgana Poppy Quinn Shyvana Sona Sylas Vayne XinZhao".split(" ")],
+  Noxus: ["de <b>Noxus</b>", "Ambessa Briar Cassiopeia Darius Draven Katarina Kled Leblanc Mel Mordekaiser Rell Riven Samira Sion Swain Talon Vladimir".split(" ")],
+  Ionia: ["de <b>Ionia</b>", "Ahri Akali Hwei Irelia Ivern Jhin Karma Kayn Kennen LeeSin Lillia MasterYi Rakan Sett Shen Syndra Varus MonkeyKing Xayah Yasuo Yone Yunara Zed".split(" ")],
+  Freljord: ["de <b>Freljord</b>", "Ashe Anivia Aurora Braum Gnar Gragas Lissandra Nunu Olaf Ornn Sejuani Trundle Tryndamere Udyr Volibear".split(" ")],
+  Piltover: ["de <b>Piltover</b>", "Caitlyn Camille Ezreal Heimerdinger Jayce Orianna Seraphine Vi".split(" ")],
+  Zaun: ["de <b>Zaun</b>", "Blitzcrank DrMundo Ekko Janna Jinx Renata Singed Twitch Urgot Viktor Warwick Zac Zeri Ziggs".split(" ")],
+  Shurima: ["de <b>Shurima</b>", "Aatrox Akshan Amumu Azir KSante Naafiri Nasus Rammus Renekton Sivir Taliyah Xerath Varus Zaahen".split(" ")],
+  Targon: ["de <b>Targon</b>", "Aphelios AurelionSol Diana Leona Pantheon Soraka Taric Zoe".split(" ")],
+  Iles: ["des <b>Îles obscures</b>", "Elise Gwen Hecarim Kalista Karthus Maokai Thresh Vex Viego Yorick".split(" ")],
+  Bandle: ["de <b>Bandle</b>", "Corki Lulu Rumble Teemo Tristana Veigar Yuumi".split(" ")],
+  Neant: ["du <b>Néant</b>", "Belveth Chogath Kaisa Kassadin Khazix KogMaw Malzahar RekSai Velkoz".split(" ")],
+  Ixtal: ["de <b>Ixtal</b>", "Malphite Milio Neeko Nidalee Qiyana Rengar Skarner Zyra".split(" ")],
+};
+const inRegion = (k, c) => REGIONS[k][1].some(i => nk(i) === nk(c.id));
 
 /* Catégories : l'ordre est fixe (le défi du jour en choisit une avec le hasard de la date). Chaque catégorie est calculée d'après Data Dragon. */
 const TAGS = { mage: "Mage", assassin: "Assassin", tank: "Tank", fighter: "Combattant", combattant: "Combattant", marksman: "Tireur", tireur: "Tireur", support: "Support", soutien: "Support" };
@@ -205,15 +223,10 @@ const CATS = [
   { id: "nomana", label: "Les champions <b>sans mana</b>", f: c => !isMana(c) },
   { id: "energie", label: "Les champions à <b>énergie</b>", f: c => /ner/i.test(c.partype || "") },
   { id: "portee550", label: "Les champions avec une portée d'attaque d'<b>au moins 550</b>", f: c => c.range >= 550 },
-  { id: "apostrophe", label: "Les champions dont le nom contient une <b>apostrophe</b>", f: c => c.name.includes("'") },
-  { id: "y2010", label: "Les champions sortis en <b>2010</b>", f: c => year[nk(c.id)] === "2010" },
-  { id: "y2011", label: "Les champions sortis en <b>2011</b>", f: c => year[nk(c.id)] === "2011" },
-  { id: "y2012", label: "Les champions sortis en <b>2012</b>", f: c => year[nk(c.id)] === "2012" },
-  { id: "y2013", label: "Les champions sortis en <b>2013</b>", f: c => year[nk(c.id)] === "2013" }
-].concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(L => ({ id: "l" + L, label: `Les champions dont le nom commence par <b>${L}</b>`, f: c => nk(c.name)[0] === L.toLowerCase() })));
+  { id: "apostrophe", label: "Les champions dont le nom contient une <b>apostrophe</b>", f: c => c.name.includes("'") }
+].concat(Object.keys(REGIONS).map(k => ({ id: "r" + k, label: "Les champions " + REGIONS[k][0], f: c => inRegion(k, c) }))).concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(L => ({ id: "l" + L, label: `Les champions dont le nom commence par <b>${L}</b>`, f: c => nk(c.name)[0] === L.toLowerCase() })));
 
 async function load() {
-  try { (await (await fetch("donnees/champions.json")).json()).forEach(c => { if (c.sortie) year[nk(c.id)] = c.sortie.slice(0, 4); }); } catch (e) {}
   const ver = (await (await fetch(DD + "api/versions.json")).json())[0];
   const d = (await (await fetch(`${DD}cdn/${ver}/data/fr_FR/champion.json`)).json()).data;
   champs = Object.values(d).map(c => ({ id: c.id, name: c.name, tags: c.tags || [], partype: c.partype, range: c.stats && c.stats.attackrange, img: `${DD}cdn/${ver}/img/champion/${c.image.full}` }));
