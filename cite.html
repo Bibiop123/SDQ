@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cite-les-tous – Le Bonfire</title>
+<link rel="icon" type="image/svg+xml" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700&family=Cinzel:wght@700;800&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#070b16; --panel:#0e1526; --line:#243149; --tx:#e9eef7; --mu:#8d9ab2; --cyan:#3fc1e0; --gold:#e6c36a; --gold-d:#a67c2a; --ok:#4ade80; --ko:#ff6b6b; --frame:#56709c; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body { min-height: 100vh; color: var(--tx); background: var(--bg); position: relative; overflow-x: hidden; font: 16px/1.5 Barlow, system-ui, -apple-system, "Segoe UI", sans-serif; }
+  body::before { content: ""; position: fixed; inset: -20px; z-index: -2; background: url("nashor.jpg") center / cover no-repeat; filter: blur(16px) brightness(.3) saturate(1.2); }
+  body::after { content: ""; position: fixed; inset: 0; z-index: -1; background: radial-gradient(ellipse at 50% 0%, rgba(63,193,224,.12), transparent 55%), linear-gradient(rgba(7,11,22,.55), var(--bg) 95%); }
+  .top { position: sticky; top: 0; z-index: 40; background: rgba(7,11,22,.72); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .top-in { max-width: 980px; margin: 0 auto; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+  .brand { display: flex; align-items: center; gap: 10px; color: var(--tx); text-decoration: none; font-family: Cinzel, Georgia, serif; font-weight: 800; letter-spacing: .08em; font-size: 1.05rem; }
+  .brand .mark { width: 30px; height: 30px; }
+  nav { display: flex; gap: 6px; }
+  nav a { padding: 7px 14px; border-radius: 10px; color: #dbe3f1; text-decoration: none; font-weight: 600; font-size: .85rem; letter-spacing: .08em; text-transform: uppercase; border: 1.5px solid var(--frame); background: rgba(24,35,62,.92); }
+  nav a:hover { border-color: var(--cyan); }
+  nav a.on { color: var(--cyan); border-color: rgba(63,193,224,.4); background: rgba(63,193,224,.08); }
+  main { max-width: 860px; margin: 0 auto; padding: 30px 16px 20px; }
+  .hero { text-align: center; margin-bottom: 22px; }
+  h1 { display: inline-flex; align-items: center; gap: 18px; margin: 0; font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: clamp(1.7rem, 6vw, 3rem); letter-spacing: .05em;
+       background: linear-gradient(#fff3c4, var(--gold) 45%, var(--gold-d)); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 2px 8px rgba(0,0,0,.8)); }
+  h1::before, h1::after { content: ""; width: clamp(20px, 7vw, 80px); height: 2px; background: linear-gradient(90deg, transparent, var(--gold)); }
+  h1::after { transform: scaleX(-1); }
+  .sub { margin: 8px 0 0; color: #c9d3e4; font-size: 1.1rem; font-weight: 500; }
+  .game { max-width: 820px; margin: 0 auto; padding: 20px 22px 24px; border: 1px solid var(--line); border-radius: 18px; background: rgba(14,21,38,.86); box-shadow: 0 16px 44px rgba(0,0,0,.6); }
+  .bar { display: flex; justify-content: space-between; align-items: center; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
+  .plates { display: flex; gap: 14px; }
+  .plate { display: inline-flex; align-items: baseline; gap: 8px; padding: 5px 13px; border: 1.5px solid var(--frame); border-radius: 12px; background: rgba(24,35,62,.92); color: #aab6cd; font-size: .76rem; font-weight: 600; text-transform: uppercase; letter-spacing: .1em; }
+  .plate b { font-size: 1.2rem; font-weight: 700; letter-spacing: 0; color: var(--gold); text-transform: none; }
+  .tabs { display: flex; gap: 6px; }
+  .tabs button { padding: 7px 16px; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; background: rgba(24,35,62,.92); color: #dbe3f1; border: 1.5px solid var(--frame); }
+  .tabs button.on { color: var(--cyan); border-color: var(--cyan); background: rgba(63,193,224,.1); }
+  button { padding: 13px 22px; border: 0; border-radius: 10px; font: inherit; font-size: 1.05rem; font-weight: 700; cursor: pointer; background: var(--cyan); color: #04202a; transition: transform .15s, filter .15s; }
+  button:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.1); }
+  .q { text-align: center; font-size: 1.35rem; font-weight: 700; margin: 6px 0 20px; min-height: 2em; }
+  .q b { color: var(--gold); }
+  .duel { display: flex; align-items: center; justify-content: center; gap: 12px; }
+  .vs { font-family: Cinzel, Georgia, serif; font-weight: 800; color: var(--gold); font-size: 1.1rem; }
+  .opt_unused { flex: 1; max-width: 300px; display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 18px 10px 16px; border-radius: 16px; border: 2px solid var(--frame); background: rgba(24,35,62,.92); color: var(--tx); cursor: pointer; box-shadow: 0 8px 22px rgba(0,0,0,.45); transition: transform .15s, border-color .15s, box-shadow .15s; }
+  .opt_unused:hover:not(:disabled) { transform: translateY(-3px); border-color: var(--cyan); box-shadow: 0 0 22px rgba(63,193,224,.3); filter: none; }
+  .opt_unused:disabled { cursor: default; opacity: 1; }
+  .opt_unused .pic { width: min(150px, 34vw); aspect-ratio: 1; border-radius: 14px; border: 2px solid var(--gold); background: #0b0f14; box-shadow: 0 0 0 2px #000; overflow: hidden; display: grid; place-items: center; }
+  .opt_unused .pic img { width: 100%; height: 100%; display: block; }
+  .opt_unused .nm { font-size: 1.05rem; font-weight: 700; text-align: center; line-height: 1.15; min-height: 2.3em; display: grid; place-items: center; }
+  .opt_unused .val { min-width: 96px; padding: 4px 12px; border-radius: 99px; border: 1.5px dashed #46557a; color: var(--mu); font-weight: 700; font-size: 1.1rem; text-align: center; }
+  .opt_unused.show .val { border-style: solid; border-color: var(--gold); color: var(--gold); background: rgba(230,195,106,.1); }
+  .opt_unused.right { border-color: var(--ok); box-shadow: 0 0 24px rgba(74,222,128,.35); }
+  .opt_unused.right .val { border-color: var(--ok); color: var(--ok); background: rgba(74,222,128,.1); }
+  .opt_unused.wrong { border-color: var(--ko); box-shadow: 0 0 24px rgba(255,107,107,.3); animation: shake .3s; }
+  .opt_unused.wrong .val { border-color: var(--ko); color: var(--ko); background: rgba(255,107,107,.1); }
+  @keyframes shake { 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+  .result { text-align: center; margin-top: 20px; min-height: 90px; }
+  .msg { font-size: 1.3rem; font-weight: 700; margin-bottom: 4px; }
+  .msg.ko { color: var(--ko); } .msg.ok { color: var(--ok); }
+  .msg small { display: block; color: var(--mu); font-size: .92rem; font-weight: 500; }
+  .result button { margin-top: 12px; }
+  .status { text-align: center; color: var(--mu); padding: 30px 0; }
+  footer { max-width: 980px; margin: 14px auto 0; padding: 22px 18px 34px; color: #66738c; font-size: .8rem; text-align: center; border-top: 1px solid rgba(36,49,73,.7); }
+  [hidden] { display: none !important; }
+  @media (max-width: 560px) { nav a { padding: 7px 9px; font-size: .78rem; letter-spacing: .05em; } .brand { font-size: .9rem; } .game { padding: 16px 10px 18px; } .duel { gap: 6px; } .opt { padding: 12px 6px; } .opt .nm { font-size: .92rem; } .q { font-size: 1.15rem; } }
+  @media (max-width: 400px) { .brand { display: none; } .top-in { justify-content: center; } }
+  @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+
+  .clues { display: flex; flex-direction: column; gap: 10px; margin: 6px 0 16px; }
+  .ph { padding: 12px 16px; border: 1.5px solid var(--frame); border-radius: 14px; background: rgba(24,35,62,.92); animation: pop .35s ease; }
+  .ph h3 { margin: 0 0 6px; font-family: "Barlow Condensed", Barlow, sans-serif; font-size: .9rem; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); display: flex; justify-content: space-between; gap: 8px; }
+  .ph h3 small { color: var(--mu); letter-spacing: .06em; font-size: .85rem; }
+  .ph ul { margin: 0; padding-left: 20px; } .ph li { margin: 3px 0; font-size: 1.04rem; }
+  .ph.p2 { border-color: #6a86b5; } .ph.p3 { border-color: var(--cyan); }
+  @keyframes pop { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .guess { position: relative; max-width: 460px; margin: 0 auto; }
+  .row { display: flex; gap: 10px; }
+  input { flex: 1; min-width: 0; padding: 13px 14px; border-radius: 12px; border: 1px solid var(--line); background: rgba(7,11,22,.8); color: var(--tx); font: inherit; font-size: 1.15rem; font-weight: 600; }
+  input:focus { outline: none; border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(63,193,224,.2); }
+  input.shake { animation: shake .3s; border-color: var(--ko); }
+  .sug { position: absolute; left: 0; right: 96px; bottom: 100%; margin-bottom: 4px; max-height: 260px; overflow: auto; border: 1.5px solid var(--frame); border-radius: 12px; background: rgba(14,21,38,.98); box-shadow: 0 10px 30px rgba(0,0,0,.6); z-index: 10; }
+  .sug div { display: flex; align-items: center; gap: 10px; padding: 6px 10px; cursor: pointer; font-weight: 600; }
+  .sug div img { width: 34px; height: 34px; border-radius: 8px; border: 1px solid var(--line); }
+  .sug div.on, .sug div:hover { background: rgba(63,193,224,.15); }
+  .tools { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+  button.alt { padding: 9px 16px; font-size: .92rem; background: rgba(24,35,62,.92); color: #dbe3f1; border: 1.5px solid var(--frame); font-weight: 600; }
+  button.alt:hover:not(:disabled) { border-color: var(--cyan); filter: none; }
+  button:disabled { opacity: .45; cursor: default; }
+  .flash { min-height: 22px; margin: 8px 2px 0; text-align: center; color: var(--ko); font-size: .9rem; font-weight: 600; }
+  .misses { list-style: none; margin: 4px 0 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+  .misses li { padding: 3px 12px; border-radius: 10px; border: 1px solid rgba(255,107,107,.55); background: rgba(255,107,107,.1); font-weight: 700; font-size: .9rem; }
+  .reveal { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .reveal img { width: 96px; height: 96px; border-radius: 14px; border: 2px solid var(--gold); box-shadow: 0 0 0 2px #000; }
+  .reveal .big { font-family: Cinzel, Georgia, serif; font-weight: 800; font-size: 1.5rem; color: var(--gold); }
+  .reveal .tt { color: var(--mu); }
+  .result { text-align: center; margin-top: 8px; }
+  .result .msg { margin-top: 8px; }
+  .faits { max-width: 520px; margin: 10px auto 0; text-align: left; color: #c9d3e4; font-size: .95rem; }
+  .faits li { margin: 2px 0; }
+
+  .cat { text-align: center; margin: 4px 0 16px; }
+  .cat .k { color: var(--mu); font-size: .8rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
+  .cat h2 { margin: 2px 0 0; font-size: 1.5rem; font-weight: 700; }
+  .cat h2 b { color: var(--gold); }
+  .timer { display: flex; align-items: center; gap: 10px; margin: 0 auto 14px; max-width: 460px; }
+  .timer .bar2 { flex: 1; height: 8px; border-radius: 4px; background: #243149; overflow: hidden; }
+  .timer .bar2 i { display: block; height: 100%; width: 100%; background: var(--cyan); transition: width .25s linear; }
+  .timer.low .bar2 i { background: var(--ko); }
+  .timer b { min-width: 3ch; text-align: right; font-size: 1.25rem; color: var(--gold); }
+  .found { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 14px 0 0; min-height: 40px; }
+  .chip2 { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 4px; border-radius: 99px; border: 1.5px solid var(--ok); background: rgba(74,222,128,.1); font-weight: 600; font-size: .92rem; animation: pop .3s ease; }
+  .chip2 img { width: 26px; height: 26px; border-radius: 50%; }
+  .chip2.miss { border-color: var(--ko); background: rgba(255,107,107,.08); color: #ffc9c9; }
+  .stats { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin: 6px 0 12px; }
+  .stat { padding: 8px 18px; border: 1.5px solid var(--frame); border-radius: 12px; background: rgba(24,35,62,.92); text-align: center; color: var(--mu); font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; }
+  .stat b { display: block; font-size: 1.5rem; color: var(--gold); letter-spacing: 0; }
+  .clock { text-align: center; color: var(--mu); margin-top: 10px; }
+  .clock b { color: var(--tx); font-variant-numeric: tabular-nums; }
+  .links { text-align: center; margin-top: 14px; font-size: .92rem; }
+  .links a { color: var(--cyan); }
+  .links button { padding: 0; background: none; border: 0; color: #66738c; font-size: .75rem; cursor: pointer; }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="brand" href="index.html"><img class="mark" src="logo.svg" alt="" width="30" height="30">LE BONFIRE</a>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="devine.html">Devine</a>
+      <a class="on" href="cite.html">Cite</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="hero">
+    <h1>Cite-les-tous</h1>
+    <p class="sub">Un maximum de champions d'une même catégorie, avant la fin du temps.</p>
+  </section>
+  <section class="game" id="game">
+    <div class="bar">
+      <div class="plates">
+        <span class="plate">Trouvés <b id="foundN">0</b><span id="totalN"></span></span>
+        <span class="plate" id="scorePlate">Score <b id="score">0</b></span>
+        <span class="plate" id="recordPlate" hidden>Record <b id="best">0</b></span>
+      </div>
+      <span class="plate" id="modechip">Défi du jour</span>
+    </div>
+    <div class="status" id="status">Chargement des champions…</div>
+    <div id="board" hidden>
+      <div class="cat"><div class="k">Catégorie</div><h2 id="cat"></h2></div>
+      <div class="timer" id="timer"><div class="bar2"><i id="timerBar"></i></div><b id="timerT">90</b></div>
+      <div id="play">
+        <div class="guess">
+          <div class="sug" id="sug" hidden></div>
+          <div class="row">
+            <input id="answer" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="Nom d'un champion…" aria-label="Nom d'un champion">
+            <button id="submit" disabled>Valider</button>
+          </div>
+        </div>
+        <div class="flash" id="flash" role="status"></div>
+        <div class="tools"><button class="alt" id="finish" type="button">Terminer</button></div>
+      </div>
+      <div class="found" id="found" aria-live="polite"></div>
+      <div class="result" id="result" hidden>
+        <div class="msg" id="msg"></div>
+        <div class="stats" id="stats"></div>
+        <div id="hs"></div>
+        <div class="clock" id="clockBox" hidden>Prochain défi dans <b id="clock">--:--:--</b></div>
+        <button id="again" hidden style="margin-top:12px">Rejouer →</button>
+      </div>
+      <div class="links"><a id="modeLink" href="cite.html?libre">Jouer en mode infini →</a> &nbsp;·&nbsp; <a href="index.html">Retour aux jeux</a> &nbsp;·&nbsp; <button class="resetday" id="resetDay" type="button" title="Réinitialise la partie du jour (test)">Réinitialiser le jour</button></div>
+    </div>
+  </section>
+</main>
+<footer>Projet de fan, non affilié à Riot Games. League of Legends et ses personnages appartiennent à Riot Games, Inc.</footer>
+<script src="daily.js"></script>
+<script>
+const $ = id => document.getElementById(id);
+const nk = s => String(s).toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+const fmt = n => Number(n || 0).toLocaleString("fr-FR").replace(/\u202f|\u00a0/g, " ");
+const DD = "https://ddragon.leagueoflegends.com/";
+const FREE = /[?&](libre|free)(&|=|$)/.test(location.search);
+const DURATION = 90, PER = 100, BONUS_ALL = 500;
+const DAILY_KEY = "sdq_daily_cite", dayKey = SDQ.dayKey;
+/* Surnoms acceptés en plus du nom complet */
+const ALIAS = { nunu: "Nunu", willump: "Nunu", mundo: "DrMundo", jarvan: "JarvanIV", jarvan4: "JarvanIV", tf: "TwistedFate", yi: "MasterYi", mf: "MissFortune", sol: "AurelionSol", kench: "TahmKench", renata: "Renata", xin: "XinZhao", wukong: "MonkeyKing", lee: "LeeSin", fiddle: "Fiddlesticks", asol: "AurelionSol", gp: "Gangplank", malz: "Malzahar", cass: "Cassiopeia", kata: "Katarina", trist: "Tristana", vlad: "Vladimir", ez: "Ezreal", heimer: "Heimerdinger", morde: "Mordekaiser", blitz: "Blitzcrank", leona: "Leona" };
+
+let champs = [], byKey = {}, year = {}, cat = null, members = [], found = [], over = false, start = 0, tick = null, score = 0, best = 0, sugList = [], sugI = -1;
+try { best = Number(localStorage.getItem("sdq_best_cite")) || 0; } catch (e) {}
+
+/* Catégories : l'ordre est fixe (le défi du jour en choisit une avec le hasard de la date). Chaque catégorie est calculée d'après Data Dragon. */
+const TAGS = { mage: "Mage", assassin: "Assassin", tank: "Tank", fighter: "Combattant", combattant: "Combattant", marksman: "Tireur", tireur: "Tireur", support: "Support", soutien: "Support" };
+const tagsOf = c => c.tags.map(t => TAGS[nk(t)] || t);
+const isMana = c => /mana/i.test(c.partype || "");
+const CATS = [
+  { id: "mage", label: "Les <b>Mages</b>", f: c => tagsOf(c).includes("Mage") },
+  { id: "assassin", label: "Les <b>Assassins</b>", f: c => tagsOf(c).includes("Assassin") },
+  { id: "tank", label: "Les <b>Tanks</b>", f: c => tagsOf(c).includes("Tank") },
+  { id: "combattant", label: "Les <b>Combattants</b>", f: c => tagsOf(c).includes("Combattant") },
+  { id: "tireur", label: "Les <b>Tireurs</b>", f: c => tagsOf(c).includes("Tireur") },
+  { id: "support", label: "Les <b>Supports</b>", f: c => tagsOf(c).includes("Support") },
+  { id: "nomana", label: "Les champions <b>sans mana</b>", f: c => !isMana(c) },
+  { id: "energie", label: "Les champions à <b>énergie</b>", f: c => /ner/i.test(c.partype || "") },
+  { id: "portee550", label: "Les champions avec une portée d'attaque d'<b>au moins 550</b>", f: c => c.range >= 550 },
+  { id: "apostrophe", label: "Les champions dont le nom contient une <b>apostrophe</b>", f: c => c.name.includes("'") },
+  { id: "y2010", label: "Les champions sortis en <b>2010</b>", f: c => year[nk(c.id)] === "2010" },
+  { id: "y2011", label: "Les champions sortis en <b>2011</b>", f: c => year[nk(c.id)] === "2011" },
+  { id: "y2012", label: "Les champions sortis en <b>2012</b>", f: c => year[nk(c.id)] === "2012" },
+  { id: "y2013", label: "Les champions sortis en <b>2013</b>", f: c => year[nk(c.id)] === "2013" }
+].concat("ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("").map(L => ({ id: "l" + L, label: `Les champions dont le nom commence par <b>${L}</b>`, f: c => nk(c.name)[0] === L.toLowerCase() })));
+
+async function load() {
+  try { (await (await fetch("donnees/champions.json")).json()).forEach(c => { if (c.sortie) year[nk(c.id)] = c.sortie.slice(0, 4); }); } catch (e) {}
+  const ver = (await (await fetch(DD + "api/versions.json")).json())[0];
+  const d = (await (await fetch(`${DD}cdn/${ver}/data/fr_FR/champion.json`)).json()).data;
+  champs = Object.values(d).map(c => ({ id: c.id, name: c.name, tags: c.tags || [], partype: c.partype, range: c.stats && c.stats.attackrange, img: `${DD}cdn/${ver}/img/champion/${c.image.full}` }));
+  champs.forEach(c => { byKey[nk(c.name)] = c; byKey[nk(c.id)] = c; });
+  Object.keys(ALIAS).forEach(k => { const t = champs.find(c => c.id === ALIAS[k]); if (t && !byKey[k]) byKey[k] = t; });
+}
+const valid = c => { const n = champs.filter(c.f).length; return n >= 6 && n <= 40; };
+function pickCat() {
+  if (FREE) { const v = CATS.filter(valid); return v[Math.floor(Math.random() * v.length)]; }
+  const r = SDQ.rng("cite", dayKey());
+  const i = Math.floor(r() * CATS.length);
+  for (let k = 0; k < CATS.length; k++) { const c = CATS[(i + k) % CATS.length]; if (valid(c)) return c; }
+}
+const scoreOf = () => found.length * PER + (found.length === members.length ? BONUS_ALL : 0);
+function dailyLoad() { try { const d = JSON.parse(localStorage.getItem(DAILY_KEY)); return d && d.day === dayKey() ? d : null; } catch (e) { return null; } }
+function dailySave(d) { try { localStorage.setItem(DAILY_KEY, JSON.stringify(Object.assign({ day: dayKey() }, d))); } catch (e) {} }
+
+function render() {
+  $("foundN").textContent = found.length; $("totalN").textContent = " / " + members.length; $("score").textContent = fmt(scoreOf());
+  const box = $("found"); box.innerHTML = "";
+  found.forEach(id => { const c = champs.find(x => x.id === id); box.appendChild(chip(c, false)); });
+  if (over) members.filter(c => !found.includes(c.id)).forEach(c => box.appendChild(chip(c, true)));
+}
+function chip(c, miss) {
+  const s = document.createElement("span"); s.className = "chip2" + (miss ? " miss" : "");
+  const im = new Image(); im.src = c.img; im.alt = ""; im.onerror = () => im.remove(); s.appendChild(im);
+  s.appendChild(document.createTextNode(c.name)); return s;
+}
+function timeLeft() { return Math.max(0, DURATION - (Date.now() - start) / 1000); }
+function paintTimer() {
+  const t = timeLeft(); $("timerT").textContent = Math.ceil(t); $("timerBar").style.width = (t / DURATION * 100) + "%"; $("timer").classList.toggle("low", t <= 15);
+  if (t <= 0 && !over) end();
+}
+function begin(resumeFound, startAt) {
+  members = champs.filter(cat.f); found = resumeFound || []; over = false; start = startAt || Date.now();
+  $("cat").innerHTML = cat.label; $("result").hidden = true; $("play").hidden = false; $("timer").hidden = false;
+  $("answer").value = ""; $("submit").disabled = true;
+  if (!FREE) dailySave({ start, cat: cat.id, found, done: false });
+  render(); paintTimer(); clearInterval(tick); tick = setInterval(paintTimer, 250);
+  $("answer").focus({ preventScroll: true });
+}
+function flash(m) { $("flash").textContent = m; clearTimeout(flash.t); flash.t = setTimeout(() => $("flash").textContent = "", 1800); }
+function shake() { const e = $("answer"); e.classList.remove("shake"); void e.offsetWidth; e.classList.add("shake"); }
+function guess(c) {
+  if (over) return;
+  if (!members.includes(c)) { shake(); return flash(c.name + " : pas dans la catégorie."); }
+  if (found.includes(c.id)) { shake(); return flash("Déjà trouvé."); }
+  found.push(c.id); $("answer").value = ""; $("submit").disabled = true; closeSug(); flash("");
+  if (!FREE) dailySave({ start, cat: cat.id, found, done: false });
+  render(); if (found.length === members.length) end();
+}
+function submit() {
+  if (over) return;
+  let c = sugI >= 0 ? sugList[sugI] : byKey[nk($("answer").value)];
+  if (!c && sugList.length === 1) c = sugList[0];
+  if (!c) { shake(); return flash("Champion inconnu : choisis dans la liste."); }
+  guess(c);
+}
+function end() {
+  over = true; clearInterval(tick); closeSug();
+  const sc = scoreOf();
+  $("timerT").textContent = "0"; $("play").hidden = true; $("timer").hidden = true;
+  if (FREE) { if (found.length > best) { best = found.length; try { localStorage.setItem("sdq_best_cite", best); } catch (e) {} } }
+  else dailySave({ start, cat: cat.id, found, done: true, score: sc, total: members.length });
+  showResult(sc);
+}
+function showResult(sc) {
+  $("result").hidden = false; $("play").hidden = true; $("timer").hidden = true;
+  const all = found.length === members.length;
+  $("msg").className = "msg " + (all ? "ok" : ""); $("msg").innerHTML = all ? "Tous trouvés ! 🎉" : "Temps écoulé";
+  $("stats").innerHTML = `<div class="stat">Trouvés<b>${found.length}/${members.length}</b></div>` + (FREE ? `<div class="stat">Record<b>${best}</b></div>` : `<div class="stat">Score<b>${fmt(sc)}</b></div>`);
+  render();
+  if (FREE) { $("again").hidden = false; $("recordPlate").hidden = false; $("best").textContent = best; }
+  else {
+    SDQ.scoreBox($("hs"), "cite", sc);
+    $("clockBox").hidden = false; const day0 = dayKey();
+    const t = () => { const s = SDQ.secondsToMidnight(), p = n => String(n).padStart(2, "0"); $("clock").textContent = p(Math.floor(s / 3600)) + ":" + p(Math.floor(s / 60) % 60) + ":" + p(s % 60); if (dayKey() !== day0) location.reload(); };
+    t(); setInterval(t, 1000);
+  }
+}
+/* Suggestions */
+function closeSug() { $("sug").hidden = true; sugList = []; sugI = -1; }
+function showSug() {
+  const k = nk($("answer").value); if (!k) return closeSug();
+  const a = champs.filter(c => nk(c.name).startsWith(k)), b = champs.filter(c => !nk(c.name).startsWith(k) && nk(c.name).includes(k));
+  sugList = [...a, ...b].slice(0, 6); sugI = -1;
+  const box = $("sug"); box.innerHTML = "";
+  sugList.forEach((c, i) => {
+    const d = document.createElement("div"), im = new Image(); im.src = c.img; im.alt = ""; im.onerror = () => im.remove(); d.appendChild(im); d.appendChild(document.createTextNode(c.name));
+    d.onmousedown = e => { e.preventDefault(); guess(c); }; box.appendChild(d);
+  });
+  box.hidden = !sugList.length;
+}
+$("answer").oninput = () => { $("submit").disabled = !$("answer").value.trim(); showSug(); };
+$("answer").onkeydown = e => {
+  const mk = () => [...$("sug").children].forEach((d, i) => d.classList.toggle("on", i === sugI));
+  if (e.key === "ArrowDown" && sugList.length) { e.preventDefault(); sugI = (sugI + 1) % sugList.length; mk(); }
+  else if (e.key === "ArrowUp" && sugList.length) { e.preventDefault(); sugI = (sugI - 1 + sugList.length) % sugList.length; mk(); }
+  else if (e.key === "Enter") { e.preventDefault(); if (sugI < 0 && sugList.length && !byKey[nk($("answer").value)]) sugI = 0; submit(); }
+  else if (e.key === "Escape") closeSug();
+};
+$("answer").onblur = () => setTimeout(closeSug, 100);
+$("submit").onclick = submit;
+$("finish").onclick = () => { if (!over && confirm("Terminer la partie maintenant ?")) end(); };
+$("again").onclick = () => { cat = pickCat(); begin(); $("again").hidden = true; };
+$("resetDay").onclick = () => { try { localStorage.removeItem(DAILY_KEY); localStorage.removeItem("sdq_daily_sub_cite"); } catch (e) {} location.reload(); };
+if (FREE) { $("modechip").textContent = "Mode infini"; $("scorePlate").hidden = true; $("recordPlate").hidden = false; $("best").textContent = best; $("modeLink").hidden = true; $("resetDay").hidden = true; }
+else $("modechip").textContent = "Défi du jour";
+
+load().then(() => {
+  $("status").hidden = true; $("board").hidden = false;
+  cat = pickCat(); if (!cat) throw 0;
+  if (FREE) return begin();
+  const d = dailyLoad();
+  if (d && d.done) { members = champs.filter(cat.f); found = d.found || []; over = true; $("cat").innerHTML = cat.label; return showResult(d.score || 0); }
+  if (d && d.start) {                            /* partie en cours : le chrono a continué */
+    members = champs.filter(cat.f); found = d.found || [];
+    if (Date.now() - d.start >= DURATION * 1000) { start = d.start; $("cat").innerHTML = cat.label; return end(); }
+    return begin(found, d.start);
+  }
+  SDQ.intro({
+    title: "Cite-les-tous", sub: "Défi du jour",
+    rules: [["📜", "Une catégorie de champions, la même pour tout le monde aujourd'hui."],
+            ["⏱️", "Tu as <b>90 secondes</b> pour en citer un maximum. Le chrono démarre dès que tu lances la partie."],
+            ["🎯", "<b>100 pts</b> par champion trouvé, et <b>+500 pts</b> si tu les trouves tous."],
+            ["🏁", "Une seule partie par jour. Recharger la page ne remet pas le chrono à zéro."]],
+    button: "Lancer la partie" }).then(() => begin());
+}).catch(() => { $("status").hidden = false; $("board").hidden = true; $("status").textContent = "Impossible de charger les champions (Data Dragon). Recharge la page."; });
+</script>
+</body>
+</html>

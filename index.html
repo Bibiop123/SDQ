@@ -229,6 +229,18 @@
         <span class="played" id="playedMots">À jouer aujourd'hui</span>
       </div>
     </a>
+    <a class="card small" href="cite.html">
+      <img class="bg" src="nashor.jpg" alt="">
+      <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9.5 2.5h5"/></svg></span>
+      <div class="hs" id="hsCite"></div>
+      <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span><span class="chip day">1 partie / jour</span><span class="chip new">Nouveau</span></div>
+      <h3>Cite-les-tous</h3>
+      <p>Une catégorie de champions par jour : cite-en un maximum en 90 secondes.</p>
+      <div class="meta">
+        <span class="cta">Jouer <span aria-hidden="true">›</span></span>
+        <span class="played" id="playedCite">À jouer aujourd'hui</span>
+      </div>
+    </a>
   </div>
 
   <div class="sec zonehead zone2"><h2>Mode infini</h2><span>sans limite de parties</span></div>
@@ -294,6 +306,17 @@
       <span class="played" id="playedDev">Jamais joué</span>
     </div>
   </a>
+    <a class="card small" href="cite.html?libre"><span class="ribbon inf">INFINI</span>
+    <img class="bg" src="nashor.jpg" alt="">
+    <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9.5 2.5h5"/></svg></span>
+    <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span><span class="chip">Illimité</span><span class="chip new">Nouveau</span></div>
+    <h3>Cite-les-tous</h3>
+    <p>90 secondes, une catégorie au hasard : cite un maximum de champions. Rejoue autant que tu veux.</p>
+    <div class="meta">
+      <span class="cta">Jouer <span aria-hidden="true">›</span></span>
+      <span class="played" id="playedCiteFree">Jamais joué</span>
+    </div>
+  </a>
   </div>
   </div>
   <!-- Place réservée pour un futur classement -->
@@ -320,8 +343,13 @@
     if (bf > 0) document.getElementById("playedFree").innerHTML = "Record <b>" + bf + "</b>";
     if (bmf > 0) document.getElementById("playedMotsFree").innerHTML = "Record <b>" + bmf + "</b>";
   } catch (e) {}
-  SDQ.showTop(document.getElementById("hsArt"), "artwork"); SDQ.showTop(document.getElementById("hsMots"), "mots");
+  SDQ.showTop(document.getElementById("hsArt"), "artwork"); SDQ.showTop(document.getElementById("hsMots"), "mots"); SDQ.showTop(document.getElementById("hsCite"), "cite");
+  daily("sdq_daily_cite", "playedCite", function (d) { return "<b>" + nf(d.score) + "</b> pts"; });
   daily("sdq_daily_mots", "playedMots", function (d) { return "<b>" + nf(d.score) + "</b> pts"; });
+try {
+  var bc = Number(localStorage.getItem("sdq_best_cite")) || 0;
+  if (bc > 0) document.getElementById("playedCiteFree").innerHTML = "Record <b>" + bc + "</b>";
+} catch (e) {}
 try {
   var bd = Number(localStorage.getItem("sdq_best_devine")) || 0;
   if (bd > 0) document.getElementById("playedDev").innerHTML = "Record <b>" + bd + "</b>";
