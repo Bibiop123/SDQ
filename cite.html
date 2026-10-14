@@ -256,16 +256,17 @@ function render() {
   $("foundN").textContent = found.length; $("totalN").textContent = " / " + members.length; $("score").textContent = fmt(scoreOf());
   $("count").innerHTML = `<b>${found.length}</b> / ${members.length} trouvés`;
   const box = $("found"); box.innerHTML = "";
-  const missed = over ? members.filter(c => !found.includes(c.id)) : [];
-  for (let i = 0; i < members.length; i++) {
+  /* Cases dans l'ordre alphabétique : chaque champion trouvé prend sa place, les trous montrent où se glissent les manquants */
+  const sorted = members.slice().sort((x, y) => x.name.localeCompare(y.name, "fr", { sensitivity: "base", ignorePunctuation: true }));
+  sorted.forEach(c => {
     const s = document.createElement("div"); s.className = "slot";
-    const c = i < found.length ? champs.find(x => x.id === found[i]) : missed[i - found.length];
-    if (c) {
-      s.classList.add(i < found.length ? "ok" : "miss");
+    const ok = found.includes(c.id);
+    if (ok || over) {
+      s.classList.add(ok ? "ok" : "miss");
       const im = new Image(); im.src = c.img; im.alt = ""; im.onerror = () => im.remove(); s.appendChild(im); s.appendChild(document.createTextNode(c.name));
     }
     box.appendChild(s);
-  }
+  });
 }
 function chip(c, miss) {
   const s = document.createElement("span"); s.className = "chip2" + (miss ? " miss" : "");
