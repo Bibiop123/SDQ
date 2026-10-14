@@ -112,6 +112,13 @@
   .chip.new { background: linear-gradient(#f3d98a, #c99a35); color: #1a1305; border-color: transparent; }
   /* Loupe sur le Kennen : fond flouté, l'intérieur de la vitre reste net */
   .card.lensy { --lx: 27%; --ly: 27%; }
+  /* Cite-les-tous : liste de champions à moitié remplie en fond de carte */
+  .slotsbg { position: absolute; inset: 0; z-index: -2; padding: 82px 16px 0; display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 30px; gap: 7px; background: radial-gradient(circle at 60% 20%, rgba(63,193,224,.16), transparent 60%), #0b1424; align-content: start; }
+  .slotsbg i { display: flex; align-items: center; padding: 0 9px; border: 1.5px solid #2c3b57; border-radius: 8px; background: rgba(7,11,22,.55); font-style: normal; font-weight: 600; font-size: .78rem; color: #cfe9d9; white-space: nowrap; overflow: hidden; }
+  .slotsbg i.ok { border-color: rgba(74,222,128,.7); background: rgba(74,222,128,.12); }
+  .slotsbg { -webkit-mask-image: linear-gradient(#000 40%, transparent 66%); mask-image: linear-gradient(#000 40%, transparent 66%); }
+  a.card:hover .slotsbg { transform: none; }
+  @media (max-width: 600px) { .card.small.cite { min-height: 400px; } .slotsbg { grid-template-columns: repeat(2, 1fr); padding-top: 78px; } }
   .card.lensy .bg { filter: blur(6px) brightness(.8); transform: scale(1.04); }
   a.card.lensy:hover .bg { transform: scale(1.04); }
   .card.lensy .bg.sharp { z-index: 0; pointer-events: none; filter: none; transform: none;
@@ -229,8 +236,8 @@
         <span class="played" id="playedMots">À jouer aujourd'hui</span>
       </div>
     </a>
-    <a class="card small" href="cite.html">
-      <img class="bg" src="nashor.jpg" alt="">
+    <a class="card small cite" href="cite.html">
+      <div class="slotsbg" aria-hidden="true"><i class="ok">Darius</i><i class="ok">Draven</i><i class=""></i><i class="ok">Kled</i><i class="ok">LeBlanc</i><i class=""></i><i class="ok">Riven</i><i class="ok">Samira</i><i class="ok">Sion</i><i class=""></i><i class="ok">Talon</i><i class=""></i><i class="ok">Briar</i><i class="ok">Cassiopeia</i><i class=""></i><i class="ok">Mel</i><i class=""></i><i class="ok">Annie</i></div>
       <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9.5 2.5h5"/></svg></span>
       <div class="hs" id="hsCite"></div>
       <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span><span class="chip day">1 partie / jour</span><span class="chip new">Nouveau</span></div>
@@ -306,8 +313,8 @@
       <span class="played" id="playedDev">Jamais joué</span>
     </div>
   </a>
-    <a class="card small" href="cite.html?libre"><span class="ribbon inf">INFINI</span>
-    <img class="bg" src="nashor.jpg" alt="">
+    <a class="card small cite" href="cite.html?libre"><span class="ribbon inf">INFINI</span>
+    <div class="slotsbg" aria-hidden="true"><i class="ok">Darius</i><i class="ok">Draven</i><i class=""></i><i class="ok">Kled</i><i class="ok">LeBlanc</i><i class=""></i><i class="ok">Riven</i><i class="ok">Samira</i><i class="ok">Sion</i><i class=""></i><i class="ok">Talon</i><i class=""></i><i class="ok">Briar</i><i class="ok">Cassiopeia</i><i class=""></i><i class="ok">Mel</i><i class=""></i><i class="ok">Annie</i></div>
     <span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2M9.5 2.5h5"/></svg></span>
     <div class="chips"><span class="chip">Solo</span><span class="chip lvl">Moyen</span><span class="chip">Illimité</span><span class="chip new">Nouveau</span></div>
     <h3>Cite-les-tous</h3>
