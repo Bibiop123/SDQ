@@ -318,9 +318,29 @@ function guess(c) {
   if (!FREE) dailySave({ start, cat: cat.id, found, done: false });
   render(); if (found.length === members.length) end();
 }
+function lev(a, b) {
+  const m = a.length, n = b.length; let prev = Array.from({ length: n + 1 }, (_, j) => j);
+  for (let i = 1; i <= m; i++) { const cur = [i]; for (let j = 1; j <= n; j++) cur[j] = Math.min(prev[j] + 1, cur[j - 1] + 1, prev[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1)); prev = cur; }
+  return prev[n];
+}
+function resolve(raw) {
+  const q = nk(raw); if (!q) return null;
+  if (byKey[q]) return byKey[q];
+  const keys = Object.keys(byKey);
+  const pick = list => { const u = [...new Set(list)]; if (u.length === 1) return u[0]; const open = u.filter(c => members.includes(c) && !found.includes(c.id)); return open.length === 1 ? open[0] : null; };
+  if (q.length >= 3) { const r = pick(keys.filter(k => k.startsWith(q)).map(k => byKey[k])); if (r) return r; }
+  const tol = q.length <= 3 ? 0 : q.length <= 6 ? 1 : 2;
+  if (!tol) return null;
+  let bd = 99, bl = [];
+  keys.forEach(k => { const d = lev(q, k); if (d < bd) { bd = d; bl = [byKey[k]]; } else if (d === bd) bl.push(byKey[k]); });
+  if (bd <= tol) return pick(bl);
+  // faute + abréviation : on compare au début du nom
+  const pl = keys.filter(k => k.length > q.length && lev(q, k.slice(0, q.length)) <= (q.length >= 6 ? 1 : 0) && q.length >= 5).map(k => byKey[k]);
+  return pl.length ? pick(pl) : null;
+}
 function submit() {
   if (over) return;
-  let c = sugI >= 0 ? sugList[sugI] : byKey[nk($("answer").value)];
+  let c = sugI >= 0 ? sugList[sugI] : resolve($("answer").value);
   if (!c && sugList.length === 1) c = sugList[0];
   if (!c) { shake(); return flash("Champion inconnu : vérifie l'orthographe."); }
   guess(c);
